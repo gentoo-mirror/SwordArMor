@@ -6,7 +6,7 @@ official repo or in another overlay.
 If some package is broken, you could open an issue here or send me an email or
 contact me via IRC.
 
-## Example of repo.conf
+## Example of repos.conf
 
 ```
 [SwordArMor]
