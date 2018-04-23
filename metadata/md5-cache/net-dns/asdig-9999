@@ -1,0 +1,9 @@
+DEFINED_PHASES=install preinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Simple client for retrieving AS from IP published via DNS
+EAPI=5
+HOMEPAGE=https://github.com/Rezopole/asdig
+LICENSE=GPL
+SLOT=0
+_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_md5_=a968e09a905f31d5cc9ca09686bc6522
