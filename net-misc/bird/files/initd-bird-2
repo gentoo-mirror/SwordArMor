@@ -1,0 +1,56 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+pidfile="/var/run/${RC_SVCNAME}.pid"
+CONF_FILE="/etc/${RC_SVCNAME}.conf"
+SOCK="/var/run/${RC_SVCNAME}.ctl"
+
+command="/usr/sbin/${RC_SVCNAME}"
+command_args="-c ${CONF_FILE} -s ${SOCK} -P ${pidfile}"
+
+depend() {
+	need net
+	use logger
+}
+
+checkconfig() {
+	if [ ! -f "CONF_FILE" ]; then
+		eerror "Please create ${CONF_FILE}"
+		return 1
+	fi
+	return 0
+}
+
+check_run() {
+	STATE=$(birdc -s /var/run/bird.ctl 'configure check' | \
+		grep 'Configuration OK')
+
+	if [ -n "${STATE}" ]; then
+		return 0
+	else
+		eerror "$(birdc -s /var/run/bird.ctl 'configure check' | \
+			sed '1d;2d')"
+		return 1
+	fi
+}
+
+reload() {
+	check_run || return 1
+	ebegin "Reloading BIRD"
+	start-stop-daemon --signal HUP --exec ${command}
+	eend $?
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ] ; then
+		check_run || return 1
+	fi
+}
+
+stop() {
+	ebegin "Stopping BIRD"
+	start-stop-daemon --stop --exec ${command} --retry 15
+}

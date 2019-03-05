@@ -31,6 +31,6 @@ src_install() {
 	fi
 	dobin birdcl
 	dosbin bird
-	newinitd "${FILESDIR}/initd-v4-${PN}-1.3.8" bird
+	newinitd "${FILESDIR}/initd-${PN}-2" bird
 	dodoc doc/bird.conf.example
 }
