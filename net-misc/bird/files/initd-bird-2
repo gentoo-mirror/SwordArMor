@@ -44,7 +44,7 @@ check_run() {
 reload() {
 	check_run || return 1
 	ebegin "Reloading BIRD"
-	start-stop-daemon --signal HUP --exec ${command}
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
 	eend $?
 }
 
