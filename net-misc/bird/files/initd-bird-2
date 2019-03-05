@@ -25,13 +25,17 @@ checkconfig() {
 }
 
 check_run() {
-	STATE=$(birdc -s /var/run/bird.ctl 'configure check' | \
+	# Check if the bird parser returns what we want
+	# We can’t use $? because it’s always 0 if the sock works
+	STATE=$(birdc -s ${SOCK} 'configure check' | \
 		grep 'Configuration OK')
 
 	if [ -n "${STATE}" ]; then
 		return 0
 	else
-		eerror "$(birdc -s /var/run/bird.ctl 'configure check' | \
+		# We remove the first two lines (garbage informations), the
+		# errors begin at the third
+		eerror "$(birdc -s ${SOCK} 'configure check' | \
 			sed '1d;2d')"
 		return 1
 	fi
