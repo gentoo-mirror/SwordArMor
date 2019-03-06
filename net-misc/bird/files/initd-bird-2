@@ -22,7 +22,7 @@ depend() {
 }
 
 check_run() {
-	BIRD_CHECK_CONF="birdc ${client_args} configure check"
+	BIRD_CHECK_CONF="birdc ${client_args} configure check \"${CONF_FILE}\""
 	# Check if the bird parser returns what we want
 	# We can’t use $? because it’s always 0 if the sock works
 	STATE=$(${BIRD_CHECK_CONF} | grep 'Configuration OK')
