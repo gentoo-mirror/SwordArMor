@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r1 git-r3
 
 DESCRIPTION="This is a looking glass for the Internet Routing Daemon BIRD"
 HOMEPAGE="https://github.com/sileht/bird-lg"
