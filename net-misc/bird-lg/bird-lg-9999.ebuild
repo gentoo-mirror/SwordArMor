@@ -8,7 +8,7 @@ inherit python-single-r1 git-r3
 
 DESCRIPTION="This is a looking glass for the Internet Routing Daemon BIRD"
 HOMEPAGE="https://github.com/sileht/bird-lg"
-EGIT_REPO_URI="https://github.com/sileht/${PN}.git"
+EGIT_REPO_URI="https://git.grifon.fr/alarig/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
