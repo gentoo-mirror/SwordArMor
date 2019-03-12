@@ -1,5 +1,5 @@
-DEFINED_PHASES=install setup
-DEPEND=>=dev-python/flask-0.8 dev-python/dnspython dev-python/pydot dev-python/python-memcached media-gfx/graphviz net-misc/whois net-analyzer/traceroute
+DEFINED_PHASES=install setup unpack
+DEPEND=>=dev-python/flask-0.8 dev-python/dnspython dev-python/pydot dev-python/python-memcached media-gfx/graphviz net-misc/whois net-analyzer/traceroute >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=This is a looking glass for the Internet Routing Daemon BIRD
 EAPI=6
 HOMEPAGE=https://github.com/sileht/bird-lg
@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-python/flask-0.8 dev-python/dnspython dev-python/pydot dev-python/python-memcached media-gfx/graphviz net-misc/whois net-analyzer/traceroute
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=25c9caf1b748bd537babb731e6b18258
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=6a0c732214e951ebba78cefb7c600272
