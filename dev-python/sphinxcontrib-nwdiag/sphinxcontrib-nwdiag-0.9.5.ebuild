@@ -15,6 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-python/nwdiag"
 RDEPEND="${DEPEND}"
 BDEPEND=""
