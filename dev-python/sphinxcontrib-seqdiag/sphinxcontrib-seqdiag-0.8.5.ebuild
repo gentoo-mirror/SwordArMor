@@ -10,7 +10,7 @@ DESCRIPTION="A sphinx extension for embedding sequence diagram using seqdiag."
 HOMEPAGE="https://github.com/blockdiag/sphinxcontrib-seqdiag"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="BSD License (BSD)"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

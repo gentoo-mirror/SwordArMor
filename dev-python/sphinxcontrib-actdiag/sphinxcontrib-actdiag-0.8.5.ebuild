@@ -10,7 +10,7 @@ DESCRIPTION="A sphinx extension for embedding activity diagram using actdiag."
 HOMEPAGE="http://github.com/blockdiag/sphinxcontrib-actdiag"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="BSD License (BSD)"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
