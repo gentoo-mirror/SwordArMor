@@ -10,7 +10,7 @@ DESCRIPTION="Blaeu, creating measurements on RIPE Atlas probes"
 HOMEPAGE="https://framagit.org/bortzmeyer/blaeu"
 SRC_URI="https://framagit.org/bortzmeyer/${PN}/repository/release-${PV}/archive.tar.gz"
 
-LICENSE="BSD 2-clause Simplified License"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
