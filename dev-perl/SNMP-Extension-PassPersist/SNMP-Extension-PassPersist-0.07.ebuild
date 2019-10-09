@@ -17,4 +17,5 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-perl/Module-Build
 dev-perl/Class-Accessor
 dev-perl/IO-String
-dev-perl/Sort-Key-OID"
+dev-perl/Sort-Key-OID
+dev-perl/List-MoreUtils"
