@@ -10,7 +10,7 @@ the pass or pass_persist mechanisms."
 SRC_URI="https://cpan.metacpan.org/authors/id/S/SA/SAPER/${P}.tar.gz"
 HOMEPAGE="https://metacpan.org/pod/SNMP::Extension::PassPersist"
 
-LICENSE="perl"
+LICENSE="|| ( Artistic GPL-1+ )" # same as perl
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
