@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install setup unpack
+DESCRIPTION=RPKI client implementation
+EAPI=7
+HOMEPAGE=https://github.com/kristapsdz/rpki-client
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+SLOT=0
+SRC_URI=https://github.com/kristapsdz/rpki-client/archive/VERSION_0_2_0.tar.gz -> rpki-client-0.2.0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=acf3a46d791ef3d4c4bf196e0202a9f9
