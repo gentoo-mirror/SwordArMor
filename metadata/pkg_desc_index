@@ -18,7 +18,7 @@ net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-misc/bird 2.0.7: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/bird-lg 2012.1 9999: This is a looking glass for the Internet Routing Daemon BIRD
 net-misc/routinator 0.6.4: An RPKI relying party software.
-net-misc/rpki-client 0.2.0: RPKI client implementation
+net-misc/rpki-client 0.2.0 9999: RPKI client implementation
 net-nds/apachedirectorystudio 2.0.0.20161101: Apache Directory Studio is an universal LDAP directory tool.
 sys-apps/package-query 1.1 1.8: Query ALPM and AUR
 sys-apps/pacman 4.0.3-r1 5.0.0 5.0.1: Archlinux's binary package manager
