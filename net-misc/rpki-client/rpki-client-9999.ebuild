@@ -3,13 +3,11 @@
 
 EAPI=7
 
-inherit eutils user
-
-VERSION="VERSION_$(echo ${PV} | sed 's/\./_/g')"
+inherit eutils user git-r3
 
 DESCRIPTION="RPKI client implementation"
 HOMEPAGE="https://github.com/kristapsdz/rpki-client"
-SRC_URI="https://github.com/kristapsdz/${PN}/archive/${VERSION}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/kristapsdz/${PN}.git"
 
 LICENSE="ISC"
 SLOT="0"
@@ -22,16 +20,11 @@ BDEPEND=""
 
 src_configure() {
 	./configure CPPFLAGS="`pkg-config --cflags openssl`" \
-		LDFLAGS="`pkg-config --libs-only-L openssl`"
-}
-
-src_unpack() {
-	unpack ${A}
-	mv ${WORKDIR}/${PN}-${VERSION} ${S}
+		LDFLAGS="`pkg-config --libs-only-L openssl`" \
+		LDADD="`pkg-config --libs openssl` -lresolv"
 }
 
 src_prepare() {
-	eapply -p0 "${FILESDIR}/${P}-Makefile.patch"
 	eapply_user
 }
 
@@ -42,8 +35,11 @@ pkg_setup() {
 
 src_install() {
 	emake DESTDIR="${D}" BINDIR="/usr/bin" MANDIR="/usr/share/man" install
-	insinto /usr/share/${PN}
+	insinto /etc/rpki/
 	doins tals/*
-	keepdir /var/cache/${PN}/{rpki.afrinic.net,rpki.apnic.net,repository.lacnic.net,rpki.ripe.net}
+	keepdir /var/db/${PN}/
+	keepdir /var/cache/${PN}/
+	fowners -R _rpki-client /etc/rpki/
+	fowners -R _rpki-client /var/db/${PN}/
 	fowners -R _rpki-client /var/cache/${PN}/
 }
