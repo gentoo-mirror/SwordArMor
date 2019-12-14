@@ -5,7 +5,7 @@ EAPI=7
 
 inherit eutils user
 
-VERSION="VERSION_$(echo ${PV} | sed 's/\./_/g')"
+VERSION="VERSION_${PV//./_}"
 
 DESCRIPTION="RPKI client implementation"
 HOMEPAGE="https://github.com/kristapsdz/rpki-client"
@@ -44,6 +44,6 @@ src_install() {
 	emake DESTDIR="${D}" BINDIR="/usr/bin" MANDIR="/usr/share/man" install
 	insinto /usr/share/${PN}
 	doins tals/*
-	keepdir /var/cache/${PN}/{rpki.afrinic.net,rpki.apnic.net,repository.lacnic.net,rpki.ripe.net}
+	keepdir /var/cache/${PN}/
 	fowners -R _rpki-client /var/cache/${PN}/
 }
