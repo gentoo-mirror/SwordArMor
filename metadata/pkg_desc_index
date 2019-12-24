@@ -4,6 +4,7 @@ dev-perl/SNMP-Extension-PassPersist 0.07: This module is a framework for writing
 dev-perl/Sort-Key-OID 0.05: This module extends the Sort::Key family of modules to support sorting of OID values.
 dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
 dev-python/cymruwhois 1.6 1.6-r1: Client for the whois.cymru.com service
+dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/sphinxcontrib-actdiag 0.8.5: A sphinx extension for embedding activity diagram using actdiag.
@@ -13,7 +14,6 @@ dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 supp
 games-engines/openmw 0.44.0: Open source reimplementation of TES III: Morrowind
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 net-analyzer/blaeu 1.1.1 1.1.2 1.1.3 9999: Blaeu, creating measurements on RIPE Atlas probes
-net-analyzer/mrtparse 1.7: MRT format data parser
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-misc/bird 2.0.7: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
