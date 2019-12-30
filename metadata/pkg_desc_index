@@ -22,6 +22,5 @@ net-misc/routinator 0.6.4: An RPKI relying party software.
 net-misc/rpki-client 0.2.0 9999: RPKI client implementation
 net-nds/apachedirectorystudio 2.0.0.20161101: Apache Directory Studio is an universal LDAP directory tool.
 sys-apps/package-query 1.1 1.8: Query ALPM and AUR
-sys-apps/pacman 4.0.3-r1 5.0.0 5.0.1: Archlinux's binary package manager
 sys-apps/yaourt 1.2.2 1.8: A pacman wrapper with extended features and AUR support
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
