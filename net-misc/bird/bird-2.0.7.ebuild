@@ -10,10 +10,11 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
-IUSE="+client debug"
+IUSE="+client debug libssh"
 
 RDEPEND="client? ( sys-libs/ncurses )
-	client? ( sys-libs/readline )"
+	client? ( sys-libs/readline )
+	libssh? ( net-libs/libssh )"
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
@@ -22,7 +23,8 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}/var" \
 		$(use_enable client) \
-		$(use_enable debug)
+		$(use_enable debug) \
+		$(use_enable libssh)
 }
 
 src_install() {
