@@ -220,5 +220,5 @@ RDEPEND=""
 
 pkg_setup() {
 	enewgroup routinator
-	enewuser routinator
+	enewuser routinator -1 /bin/sh /var/lib/routinator routinator
 }
