@@ -204,7 +204,7 @@ winreg-0.6.2
 ws2_32-sys-0.2.1
 "
 
-inherit cargo
+inherit cargo eutils user
 
 DESCRIPTION="An RPKI relying party software."
 HOMEPAGE="https://github.com/NLnetLabs/routinator"
@@ -217,3 +217,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+
+pkg_setup() {
+	enewgroup routinator
+	enewuser routinator -1 /bin/sh /var/lib/routinator routinator
+}
