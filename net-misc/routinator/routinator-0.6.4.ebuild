@@ -224,7 +224,13 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
 	newinitd "${FILESDIR}/${PN}-initd" ${PN}
 	newconfd "${FILESDIR}/${PN}-confd" ${PN}
+
+	debug-print-function ${FUNCNAME} "$@"
+	cargo install -vv -j $(makeopts_jobs) --root="${ED}/usr" \
+		$(usex debug --debug "") "$@" || die "cargo install failed"
+	rm -f "${ED}/usr/.crates.toml"
+
+	[ -d "${S}/man" ] && doman "${S}/man" || return 0
 }
