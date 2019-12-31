@@ -222,3 +222,8 @@ pkg_setup() {
 	enewgroup routinator
 	enewuser routinator -1 /bin/sh /var/lib/routinator routinator
 }
+
+src_install() {
+	newinitd "${FILESDIR}/${PN}-initd" ${PN}
+	newconfd "${FILESDIR}/${PN}-confd" ${PN}
+}
