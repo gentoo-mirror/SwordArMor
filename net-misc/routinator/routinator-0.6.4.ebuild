@@ -224,6 +224,7 @@ pkg_setup() {
 }
 
 src_install() {
+	emake DESTDIR="${D}" install
 	newinitd "${FILESDIR}/${PN}-initd" ${PN}
 	newconfd "${FILESDIR}/${PN}-confd" ${PN}
 }
