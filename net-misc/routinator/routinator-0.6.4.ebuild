@@ -217,3 +217,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+
+pkg_setup() {
+	enewgroup routinator
+	enewuser routinator
+}
