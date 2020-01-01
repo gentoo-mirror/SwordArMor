@@ -7,9 +7,9 @@ dev-python/cymruwhois 1.6 1.6-r1: Client for the whois.cymru.com service
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
-dev-python/sphinxcontrib-actdiag 0.8.5: A sphinx extension for embedding activity diagram using actdiag.
+dev-python/sphinxcontrib-actdiag 0.8.5 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
-dev-python/sphinxcontrib-seqdiag 0.8.5: A sphinx extension for embedding sequence diagram using seqdiag.
+dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-engines/openmw 0.44.0: Open source reimplementation of TES III: Morrowind
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
