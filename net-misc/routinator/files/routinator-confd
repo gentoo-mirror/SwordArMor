@@ -4,5 +4,4 @@
 # See routinator man for options
 
 ROUTINATOR_BASEDIR="/var/lib/routinator"
-ROUTINATOR_OPTS="--rtr=[::]:323 --pid-file=/run/routinator --user=routinator
---group=routinator --detach"
+ROUTINATOR_OPTS="--rtr=[::]:323 --user=routinator --group=routinator"
