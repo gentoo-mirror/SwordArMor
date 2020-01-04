@@ -234,3 +234,18 @@ src_install() {
 
 	[ -d "${S}/man" ] && doman "${S}/man" || return 0
 }
+
+pkg_postinst() {
+	einfo ""
+	einfo "ARIN TAL is disabled by default because the ARIN Relying Party"
+	einfo "Agreement must be accepted beforehead. Read"
+	einfo "https://www.arin.net/resources/manage/rpki/rpa.pdf and if you agree"
+	einfo "with it, run"
+	einfo ""
+	einfo "  su -s /bin/sh -c '${EROOT}/usr/bin/routinator --base-dir=/var/lib/routinator init -f --accept-arin-rpa' routinator"
+	einfo ""
+	einfo "as root to enable it."
+	einfo "If you changed values in /etc/conf.d/routinator please update it"
+	einfo "accordinadly in the command line."
+	einfo ""
+}
