@@ -227,12 +227,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-initd" ${PN}
 	newconfd "${FILESDIR}/${PN}-confd" ${PN}
 
-	cargo install --path ${CARGO_INSTALL_PATH} \
-		--root="${ED}/usr" $(usex debug --debug "") "$@" \
-		|| die "cargo install failed"
-	rm -f "${ED}/usr/.crates.toml"
-
-	[ -d "${S}/man" ] && doman "${S}/man" || return 0
+	cargo_src_install
 }
 
 pkg_postinst() {
