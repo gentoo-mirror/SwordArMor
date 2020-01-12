@@ -1,7 +1,7 @@
 diff --git a/proto/rpki/transport.c b/proto/rpki/transport.c
 index 182667be..9dcb7c5c 100644
---- proto/rpki/transport.c
-+++ proto/rpki/transport.c
+--- a/proto/rpki/transport.c
++++ b/proto/rpki/transport.c
 @@ -26,7 +26,6 @@
  static ip_addr
  rpki_hostname_autoresolv(const char *host)

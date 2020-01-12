@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit eutils
-
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="http://bird.network.cz"
 SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
@@ -27,11 +25,6 @@ src_configure() {
 		$(use_enable client) \
 		$(use_enable debug) \
 		$(use_enable libssh)
-}
-
-src_prepare() {
-	eapply "${FILESDIR}/ipv6-rpki-${PV}.patch"
-	eapply_user
 }
 
 src_install() {
