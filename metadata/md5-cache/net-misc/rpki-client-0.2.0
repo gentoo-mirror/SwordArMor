@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=ISC
 SLOT=0
 SRC_URI=https://github.com/kristapsdz/rpki-client/archive/VERSION_0_2_0.tar.gz -> rpki-client-0.2.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=9684d71813c630e04a7eb00421752abe
