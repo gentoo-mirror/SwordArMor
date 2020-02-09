@@ -24,3 +24,5 @@ net-nds/apachedirectorystudio 2.0.0.20161101: Apache Directory Studio is an univ
 sys-apps/package-query 1.1 1.8: Query ALPM and AUR
 sys-apps/yaourt 1.2.2 1.8: A pacman wrapper with extended features and AUR support
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
+x11-libs/vte 0.28.2-r208 0.56.4-r1: Library providing a virtual terminal emulator widget
+x11-terms/rxvt-unicode 9.22-r2 9.22-r3 9999: rxvt clone with xft and unicode support
