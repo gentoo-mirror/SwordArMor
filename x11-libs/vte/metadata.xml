@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="glade">Provide integration with <pkg>dev-util/glade</pkg>.</flag>
+		<flag name="mouse">Enable mouse support.</flag>
 	</use>
 </pkgmetadata>
