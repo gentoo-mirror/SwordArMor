@@ -1,0 +1,9 @@
+# /etc/init.d/fort
+
+# Options to pass to the routinator process
+# See routinator man for options
+
+FORT_BASEDIR="/var/lib/fort/"
+FORT_OPTS="--tal /usr/share/fort/tal/ \
+	--local-repository ${FORT_BASEDIR}
+	--log.output syslog"
