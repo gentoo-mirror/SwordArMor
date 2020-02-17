@@ -1,0 +1,10 @@
+{
+	"tal": "/usr/share/fort/tal/",
+	"local-repository": "/var/lib/fort/",
+	"server": {
+		"address": "::"
+	},
+	"log": {
+		"output": "syslog"
+	}
+}
