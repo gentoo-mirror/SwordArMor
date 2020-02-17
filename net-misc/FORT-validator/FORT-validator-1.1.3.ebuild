@@ -31,7 +31,7 @@ BDEPEND="
 
 src_prepare() {
 	default
-	
+
 	eautoreconf
 }
 
@@ -49,7 +49,8 @@ src_install() {
 	doins tal/*
 
 	dodir /etc/fort
-	newins "${FILESDIR}/fort-config.json" /etc/fort/config.json
+	insinto /etc/fort
+	newins "${FILESDIR}/fort-config.json" config.json
 }
 
 pkg_postinst() {
