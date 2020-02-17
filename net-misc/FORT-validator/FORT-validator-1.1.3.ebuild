@@ -31,7 +31,7 @@ BDEPEND="
 
 src_prepare() {
 	default
-	
+
 	eautoreconf
 }
 
@@ -47,6 +47,10 @@ src_install() {
 	emake DESTDIR="${D}" install
 	insinto /usr/share/${MY_PN}/tal
 	doins tal/*
+
+	dodir /etc/fort
+	insinto /etc/fort
+	newins "${FILESDIR}/fort-config.json" config.json
 }
 
 pkg_postinst() {
