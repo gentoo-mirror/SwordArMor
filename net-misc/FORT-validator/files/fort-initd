@@ -16,6 +16,12 @@ depend() {
 }
 
 start_pre() {
+	if [ -z "${FORT_BASEDIR}" ]; then
+		FORT_BASEDIR=$(awk -F '"' '/local-repository/ { print $4 }' \
+			/etc/fort/config.json)
+		FORT_BASEDIR="${FORT_BASEDIR:-/var/lib/fort/}"
+	fi
+
 	checkpath -d -m 0750 -o fort:fort ${FORT_BASEDIR}
 
 	if [ "${RC_CMD}" = "restart" ] ; then
