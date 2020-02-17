@@ -6,4 +6,5 @@
 FORT_BASEDIR="/var/lib/fort/"
 FORT_OPTS="--tal /usr/share/fort/tal/ \
 	--local-repository ${FORT_BASEDIR}
-	--log.output syslog"
+	--log.output syslog
+	--server.address ::"
