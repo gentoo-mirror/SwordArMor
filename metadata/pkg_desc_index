@@ -1,19 +1,21 @@
+acct-group/_rpki-client 0: System group: _rpki-client
 acct-group/fort 0: System group: fort
+acct-group/routinator 0: System group: routinator
+acct-user/_rpki-client 0: User for rpki-client
 acct-user/fort 0: System user: fort
+acct-user/routinator 0: User for routinator RPKI validator
 app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
-app-office/ganttproject-bin 2.8.5-r2179: A tool for creating a project schedule by means of Gantt chart and resource load chart
-dev-perl/SNMP-Extension-PassPersist 0.07: This module is a framework for writing Net-SNMP extensions using the pass or pass_persist mechanisms.
-dev-perl/Sort-Key-OID 0.05: This module extends the Sort::Key family of modules to support sorting of OID values.
+dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
+dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
 dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
-dev-python/cymruwhois 1.6 1.6-r1: Client for the whois.cymru.com service
+dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
-dev-python/sphinxcontrib-actdiag 0.8.5 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
+dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
-games-engines/openmw 0.44.0: Open source reimplementation of TES III: Morrowind
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 net-analyzer/blaeu 1.1.1 1.1.2 1.1.3 9999: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
@@ -22,10 +24,6 @@ net-misc/FORT-validator 1.1.3: FORT validator is an open source RPKI validator.
 net-misc/bird 2.0.5 2.0.6 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/bird-lg 2012.1 9999: This is a looking glass for the Internet Routing Daemon BIRD
 net-misc/routinator 0.6.4: An RPKI relying party software.
-net-misc/rpki-client 0.2.0 0.3.0 9999: RPKI client implementation
-net-nds/apachedirectorystudio 2.0.0.20161101: Apache Directory Studio is an universal LDAP directory tool.
-sys-apps/package-query 1.1 1.8: Query ALPM and AUR
-sys-apps/yaourt 1.2.2 1.8: A pacman wrapper with extended features and AUR support
-x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-libs/vte 0.28.2-r208 0.56.4-r1: Library providing a virtual terminal emulator widget
+net-misc/rpki-client 0.3.0: RPKI client implementation
+x11-libs/vte 0.56.4-r1: Library providing a virtual terminal emulator widget
 x11-terms/rxvt-unicode 9.22-r2 9.22-r3 9999: rxvt clone with xft and unicode support
