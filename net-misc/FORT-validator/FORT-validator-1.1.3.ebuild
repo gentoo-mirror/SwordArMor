@@ -45,8 +45,8 @@ src_install() {
 	insinto /usr/share/${MY_PN}/tal
 	doins tal/*
 
-	dodir /etc/fort
 	insinto /etc/fort
+	dodir /etc/fort
 	newins "${FILESDIR}/fort-config.json" config.json
 }
 

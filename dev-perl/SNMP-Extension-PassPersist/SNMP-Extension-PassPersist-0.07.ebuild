@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit perl-module
 
-DESCRIPTION="This module is a framework for writing Net-SNMP extensions using
-the pass or pass_persist mechanisms."
-SRC_URI="https://cpan.metacpan.org/authors/id/S/SA/SAPER/${P}.tar.gz"
+DESCRIPTION="Framework to write Net-SNMP extensions using pass or pass_persist mechanisms."
+SRC_URI="mirror://cpan/authors/id/S/SA/SAPER/${P}.tar.gz"
 HOMEPAGE="https://metacpan.org/pod/SNMP::Extension::PassPersist"
 
 LICENSE="|| ( Artistic GPL-1+ )" # same as perl
