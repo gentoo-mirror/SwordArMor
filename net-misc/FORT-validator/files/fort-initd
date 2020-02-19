@@ -9,7 +9,7 @@ command_args="${FORT_OPTS}"
 command_user="fort"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background=true
-retry=20
+retry=25
 
 depend() {
 	need net
@@ -25,12 +25,6 @@ start_pre() {
 	checkpath -d -m 0750 -o fort:fort ${FORT_BASEDIR}
 
 	if [ "${RC_CMD}" = "restart" ] ; then
-		RUNNING_RSYNC="full"
-
-		while [ "${RUNNING_RSYNC}" ]; do
-			sleep 5
-			RUNNING_RSYNC=$(pgrep -u fort rsync)
-			return 0
-		done
+		sleep 20
 	fi
 }
