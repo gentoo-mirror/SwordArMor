@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools user fcaps
+inherit autotools fcaps
 
 DESCRIPTION="FORT validator is an open source RPKI validator."
 HOMEPAGE="https://fortproject.net/validator?2"
@@ -17,10 +17,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="caps libressl"
 
 DEPEND="
+	acct-group/fort
+	acct-user/fort
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
-	!libressl?	( dev-libs/openssl:0= )
 	libressl?	( dev-libs/libressl:0= )
+	!libressl?	( dev-libs/openssl:0= )
 	net-misc/rsync
 "
 RDEPEND="${DEPEND}"
@@ -33,11 +35,6 @@ src_prepare() {
 	default
 
 	eautoreconf
-}
-
-pkg_setup() {
-	enewgroup fort
-	enewuser fort -1 /bin/sh /var/lib/${MY_PN}/ fort
 }
 
 src_install() {
