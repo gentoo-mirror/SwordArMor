@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils user
+inherit eutils
 
 VERSION="VERSION_${PV//./_}"
 
@@ -16,7 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	acct-group/_rpki-client
+	acct-user/_rpki-client
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -28,12 +31,7 @@ src_configure() {
 
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${PN}-${VERSION} ${S}
-}
-
-pkg_setup() {
-	enewgroup _rpki-client
-	enewuser _rpki-client
+	mv "${WORKDIR}/${PN}-${VERSION}" "${S}"
 }
 
 src_install() {

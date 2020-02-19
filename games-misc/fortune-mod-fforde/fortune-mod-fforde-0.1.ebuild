@@ -1,6 +1,6 @@
-# Copyright 2016 Alarig Le Lay
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
 EAPI=5
 MY_P=${PN/-mod/}
 DESCRIPTION="Quotes from Jasper Fforde books"
@@ -9,7 +9,7 @@ SRC_URI="https://www.swordarmor.fr/documents/${MY_P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 RESTRICT="mirror"
 
