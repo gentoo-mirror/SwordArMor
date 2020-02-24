@@ -9,7 +9,6 @@ command_args="${FORT_OPTS}"
 command_user="fort"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background=true
-retry=25
 
 depend() {
 	need net
@@ -19,12 +18,9 @@ start_pre() {
 	if [ -z "${FORT_BASEDIR}" ]; then
 		FORT_BASEDIR=$(awk -F '"' '/local-repository/ { print $4 }' \
 			/etc/fort/config.json)
-		FORT_BASEDIR="${FORT_BASEDIR:-/var/lib/fort/}"
+		FORT_BASEDIR="${FORT_BASEDIR:-/var/cache/fort/repository/}"
 	fi
 
-	checkpath -d -m 0750 -o fort:fort ${FORT_BASEDIR}
-
-	if [ "${RC_CMD}" = "restart" ] ; then
-		sleep 20
-	fi
+	checkpath -d -m 0755 -o fort:fort "$(dirname "${FORT_BASEDIR}")"
+	checkpath -d -m 0755 -o fort:fort "${FORT_BASEDIR}"
 }

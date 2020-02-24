@@ -42,13 +42,32 @@ src_install() {
 	newconfd "${FILESDIR}/${MY_PN}-confd" ${MY_PN}
 
 	emake DESTDIR="${D}" install
-	insinto /usr/share/${MY_PN}/tal
-	doins tal/*
+	insinto /usr/share/${MY_PN}/
+	insopts -m0644 -o "${MY_PN}"
+	diropts -m0755 -o "${MY_PN}"
+	doins -r examples/tal/
+
+	dodoc -r examples/
 
 	insinto /etc/fort
 	newins "${FILESDIR}/fort-config.json" config.json
+
+	exeinto /usr/libexec/${MY_PN}
+	doexe fort_setup.sh
 }
 
 pkg_postinst() {
 	fcaps cap_net_bind_service usr/bin/fort
+
+	einfo ""
+	einfo "ARIN TAL is disabled by default because the ARIN Relying Party"
+	einfo "Agreement must be accepted beforehead. Start fort, run"
+	einfo ""
+	einfo "  su -s /bin/sh -c '${EROOT}/usr/libexec/${MY_PN}/fort_setup.sh /usr/share/${MY_PN}/tal/' fort"
+	einfo ""
+	einfo "as root and restart fort to enable it."
+	einfo "The configuration file generation will fail because the script tries"
+	einfo "to write in your current directory. Plus, there is a configuration"
+	einfo "file with this ebuild, so you don’t have to use the generated one if"
+	einfo "you don’t want to."
 }
