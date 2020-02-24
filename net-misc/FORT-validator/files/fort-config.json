@@ -1,6 +1,6 @@
 {
 	"tal": "/usr/share/fort/tal/",
-	"local-repository": "/var/lib/fort/",
+	"local-repository": "/var/cache/fort/repository/",
 	"server": {
 		"address": "::"
 	},
