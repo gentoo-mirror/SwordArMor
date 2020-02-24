@@ -8,13 +8,16 @@ app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
 dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
 dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
 dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
+dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
+dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
+dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 net-analyzer/blaeu 1.1.1 1.1.2 1.1.3 9999: Blaeu, creating measurements on RIPE Atlas probes
