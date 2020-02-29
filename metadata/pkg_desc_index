@@ -28,6 +28,7 @@ net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator.
 net-misc/bird 2.0.5 2.0.6 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/bird-lg 2012.1 9999: This is a looking glass for the Internet Routing Daemon BIRD
+net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/routinator 0.6.4: An RPKI relying party software.
 net-misc/rpki-client 0.3.0: RPKI client implementation
 x11-libs/vte 0.56.4-r1: Library providing a virtual terminal emulator widget
