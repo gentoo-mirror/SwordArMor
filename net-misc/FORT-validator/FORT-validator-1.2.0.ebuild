@@ -52,7 +52,7 @@ src_install() {
 	insinto /etc/fort
 	newins "${FILESDIR}/fort-config.json" config.json
 
-	exeinto /usr/libexec/${MY_PN}
+	exeinto "/usr/libexec/${MY_PN}"
 	doexe fort_setup.sh
 }
 
