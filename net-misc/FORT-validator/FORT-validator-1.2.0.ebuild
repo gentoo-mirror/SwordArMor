@@ -55,7 +55,7 @@ src_install() {
 	exeinto "/usr/libexec/${MY_PN}"
 	doexe fort_setup.sh
 
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_dounit "${FILESDIR}/${MY_PN}.service"
 }
 
 pkg_postinst() {
