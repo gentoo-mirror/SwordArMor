@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools fcaps
+inherit autotools fcaps systemd
 
 DESCRIPTION="FORT validator is an open source RPKI validator."
 HOMEPAGE="https://fortproject.net/validator?2"
@@ -54,6 +54,8 @@ src_install() {
 
 	exeinto "/usr/libexec/${MY_PN}"
 	doexe fort_setup.sh
+
+	systemd_dounit "${FILESDIR}/${PN}.service"
 }
 
 pkg_postinst() {

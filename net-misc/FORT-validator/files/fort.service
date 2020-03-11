@@ -16,6 +16,7 @@ PrivateTmp=yes
 ProtectKernelTunables=yes
 ProtectControlGroups=yes
 ProtectKernelModules=yes
+CacheDirectory=fort
 ReadWritePaths=/var/lib/fort/
 ConfigurationDirectory=fort
 ConfigurationDirectory=tals
