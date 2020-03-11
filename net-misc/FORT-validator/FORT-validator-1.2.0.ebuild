@@ -23,9 +23,11 @@ DEPEND="
 	dev-libs/jansson
 	libressl?	( dev-libs/libressl:0= )
 	!libressl?	( dev-libs/openssl:0= )
+"
+RDEPEND="
+	${DEPEND}
 	net-misc/rsync
 "
-RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/autoconf
 	sys-devel/automake
