@@ -25,6 +25,6 @@ BDEPEND=""
 
 src_install() {
 	insinto /usr/libexec/munin/plugins/ping/
-	insopts -m0744
+	insopts -m0755
 	doins plugins/ping/*
 }
