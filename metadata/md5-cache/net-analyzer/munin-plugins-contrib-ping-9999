@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=dev-lang/perl net-analyzer/munin net-dns/bind-tools net-misc/iputils
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
-_md5_=dd2606fb9049c4a94936ac6a70e6a9fd
+_md5_=60ddcded50e88a291797c8484caab472
