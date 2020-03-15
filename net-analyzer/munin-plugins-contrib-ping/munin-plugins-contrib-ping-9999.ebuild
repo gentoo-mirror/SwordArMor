@@ -17,6 +17,7 @@ IUSE=""
 DEPEND="
 	dev-lang/perl
 	net-analyzer/munin
+	net-dns/bind-tools
 	net-misc/iputils
 "
 RDEPEND="${DEPEND}"
