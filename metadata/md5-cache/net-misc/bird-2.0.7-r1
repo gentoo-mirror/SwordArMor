@@ -10,4 +10,4 @@ RDEPEND=client? ( sys-libs/ncurses ) client? ( sys-libs/readline ) libssh? ( net
 SLOT=0
 SRC_URI=ftp://bird.network.cz/pub/bird/bird-2.0.7.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=5975111fc97f494134f0557df2a77be0
+_md5_=064bd92f7ce688d6b52bf175f4311185
