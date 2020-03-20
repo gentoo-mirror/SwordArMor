@@ -1,6 +1,8 @@
+acct-group/_bgpd 0: System group: _bgpd
 acct-group/_rpki-client 0: System group: _rpki-client
 acct-group/fort 0: System group: fort
 acct-group/routinator 0: System group: routinator
+acct-user/_bgpd 0: User for OpenBGPD
 acct-user/_rpki-client 0: User for rpki-client
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/routinator 0: User for routinator RPKI validator
@@ -30,6 +32,7 @@ net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator
 net-misc/bird 2.0.6 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/bird-lg 2012.1 9999: This is a looking glass for the Internet Routing Daemon BIRD
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
+net-misc/openbgpd 6.6: OpenBGPD is a free implementation of BGPv4
 net-misc/routinator 0.6.4: An RPKI relying party software.
 net-misc/rpki-client 0.3.0: RPKI client implementation
 net-misc/youtube-dl 2020.03.08-r1 99999999: Download videos from YouTube.com (and more sites...)
