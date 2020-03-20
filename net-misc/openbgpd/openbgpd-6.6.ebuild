@@ -56,3 +56,10 @@ src_configure() {
 	export YACC=byacc
 	default
 }
+
+pkg_postinst() {
+	ewarn ""
+	ewarn "OpenBGPD portable (not running on OpenBSD) can’t export its RIB to"
+	ewarn "the FIB. It’s only suitable for route-reflectors or route-servers."
+	ewarn ""
+}
