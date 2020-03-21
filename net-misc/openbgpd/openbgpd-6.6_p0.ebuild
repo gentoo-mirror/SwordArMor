@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit systemd
 
 MY_PV="${PV/_p/p}"
 #MY_PN="openbgpd-portable"
@@ -43,6 +43,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}-init.d" bgpd
 	newconfd "${FILESDIR}/${PN}-conf.d" bgpd
+	systemd_newunit "${FILESDIR}/${PN}.service" bgpd.service
 }
 
 pkg_postinst() {
