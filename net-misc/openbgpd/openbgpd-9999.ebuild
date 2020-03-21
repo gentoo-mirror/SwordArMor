@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit autotools git-r3 systemd
 
 MY_PV="master"
 MY_PN="openbgpd-portable"
@@ -62,6 +62,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}-init.d" bgpd
 	newconfd "${FILESDIR}/${PN}-conf.d" bgpd
+	systemd_newunit "${FILESDIR}/${PN}.service" bgpd.service
 }
 
 pkg_postinst() {
