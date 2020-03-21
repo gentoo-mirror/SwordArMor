@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/libtool >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/libtool virtual/pkgconfig
 DEFINED_PHASES=install postinst prepare unpack
 DESCRIPTION=OpenBGPD is a free implementation of BGPv4
 EAPI=7
@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=acct-group/_bgpd acct-user/_bgpd
 SLOT=0
 SRC_URI=mirror://openbsd/OpenBGPD/openbgpd-6.6p0.tar.gz
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8948c972f04a7b0dcd7bbb9a11e45a46
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=94f189e8b1332bb0f2a784b23bd61f6b
