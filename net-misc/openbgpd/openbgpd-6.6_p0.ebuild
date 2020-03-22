@@ -21,6 +21,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	${DEPEND}
+	!!net-misc/quagga
 	acct-group/_bgpd
 	acct-user/_bgpd
 "
