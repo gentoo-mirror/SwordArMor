@@ -35,7 +35,7 @@ net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/openbgpd 6.6_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/routinator 0.6.4: An RPKI relying party software.
 net-misc/rpki-client 0.3.0: RPKI client implementation
-net-misc/youtube-dl 2020.03.08-r1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.03.24-r1 99999999: Download videos from YouTube.com (and more sites...)
 x11-libs/vte 0.56.4-r1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
 x11-terms/rxvt-unicode 9.22-r2 9.22-r3 9999: rxvt clone with xft and unicode support
