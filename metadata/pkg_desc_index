@@ -14,6 +14,7 @@ dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/mrtparse 1.7: MRT format data parser
+dev-python/mysql-connector-python 8.0.19-r1: Python client library for MariaDB/MySQL
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
