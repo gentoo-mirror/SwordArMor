@@ -35,7 +35,6 @@ src_unpack() {
 
 	EGIT_REPO_URI="https://github.com/openbgpd-portable/openbgpd-openbsd.git"
 	EGIT_BRANCH=$(cat "${S}"/OPENBSD_BRANCH)
-	EGIT3_STORE_DIR="${S}/git"
 	EGIT_CHECKOUT_DIR="${S}/openbsd"
 	git-r3_fetch
 	git-r3_checkout
