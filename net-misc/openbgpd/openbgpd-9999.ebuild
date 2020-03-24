@@ -5,17 +5,9 @@ EAPI=7
 
 inherit autotools git-r3 systemd
 
-MY_PV="master"
-MY_PN="openbgpd-portable"
-MY_P="${MY_PN}-${MY_PV}"
-
 DESCRIPTION="OpenBGPD is a free implementation of BGPv4"
 HOMEPAGE="http://www.openbgpd.org/index.html"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/master.zip -> ${MY_P}.zip"
-
-EGIT_REPO_URI="https://github.com/openbgpd-portable/openbgpd-openbsd.git"
-EGIT3_STORE_DIR="${S}/git"
-EGIT_CHECKOUT_DIR="${S}/openbsd"
+EGIT_REPO_URI="https://github.com/openbgpd-portable/openbgpd-portable.git"
 
 LICENSE="ISC"
 SLOT="0"
@@ -37,10 +29,14 @@ BDEPEND="
 "
 
 src_unpack() {
-	unpack ${A}
-	mv "${WORKDIR}/${MY_P}" "${S}"
+	git-r3_src_unpack
 
+	cd "${WORKDIR}"
+
+	EGIT_REPO_URI="https://github.com/openbgpd-portable/openbgpd-openbsd.git"
 	EGIT_BRANCH=$(cat "${S}"/OPENBSD_BRANCH)
+	EGIT3_STORE_DIR="${S}/git"
+	EGIT_CHECKOUT_DIR="${S}/openbsd"
 	git-r3_fetch
 	git-r3_checkout
 }
