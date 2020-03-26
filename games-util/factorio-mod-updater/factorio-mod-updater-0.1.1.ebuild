@@ -24,5 +24,5 @@ BDEPEND=""
 src_install() {
 	default
 
-	newbin mod_updater.py mod_updater
+	newbin mod_updater.py factorio-mod-updater
 }
