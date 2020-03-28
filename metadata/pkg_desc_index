@@ -30,7 +30,6 @@ net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and pe
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
 net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet inspection
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
-net-dns/check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator
