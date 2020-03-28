@@ -19,6 +19,7 @@ DEPEND=""
 RDEPEND="
 	${DEPEND}
 	dev-python/nagiosplugin[${PYTHON_USEDEP}]
+	net-dns/bind-tools
 "
 BDEPEND=""
 
