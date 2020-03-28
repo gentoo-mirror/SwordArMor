@@ -3,10 +3,12 @@
 
 EAPI=7
 
+MY_PN=${PN/nagios-/}
+
 DESCRIPTION="Nagios/Icinga plugin for checking DANE/TLSA records"
 HOMEPAGE="https://github.com/debfx/check_dane"
 MY_GITHUB_AUTHOR="debfx"
-SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,6 +22,8 @@ RDEPEND="${DEPEND}
 	dev-python/dnspython
 "
 BDEPEND=""
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	exeinto /usr/lib64/nagios/plugins/
