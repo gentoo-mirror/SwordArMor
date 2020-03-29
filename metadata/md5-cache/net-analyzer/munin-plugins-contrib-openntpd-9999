@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DEPEND=dev-lang/perl net-analyzer/munin net-misc/ntp[openntpd]
+DESCRIPTION=openntpd plugin for munin
+EAPI=7
+HOMEPAGE=https://github.com/munin-monitoring/contrib/tree/master/plugins/openntpd
+KEYWORDS=~amd64
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=dev-lang/perl net-analyzer/munin net-misc/ntp[openntpd]
+SLOT=0
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
+_md5_=635604dee2071076c8497e02b13db00c
