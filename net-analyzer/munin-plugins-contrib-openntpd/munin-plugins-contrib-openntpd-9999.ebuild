@@ -22,6 +22,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+src_compile() {
+	true
+}
+
 src_install() {
 	insinto /usr/libexec/munin/plugins/openntpd/
 	insopts -m0755
