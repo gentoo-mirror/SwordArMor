@@ -13,6 +13,7 @@ dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sor
 dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
+dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/mysql-connector-python 8.0.19-r1: Python client library for MariaDB/MySQL
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
@@ -26,6 +27,7 @@ dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 supp
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-util/factorio-mod-updater 0.1.0 0.1.1: Python script to update mods on a dedicated factorio server
 net-analyzer/blaeu 1.1.1 1.1.2 1.1.3 9999: Blaeu, creating measurements on RIPE Atlas probes
+net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
@@ -33,6 +35,7 @@ net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet insp
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
+net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator
 net-misc/bird 2.0.6 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/bird-lg 2012.1 9999: This is a looking glass for the Internet Routing Daemon BIRD
