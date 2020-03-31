@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/pygraphviz
 "
 BDEPEND="
-	=net-analyzer/dublin-traceroute-${PV}
+	~net-analyzer/dublin-traceroute-${PV}
 	dev-libs/jsoncpp
 	dev-python/pytest-runner
 	net-libs/libpcap
