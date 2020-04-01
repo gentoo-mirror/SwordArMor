@@ -7,6 +7,7 @@ acct-user/_rpki-client 0: User for rpki-client
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/routinator 0: User for routinator RPKI validator
 app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
+app-text/unicode 2.7: display unicode character properties
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
 dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
 dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
