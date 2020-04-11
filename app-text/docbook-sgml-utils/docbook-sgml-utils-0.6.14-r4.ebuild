@@ -18,7 +18,7 @@ IUSE="jadetex"
 
 DEPEND=">=dev-lang/perl-5
 	app-text/docbook-dsssl-stylesheets
-	app-text/docbook-xml-dtd:*
+	app-text/docbook-xml-dtd:4.2
 	app-text/openjade
 	app-text/xhtml1
 	dev-perl/SGMLSpm
