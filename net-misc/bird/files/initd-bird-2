@@ -20,7 +20,7 @@ if [ ${BIRD_USER} ]; then
 fi
 
 client_args="-s ${SOCK}"
-command_args="${client_args} -c ${CONF_FILE} -P ${pidfile} ${BIRD_OPTS}"
+command_args="${client_args} -c ${CONF_FILE} ${BIRD_OPTS}"
 client_args="${client_args} -r"
 
 depend() {
