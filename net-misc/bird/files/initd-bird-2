@@ -12,8 +12,15 @@ retry=15
 CONF_FILE="/etc/${RC_SVCNAME}.conf"
 SOCK="/run/${RC_SVCNAME}.ctl"
 
+if [ ${BIRD_GROUP} ]; then
+	BIRD_OPTS="${BIRD_OPTS} -g ${BIRD_GROUP}"
+fi
+if [ ${BIRD_USER} ]; then
+	BIRD_OPTS="${BIRD_OPTS} -u ${BIRD_USER}"
+fi
+
 client_args="-s ${SOCK}"
-command_args="${client_args} -c ${CONF_FILE} -P ${pidfile}"
+command_args="${client_args} -c ${CONF_FILE} -P ${pidfile} ${BIRD_OPTS}"
 client_args="${client_args} -r"
 
 depend() {
@@ -48,4 +55,8 @@ stop_pre() {
 	if [ "${RC_CMD}" = "restart" ] ; then
 		check_run || return 1
 	fi
+}
+
+start_pre() {
+	checkpath -o "${BIRD_USER:-root}":"${BIRD_GROUP:-root}" "${pidfile}"
 }

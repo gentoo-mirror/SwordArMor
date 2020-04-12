@@ -14,9 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
-RDEPEND="client? ( sys-libs/ncurses )
+RDEPEND="
+	acct-group/bird
+	acct-user/bird
+	client? ( sys-libs/ncurses )
 	client? ( sys-libs/readline )
-	libssh? ( net-libs/libssh )"
+	libssh? ( net-libs/libssh )
+"
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
@@ -40,6 +44,7 @@ src_install() {
 	fi
 	dobin birdcl
 	dosbin bird
-	newinitd "${FILESDIR}/initd-${PN}-2" bird
+	newinitd "${FILESDIR}/initd-${PN}-2" ${PN}
+	newconfd "${FILESDIR}/confd-${PN}-2" ${PN}
 	dodoc doc/bird.conf.example
 }
