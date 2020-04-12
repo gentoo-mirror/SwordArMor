@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="User for BIRD"
 # TCP port 179, but 179 is already used by acct-group/_bgpd
