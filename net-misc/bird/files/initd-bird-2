@@ -56,7 +56,3 @@ stop_pre() {
 		check_run || return 1
 	fi
 }
-
-start_pre() {
-	checkpath -o "${BIRD_USER:-root}":"${BIRD_GROUP:-root}" "${pidfile}"
-}
