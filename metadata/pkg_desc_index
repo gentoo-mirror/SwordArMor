@@ -1,9 +1,11 @@
 acct-group/_bgpd 0: System group: _bgpd
 acct-group/_rpki-client 0: System group: _rpki-client
+acct-group/bird 0: System group: bird
 acct-group/fort 0: System group: fort
 acct-group/routinator 0: System group: routinator
 acct-user/_bgpd 0: User for OpenBGPD
 acct-user/_rpki-client 0: User for rpki-client
+acct-user/bird 0: User for BIRD
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/routinator 0: User for routinator RPKI validator
 app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
