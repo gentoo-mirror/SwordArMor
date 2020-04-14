@@ -9,6 +9,7 @@ acct-user/bird 0: User for BIRD
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/routinator 0: User for routinator RPKI validator
 app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
+app-text/OCRmyPDF 9.7.1: OCRmyPDF adds an OCR text layer to scanned PDF files
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
@@ -20,8 +21,10 @@ dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
+dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
