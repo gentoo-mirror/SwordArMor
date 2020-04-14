@@ -21,7 +21,8 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	app-text/tesseract
 	app-text/unpaper
-	dev-python/pdfminer-six[${PYTHON_USEDEP}]
+	<=dev-python/pdfminer-six-20200124[${PYTHON_USEDEP}]
+	>=dev-python/pdfminer-six-20181108[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]
@@ -33,3 +34,14 @@ RDEPEND="
 	jbig2enc? ( media-libs/jbig2enc )
 "
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+src_install() {
+	distutils-r1_src_install
+
+	newbashcomp "${S}"/misc/completion/ocrmypdf.bash "${PN,,}"
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins "${S}"/misc/completion/ocrmypdf.fish
+
+	dodoc README.md
+}
