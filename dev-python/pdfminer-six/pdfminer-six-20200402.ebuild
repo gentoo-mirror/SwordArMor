@@ -18,16 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-DEPEND="
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
-	)
-"
 RDEPEND="
 	>=dev-python/chardet-3.0[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${RDEPEND}
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/tox[${PYTHON_USEDEP}]
+	)
 "
 BDEPEND="
 	doc? (
@@ -37,3 +38,12 @@ BDEPEND="
 "
 
 S="${WORKDIR}"/"${MY_PN}-${PV}"
+
+python_compile_all() {
+	use doc && emake -C docs html
+}
+
+python_install_all() {
+	use doc && local HTML_DOCS=( docs/_build/html/. )
+	distutils-r1_python_install_all
+}
