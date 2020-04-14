@@ -25,15 +25,15 @@ DEPEND="
 	)
 "
 RDEPEND="
-	${DEPEND}
 	>=dev-python/chardet-3.0[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
+"
+BDEPEND="
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-argparse[${PYTHON_USEDEP}]
 	)
 "
-BDEPEND=""
 
 S="${WORKDIR}"/"${MY_PN}-${PV}"
