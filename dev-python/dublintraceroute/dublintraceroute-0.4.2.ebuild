@@ -28,7 +28,13 @@ RDEPEND="
 BDEPEND="
 	~net-analyzer/dublin-traceroute-${PV}
 	dev-libs/jsoncpp
-	dev-python/pytest-runner
 	net-libs/libpcap
 	net-libs/libtins
 "
+
+python_prepare_all() {
+	# do not depend on deprecated dep
+	sed -i -e '/pytest-runner/d' setup.py || die
+
+	distutils-r1_python_prepare_all
+}
