@@ -33,7 +33,10 @@ RDEPEND="
 	virtual/python-cffi[${PYTHON_USEDEP}]
 	jbig2enc? ( media-libs/jbig2enc )
 "
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
+"
 
 src_install() {
 	distutils-r1_src_install
