@@ -42,6 +42,7 @@ net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet insp
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
+net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator
 net-misc/bird 2.0.6 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6

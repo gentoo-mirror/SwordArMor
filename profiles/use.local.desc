@@ -5,6 +5,9 @@
 app-text/OCRmyPDF:jbig2enc - Uses media-libs/jbig2enc for better compression algorithm
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
+net-im/dino:gpg - Enable OpenPGP encryption plugin
+net-im/dino:http - Enable HTTP file upload plugin
+net-im/dino:omemo - Enable OMEMO encryption plugin
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
 x11-libs/vte:glade - Provide integration with dev-util/glade.
