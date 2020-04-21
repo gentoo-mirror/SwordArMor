@@ -53,6 +53,6 @@ net-misc/routinator 0.6.4: An RPKI relying party software.
 net-misc/rpki-client 0.3.0: RPKI client implementation
 net-misc/youtube-dl 2020.03.24-r1 99999999: Download videos from YouTube.com (and more sites...)
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
-x11-libs/vte 0.56.4-r1: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.58.3-r1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
 x11-terms/rxvt-unicode 9.22-r2 9.22-r3 9999: rxvt clone with xft and unicode support
