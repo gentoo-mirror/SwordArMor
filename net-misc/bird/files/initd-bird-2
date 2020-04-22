@@ -8,6 +8,7 @@ extra_started_commands="reload"
 pidfile="/run/${RC_SVCNAME}.pid"
 command="/usr/sbin/${RC_SVCNAME}"
 retry=15
+start_stop_daemon_args="--make-pidfile"
 
 CONF_FILE="/etc/${RC_SVCNAME}.conf"
 SOCK="/run/${RC_SVCNAME}.ctl"
