@@ -10,6 +10,7 @@ net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
+www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
 x11-libs/vte:mouse - Enable mouse support.
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
 x11-terms/rxvt-unicode:blink - Enable blinking text

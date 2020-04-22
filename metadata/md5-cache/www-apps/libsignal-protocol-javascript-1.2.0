@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Signal Protocol library for JavaScript
+EAPI=7
+HOMEPAGE=https://signal.org/fr/
+IUSE=vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-admin/webapp-config-1.50.15
+SLOT=1.2.0
+SRC_URI=https://github.com/signalapp/libsignal-protocol-javascript/archive/v1.2.0.tar.gz -> libsignal-protocol-javascript-1.2.0.tar.gz
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=adf11f61ee86bf28a79bfddd6d66a6fa
