@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit webapp
+inherit savedconfig webapp
 
 MY_PN="${PN/-/.}"
 MY_P="${MY_PN}-${PV}"
@@ -14,13 +14,20 @@ SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${MY_PN}/releases/download/v${PV
 
 LICENSE="MPL-2.0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+omemo"
+REQUIRED_USE="omemo? ( savedconfig )"
 
-DEPEND=""
+DEPEND="omemo? ( www-apps/libsignal-protocol-javascript )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
 S="${WORKDIR}/package"
+
+src_prepare() {
+	default
+
+	restore_config index.html
+}
 
 src_install() {
 	webapp_src_preinst
@@ -28,9 +35,19 @@ src_install() {
 	dodoc README.md
 	rm -f README.md
 
+	use savedconfig && save_config index.html || doins "${FILESDIR}/index.html"
+
 	insinto "${MY_HTDOCSDIR}/"
 	doins -r .
-	doins "${FILESDIR}/index.html"
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	use omemo &&
+		einfo "To enable OMEMO encryption, you have to edit index.html to add"
+		einfo "	omemo_default: 'true'"
+		einfo "in converse.initialize and"
+		einfo "	<script type=\"text/javascript\" src=\"libsignal-protocol-javascript/dist/libsignal-protocol.js\">"
+		einfo "in <head>."
 }

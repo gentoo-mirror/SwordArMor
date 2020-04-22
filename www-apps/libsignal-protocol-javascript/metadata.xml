@@ -5,10 +5,4 @@
 		<email>alarig@swordarmor.fr</email>
 		<name>Alarig Le Lay</name>
 	</maintainer>
-	<use>
-		<flag name="omemo">
-			Enable OMEMO encryption with
-			<pkg>www-apps/libsignal-protocol-javascript</pkg>.
-		</flag>
-	</use>
 </pkgmetadata>
