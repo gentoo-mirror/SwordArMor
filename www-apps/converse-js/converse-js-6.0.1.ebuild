@@ -35,10 +35,10 @@ src_install() {
 	dodoc README.md
 	rm -f README.md
 
+	use savedconfig && save_config index.html || doins "${FILESDIR}/index.html"
+
 	insinto "${MY_HTDOCSDIR}/"
 	doins -r .
-
-	use savedconfig && save_config index.html || doins "${FILESDIR}/index.html"
 
 	webapp_src_install
 }
