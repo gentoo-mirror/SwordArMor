@@ -27,9 +27,9 @@ RDEPEND="
 DEPEND="
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/funcsigs[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		virtual/python-funcsigs[${PYTHON_USEDEP}]
 	)
 	${RDEPEND}
 "
