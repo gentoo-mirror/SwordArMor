@@ -24,6 +24,7 @@ dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-te
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
@@ -39,11 +40,13 @@ net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and pe
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
 net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet inspection
+net-analyzer/ripe-atlas-tools 1.2.3-r1 2.3.0: The official command-line client for RIPE Atlas
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
+net-libs/ripe-atlas-sagan 1.3.0: A parsing library for RIPE Atlas result strings
 net-misc/FORT-validator 1.2.0: FORT validator is an open source RPKI validator
 net-misc/bird 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
@@ -54,6 +57,7 @@ net-misc/rpki-client 0.3.0: RPKI client implementation
 net-misc/youtube-dl 2020.03.24-r1 99999999: Download videos from YouTube.com (and more sites...)
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
+www-client/ripe-atlas-cousteau 1.4.2: A Python wrapper around the RIPE Atlas API
 x11-libs/vte 0.58.3-r1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
 x11-terms/rxvt-unicode 9.22-r2 9.22-r3 9999: rxvt clone with xft and unicode support
