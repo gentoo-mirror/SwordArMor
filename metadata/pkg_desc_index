@@ -34,6 +34,7 @@ dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-util/factorio-mod-updater 0.1.0 0.1.1: Python script to update mods on a dedicated factorio server
+mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 net-analyzer/blaeu 1.1.1 1.1.2 1.1.3 9999: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
