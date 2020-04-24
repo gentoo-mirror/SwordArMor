@@ -15,3 +15,13 @@ sync-type = git
 sync-uri = https://git.grifon.fr/alarig/SwordArMor-gentoo-overlay.git
 auto-sync = yes
 ```
+
+## Side note
+
+If you are looking for packages which need maintainers from ::gentoo, you can
+get a list from those that are installed with those two line.
+
+```
+source /etc/portage/make.conf
+grep -r maintainer-needed "${PORTDIR}" | sed -E 's|('"${PORTDIR}"')/(.*)/(.*)/.*|\2/\3|' | grep -P "^$(qlist -I | sed ':a;N;$!ba;s/\n/$|^/g')$"
+```
