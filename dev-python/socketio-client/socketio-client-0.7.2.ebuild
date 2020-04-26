@@ -35,11 +35,16 @@ python_test() {
 
 	# The import of SocketIO need be made with abs path to run the tests
 	sed -e 's:from .. import:from socketIO_client import:' \
-		-i ${REPO_PN}/tests/__init__.py || die
+		-i socketIO_client/tests/__init__.py || die
+	sed -e 's:from ..exceptions import:from socketIO_client.exceptions import:' \
+		-i socketIO_client/tests/__init__.py || die
 
-	"${PYTHON}" ${REPO_PN}/tests/__init__.py || die "Tests failed under ${EPYTHON}"
+	"${PYTHON}" socketIO_client/tests/__init__.py || \
+		die "Tests failed under ${EPYTHON}"
 
 	# Return to original form for final install
-	 sed -e 's:from socketIO_client import:from .. import:' \
-		-i ${REPO_PN}/tests/__init__.py || die
+	sed -e 's:from socketIO_client import:from .. import:' \
+		-i socketIO_client/tests/__init__.py || die
+	sed -e 's:from socketIO_client.exceptions import:from ..exceptions import:' \
+		-i socketIO_client/tests/__init__.py || die
 }
