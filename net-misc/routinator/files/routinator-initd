@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="routinator daemon"
@@ -15,10 +15,12 @@ depend() {
 }
 
 start_pre() {
-	checkpath -d -m 0750 -o routinator:routinator /var/lib/routinator
+	checkpath -d -m 0750 -o routinator:routinator "${ROUTINATOR_BASEDIR}"
 	if [ ! -d "${ROUTINATOR_BASEDIR}/repository" ] || \
 	   [ ! -d "${ROUTINATOR_BASEDIR}/tals" ]; then
 		${command} --base-dir=${ROUTINATOR_BASEDIR} init \
 			--decline-arin-rpa
+		chown -R routinator:routinator "${ROUTINATOR_BASEDIR}"/repository
+		chown -R routinator:routinator "${ROUTINATOR_BASEDIR}"/tals
         fi
 }
