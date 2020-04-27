@@ -58,7 +58,7 @@ futures-task-0.3.4
 futures-util-0.3.4
 getrandom-0.1.14
 h2-0.2.4
-hermit-abi-0.1.11
+hermit-abi-0.1.12
 http-0.2.1
 http-body-0.3.1
 httparse-1.3.4
@@ -125,8 +125,8 @@ rustls-native-certs-0.3.0
 ryu-1.0.4
 schannel-0.1.18
 sct-0.6.0
-security-framework-0.4.2
-security-framework-sys-0.4.2
+security-framework-0.4.3
+security-framework-sys-0.4.3
 semver-0.9.0
 semver-parser-0.7.0
 serde-1.0.106
@@ -135,17 +135,17 @@ serde_json-1.0.51
 serde_urlencoded-0.6.1
 signal-hook-registry-1.2.0
 slab-0.4.2
-smallvec-1.3.0
+smallvec-1.4.0
 spin-0.5.2
 strsim-0.8.0
-syn-1.0.17
+syn-1.0.18
 syslog-5.0.0
 tempfile-3.1.0
 textwrap-0.11.0
 thiserror-1.0.15
 thiserror-impl-1.0.15
 time-0.1.43
-tokio-0.2.18
+tokio-0.2.19
 tokio-macros-0.2.5
 tokio-rustls-0.13.0
 tokio-socks-0.2.2
@@ -187,7 +187,7 @@ winreg-0.6.2
 ws2_32-sys-0.2.1
 "
 
-inherit cargo fcaps
+inherit cargo
 
 MY_PV=${PV/_/-}
 
@@ -218,8 +218,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	fcaps cap_net_bind_service usr/bin/routinator
-
 	einfo ""
 	einfo "ARIN TAL is disabled by default because the ARIN Relying Party"
 	einfo "Agreement must be accepted beforehead. Read"
