@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,13 @@ SRC_URI="https://www.factorio.com/get-download/${PV}/headless/linux64 -> ${P}.ta
 LICENSE="Factorio"
 SLOT="0"
 KEYWORDS="~amd64"
+
+DEPENDS="
+	acct-group/factorio
+	acct-user/factorio
+"
+
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}/factorio"
 
