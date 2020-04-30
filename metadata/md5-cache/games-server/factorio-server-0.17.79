@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install postinst
 DEPEND=acct-group/factorio acct-user/factorio
 DESCRIPTION=Factorio is a game in which you build and maintain factories
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=Factorio
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://www.factorio.com/get-download/0.17.79/headless/linux64 -> factorio-server-0.17.79.tar.xz
-_md5_=dac19a890dc26a4ce2195d1f4c8069dc
+_md5_=13ca6ae5fd3ff0de32a38317450ee988
