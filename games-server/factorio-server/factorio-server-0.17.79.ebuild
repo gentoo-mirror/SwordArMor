@@ -10,7 +10,7 @@ LICENSE="Factorio"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPENDS="
+DEPEND="
 	acct-group/factorio
 	acct-user/factorio
 "
