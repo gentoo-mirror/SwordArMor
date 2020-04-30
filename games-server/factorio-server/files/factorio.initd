@@ -5,7 +5,7 @@
 name="factorio daemon"
 description="2D infinite game"
 command="${FACTORIO_PATH}/bin/x64/factorio"
-command_args="${factorio_args}"
+command_args="${FACTORIO_OPTS}"
 
 command_background=1
 directory="${FACTORIO_PATH}"
