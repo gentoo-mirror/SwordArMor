@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools git-r3 systemd
 
 DESCRIPTION="OpenBGPD is a free implementation of BGPv4"
-HOMEPAGE="http://www.openbgpd.org/index.html"
-EGIT_REPO_URI="https://github.com/openbgpd-portable/openbgpd-portable.git"
+HOMEPAGE="http://www.openbgpd.org/"
+EGIT_REPO_URI="https://github.com/${PN}-portable/${PN}-portable.git"
 
 LICENSE="ISC"
 SLOT="0"
@@ -23,10 +23,13 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/byacc
-	sys-devel/autoconf
-	sys-devel/automake
 	sys-devel/libtool
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-update.patch"
+	"${FILESDIR}/${P}-config.c.patch"
+)
 
 src_unpack() {
 	git-r3_src_unpack
@@ -41,8 +44,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply -p0 "${FILESDIR}/${P}-update.patch"
-	eapply -p0 "${FILESDIR}/${P}-config.c.patch"
 	default
 	./autogen.sh
 	eautoreconf
@@ -62,8 +63,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn ""
-	ewarn "OpenBGPD portable (not running on OpenBSD) can’t export its RIB to"
-	ewarn "the FIB. It’s only suitable for route-reflectors or route-servers."
-	ewarn ""
+	if [ -z "${REPLACING_VERSIONS}" ]; then
+		ewarn ""
+		ewarn "OpenBGPD portable (not running on OpenBSD) can’t export its RIB"
+		ewarn "to the FIB. It’s only suitable for route-reflectors or"
+		ewarn "route-servers."
+		ewarn ""
+	fi
 }
