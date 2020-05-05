@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-group
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 # TCP port 179, but 179 is already used by acct-group/_bgpd
 ACCT_GROUP_ID=180
