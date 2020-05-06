@@ -116,7 +116,7 @@ reqwest-0.10.4
 ring-0.16.12
 routinator-0.7.0-rc1
 rpki-0.9.1
-rpki-rtr-0.1.0
+rpki-rtr-0.1.1
 rust-argon2-0.7.0
 rustc-demangle-0.1.16
 rustc_version-0.2.3
@@ -131,7 +131,7 @@ semver-0.9.0
 semver-parser-0.7.0
 serde-1.0.106
 serde_derive-1.0.106
-serde_json-1.0.51
+serde_json-1.0.52
 serde_urlencoded-0.6.1
 signal-hook-registry-1.2.0
 slab-0.4.2
@@ -142,10 +142,10 @@ syn-1.0.18
 syslog-5.0.0
 tempfile-3.1.0
 textwrap-0.11.0
-thiserror-1.0.15
-thiserror-impl-1.0.15
+thiserror-1.0.16
+thiserror-impl-1.0.16
 time-0.1.43
-tokio-0.2.19
+tokio-0.2.13
 tokio-macros-0.2.5
 tokio-rustls-0.13.0
 tokio-socks-0.2.2
@@ -159,7 +159,7 @@ unicode-bidi-0.3.4
 unicode-normalization-0.1.12
 unicode-width-0.1.7
 unicode-xid-0.2.0
-untrusted-0.7.0
+untrusted-0.7.1
 unwrap-1.2.1
 url-2.1.1
 uuid-0.6.5
@@ -199,7 +199,7 @@ https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.ta
 RESTRICT="mirror"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 S="${WORKDIR}/${PN}-${MY_PV}"
