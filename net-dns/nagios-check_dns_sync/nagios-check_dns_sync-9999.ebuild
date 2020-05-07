@@ -29,5 +29,5 @@ BDEPEND=""
 src_install() {
 	default
 	exeinto /usr/lib64/nagios/plugins/
-	newexe src/check_dns_sync/check_dns_sync.py check_dns_sync
+	python_newexe src/check_dns_sync/check_dns_sync.py check_dns_sync
 }
