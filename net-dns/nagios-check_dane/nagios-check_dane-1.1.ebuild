@@ -3,6 +3,9 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit python-r1
+
 MY_PN=${PN/nagios-/}
 
 DESCRIPTION="Nagios/Icinga plugin for checking DANE/TLSA records"
@@ -26,8 +29,8 @@ BDEPEND=""
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
-	exeinto /usr/lib64/nagios/plugins/
-	doexe check_dane
+	python_scriptinto /usr/lib64/nagios/plugins/
+	python_foreach_impl python_doscript check_dane
 
 	dodoc README.md
 }

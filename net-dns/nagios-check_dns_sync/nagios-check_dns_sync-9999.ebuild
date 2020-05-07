@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1 git-r3
 
 MY_PN=${PN/nagios-/}
@@ -28,6 +28,7 @@ BDEPEND=""
 
 src_install() {
 	default
-	exeinto /usr/lib64/nagios/plugins/
-	newexe src/check_dns_sync/check_dns_sync.py check_dns_sync
+	python_scriptinto /usr/lib64/nagios/plugins/
+	python_foreach_impl python_newscript src/check_dns_sync/check_dns_sync.py \
+		check_dns_sync
 }
