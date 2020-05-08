@@ -39,4 +39,6 @@ src_install() {
 	default
 	emake DESTDIR="${D}" install
 	newdoc doc/README README.login.example
+	rm doc/README
+	dodoc README*
 }
