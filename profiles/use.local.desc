@@ -5,6 +5,8 @@
 app-text/OCRmyPDF:jbig2enc - Uses media-libs/jbig2enc for better compression algorithm
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
+net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
+net-dialup/freeradius-client:shadow - Enable shadow password support
 net-im/dino:gpg - Enable OpenPGP encryption plugin
 net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
