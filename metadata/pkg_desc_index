@@ -62,7 +62,7 @@ net-misc/openbgpd 6.6_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/routinator 0.6.4 0.7.0: An RPKI relying party software
 net-misc/rpki-client 0.3.0: RPKI client implementation
-net-misc/youtube-dl 2020.05.03-r1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.05.08-r1 99999999: Download videos from YouTube.com (and more sites...)
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
 www-client/ripe-atlas-cousteau 1.4.2: A Python wrapper around the RIPE Atlas API
