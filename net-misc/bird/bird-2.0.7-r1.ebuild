@@ -29,6 +29,7 @@ DEPEND="sys-devel/flex
 
 PATCHES=(
 	"${FILESDIR}/${P}-ipv6-rpki.patch"
+	"${FILESDIR}/${P}-attrs.c.patch"
 )
 
 src_configure() {
