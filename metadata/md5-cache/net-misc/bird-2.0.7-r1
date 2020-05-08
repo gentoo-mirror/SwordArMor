@@ -11,4 +11,4 @@ RDEPEND=client? ( sys-libs/ncurses ) client? ( sys-libs/readline ) filecaps? ( a
 SLOT=0
 SRC_URI=ftp://bird.network.cz/pub/bird/bird-2.0.7.tar.gz
 _eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b
-_md5_=6e39406fcba94bdb5363574717e14d8f
+_md5_=a170048d358470f7a37d1ef3288eb775
