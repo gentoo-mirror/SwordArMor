@@ -34,7 +34,6 @@ dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding s
 dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
 dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
-games-action/minecraft-launcher 1.6.93 2.1.13829: An open-world game whose gameplay revolves around breaking and placing blocks
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 0.17.79: Factorio is a game in which you build and maintain factories
 games-util/factorio-mod-updater 0.1.0 0.1.1: Python script to update mods on a dedicated factorio server
