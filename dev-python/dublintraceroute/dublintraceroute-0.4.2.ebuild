@@ -34,7 +34,7 @@ BDEPEND="
 
 python_prepare_all() {
 	# do not depend on deprecated dep
-	sed -i -e '/pytest-runner/d' setup.py || die
+	sed -i -e '/pytest_runner/d' setup.py || die
 
 	distutils-r1_python_prepare_all
 }
