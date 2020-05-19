@@ -57,7 +57,7 @@ net-misc/FORT-validator 1.2.0 1.2.1: FORT validator is an open source RPKI valid
 net-misc/bird 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
-net-misc/openbgpd 6.6_p0 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/openbgpd 6.6_p0 6.7_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/routinator 0.6.4 0.7.0: An RPKI relying party software
 net-misc/rpki-client 0.3.0: RPKI client implementation
