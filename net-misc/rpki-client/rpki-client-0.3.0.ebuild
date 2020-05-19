@@ -33,8 +33,8 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" BINDIR="/usr/bin" MANDIR="/usr/share/man" install
-	insinto /usr/share/${PN}
+	insinto /etc/rpki
 	doins tals/*
-	keepdir /var/cache/${PN}/
-	fowners -R _rpki-client /var/cache/${PN}/
+	keepdir "/var/db/${PN}/"
+	fowners -R _rpki-client "/var/db/${PN}/"
 }
