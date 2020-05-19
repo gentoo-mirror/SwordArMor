@@ -14,7 +14,6 @@ app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
 app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF files
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties
-app-text/urlview 0.9_p21: A curses URL parser for text files
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
 dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
 dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
@@ -62,6 +61,7 @@ net-misc/openbgpd 6.6_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/routinator 0.6.4 0.7.0: An RPKI relying party software
 net-misc/rpki-client 0.3.0: RPKI client implementation
+net-misc/urlview 0.9_p21: A curses URL parser for text files
 net-misc/youtube-dl 2020.05.08-r1 99999999: Download videos from YouTube.com (and more sites...)
 net-wireless/wavemon 0.9.1: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
