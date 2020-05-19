@@ -60,7 +60,7 @@ net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/openbgpd 6.6_p0 6.7_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/routinator 0.6.4 0.7.0: An RPKI relying party software
-net-misc/rpki-client 0.3.0 6.6_p2 6.7_p0: Portability shim for OpenBSD's rpki-client
+net-misc/rpki-client 6.6_p2 6.7_p0: Portability shim for OpenBSD's rpki-client
 net-misc/urlview 0.9_p21: A curses URL parser for text files
 net-misc/youtube-dl 2020.05.08-r1 99999999: Download videos from YouTube.com (and more sites...)
 net-wireless/wavemon 0.9.1: Ncurses based monitor for IEEE 802.11 wireless LAN cards
