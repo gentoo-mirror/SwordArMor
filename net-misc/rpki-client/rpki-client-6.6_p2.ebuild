@@ -53,6 +53,8 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--with-rsync=rsync
+		--with-base-dir="/var/cache/${PN}"
+		--with-output-dir="/var/db/${PN}"
 	)
 	econf "${myeconfargs[@]}"
 }
