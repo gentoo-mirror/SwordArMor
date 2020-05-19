@@ -24,6 +24,8 @@ RDEPEND="sys-libs/ncurses:0"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	mv configure.in configure.ac || die \
+				"Renaming configure.in to configure.ac failed"
 	eapply "${WORKDIR}/${PN}_${MY_PV}-${MY_PATCHLEVEL}.diff"
 	eapply_user
 	eautoconf
@@ -36,7 +38,5 @@ src_configure() {
 
 src_install() {
 	dodir "/usr/share/man/man1"
-	emake DESTDIR="${D}" \
-		  mandir="${D}/usr/share/man/" \
-		  install
+	emake DESTDIR="${D}" mandir="${D}/usr/share/man/" install
 }
