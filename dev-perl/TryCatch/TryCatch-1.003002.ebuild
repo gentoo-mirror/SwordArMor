@@ -13,5 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-perl/Module-Install"
+RDEPEND="
+	dev-perl/Devel-Declare
+	dev-perl/Module-Install
+"
 DEPEND="${RDEPEND}"
