@@ -99,6 +99,7 @@ src_install() {
 	linux-mod_src_install
 	exeinto "${IPT_LIB}"
 	doexe libipt_NETFLOW.so
+	doexe libip6t_NETFLOW.so
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
 	doheader ipt_NETFLOW.h
 	dodoc README*
