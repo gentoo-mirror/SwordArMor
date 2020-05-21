@@ -14,8 +14,8 @@ KEYWORDS=""
 IUSE="+as-stats-gui +ip2as"
 
 DEPEND="
-	acct-group/AS-Stats
-	acct-user/AS-Stats
+	acct-group/as-stats
+	acct-user/as-stats
 	as-stats-gui? ( www-misc/as-stats-gui )
 	dev-lang/php:*[sqlite]
 	dev-perl/DBD-SQLite
@@ -45,7 +45,7 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}/"
 	doins -r .
 
-	use ! as-stats-gui && fowners -R "AS-Stats" "${MY_HTDOCSDIR}/www"
+	use ! as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
 
 	webapp_src_install
 }
