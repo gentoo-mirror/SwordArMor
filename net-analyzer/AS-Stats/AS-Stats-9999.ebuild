@@ -34,6 +34,8 @@ src_compile() {
 		rm -rf www
 		ln -s /usr/share/as-stats-gui www
 	fi
+	chmod +x bin/asstatd.pl
+	chmod +x bin/rrd-extractstats.pl
 }
 
 src_install() {
