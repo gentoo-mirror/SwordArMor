@@ -34,8 +34,6 @@ src_compile() {
 		rm -rf www
 		ln -s /usr/share/as-stats-gui www
 	fi
-	chmod +x bin/asstatd.pl
-	chmod +x bin/rrd-extractstats.pl
 }
 
 src_install() {
@@ -48,6 +46,9 @@ src_install() {
 	doins -r .
 
 	! use as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
+
+	fperms +x "${MY_HTDOCSDIR}/bin/asstatd.pl
+	fperms +x "${MY_HTDOCSDIR}/bin/rrd-extractstats.pl
 
 	webapp_src_install
 }
