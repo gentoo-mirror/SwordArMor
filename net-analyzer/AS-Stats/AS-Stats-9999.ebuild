@@ -45,7 +45,7 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}/"
 	doins -r .
 
-	use ! as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
+	! use as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
 
 	webapp_src_install
 }
