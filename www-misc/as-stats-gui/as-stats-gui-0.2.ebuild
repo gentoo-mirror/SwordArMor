@@ -13,7 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	acct-group/AS-Stats
+	acct-user/AS-Stats
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -25,4 +28,5 @@ src_install() {
 
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
+	fowners -R "AS-Stats" "/usr/share/${PN}"
 }
