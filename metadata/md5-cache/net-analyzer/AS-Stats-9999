@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install postinst prerm setup unpack
+DEPEND=as-stat-gui? ( www-misc/as-stats-gui ) dev-lang/php:*[sqlite] dev-perl/DBD-SQLite dev-perl/File-Find-Rule dev-perl/JSON-XS dev-perl/Net-Patricia dev-perl/Net-sFlow ip2as? ( dev-perl/ip2as ) net-analyzer/rrdtool[perl] >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
+EAPI=7
+HOMEPAGE=https://github.com/manuelkasper/AS-Stats
+IUSE=+as-stat-gui +ip2as vhosts
+LICENSE=BSD-2
+PROPERTIES=live
+RDEPEND=as-stat-gui? ( www-misc/as-stats-gui ) dev-lang/php:*[sqlite] dev-perl/DBD-SQLite dev-perl/File-Find-Rule dev-perl/JSON-XS dev-perl/Net-Patricia dev-perl/Net-sFlow ip2as? ( dev-perl/ip2as ) net-analyzer/rrdtool[perl] >=app-admin/webapp-config-1.50.15
+SLOT=9999
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=e01249aae9e45102e42af30d15605bfb
