@@ -17,7 +17,6 @@ RDEPEND="
 	dev-perl/Class-Load
 	dev-perl/List-MoreUtils
 	dev-perl/Moose
-	dev-perl/MooseX-Traits
 	dev-perl/MooseX-Types
 	dev-perl/namespace-clean
 	dev-perl/PPI
