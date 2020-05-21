@@ -1,11 +1,13 @@
 acct-group/_bgpd 0: System group: _bgpd
 acct-group/_rpki-client 0: System group: _rpki-client
+acct-group/as-stats 0: System group: as-stats
 acct-group/bird 0: System group: bird
 acct-group/factorio 0: System group: factorio
 acct-group/fort 0: System group: fort
 acct-group/routinator 0: System group: routinator
 acct-user/_bgpd 0: User for OpenBGPD
 acct-user/_rpki-client 0: User for rpki-client
+acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
 acct-user/bird 0: User for BIRD
 acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
