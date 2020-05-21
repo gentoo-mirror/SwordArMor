@@ -11,10 +11,12 @@ EGIT_REPO_URI="https://github.com/manuelkasper/AS-Stats.git"
 
 LICENSE="BSD-2"
 KEYWORDS=""
-IUSE="+as-stat-gui +ip2as"
+IUSE="+as-stats-gui +ip2as"
 
 DEPEND="
-	as-stat-gui? ( www-misc/as-stats-gui )
+	acct-group/as-stats
+	acct-user/as-stats
+	as-stats-gui? ( www-misc/as-stats-gui )
 	dev-lang/php:*[sqlite]
 	dev-perl/DBD-SQLite
 	dev-perl/File-Find-Rule
@@ -27,6 +29,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+src_compile() {
+	if use as-stats-gui; then
+		rm -rf www
+		ln -s /usr/share/as-stats-gui www
+	fi
+}
+
 src_install() {
 	webapp_src_preinst
 
@@ -36,9 +45,7 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}/"
 	doins -r .
 
-	use as-stat-gui && \
-		rm -rf www && \
-		ln -s "${PREFIX}"/usr/share/as-stat-gui www
+	! use as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
 
 	webapp_src_install
 }
