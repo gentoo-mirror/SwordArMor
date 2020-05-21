@@ -47,8 +47,8 @@ src_install() {
 
 	! use as-stats-gui && fowners -R "as-stats" "${MY_HTDOCSDIR}/www"
 
-	fperms +x "${MY_HTDOCSDIR}/bin/asstatd.pl
-	fperms +x "${MY_HTDOCSDIR}/bin/rrd-extractstats.pl
+	fperms +x "${MY_HTDOCSDIR}/bin/asstatd.pl"
+	fperms +x "${MY_HTDOCSDIR}/bin/rrd-extractstats.pl"
 
 	webapp_src_install
 }
