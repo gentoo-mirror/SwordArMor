@@ -16,5 +16,6 @@ IUSE=""
 RDEPEND="
 	dev-perl/Devel-Declare
 	dev-perl/Module-Install
+	dev-perl/Sub-Name
 "
 DEPEND="${RDEPEND}"
