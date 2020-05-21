@@ -49,6 +49,7 @@ net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dns/asdig 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
+net-firewall/ipt_netflow 2.4 2.5 9999: Netflow iptables module
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-libs/ripe-atlas-sagan 1.3.0: A parsing library for RIPE Atlas result strings

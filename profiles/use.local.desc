@@ -7,6 +7,8 @@ app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for proc
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
+net-firewall/ipt_netflow:dot1q - Enable tagged VLAN support
+net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-im/dino:gpg - Enable OpenPGP encryption plugin
 net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
