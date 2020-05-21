@@ -17,7 +17,10 @@ app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF fi
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
+dev-perl/B-Hooks-OP-PPAddr 0.06: provides a C API for XS modules to hook into the execution of perl opcodes
+dev-perl/MooseX-Traits 0.13: Automatically apply roles at object creation time
 dev-perl/Net-sFlow 0.11: The sFlow module provides a mechanism to parse and decode sFlow datagrams
+dev-perl/Parse-Method-Signatures 1.003019: Perl6 like method signature parser
 dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
 dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
 dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
