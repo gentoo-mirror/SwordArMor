@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	acct-group/AS-Stats
-	acct-user/AS-Stats
+	acct-group/as-stats
+	acct-user/as-stats
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
@@ -28,5 +28,5 @@ src_install() {
 
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
-	fowners -R "AS-Stats" "/usr/share/${PN}"
+	fowners -R "as-stats" "/usr/share/${PN}"
 }
