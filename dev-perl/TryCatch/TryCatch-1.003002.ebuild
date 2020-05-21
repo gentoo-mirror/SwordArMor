@@ -15,7 +15,14 @@ IUSE=""
 
 RDEPEND="
 	dev-perl/Devel-Declare
+	dev-perl/Test-Exception
+	dev-perl/B-Hooks-OP-PPAddr
 	dev-perl/Module-Install
 	dev-perl/Sub-Name
+	dev-perl/Parse-Method-Signatures
+	dev-perl/Scope-Upper
+	dev-perl/Sub-Exporter
+	dev-perl/Variable-Magic
+	virtual/perl-XSLoader
 "
 DEPEND="${RDEPEND}"
