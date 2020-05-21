@@ -1,13 +1,13 @@
 BDEPEND=dev-lang/perl
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-perl/Devel-Declare dev-perl/Module-Install dev-lang/perl
+DEPEND=dev-perl/Devel-Declare dev-perl/Module-Install dev-perl/Sub-Name dev-lang/perl
 DESCRIPTION=provide a nicer syntax and method to catch errors in Perl
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/TryCatch
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/Devel-Declare dev-perl/Module-Install dev-lang/perl:=
+RDEPEND=dev-perl/Devel-Declare dev-perl/Module-Install dev-perl/Sub-Name dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AS/ASH/TryCatch-1.003002.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=ed7dd263b83f5d48ee15fb458ec49f9d
+_md5_=66abefce6496647844f8353db8a76d9a
