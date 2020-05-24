@@ -34,8 +34,9 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 
-	use dot1q && local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	local CONFIG_CHECK="~IP_NF_IPTABLES"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	use dot1q && CONFIG_CHECK+=" VLAN_8021Q"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
 		if kernel_is lt 5 2; then
