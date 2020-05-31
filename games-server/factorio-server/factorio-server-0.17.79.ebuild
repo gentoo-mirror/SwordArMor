@@ -20,9 +20,6 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}/factorio"
 
 src_install() {
-	sed -i "s/%SLOT/${SLOT}/" "${FILESDIR}"/factorio.confd || \
-		die "SLOTing sed failed"
-
 	insinto "/opt/factorio-${SLOT}"
 	doins -r *
 	exeinto "/opt/factorio-${SLOT}"/bin/x64
@@ -30,6 +27,9 @@ src_install() {
 
 	newinitd "${FILESDIR}"/factorio.initd "factorio-${SLOT}"
 	newconfd "${FILESDIR}"/factorio.confd "factorio-${SLOT}"
+
+	sed -i "s/%SLOT%/${SLOT}/" "${D}/etc/conf.d/factorio-${SLOT}" || \
+		die "SLOTing sed failed"
 }
 
 pkg_postinst() {
