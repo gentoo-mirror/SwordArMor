@@ -8,4 +8,4 @@ LICENSE=Factorio
 RESTRICT=bindist mirror
 SLOT=0.18
 SRC_URI=https://www.factorio.com/get-download/0.18.28/headless/linux64 -> factorio-server-0.18.28.tar.xz
-_md5_=8256138548dfa202acd9dae4094413d8
+_md5_=c4df06f0ecda34653f43ad059fa21e69
