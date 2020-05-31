@@ -8,4 +8,4 @@ LICENSE=Factorio
 RESTRICT=bindist mirror
 SLOT=0.17
 SRC_URI=https://www.factorio.com/get-download/0.17.79/headless/linux64 -> factorio-server-0.17.79.tar.xz
-_md5_=9ee3ad076dc749ddaf600132dadd1060
+_md5_=c93e3bd021bfd4e3c851aae307b012fd
