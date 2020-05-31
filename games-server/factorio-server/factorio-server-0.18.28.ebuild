@@ -8,7 +8,6 @@ HOMEPAGE="https://www.factorio.com/"
 SRC_URI="https://www.factorio.com/get-download/${PV}/headless/linux64 -> ${P}.tar.xz"
 LICENSE="Factorio"
 SLOT="${PV%.*}"
-KEYWORDS="~amd64"
 
 DEPEND="
 	acct-group/factorio
@@ -20,13 +19,16 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}/factorio"
 
 src_install() {
+	sed -i "s/%SLOT/${SLOT}/" "${FILESDIR}"/factorio.confd || \
+		die "SLOTing sed failed"
+
 	insinto "/opt/factorio-${SLOT}"
 	doins -r *
 	exeinto "/opt/factorio-${SLOT}"/bin/x64
 	doexe bin/x64/factorio
 
-	newinitd "${FILESDIR}"/factorio.initd factorio
-	newconfd "${FILESDIR}"/factorio.confd factorio
+	newinitd "${FILESDIR}"/factorio.initd "factorio-${SLOT}"
+	newconfd "${FILESDIR}"/factorio.confd "factorio-${SLOT}"
 }
 
 pkg_postinst() {
