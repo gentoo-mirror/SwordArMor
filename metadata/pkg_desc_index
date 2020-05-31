@@ -43,7 +43,7 @@ dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
 dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
-games-server/factorio-server 0.17.79: Factorio is a game in which you build and maintain factories
+games-server/factorio-server 0.17.79 0.18.28: Factorio is a game in which you build and maintain factories
 games-util/factorio-mod-updater 0.1.0 0.1.1: Python script to update mods on a dedicated factorio server
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
