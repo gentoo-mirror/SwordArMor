@@ -25,8 +25,8 @@ src_install() {
 	exeinto "/opt/factorio-${SLOT}"/bin/x64
 	doexe bin/x64/factorio
 
-	newinitd "${FILESDIR}"/factorio.initd factorio
-	newconfd "${FILESDIR}"/factorio.confd factorio
+	newinitd "${FILESDIR}"/factorio.initd "factorio-${SLOT}"
+	newconfd "${FILESDIR}"/factorio.confd "factorio-${SLOT}"
 }
 
 pkg_postinst() {
