@@ -20,9 +20,9 @@ RESTRICT="bindist mirror"
 S="${WORKDIR}/factorio"
 
 src_install() {
-	insinto /opt/factorio
+	insinto "/opt/factorio-${SLOT}"
 	doins -r *
-	exeinto /opt/factorio/bin/x64
+	exeinto "/opt/factorio-${SLOT}"/bin/x64
 	doexe bin/x64/factorio
 
 	newinitd "${FILESDIR}"/factorio.initd factorio
