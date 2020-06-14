@@ -17,6 +17,7 @@ app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF fi
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
+dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
 dev-perl/B-Hooks-OP-PPAddr 0.06: provides a C API for XS modules to hook into the execution of perl opcodes
 dev-perl/MooseX-Traits 0.13: Automatically apply roles at object creation time
 dev-perl/Net-sFlow 0.11: The sFlow module provides a mechanism to parse and decode sFlow datagrams
@@ -29,8 +30,10 @@ dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
+dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
+dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
@@ -41,6 +44,7 @@ dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network 
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
 dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
+dev-python/unpaddedbase64 1.1.0: Unpadded Base64
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 0.17.79 0.18.30 0.18.31: Factorio is a game in which you build and maintain factories

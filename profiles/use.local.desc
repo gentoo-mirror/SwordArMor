@@ -5,6 +5,7 @@
 app-text/OCRmyPDF:jbig2enc - Uses media-libs/jbig2enc for better compression algorithm
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
+dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
 net-analyzer/AS-Stats:as-stats-gui - Use the improved webUI
 net-analyzer/AS-Stats:ip2as - Use the perl module ip2as.pm
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
