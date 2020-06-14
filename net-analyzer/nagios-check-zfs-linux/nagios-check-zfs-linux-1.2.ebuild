@@ -21,7 +21,7 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}"
 
 src_install() {
 	python_scriptinto /usr/lib64/nagios/plugins/
