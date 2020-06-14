@@ -3,15 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit python-r1
 
 MY_PN=${PN//-/_}
 
 DESCRIPTION="Nagios plugin to check ZFS pool in the Linux environment"
 HOMEPAGE="https://github.com/zlacelle/nagios_check_zfs_linux"
-MY_GITHUB_AUTHOR="zlacelle"
-SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://git.grifon.fr/alarig/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
