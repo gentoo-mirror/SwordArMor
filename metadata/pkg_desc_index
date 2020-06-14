@@ -56,6 +56,7 @@ net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
+net-analyzer/nagios-check-zfs-linux 1.2: Nagios plugin to check ZFS pool in the Linux environment
 net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet inspection
 net-analyzer/ripe-atlas-tools 1.2.3-r1 2.3.0: The official command-line client for RIPE Atlas
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
