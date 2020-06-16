@@ -39,6 +39,11 @@ src_configure() {
 		--with-secure-path
 	)
 	econf "${myeconfargs[@]}"
+
+	for MAKEFILE in $(find -name Makefile) libtool; do
+		sed -i "s|/usr/bin/ar|${AR}|" "${MAKEFILE}" || \
+			die "Patching ${MAKEFILE} for ${AR} failed"
+	done
 }
 
 src_install() {
