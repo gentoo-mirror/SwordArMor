@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="https://wiki.freeradius.org/project/Radiusclient"
@@ -31,6 +31,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export AR
+
 	local myeconfargs=(
 		$(use_enable scp)
 		$(use_enable shadow)
