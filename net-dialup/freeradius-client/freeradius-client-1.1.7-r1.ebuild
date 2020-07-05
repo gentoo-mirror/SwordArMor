@@ -27,23 +27,26 @@ src_prepare() {
 	default
 	mv configure.in configure.ac || die \
 		"Renaming configure.in to configure.ac failed"
+
+	echo "AM_PROG_AR = ${AR}" >> Makefile.am
+
 	eautoreconf
+
+	tc-export AR
+
+	for MAKEFILE in $(find -name Makefile.in); do
+		sed -i "s|@AR@|${AR}|" "${MAKEFILE}" || \
+			die "Patching ${MAKEFILE} for ${AR} failed"
+	done
 }
 
 src_configure() {
-	tc-export AR
-
 	local myeconfargs=(
 		$(use_enable scp)
 		$(use_enable shadow)
 		--with-secure-path
 	)
 	econf "${myeconfargs[@]}"
-
-	for MAKEFILE in $(find -name Makefile) libtool; do
-		sed -i "s|/usr/bin/ar|${AR}|" "${MAKEFILE}" || \
-			die "Patching ${MAKEFILE} for ${AR} failed"
-	done
 }
 
 src_install() {
