@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="https://wiki.freeradius.org/project/Radiusclient"
@@ -23,21 +23,16 @@ DOCS=(
 	README.{radexample,rst}
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-ar-configure.in.patch"
+)
+
 src_prepare() {
 	default
 	mv configure.in configure.ac || die \
 		"Renaming configure.in to configure.ac failed"
 
-	echo "AM_PROG_AR = ${AR}" >> Makefile.am
-
 	eautoreconf
-
-	tc-export AR
-
-	for MAKEFILE in $(find -name Makefile.in); do
-		sed -i "s|@AR@|${AR}|" "${MAKEFILE}" || \
-			die "Patching ${MAKEFILE} for ${AR} failed"
-	done
 }
 
 src_configure() {
