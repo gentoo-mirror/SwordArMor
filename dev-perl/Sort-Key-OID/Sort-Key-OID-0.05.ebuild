@@ -12,3 +12,5 @@ HOMEPAGE="https://metacpan.org/pod/Sort::Key::OID"
 LICENSE="|| ( Artistic GPL-1+ )" # same as perl
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+DEPEND="dev-perl/Sort-Key"
