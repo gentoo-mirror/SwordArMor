@@ -6,5 +6,5 @@ HOMEPAGE=https://www.factorio.com/
 LICENSE=Factorio
 RESTRICT=bindist mirror
 SLOT=0.18
-SRC_URI=https://www.factorio.com/get-download/0.18.40/headless/linux64 -> factorio-server-0.18.40.tar.xz
+SRC_URI=https://www.factorio.com/get-download/0.18.44/headless/linux64 -> factorio-server-0.18.44.tar.xz
 _md5_=44cf4615f6856d9774c40cf7a46268de
