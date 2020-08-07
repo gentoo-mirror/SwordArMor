@@ -27,6 +27,7 @@ dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sor
 dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
 dev-perl/ip2as 9999: IP to ASN mapping
 dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
+dev-python/ciscoconfparse 1.5.19: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
