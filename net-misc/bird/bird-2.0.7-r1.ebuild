@@ -15,21 +15,26 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
-	client? ( sys-libs/ncurses )
-	client? ( sys-libs/readline )
+	client? ( sys-libs/ncurses:= )
+	client? ( sys-libs/readline:= )
 	filecaps? (
 		acct-group/bird
 		acct-user/bird
 	)
-	libssh? ( net-libs/libssh )
-"
-DEPEND="sys-devel/flex
+	libssh? ( net-libs/libssh:= )"
+BDEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ipv6-rpki.patch"
 	"${FILESDIR}/${P}-attrs.c.patch"
+)
+
+FILECAPS=(
+	CAP_NET_ADMIN			usr/sbin/bird
+	CAP_NET_BIND_SERVICE	usr/sbin/bird
+	CAP_NET_RAW				usr/sbin/bird
 )
 
 src_configure() {
@@ -50,12 +55,6 @@ src_install() {
 	newconfd "${FILESDIR}/confd-${PN}-2" ${PN}
 	dodoc doc/bird.conf.example
 }
-
-FILECAPS=(
-	CAP_NET_ADMIN			usr/sbin/bird
-	CAP_NET_BIND_SERVICE	usr/sbin/bird
-	CAP_NET_RAW				usr/sbin/bird
-)
 
 pkg_postinst() {
 	use filecaps && \
