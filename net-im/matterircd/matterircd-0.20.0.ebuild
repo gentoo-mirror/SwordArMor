@@ -5,11 +5,12 @@ EAPI=7
 
 EGO_PN="github.com/42wim/${PN}"
 
-inherit golang-build golang-vcs-snapshot user
+inherit go-module user
 
 DESCRIPTION="Connect to your Mattermost or Slack using your IRC-client of choice"
 HOMEPAGE="https://github.com/42wim/matterircd"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+${EGO_SUM_SRC_URI}"
 RESTRICT="mirror"
 
 LICENSE="MIT"
@@ -20,32 +21,13 @@ IUSE="debug pie static"
 DOCS=( README.md )
 QA_PRESTRIPPED="usr/bin/.*"
 
-G="${WORKDIR}/${P}"
-S="${G}/src/${EGO_PN}"
+src_compile() {
+	env GOBIN="${S}/bin" go build -mod=vendor || die "compile failed"
+}
 
 pkg_setup() {
 	enewgroup matterircd
 	enewuser matterircd -1 -1 -1 matterircd
-}
-
-src_compile() {
-	export GOPATH="${G}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	(use static && ! use pie) && export CGO_ENABLED=0
-	(use static && use pie) && CGO_LDFLAGS+=" -static"
-
-	local mygoargs=(
-		-v -work -x
-		-buildmode "$(usex pie pie exe)"
-		-asmflags "all=-trimpath=${S}"
-		-gcflags "all=-trimpath=${S}"
-		-ldflags "$(usex !debug '-s -w' '')"
-		-tags "$(usex static 'netgo' '')"
-		-installsuffix "$(usex static 'netgo' '')"
-	)
-
-	go build "${mygoargs[@]}" || die
 }
 
 src_install() {
