@@ -12,7 +12,6 @@ acct-user/bird 0: User for BIRD
 acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/routinator 0: User for routinator RPKI validator
-app-misc/ckb 0.4.2: Corsair K65/K70/K95 Driver
 app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF files
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties
