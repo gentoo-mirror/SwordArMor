@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/miekg/${PN}"
 
-inherit go-module
+inherit golang-base go-module
 
 EGO_SUM=(
 	"golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2"
@@ -52,6 +52,11 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_compile() {
-	env GOBIN="${S}/bin" go install ./... ||
-		die "compile failed"
+	go build -o ${PN} . || die
+}
+
+src_install() {
+	insinto $(get_golibdir)
+	doins dns
+	einstalldocs
 }
