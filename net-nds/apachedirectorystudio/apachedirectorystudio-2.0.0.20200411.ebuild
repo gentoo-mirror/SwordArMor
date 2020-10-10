@@ -1,19 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="6"
+EAPI=7
 
-inherit eutils versionator
+inherit desktop eutils
 
-MY_PV=$(replace_version_separator 3 '.v')
+MY_PV="${PV//.20/.v20}"
 MY_PN="ApacheDirectoryStudio"
 MY_PKGM=15
 
-
 DESCRIPTION="Apache Directory Studio is an universal LDAP directory tool."
-SRC_URI="http://www.us.apache.org/dist/directory/studio/${MY_PV}-M${MY_PKGM}/${MY_PN}-${MY_PV}-M${MY_PKGM}-linux.gtk.x86_64.tar.gz"
-HOMEPAGE="http://directory.apache.org/studio/"
+SRC_URI="https://downloads.apache.org/directory/studio/${MY_PV}-M${MY_PKGM}/${MY_PN}-${MY_PV}-M${MY_PKGM}-linux.gtk.x86_64.tar.gz"
+HOMEPAGE="https://directory.apache.org/studio/"
 
 KEYWORDS="~amd64"
 SLOT="2"
@@ -33,15 +31,13 @@ S="${WORKDIR}/${MY_PN}"
 src_install() {
 
 	insinto "${INSTALL_DIR}"
-	
 	newicon "features/org.apache.directory.studio.schemaeditor.feature_${MY_PV}-M${MY_PKGM}/studio.png" "${MY_PN}.png"
-	#newicon "${MY_PN}/icon.xpm" "${MY_PN}.xpm"
-	
+
 	make_desktop_entry "${MY_PN}" "Apache Directory Studio" "${MY_PN}" "System"
-	
+
 	doins -r *
-	
+
 	fperms +x "${INSTALL_DIR}/${MY_PN}"
-	
+
 	dosym "${INSTALL_DIR}/${MY_PN}" "/usr/bin/${MY_PN}"
 }
