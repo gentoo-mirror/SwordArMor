@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit perl-functions
+
 DESCRIPTION="Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH"
 HOMEPAGE="http://www.jetmore.org/john/code/swaks"
 SRC_URI="http://www.jetmore.org/john/code/swaks/${P}.tar.gz"
@@ -12,18 +14,25 @@ KEYWORDS="amd64 ~ppc ~x86"
 
 IUSE="ssl"
 
-DEPEND=">=dev-lang/perl-5.8.8"
-
-RDEPEND="${DEPEND}
-		>=dev-perl/Net-DNS-0.65
-		ssl? ( >=dev-perl/Net-SSLeay-1.35 )
-		>=virtual/perl-MIME-Base64-3.07
-		>=virtual/perl-Digest-MD5-2.39
-		>=virtual/perl-Time-HiRes-1.97
-		>=virtual/perl-Time-Local-1.19
-		>=dev-perl/Authen-NTLM-1.02
-		>=dev-perl/Authen-DigestMD5-0.04
-		virtual/perl-Digest-SHA"
+RDEPEND="
+	>=dev-perl/Authen-DigestMD5-0.04
+	>=dev-perl/Authen-NTLM-1.02
+	>=dev-perl/Net-DNS-0.65
+	>=virtual/perl-Digest-MD5-2.39
+	>=virtual/perl-MIME-Base64-3.07
+	>=virtual/perl-Time-HiRes-1.97
+	>=virtual/perl-Time-Local-1.19
+	dev-perl/CGI
+	dev-perl/DBI
+	dev-perl/Email-Send
+	dev-perl/Email-Valid
+	dev-perl/Params-Validate
+	dev-perl/URI
+	ssl? ( dev-perl/IO-Socket-SSL )
+	virtual/perl-Data-Dumper
+	virtual/perl-Digest-SHA
+	virtual/perl-Getopt-Long
+"
 BDEPEND="app-text/txt2man"
 
 src_compile() {
