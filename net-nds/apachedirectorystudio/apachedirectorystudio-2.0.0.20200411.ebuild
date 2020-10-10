@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND="
 	>=virtual/jre-1.8.0
 	app-crypt/libsecret
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 "
 
 MY_ARCH="$ARCH"
