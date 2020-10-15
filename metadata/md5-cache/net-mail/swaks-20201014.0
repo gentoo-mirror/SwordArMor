@@ -8,6 +8,6 @@ KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-perl/Authen-DigestMD5-0.04 >=dev-perl/Authen-NTLM-1.02 >=dev-perl/Net-DNS-0.65 >=virtual/perl-Digest-MD5-2.39 >=virtual/perl-MIME-Base64-3.07 >=virtual/perl-Time-HiRes-1.97 >=virtual/perl-Time-Local-1.19 dev-perl/CGI dev-perl/DBI dev-perl/Email-Send dev-perl/Email-Valid dev-perl/Params-Validate dev-perl/URI ssl? ( dev-perl/IO-Socket-SSL ) virtual/perl-Data-Dumper virtual/perl-Digest-SHA virtual/perl-Getopt-Long
 SLOT=0
-SRC_URI=http://www.jetmore.org/john/code/swaks/swaks-20201010.0.tar.gz
+SRC_URI=http://www.jetmore.org/john/code/swaks/swaks-20201014.0.tar.gz
 _eclasses_=perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
 _md5_=7b36c2a2f059d7599091d79326e10707
