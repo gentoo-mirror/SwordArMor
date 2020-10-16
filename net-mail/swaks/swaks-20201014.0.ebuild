@@ -6,13 +6,12 @@ EAPI=7
 inherit perl-functions
 
 DESCRIPTION="Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH"
-HOMEPAGE="http://www.jetmore.org/john/code/swaks"
+HOMEPAGE="https://www.jetmore.org/john/code/swaks/
+https://github.com/jetmore/swaks"
 SRC_URI="http://www.jetmore.org/john/code/swaks/${P}.tar.gz"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
-
-IUSE="ssl"
 
 RDEPEND="
 	>=dev-perl/Authen-DigestMD5-0.04
@@ -28,7 +27,6 @@ RDEPEND="
 	dev-perl/Email-Valid
 	dev-perl/Params-Validate
 	dev-perl/URI
-	ssl? ( dev-perl/IO-Socket-SSL )
 	virtual/perl-Data-Dumper
 	virtual/perl-Digest-SHA
 	virtual/perl-Getopt-Long
@@ -45,4 +43,8 @@ src_install() {
 	dobin swaks
 	doman swaks.1
 	dodoc README.txt doc/*.txt
+}
+
+pkg_postinst() {
+	optfeature "ssl" dev-perl/IO-Socket-SSL
 }
