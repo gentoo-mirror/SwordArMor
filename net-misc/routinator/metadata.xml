@@ -5,4 +5,10 @@
 		<email>alarig@swordarmor.fr</email>
 		<name>Alarig Le Lay</name>
 	</maintainer>
+	<use>
+		<flag name="rta">
+			Enables the command rta for validating Resource Tagged Assertions as
+			described in draft-michaelson-rpki-rta
+		</flag>
+	</use>
 </pkgmetadata>

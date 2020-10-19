@@ -207,7 +207,8 @@ https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.ta
 RESTRICT="mirror"
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="rta"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -217,6 +218,14 @@ DEPEND="
 	>=virtual/rust-1.42.0
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local myfeatures=(
+		$(usev rta)
+	)
+
+	cargo_src_configure --no-default-features
+}
 
 src_install() {
 	newinitd "${FILESDIR}/${PN}-initd" ${PN}
