@@ -224,7 +224,7 @@ src_configure() {
 		$(usev rta)
 	)
 
-	cargo_src_configure --no-default-features
+	cargo_src_configure
 }
 
 src_install() {
