@@ -75,7 +75,7 @@ net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-cli
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-libs/ripe-atlas-sagan 1.3.0: A parsing library for RIPE Atlas result strings
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-net-misc/FORT-validator 1.3.0 1.4.0 1.4.1: FORT validator is an open source RPKI validator
+net-misc/FORT-validator 1.4.0 1.4.1 1.4.2: FORT validator is an open source RPKI validator
 net-misc/bgpq4 0.0.6: bgp filtering automation tool
 net-misc/bird 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
