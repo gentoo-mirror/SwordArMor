@@ -3,6 +3,9 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{6,7,8,9} )
+inherit python-r1
+
 DESCRIPTION="Draw a graph from RIS BGP data"
 HOMEPAGE="https://git.grifon.fr/alarig/ris-pydot-graph"
 SRC_URI="https://git.grifon.fr/alarig/${PN}/archive/0.1.tar.gz"
