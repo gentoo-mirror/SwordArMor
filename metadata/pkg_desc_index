@@ -42,7 +42,7 @@ dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
-dev-python/sphinxcontrib-nwdiag 0.9.5: A sphinx extension for embedding network related diagrams using nwdiag.
+dev-python/sphinxcontrib-nwdiag 0.9.5 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
 dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
