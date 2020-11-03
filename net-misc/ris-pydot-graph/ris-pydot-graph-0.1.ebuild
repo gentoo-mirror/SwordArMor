@@ -22,6 +22,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+S="${WORKDIR}/${PN}"
+
 src_install() {
 	default
 	python_foreach_impl python_newscript ris.py "${PN}"
