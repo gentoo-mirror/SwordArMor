@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A sphinx extension for embedding sequence diagram using seqdiag."
@@ -16,5 +16,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/seqdiag"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]
+"
 BDEPEND=""
+
+python_install_all() {
+	distutils-r1_python_install_all
+	find "${ED}" -name '*.pth' -delete || die
+}
