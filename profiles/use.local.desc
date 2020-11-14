@@ -8,6 +8,8 @@ dev-python/dublintraceroute:analysis - Additional analysis functionality, uses d
 dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
 net-analyzer/AS-Stats:as-stats-gui - Use the improved webUI
 net-analyzer/AS-Stats:ip2as - Use the perl module ip2as.pm
+net-analyzer/mtr:ipinfo - Disable support for IP address lookups
+net-analyzer/mtr:jansson - Enable JSON output support through dev-libs/jansson
 net-analyzer/net-snmp:elf - Enable the use of elf utils to check uptime on some systems
 net-analyzer/net-snmp:kmem - Enable usage of /dev/kmem
 net-analyzer/net-snmp:mfd-rewrites - Use MFD rewrites of mib modules where available
