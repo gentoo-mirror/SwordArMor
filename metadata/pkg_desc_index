@@ -26,7 +26,7 @@ dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions
 dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
 dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
 dev-perl/ip2as 9999: IP to ASN mapping
-dev-python/actdiag 0.5.4: actdiag generate activity-diagram image file from spec-text file.
+dev-python/actdiag 0.5.4 2.0.0: actdiag generate activity-diagram image file from spec-text file.
 dev-python/ciscoconfparse 1.5.19: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
@@ -34,11 +34,11 @@ dev-python/deepmerge 0.1.0: a toolset to deeply merge python dictionaries.
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
-dev-python/nwdiag 1.0.4: nwdiag generate network-diagram image file from spec-text file.
+dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
-dev-python/seqdiag 0.9.6: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
