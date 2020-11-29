@@ -8,7 +8,7 @@ HOMEPAGE="https://www.factorio.com/"
 SRC_URI="https://www.factorio.com/get-download/${PV}/headless/linux64 -> ${P}.tar.xz"
 LICENSE="Factorio"
 SLOT="${PV%.*}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	acct-group/factorio
