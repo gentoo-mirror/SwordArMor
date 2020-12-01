@@ -37,6 +37,7 @@ dev-python/mrtparse 1.7: MRT format data parser
 dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
+dev-python/pynetbox 5.1.0: Python API client library for NetBox
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/socketio-client 0.7.2: A socket.io client library for Python
@@ -81,6 +82,7 @@ net-misc/bgpq4 0.0.6: bgp filtering automation tool
 net-misc/bird 1.6.8 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
+net-misc/nbcli 0.6.3_alpha1: Extensible command-line interface for Netbox
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
