@@ -78,7 +78,7 @@ net-libs/ripe-atlas-sagan 1.3.0: A parsing library for RIPE Atlas result strings
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-misc/FORT-validator 1.4.0 1.4.1 1.4.2: FORT validator is an open source RPKI validator
 net-misc/bgpq4 0.0.6: bgp filtering automation tool
-net-misc/bird 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
+net-misc/bird 1.6.8 2.0.6 2.0.7_pre20200303 2.0.7-r1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 9999: OpenBGPD is a free implementation of BGPv4
