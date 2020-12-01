@@ -207,6 +207,7 @@ https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.ta
 RESTRICT="mirror"
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="rta"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
