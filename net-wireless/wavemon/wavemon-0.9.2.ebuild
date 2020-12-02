@@ -20,7 +20,7 @@ RDEPEND="dev-libs/libnl:3
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
+DOCS=( COPYING README.md THANKS )
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 )
