@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools linux-info toolchain-funcs
 
 DESCRIPTION="Ncurses based monitor for IEEE 802.11 wireless LAN cards"
 HOMEPAGE="https://github.com/uoaerg/wavemon/"
@@ -24,6 +24,12 @@ DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 )
+
+pkg_pretend() {
+	local CONFIG_CHECK="~CFG80211_WEXT"
+
+	check_extra_config
+}
 
 src_prepare() {
 	# Do not install docs to /usr/share
