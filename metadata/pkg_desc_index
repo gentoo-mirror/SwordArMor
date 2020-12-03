@@ -71,7 +71,7 @@ net-dialup/freeradius-client 1.1.7 1.1.7-r1: FreeRADIUS Client framework
 net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
-net-firewall/ipt_netflow 2.4-r1 2.5-r1 9999: Netflow iptables module
+net-firewall/ipt_netflow 2.4-r1 2.5-r2 9999: Netflow iptables module
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-client of choice
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
