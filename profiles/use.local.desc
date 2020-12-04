@@ -21,6 +21,7 @@ net-analyzer/net-snmp:smux - Enable support for the legacy smux protocol (supers
 net-analyzer/net-snmp:ucd-compat - Build UCD compatibility library. Increases significantly the install size.
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
+net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
 net-firewall/ipt_netflow:dot1q - Enable tagged VLAN support
 net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-im/dino:gpg - Enable OpenPGP encryption plugin
