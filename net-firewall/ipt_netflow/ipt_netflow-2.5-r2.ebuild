@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="debug dot1q natevents snmp"
+IUSE="debug dot1d dot1q natevents snmp"
 
 RDEPEND="
 	net-firewall/iptables:0=
@@ -34,8 +34,9 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 
-	local CONFIG_CHECK="BRIDGE_NETFILTER ~IP_NF_IPTABLES"
+	local CONFIG_CHECK="~IP_NF_IPTABLES"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	use dot1d && CONFIG_CHECK+=" BRIDGE_NETFILTER"
 	use dot1q && CONFIG_CHECK+=" VLAN_8021Q"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
@@ -87,6 +88,7 @@ src_configure() {
 		--kdir="${KV_DIR}" \
 		--kver="${KV_FULL}" \
 		$(use debug && echo '--enable-debugfs') \
+		$(use dot1d && echo '--enable-physdev-override') \
 		$(use dot1q && echo '--enable-vlan') \
 		$(use natevents && echo '--enable-natevents') \
 		$(use snmp && echo '--enable-snmp-rules' || echo '--disable-snmp-agent')
