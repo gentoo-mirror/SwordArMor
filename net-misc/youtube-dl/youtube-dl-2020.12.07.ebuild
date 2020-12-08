@@ -26,8 +26,6 @@ distutils_enable_tests nose
 
 src_prepare() {
 	sed -i -e '/flake8/d' Makefile || die
-#	eapply "${FILESDIR}/nrk.patch"
-	eapply_user
 	distutils-r1_src_prepare
 }
 
@@ -36,7 +34,6 @@ python_test() {
 }
 
 python_install_all() {
-	dodoc README.txt
 	doman ${PN}.1
 
 	newbashcomp ${PN}.bash-completion ${PN}
