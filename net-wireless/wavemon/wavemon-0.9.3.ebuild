@@ -20,7 +20,7 @@ RDEPEND="dev-libs/libnl:3
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS=( COPYING README.md THANKS )
+DOCS=( README.md THANKS )
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 )
