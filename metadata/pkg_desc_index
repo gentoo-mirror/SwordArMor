@@ -67,7 +67,6 @@ net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
 net-analyzer/nagios-check-zfs-linux 1.2: Nagios plugin to check ZFS pool in the Linux environment
 net-analyzer/net-snmp 5.8.1_pre1-r1 5.9-r2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet inspection
-net-analyzer/ripe-atlas-tools 1.2.3-r1 2.3.0: The official command-line client for RIPE Atlas
 net-dialup/freeradius-client 1.1.7 1.1.7-r1: FreeRADIUS Client framework
 net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
@@ -97,7 +96,6 @@ net-wireless/hostapd 2.9-r1 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/wavemon 0.9.3: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
-www-client/ripe-atlas-cousteau 1.4.2: A Python wrapper around the RIPE Atlas API
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.58.3-r1 0.60.3-r1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
