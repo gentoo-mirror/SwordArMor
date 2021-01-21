@@ -4,6 +4,7 @@ acct-group/as-stats 0: System group: as-stats
 acct-group/bird 0: System group: bird
 acct-group/factorio 0: System group: factorio
 acct-group/fort 0: System group: fort
+acct-group/rancid 0: System group: rancid
 acct-group/routinator 0: System group: routinator
 acct-user/_bgpd 0: User for OpenBGPD
 acct-user/_rpki-client 0: User for rpki-client
@@ -11,6 +12,7 @@ acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
 acct-user/bird 0: User for BIRD
 acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
+acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF files
@@ -85,6 +87,7 @@ net-misc/exabgp 3.4.28 4.2.6: The BGP swiss army knife of networking
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/nbcli 0.6.3_alpha1: Extensible command-line interface for Netbox
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
 net-misc/routinator 0.6.4 0.7.1 0.8.0 0.8.1 0.8.2: An RPKI relying party software
