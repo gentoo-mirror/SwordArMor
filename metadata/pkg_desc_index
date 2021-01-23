@@ -15,6 +15,7 @@ acct-user/fort 0: User for FORT RPKI validator
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
+app-mobilephone/scrcpy 1.17: Display and control your Android device
 app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF files
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/unicode 2.7: display unicode character properties

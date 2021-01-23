@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install test unpack
+DEPEND=media-libs/libsdl2[X] media-video/ffmpeg >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Display and control your Android device
+EAPI=6
+HOMEPAGE=https://blog.rom1v.com/2018/03/introducing-scrcpy/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+PROPERTIES=live
+RDEPEND=media-libs/libsdl2[X] media-video/ffmpeg
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/Genymobile/scrcpy/releases/download/v1.17/scrcpy-server-v1.17
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	git-r3	3e7ec3d6619213460c85e2aa48398441	meson	fdaf2a7b9376934c1c7ddbd32114defb	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	65bb60d137e5a51f58ada69bf3f366da	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=19913785b059029893268e5e5167854b
