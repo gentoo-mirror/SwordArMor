@@ -1,6 +1,6 @@
-# This file is deprecated as per GLEP 56 in favor of metadata.xml.
-# Please add your descriptions to your package's metadata.xml ONLY.
-# * generated automatically using pmaint *
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
 
 app-text/OCRmyPDF:jbig2enc - Uses media-libs/jbig2enc for better compression algorithm
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
@@ -38,15 +38,3 @@ net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
 x11-libs/vte:mouse - Enable mouse support.
-x11-terms/rxvt-unicode:256-color - Enable 256 color support
-x11-terms/rxvt-unicode:blink - Enable blinking text
-x11-terms/rxvt-unicode:fading-colors - Enable colors fading when off focus
-x11-terms/rxvt-unicode:font-styles - Enable support for bold and italic fonts
-x11-terms/rxvt-unicode:gdk-pixbuf - Enable transparency support using x11-libs/gdk-pixbuf
-x11-terms/rxvt-unicode:iso14755 - Enable ISO-14755 support
-x11-terms/rxvt-unicode:mouse - Enable mouse support.
-x11-terms/rxvt-unicode:mousewheel - Enable scrolling via mouse wheel or buttons 4 and 5
-x11-terms/rxvt-unicode:perl - Enable perl script support. You can still disable this at runtime with -pe ""
-x11-terms/rxvt-unicode:unicode3 - Use 21 instead of 16 bits to represent unicode characters
-x11-terms/rxvt-unicode:utmp - Enable utmp support
-x11-terms/rxvt-unicode:wtmp - Enable wtmp support
