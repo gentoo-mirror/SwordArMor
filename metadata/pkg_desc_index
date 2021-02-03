@@ -102,4 +102,4 @@ www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaSc
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.58.3-r1 0.60.3-r1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
-x11-terms/rxvt-unicode 9.22-r3 9999: rxvt clone with xft and unicode support
+x11-terms/rxvt-unicode 9.22-r7: rxvt clone with xft and unicode support
