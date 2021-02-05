@@ -18,6 +18,7 @@ app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for con
 app-mobilephone/scrcpy 1.17: Display and control your Android device
 app-text/OCRmyPDF 9.7.1 9.7.2: OCRmyPDF adds an OCR text layer to scanned PDF files
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
+app-text/html2gmi 9999: Command line application to convert HTML to GMI
 app-text/unicode 2.7: display unicode character properties
 dev-go/dns 1.1.31: DNS library in Go
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
