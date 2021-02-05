@@ -3,15 +3,12 @@
 
 EAPI=7
 
-inherit cmake git-r3 optfeature xdg-utils
+inherit cmake optfeature xdg-utils
 
 DESCRIPTION="Desktop GUI client for browsing Geminispace"
 HOMEPAGE="https://gmi.skyjake.fi/lagrange/
 https://git.skyjake.fi/skyjake/lagrange"
-SRC_URI="
-https://git.skyjake.fi/skyjake/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-"
-EGIT_REPO_URI="https://git.skyjake.fi/skyjake/the_Foundation"
+SRC_URI="https://git.skyjake.fi/skyjake/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -26,16 +23,6 @@ sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-S="${WORKDIR}/${PN}"
-EGIT_CHECKOUT_DIR="${S}/lib/the_Foundation/"
-EGIT_COMMIT="bd766aba7fa5815f0582d981162226bc0bcd60f2"
-
-src_unpack() {
-	unpack ${A}
-	git-r3_fetch
-	git-r3_checkout
-}
 
 pkg_postinst() {
 	elog "Optional dependencies:"
