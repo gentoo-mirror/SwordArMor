@@ -56,7 +56,7 @@ dev-python/unpaddedbase64 1.1.0: Unpadded Base64
 dev-python/vcver 0.2.11: provide package versions with version control data.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
-games-server/factorio-server 1.0.0 1.1.19: Factorio is a game in which you build and maintain factories
+games-server/factorio-server 1.0.0 1.1.21: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.16.3 1.16.4: The official server for the sandbox video game
 games-util/factorio-mod-updater 0.1.1 0.2.0 0.2.2: Python script to update mods on a dedicated factorio server
 gemini-client/lagrange 1.1.1: Desktop GUI client for browsing Geminispace
