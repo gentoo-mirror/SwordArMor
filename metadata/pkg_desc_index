@@ -39,6 +39,7 @@ dev-python/deepmerge 0.1.0: a toolset to deeply merge python dictionaries.
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
+dev-python/netflow 0.10.3: NetFlow v1, v5, v9 and IPFIX tool suite implemented in Python 3
 dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
