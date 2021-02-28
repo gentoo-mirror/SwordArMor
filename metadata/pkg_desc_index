@@ -43,6 +43,7 @@ dev-python/netflow 0.10.3: NetFlow v1, v5, v9 and IPFIX tool suite implemented i
 dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
+dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
 dev-python/pynetbox 5.1.0: Python API client library for NetBox
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
