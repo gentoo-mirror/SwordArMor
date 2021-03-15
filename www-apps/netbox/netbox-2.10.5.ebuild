@@ -48,8 +48,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.7-no-pip.patch
-	)
+	"${FILESDIR}"/${P}-no-pip.patch
+)
 
 DISABLE_AUTOFORMATTING=YES
 DOC_CONTENTS="
