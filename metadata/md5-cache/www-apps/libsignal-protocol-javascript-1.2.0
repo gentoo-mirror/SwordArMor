@@ -3,6 +3,7 @@ DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=Signal Protocol library for JavaScript
 EAPI=7
 HOMEPAGE=https://signal.org/fr/
+INHERIT=webapp
 IUSE=vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3

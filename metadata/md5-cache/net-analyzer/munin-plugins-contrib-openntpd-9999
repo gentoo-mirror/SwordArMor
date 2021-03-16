@@ -4,6 +4,7 @@ DEPEND=dev-lang/perl net-analyzer/munin net-misc/ntp[openntpd]
 DESCRIPTION=openntpd plugin for munin
 EAPI=7
 HOMEPAGE=https://github.com/munin-monitoring/contrib/tree/master/plugins/openntpd
+INHERIT=git-r3
 KEYWORDS=~amd64
 LICENSE=GPL-2
 PROPERTIES=live

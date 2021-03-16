@@ -4,6 +4,7 @@ DEPEND=dev-lang/perl
 DESCRIPTION=provides a C API for XS modules to hook into the execution of perl opcodes
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/B-Hooks-OP-PPAddr
+INHERIT=perl-module
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=

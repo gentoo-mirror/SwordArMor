@@ -4,6 +4,7 @@ DEPEND=dev-perl/Class-Load dev-perl/List-MoreUtils dev-perl/Moose dev-perl/Moose
 DESCRIPTION=Perl6 like method signature parser
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Parse-Method-Signatures
+INHERIT=perl-module
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Class-Load dev-perl/List-MoreUtils dev-perl/Moose dev-perl/MooseX-Types dev-perl/namespace-clean dev-perl/PPI dev-lang/perl:=

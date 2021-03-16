@@ -4,6 +4,7 @@ DEPEND=virtual/perl-Carp dev-perl/Class-Load dev-perl/namespace-autoclean dev-pe
 DESCRIPTION=Automatically apply roles at object creation time
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/MooseX-Traits
+INHERIT=perl-module
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Class-Load dev-perl/namespace-autoclean dev-perl/Sub-Exporter dev-lang/perl:=

@@ -4,6 +4,7 @@ DEPEND=dev-lang/perl
 DESCRIPTION=The sFlow module provides a mechanism to parse and decode sFlow datagrams
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Net-sFlow
+INHERIT=perl-module
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
