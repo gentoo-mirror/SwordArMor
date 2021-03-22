@@ -1,37 +1,36 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools fcaps git-r3
+inherit fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
+SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
-EGIT_REPO_URI="https://gitlab.labs.nic.cz/labs/bird.git"
-EGIT_COMMIT="78e4a123bb937bb45f7eaebb0ea475095443bfd0"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
-	client? ( sys-libs/ncurses )
-	client? ( sys-libs/readline )
+	client? ( sys-libs/ncurses:= )
+	client? ( sys-libs/readline:= )
 	filecaps? (
 		acct-group/bird
 		acct-user/bird
 	)
-	libssh? ( net-libs/libssh )
-"
-DEPEND="sys-devel/flex
+	libssh? ( net-libs/libssh:= )"
+BDEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
 
-src_prepare() {
-	default
-	eautoreconf
-}
+FILECAPS=(
+	CAP_NET_ADMIN			usr/sbin/bird
+	CAP_NET_BIND_SERVICE	usr/sbin/bird
+	CAP_NET_RAW				usr/sbin/bird
+)
 
 src_configure() {
 	econf \
@@ -51,12 +50,6 @@ src_install() {
 	newconfd "${FILESDIR}/confd-${PN}-2" ${PN}
 	dodoc doc/bird.conf.example
 }
-
-FILECAPS=(
-	CAP_NET_ADMIN			usr/sbin/bird
-	CAP_NET_BIND_SERVICE	usr/sbin/bird
-	CAP_NET_RAW				usr/sbin/bird
-)
 
 pkg_postinst() {
 	use filecaps && \
