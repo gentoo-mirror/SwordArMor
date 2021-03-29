@@ -30,7 +30,3 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
-
-pkg_postrm() {
-	exit 0
-}
