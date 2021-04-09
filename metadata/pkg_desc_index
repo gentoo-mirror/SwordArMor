@@ -48,7 +48,6 @@ dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup mo
 dev-python/pynetbox 5.1.0: Python API client library for NetBox
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
 dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
-dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-nwdiag 0.9.5 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
