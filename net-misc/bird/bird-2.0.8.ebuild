@@ -22,9 +22,11 @@ RDEPEND="
 		acct-user/bird
 	)
 	libssh? ( net-libs/libssh:= )"
-BDEPEND="sys-devel/flex
+BDEPEND="
 	sys-devel/bison
-	sys-devel/m4"
+	sys-devel/flex
+	sys-devel/m4
+"
 
 FILECAPS=(
 	CAP_NET_ADMIN			usr/sbin/bird
