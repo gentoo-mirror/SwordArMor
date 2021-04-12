@@ -19,6 +19,5 @@
 			Enables <pkg>net-libs/libssh</pkg> binding, mendatory for RPKI
 			support
 		</flag>
-		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
 	</use>
 </pkgmetadata>
