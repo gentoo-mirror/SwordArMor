@@ -90,7 +90,7 @@ net-misc/bird 1.6.8 2.0.6 2.0.7 2.0.7-r1 2.0.8: A routing daemon implementing OS
 net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2: Extensible command-line interface for Netbox
-net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 6.8_p1 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
