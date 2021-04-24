@@ -35,5 +35,17 @@ net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:suiteb - Adding support for NSA Suite B Cryptography
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
+sys-apps/fwupd:agent - Enable update notification agent
+sys-apps/fwupd:amt - Build and install Intel AMT plugin
+sys-apps/fwupd:archive - Use app-arch/libarchive for archives support
+sys-apps/fwupd:dell - Enable Dell-specific support.
+sys-apps/fwupd:flashrom - Enable flashrom plugin via sys-apps/flashrom
+sys-apps/fwupd:gusb - Enable dev-libs/libgusb support
+sys-apps/fwupd:nvme - Build and install NVMe plugin
+sys-apps/fwupd:redfish - Install redfish plugin
+sys-apps/fwupd:synaptics - Install synaptics plugin
+sys-apps/fwupd:thunderbolt - Install Thunderbolt plugin
+sys-apps/fwupd:tpm - Install Trusted Platform Module plugin
+sys-apps/fwupd:uefi - Enable UEFI support
 www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
 x11-libs/vte:mouse - Enable mouse support.
