@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop systemd
+inherit autotools desktop systemd prefix
 
 COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color_cpixl-20201108.patch"
 
@@ -14,10 +14,10 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="-24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf
-iso14755 +mousewheel mouse +perl -sgrmouse startup-notification unicode3 +utmp
-+wtmp xft"
+iso14755 +mousewheel mouse +perl -sgrmouse startup-notification unicode3 +utmp +wtmp
+xft"
 
 RESTRICT="test"
 
@@ -37,6 +37,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/${PN}-9.22-perl-segfault-on-exit.patch
 	"${FILESDIR}"/${PN}-9.22-sgr-mouse-mode-flag.patch
 	"${WORKDIR}"/${COLOUR_PATCH_NAME}
 )
@@ -56,6 +57,9 @@ src_prepare() {
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
 
 	use mouse || eapply -p1 "${FILESDIR}"/${P}-disable-mouse.patch
+
+	# use xsubpp from Prefix - #506500
+	hprefixify -q '"' -w "/xsubpp/" src/Makefile.in
 
 	eautoreconf
 }
