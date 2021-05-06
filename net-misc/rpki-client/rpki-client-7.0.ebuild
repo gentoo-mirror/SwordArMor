@@ -45,5 +45,5 @@ src_install() {
 	fowners -R _rpki-client "/var/db/${PN}/"
 
 	insinto /etc/ssl
-	newins "${A}/${PN}-${MY_PV}-cert.pem" cert.pem
+	newins "${DISTDIR}/${PN}-${MY_PV}-cert.pem" cert.pem
 }
