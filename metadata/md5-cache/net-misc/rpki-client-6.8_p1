@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=ISC
 RDEPEND=acct-group/_rpki-client acct-user/_rpki-client
 SLOT=0
-SRC_URI=mirror://openbsd/rpki-client/rpki-client-6.8p0.tar.gz
-_md5_=fc0edd31f9eab192670125339ef29ac1
+SRC_URI=mirror://openbsd/rpki-client/rpki-client-6.8p1.tar.gz
+_md5_=c5a38f8ededb98bc320127288bb189b9
