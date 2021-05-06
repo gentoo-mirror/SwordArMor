@@ -8,7 +8,8 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Portability shim for OpenBSD's rpki-client"
 HOMEPAGE="https://rpki-client.org/"
-SRC_URI="mirror://openbsd/${PN}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="mirror://openbsd/${PN}/${PN}-${MY_PV}.tar.gz
+https://lg.breizh-ix.net/ssl/cert.pem -> ${PN}-${MY_PV}-cert.pem"
 
 LICENSE="ISC"
 SLOT="0"
@@ -37,8 +38,12 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" BINDIR="/usr/bin" MANDIR="/usr/share/man" install
+
 	insinto /etc/rpki
 	doins *.tal
 	keepdir "/var/db/${PN}/"
 	fowners -R _rpki-client "/var/db/${PN}/"
+
+	insinto /etc/ssl
+	newins "${A}/${PN}-${MY_PV}-cert.pem" cert.pem
 }
