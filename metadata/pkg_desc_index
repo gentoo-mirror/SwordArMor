@@ -36,7 +36,11 @@ dev-python/ciscoconfparse 1.5.19: Parse, audit, query, build, and modify Cisco I
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepmerge 0.1.0: a toolset to deeply merge python dictionaries.
+dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-debug-toolbar 3.1.1: A configurable set of panels that display debug information
+dev-python/django-mptt 0.11.0 0.12.0: utilities for modified preorder tree traversal and trees of model instances
+dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
+dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
