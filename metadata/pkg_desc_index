@@ -14,6 +14,7 @@ acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
+app-crypt/certbot-dns-rfc2136 1.13.0 1.14.0 1.15.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-mobilephone/scrcpy 1.17: Display and control your Android device
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
