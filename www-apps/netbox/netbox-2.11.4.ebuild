@@ -111,17 +111,19 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	local r
-	for r in $REPLACING_VERSIONS; do
-		if [[ $r = "2.5.10" ]]; then
+	for LAST_PREVIOUS_VERSION in $REPLACING_VERSIONS; do
+		if [[ "$LAST_PREVIOUS_VERSION" = "2.5.10" ]]; then
 			ewarn "The home directory of the netbox user is now /var/lib/netbox"
 			ewarn "Please adjust your system."
 		fi
 	done
 
-	LAST_PREVIOUS_VERSION="${REPLACING_VERSIONS[-1]}"
+	if [ -z "${LAST_PREVIOUS_VERSION}" ]; then
+		exit
+	fi
+
 	LAST_BASE_DIRECTORY="/opt/netbox-${LAST_PREVIOUS_VERSION}"
-	NBCP="su -l ${PN} -c cp"
+	NBCP="su -l ${PN} -s /bin/sh -c cp"
 	if [ -f "${LAST_BASE_DIRECTORY}/local_requirements.txt}" ]; then
 		${NBCP} "${LAST_BASE_DIRECTORY}/local_requirements.txt}" /opt/netbox
 	fi
@@ -137,5 +139,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	cd /opt/netbox && su -l "${PN}" -c ./upgrade.sh
+	cd /opt/netbox && su -l "${PN}" -s /bin/sh -c ./upgrade.sh
 }
