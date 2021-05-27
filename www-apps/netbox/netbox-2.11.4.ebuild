@@ -92,7 +92,7 @@ src_install() {
 	dodir /opt
 	cp -a ../${P} "${ED}"/opt
 	dosym ${P} /opt/netbox
-dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
+	dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
 	dosym ../../../../etc/netbox/configuration.py \
 	/opt/netbox/netbox/netbox/configuration.py
 	dodir /etc/netbox
@@ -118,4 +118,24 @@ pkg_postinst() {
 			ewarn "Please adjust your system."
 		fi
 	done
+
+	LAST_PREVIOUS_VERSION="${REPLACING_VERSIONS[-1]}"
+	LAST_BASE_DIRECTORY="/opt/netbox-${LAST_PREVIOUS_VERSION}"
+	NBCP="su -l ${PN} -c cp"
+	if [ -f "${LAST_BASE_DIRECTORY}/local_requirements.txt}" ]; then
+		${NBCP} "${LAST_BASE_DIRECTORY}/local_requirements.txt}" /opt/netbox
+	fi
+	if [ -f "${LAST_BASE_DIRECTORY}/netbox/netbox/ldap_config.py" ]; then
+		${NBCP} "${LAST_BASE_DIRECTORY}/netbox/netbox/ldap_config.py" /opt/netbox/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/media" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/media" /opt/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/scripts" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/scripts" /opt/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
+	fi
+	cd /opt/netbox && su -l "${PN}" -c ./upgrade.sh
 }
