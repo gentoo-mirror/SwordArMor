@@ -15,9 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/cymruwhois[${PYTHON_USEDEP}]
-		dev-python/dnspython[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/cymruwhois[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
+"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
