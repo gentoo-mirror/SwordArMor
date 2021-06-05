@@ -100,7 +100,7 @@ net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 6.8_p1 6.9_p0 9999: OpenBGPD is a free im
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
-net-misc/routinator 0.7.1 0.8.1 0.8.2 0.8.3: An RPKI relying party software
+net-misc/routinator 0.7.1 0.8.3 0.9.0: An RPKI relying party software
 net-misc/rpki-client 6.7_p1 6.8_p1 7.0: Portability shim for OpenBSD's rpki-client
 net-misc/urlview 0.9_p21: A curses URL parser for text files
 net-misc/youtube-dl 2020.11.26-r1 2020.12.07: Download videos from YouTube.com (and more sites...)
