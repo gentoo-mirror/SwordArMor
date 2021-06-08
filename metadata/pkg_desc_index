@@ -58,7 +58,6 @@ dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activit
 dev-python/sphinxcontrib-nwdiag 0.9.5 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 0.8.5 2.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/sphinxcontrib-websupport 1.2.0: Sphinx websupport extension
-dev-python/twitter 1.9.4 1.18.0: An API and command-line toolset for Twitter
 dev-python/unpaddedbase64 1.1.0: Unpadded Base64
 dev-python/vcver 0.2.11: provide package versions with version control data.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
