@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.32"
 
-inherit gnome.org meson vala xdg
+inherit gnome.org meson python-any-r1 vala xdg
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -13,10 +14,12 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd mouse +vala vanilla"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 REQUIRED_USE="vala? ( introspection )"
 
-SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~leio/distfiles/${PN}-0.60.3-command-notify.patch.xz )"
+# Upstream is hostile and refuses to upload tarballs.
+SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-0.64.1-command-notify.patch.xz )"
 
 RDEPEND="
 	>=x11-libs/gtk+-3.24.14:3[introspection?]
@@ -33,6 +36,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/libxml2:2
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.13
@@ -43,18 +47,22 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.64.1-meson-Find-python-explicitly-to-honor-downstream-pyt.patch
+)
+
 src_prepare() {
 	if ! use vanilla; then
 		# Part of https://src.fedoraproject.org/rpms/vte291/raw/f31/f/vte291-cntnr-precmd-preexec-scroll.patch
 		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
-		eapply "${WORKDIR}"/${PN}-0.60.3-command-notify.patch
+		eapply "${WORKDIR}"/${PN}-0.64.1-command-notify.patch
 	fi
 
 	# -Ddebugg option enables various debug support via VTE_DEBUG, but also ggdb3; strip the latter
 	sed -e '/ggdb3/d' -i meson.build || die
 
 	if ! use mouse; then
-		eapply "${FILESDIR}"/${P}-disable-mouse.patch
+		eapply "${FILESDIR}"/${PN}-0.60.3-disable-mouse.patch
 	fi
 
 	use vala && vala_src_prepare
@@ -68,6 +76,7 @@ src_configure() {
 		$(meson_use gtk-doc docs)
 		$(meson_use introspection gir)
 		-Dfribidi=true # pulled in by pango anyhow
+		-Dglade=true
 		$(meson_use crypt gnutls)
 		-Dgtk3=true
 		-Dgtk4=false
