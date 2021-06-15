@@ -6,6 +6,7 @@ EAPI=7
 EGIT_COMMIT="0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e"
 README_GENTOO_SUFFIX="-r1"
 
+JAVA_PKG_FORCE_VM=openjdk-bin-11
 inherit readme.gentoo-r1 java-pkg-2 systemd
 
 DESCRIPTION="The official server for the sandbox video game"
@@ -14,15 +15,13 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P
 
 LICENSE="Mojang"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	acct-group/minecraft
 	acct-user/minecraft
 	app-misc/dtach
-	|| (
-		virtual/jre:11
-		virtual/jdk:11
-	)
+	dev-java/openjdk-bin:11
 "
 
 RESTRICT="bindist mirror"
@@ -41,7 +40,7 @@ src_install() {
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
 
-	newinitd "${FILESDIR}"/minecraft-server.initd-r4 minecraft-server
+	newinitd "${FILESDIR}"/minecraft-server.initd-r5 minecraft-server
 	newconfd "${FILESDIR}"/minecraft-server.confd-r1 minecraft-server
 	systemd_newunit "${FILESDIR}"/minecraft-server.service minecraft-server@.service
 
