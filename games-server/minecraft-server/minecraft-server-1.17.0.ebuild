@@ -46,6 +46,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	sed -i '$i gjl_vm="openjdk-bin-11"' usr/bin/minecraft-server
+	sed -i '$i gjl_vm="openjdk-bin-11"' "${D}/usr/bin/minecraft-server"
 	readme.gentoo_print_elog
 }
