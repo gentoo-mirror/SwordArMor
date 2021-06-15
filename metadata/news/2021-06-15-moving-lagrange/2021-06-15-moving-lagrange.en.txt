@@ -1,0 +1,13 @@
+Title: Lagrange was moved into GURU overlay
+Author: Anna <cyber@sysrq.in>
+Posted: 2021-06-15
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: gemini-client/lagrange
+
+To continue receiving updates, you should add GURU repository and
+install net-misc/lagrange.
+
+# eselect repository enable guru
+# emerge -C gemini-client/lagrange
+# emerge net-misc/lagrange
