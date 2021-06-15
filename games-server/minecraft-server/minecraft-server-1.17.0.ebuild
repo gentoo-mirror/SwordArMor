@@ -14,15 +14,14 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	acct-group/minecraft
 	acct-user/minecraft
 	app-misc/dtach
 	|| (
-		>=virtual/jre-1.8
-		>=virtual/jdk-1.8
+		virtual/jre:11
+		virtual/jdk:11
 	)
 "
 
