@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_COMMIT="35139deedbd5182953cf1caa23835da59ca3d7cd"
+EGIT_COMMIT="0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e"
 README_GENTOO_SUFFIX="-r1"
 
 inherit readme.gentoo-r1 java-pkg-2 systemd
