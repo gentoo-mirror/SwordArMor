@@ -21,6 +21,7 @@ app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
 app-text/unicode 2.7 2.8: display unicode character properties
 dev-go/dns 1.1.31: DNS library in Go
+dev-java/openjdk-bin 16.0.1_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
 dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
 dev-perl/B-Hooks-OP-PPAddr 0.06: provides a C API for XS modules to hook into the execution of perl opcodes
@@ -65,6 +66,7 @@ games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.0.0 1.1.25: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.0: The official server for the sandbox video game
 games-util/factorio-mod-updater 0.1.1 0.2.0 0.2.2: Python script to update mods on a dedicated factorio server
+gemini-client/lagrange 1.4.2 1.5.1: Desktop GUI client for browsing Geminispace
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
