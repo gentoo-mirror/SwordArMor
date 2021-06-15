@@ -19,7 +19,7 @@ RDEPEND="
 	acct-group/minecraft
 	acct-user/minecraft
 	app-misc/dtach
-	dev-java/openjdk-bin:11[gentoo-vm]
+	dev-java/openjdk-bin:16[gentoo-vm]
 "
 
 RESTRICT="bindist mirror"
@@ -46,6 +46,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	sed -i '$i gjl_vm="openjdk-bin-11"' "${EROOT}/usr/bin/minecraft-server"
+	sed -i '$i gjl_vm="openjdk-bin-16"' "${EROOT}/usr/bin/minecraft-server"
+	sed -i '$i GENTOO_VM="${gjl_vm}"' "${EROOT}/usr/bin/minecraft-server"
 	readme.gentoo_print_elog
 }
