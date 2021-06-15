@@ -40,7 +40,7 @@ src_install() {
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
 
-	newinitd "${FILESDIR}"/minecraft-server.initd-r5 minecraft-server
+	newinitd "${FILESDIR}"/minecraft-server.initd-r4 minecraft-server
 	newconfd "${FILESDIR}"/minecraft-server.confd-r1 minecraft-server
 	systemd_newunit "${FILESDIR}"/minecraft-server.service minecraft-server@.service
 
