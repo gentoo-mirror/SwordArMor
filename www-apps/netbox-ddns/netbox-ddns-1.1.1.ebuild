@@ -13,6 +13,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="www-apps/netbox"
+DEPEND="
+	dev-python/dnspython[${PYTHON_USEDEP}]
+	www-apps/netbox
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+S="${WORKDIR}/${PN}"
