@@ -14,16 +14,12 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	acct-group/minecraft
 	acct-user/minecraft
 	app-misc/dtach
-	|| (
-		>=virtual/jre-1.8
-		>=virtual/jdk-1.8
-	)
+	dev-java/openjdk-bin:11[gentoo-vm]
 "
 
 RESTRICT="bindist mirror"
@@ -50,5 +46,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	sed -i '$i gjl_vm="openjdk-bin-11"' "${EROOT}/usr/bin/minecraft-server"
 	readme.gentoo_print_elog
 }
