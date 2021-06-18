@@ -15,9 +15,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# cfu has been moved to confu
 DEPEND="
-	>=dev-python/confu-0.5.1[${PYTHON_USEDEP}]
+	>=dev-python/cfu-0.5.1[${PYTHON_USEDEP}]
 	>=dev-python/munge-0.1.5[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	>=dev-python/twentyc-rpc-0.3.4[${PYTHON_USEDEP}]
