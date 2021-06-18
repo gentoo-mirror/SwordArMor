@@ -34,6 +34,7 @@ dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in
 dev-perl/ip2as 9999: IP to ASN mapping
 dev-python/actdiag 0.5.4 2.0.0: actdiag generate activity-diagram image file from spec-text file.
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
+dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/ciscoconfparse 1.5.19: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/confu 1.7.1: Configuration file validation and generation
