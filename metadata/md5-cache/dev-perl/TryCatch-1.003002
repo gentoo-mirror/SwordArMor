@@ -10,5 +10,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Devel-Declare dev-perl/Test-Exception dev-perl/B-Hooks-OP-PPAddr dev-perl/Module-Install dev-perl/Sub-Name dev-perl/Parse-Method-Signatures dev-perl/Scope-Upper dev-perl/Sub-Exporter dev-perl/Variable-Magic virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AS/ASH/TryCatch-1.003002.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	fea344a91ebf37efadf172c6a3de5a72	perl-module	fdedfc91b478ee55457221eb728e3de5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	fea344a91ebf37efadf172c6a3de5a72	perl-module	0ee2b2b92175720c966a5608c62b458d
 _md5_=cdb6507276989db3701026546b5cd1b7
