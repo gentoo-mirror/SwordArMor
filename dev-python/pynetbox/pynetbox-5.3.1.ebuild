@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{6..9} )
 inherit distutils-r1
 
 DESCRIPTION="Python API client library for NetBox"
@@ -17,9 +17,9 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
->=dev-python/requests-2.20.0
-<dev-python/requests-3.0
-dev-python/six
+	>=dev-python/requests-2.20.0
+	<dev-python/requests-3.0
+	dev-python/six
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
