@@ -63,7 +63,7 @@ dev-python/oslo-utils 4.9.1: Oslo Utility library
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/peeringdb 1.1.0: PeeringDB python client
 dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
-dev-python/pynetbox 5.1.0: Python API client library for NetBox
+dev-python/pynetbox 5.3.1 6.1.2: Python API client library for NetBox
 dev-python/python-cinderclient 7.4.0: A client for the OpenStack Cinder API
 dev-python/python-keystoneclient 4.2.0: Client Library for OpenStack Identity
 dev-python/python-novaclient 17.5.0: A client for the OpenStack Nova API
@@ -114,7 +114,7 @@ net-misc/bird 1.6.8 2.0.6 2.0.7 2.0.7-r1 2.0.8: A routing daemon implementing OS
 net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2: IPv6 address calculator
-net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2: Extensible command-line interface for Netbox
+net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2 0.8.0_alpha1: Extensible command-line interface for Netbox
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 6.8_p1 6.9_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ripe-api-client 9999: Update RIPE DB through the API
