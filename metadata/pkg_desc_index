@@ -46,17 +46,30 @@ dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
 dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
+dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
 dev-python/munge 1.2.0: data manipulation library and client
 dev-python/netflow 0.10.3: NetFlow v1, v5, v9 and IPFIX tool suite implemented in Python 3
 dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
+dev-python/openstacksdk 0.57.0: A collection of libraries for building applications to work with OpenStack.
+dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
+dev-python/osc-lib 2.4.0: A package of common support modules for writing OSC plugins.
+dev-python/oslo-config 8.7.0: Oslo Configuration API
+dev-python/oslo-i18n 5.0.1: Oslo i18n library
+dev-python/oslo-serialization 4.1.0: Oslo Serialization library
+dev-python/oslo-utils 4.9.1: Oslo Utility library
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/peeringdb 1.1.0: PeeringDB python client
 dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
 dev-python/pynetbox 5.1.0: Python API client library for NetBox
+dev-python/python-cinderclient 7.4.0: A client for the OpenStack Cinder API
+dev-python/python-keystoneclient 4.2.0: Client Library for OpenStack Identity
+dev-python/python-novaclient 17.5.0: A client for the OpenStack Nova API
+dev-python/python-openstackclient 5.5.0: A client for the OpenStack APIs
 dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMark
+dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 2.0.0: A sphinx extension for embedding activity diagram using actdiag.
