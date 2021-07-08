@@ -1,0 +1,14 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-lang/perl
+DESCRIPTION=Perl lib for IXP-Manager
+EAPI=7
+HOMEPAGE=https://github.com/inex/IXP-Manager/tree/master/tools/perl-lib/IXPManager
+INHERIT=perl-module
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=https://github.com/inex/IXP-Manager/archive/refs/tags/v5.8.0.tar.gz -> IXPManager-5.8.0.tar.gz
+_eclasses_=multiprocessing	61c959fc55c15c00bbb1079d6a71370b	perl-functions	fea344a91ebf37efadf172c6a3de5a72	perl-module	0ee2b2b92175720c966a5608c62b458d
+_md5_=a20ec3b09b71387cc788e42e50d23af3
