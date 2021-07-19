@@ -1,21 +1,23 @@
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -11,7 +11,7 @@
+--- a/Makefile.in	2021-05-27 12:57:29.600377496 +0300
++++ b/Makefile.in	2021-05-27 12:58:55.111381725 +0300
+@@ -13,7 +13,7 @@
  SNMPTGSO = /usr/lib/snmp/dlmod/snmp_NETFLOW.so
  SNMPCONF = /etc/snmp/snmpd.conf
  SNMPLINE = dlmod netflow $(SNMPTGSO)
 -CC = gcc
-+$(CC) ?= gcc
++CC ?= gcc
  
  # https://www.kernel.org/doc/Documentation/kbuild/modules.txt
  # https://www.kernel.org/doc/Documentation/kbuild/makefiles.txt
-@@ -22,29 +22,29 @@
+@@ -24,31 +24,31 @@
  
- ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
- 	@echo Compiling for kernel $(KVERSION)
--	make -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
-+	$(MAKE) -C $(KDIR) M=$(CURDIR) modules CONFIG_DEBUG_INFO=y
+ ipt_NETFLOW.ko: version.h ipt_NETFLOW.c ipt_NETFLOW.h compat_def.h compat.h Makefile
+ 	@echo Compiling $(shell ./version.sh) for kernel $(KVERSION)
+-	make -C $(KDIR) M=$(CURDIR) modules
++	$(MAKE) -C $(KDIR) M=$(CURDIR) modules
  	@touch $@
+ compat_def.h: gen_compat_def
+ 	./gen_compat_def > $@
  sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
  	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
  	@echo Compiling for kernel $(KVERSION)
@@ -36,7 +38,7 @@
  lclean:
  	-rm -f *.so *_sh.o
  clean: mclean lclean
- 	-rm -f *.so *.o modules.order version.h
+ 	-rm -f *.so *.o modules.order version.h compat_def.h
  
  snmp_NETFLOW.so: snmp_NETFLOW.c
 -	$(CC) -fPIC -shared -o $@ $< -lnetsnmp
@@ -44,12 +46,16 @@
  
  sinstall: | snmp_NETFLOW.so IPT-NETFLOW-MIB.my
  	@echo " *"
-@@ -64,7 +64,7 @@
+@@ -68,10 +68,10 @@
  	fi
  
  %_sh.o: libipt_NETFLOW.c
 -	$(CC) $(CFLAGS) -O2 -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
-+	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
++	$(CC) $(CFLAGS) -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
  
  %.so: %_sh.o
- 	$(CC) -shared -o $@ $<
+-	$(CC) -shared -o $@ $<
++	$(CC) $(LDFLAGS) -shared -o $@ $<
+ 
+ version.h: ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@./version.sh --define > version.h

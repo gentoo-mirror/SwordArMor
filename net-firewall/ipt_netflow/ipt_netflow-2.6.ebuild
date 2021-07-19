@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="debug dot1q natevents snmp"
+IUSE="debug dot1d dot1q natevents snmp"
 
 RDEPEND="
 	net-firewall/iptables:0=
@@ -27,8 +27,8 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
-	"${FILESDIR}/${PN}-2.3-flags.patch"
-	"${FILESDIR}/${P}-bridge_netfilter.patch"
+	"${FILESDIR}/${PN}-2.6-gentoo.patch"
+	"${FILESDIR}/${P}-ref_module_fix.patch" # bug #781014
 )
 
 pkg_setup() {
@@ -36,6 +36,7 @@ pkg_setup() {
 
 	local CONFIG_CHECK="~IP_NF_IPTABLES"
 	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	use dot1d && CONFIG_CHECK+=" BRIDGE_NETFILTER"
 	use dot1q && CONFIG_CHECK+=" VLAN_8021Q"
 	if use natevents; then
 		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
@@ -87,21 +88,24 @@ src_configure() {
 		--kdir="${KV_DIR}" \
 		--kver="${KV_FULL}" \
 		$(use debug && echo '--enable-debugfs') \
+		$(use dot1d && echo '--enable-physdev-override') \
 		$(use dot1q && echo '--enable-vlan') \
 		$(use natevents && echo '--enable-natevents') \
 		$(use snmp && echo '--enable-snmp-rules' || echo '--disable-snmp-agent')
 }
 
 src_compile() {
-	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" all
+	emake ARCH="$(tc-arch-kernel)" CC="$(tc-getCC)" LD="$(tc-getLD)" OBJDUMP="$(tc-getOBJDUMP)" all
 }
 
 src_install() {
 	linux-mod_src_install
-	exeinto "${IPT_LIB}"
-	doexe libipt_NETFLOW.so
-	doexe libip6t_NETFLOW.so
+
 	use snmp && emake DESTDIR="${D}" SNMPTGSO="/usr/$(get_libdir)/snmp/dlmod/snmp_NETFLOW.so" sinstall
+
+	exeinto "${IPT_LIB}"
+	doexe libip{,6}t_NETFLOW.so
+
 	doheader ipt_NETFLOW.h
 	dodoc README*
 }
