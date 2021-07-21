@@ -133,6 +133,6 @@ www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaSc
 www-apps/netbox 2.10.5 2.11.3 2.11.4: IP address and data center infrastructure management tool
 www-apps/netbox-ddns 1.1.1: Dynamic DNS Connector for NetBox
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
-x11-libs/vte 0.64.1-r1: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.64.1-r1 0.64.2: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
 x11-terms/rxvt-unicode 9.22-r9: rxvt clone with xft and unicode support
