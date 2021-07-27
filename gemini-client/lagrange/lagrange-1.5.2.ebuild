@@ -20,8 +20,8 @@ DEPEND="
 	dev-libs/libunistring
 	dev-libs/openssl
 	media-libs/libsdl2
-	mp3? ( media-sound/mpg123 )
 	sys-libs/zlib
+	mp3? ( media-sound/mpg123 )
 "
 RDEPEND="${DEPEND}"
 
@@ -32,7 +32,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MPG123=$(usex mp3)
-		-DENABLE_IDLE_SLEEP=OFF  # reduce latency
 
 		# lib/the_Foundation
 		-DTFDN_ENABLE_WARN_ERROR=OFF
