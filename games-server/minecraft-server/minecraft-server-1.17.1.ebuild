@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e"
+EGIT_COMMIT="a16d67e5807f57fc4e550299cf20226194497dc2"
 README_GENTOO_SUFFIX="-r1"
 
 inherit readme.gentoo-r1 java-pkg-2 systemd
@@ -14,6 +14,7 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P
 
 LICENSE="Mojang"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	acct-group/minecraft
