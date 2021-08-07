@@ -108,7 +108,7 @@ net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-client of choice
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-net-misc/FORT-validator 1.4.1 1.4.2 1.5.0: FORT validator is an open source RPKI validator
+net-misc/FORT-validator 1.4.2 1.5.0 1.5.1: FORT validator is an open source RPKI validator
 net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
 net-misc/bgpq4 0.0.6 0.0.7: bgp filtering automation tool
 net-misc/bird 1.6.8 2.0.6 2.0.7 2.0.7-r1 2.0.8: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
