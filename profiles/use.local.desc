@@ -54,6 +54,7 @@ sys-apps/fwupd:synaptics - Install synaptics plugin
 sys-apps/fwupd:thunderbolt - Install Thunderbolt plugin
 sys-apps/fwupd:tpm - Install Trusted Platform Module plugin
 sys-apps/fwupd:uefi - Enable UEFI support
+sys-kernel/gentoo-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
 x11-libs/vte:icu - Enable legacy charset support using dev-libs/icu
 x11-libs/vte:mouse - Enable mouse support.
