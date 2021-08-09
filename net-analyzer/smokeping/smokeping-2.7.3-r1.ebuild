@@ -49,6 +49,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-smokeping_cgi-config.patch"
+)
+
 src_prepare() {
 	default
 

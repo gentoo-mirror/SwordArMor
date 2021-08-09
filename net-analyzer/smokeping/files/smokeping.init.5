@@ -16,7 +16,8 @@ depend() {
 }
 
 start_pre() {
-    export LC_ALL=C
+	export LC_ALL=C
+	checkpath -d -m 0755 -o "${command_user}" "/run/${RC_SVCNAME}"
 }
 
 reload() {
