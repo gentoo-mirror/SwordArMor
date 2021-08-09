@@ -99,6 +99,7 @@ net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
 net-analyzer/nagios-check-zfs-linux 1.2: Nagios plugin to check ZFS pool in the Linux environment
 net-analyzer/net-snmp 5.9-r2 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netsniff-ng 0.6.6: high performance network sniffer for packet inspection
+net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
 net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
 net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via DNS
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records

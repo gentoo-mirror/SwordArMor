@@ -23,6 +23,8 @@ net-analyzer/net-snmp:pci - Use libpci (from sys-apps/pciutils) to look up netwo
 net-analyzer/net-snmp:rpm - Enable monitoring of app-arch/rpm. This flag requires the bzip2 and zlib flags to be enabled as well.
 net-analyzer/net-snmp:smux - Enable support for the legacy smux protocol (superseded by agentx)
 net-analyzer/net-snmp:ucd-compat - Build UCD compatibility library. Increases significantly the install size.
+net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
+net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
 net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
