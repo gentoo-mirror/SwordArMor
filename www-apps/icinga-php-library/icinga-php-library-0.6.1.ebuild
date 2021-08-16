@@ -17,6 +17,6 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_install() {
-	insinto "/usr/share/icinga-php"
-	doins -r "${S}"/vendor/ipl
+	insinto "/usr/share/icinga-php/ipl"
+	doins -r "${S}"/vendor
 }
