@@ -17,9 +17,6 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_install() {
-	insinto "/usr/share/icingaweb2/library"
+	insinto "/usr/share/icinga-php"
 	doins -r "${S}"/vendor
-
-	insinto "/usr/share/icingaweb2/public"
-	doins -r "${S}"/asset/*
 }
