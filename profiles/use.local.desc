@@ -35,6 +35,12 @@ net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
+net-misc/frr:fpm - Enable Forwarding Plane Manager support
+net-misc/frr:grpc - Enable gRPC plugin
+net-misc/frr:nhrp - Build Next Hop Resolution Protocol daemon
+net-misc/frr:ospfapi - Build OSPFAPI support
+net-misc/frr:pam - Add support for PAM (via sys-libs/pam) to the Virtual Terminal Interface Shell (vtysh)
+net-misc/frr:rpki - Enable RPKI
 net-misc/routinator:rta - Enables the command rta for validating Resource Tagged Assertions as described in draft-michaelson-rpki-rta
 net-wireless/hostapd:crda - Add CRDA support
 net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS
