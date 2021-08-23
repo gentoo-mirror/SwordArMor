@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
@@ -31,7 +31,8 @@ COMMON_DEPEND="
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
-	snmp? ( net-analyzer/net-snmp:= )"
+	snmp? ( net-analyzer/net-snmp:= )
+"
 
 BDEPEND="
 	doc? ( dev-python/sphinx )
@@ -43,12 +44,16 @@ BDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
+"
 
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
-	!net-misc/quagga"
+	!net-misc/quagga
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch )
 
 src_prepare() {
 	default
