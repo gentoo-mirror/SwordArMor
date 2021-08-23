@@ -21,22 +21,22 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
+	>=net-libs/libyang-2.0.0
 	acct-user/frr
 	dev-libs/json-c:0=
-	>=net-libs/libyang-2.0.0
-	sys-libs/libcap
-	sys-libs/readline:0=
-	virtual/libcrypt:=
 	grpc? ( net-libs/grpc:= )
+	net-dns/c-ares:=
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
+	sys-libs/libcap
+	sys-libs/readline:0=
+	virtual/libcrypt:=
 "
 
 BDEPEND="
 	doc? ( dev-python/sphinx )
-	net-dns/c-ares
 	sys-devel/flex
 	virtual/yacc
 	~dev-util/clippy-"${PV}"
