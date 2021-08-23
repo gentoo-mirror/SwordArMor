@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
@@ -21,21 +21,22 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
+	>=net-libs/libyang-2.0.0
 	acct-user/frr
 	dev-libs/json-c:0=
-	>=net-libs/libyang-2.0.0
-	sys-libs/libcap
-	sys-libs/readline:0=
-	virtual/libcrypt:=
 	grpc? ( net-libs/grpc:= )
+	net-dns/c-ares:=
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
-	snmp? ( net-analyzer/net-snmp:= )"
+	snmp? ( net-analyzer/net-snmp:= )
+	sys-libs/libcap
+	sys-libs/readline:0=
+	virtual/libcrypt:=
+"
 
 BDEPEND="
 	doc? ( dev-python/sphinx )
-	net-dns/c-ares
 	sys-devel/flex
 	virtual/yacc
 	~dev-util/clippy-"${PV}"
@@ -43,12 +44,16 @@ BDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
+"
 
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
-	!net-misc/quagga"
+	!net-misc/quagga
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch )
 
 src_prepare() {
 	default
