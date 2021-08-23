@@ -25,7 +25,6 @@ COMMON_DEPEND="
 	acct-user/frr
 	dev-libs/json-c:0=
 	grpc? ( net-libs/grpc:= )
-	net-dns/c-ares:=
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
@@ -53,7 +52,10 @@ RDEPEND="
 	!net-misc/quagga
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
+	"${FILESDIR}"/${P}-c-ares-vtysh.patch
+)
 
 src_prepare() {
 	default
@@ -148,4 +150,8 @@ src_install() {
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
+}
+
+pkg_postinst() {
+	optfeature "dns" net-dns/c-ares
 }
