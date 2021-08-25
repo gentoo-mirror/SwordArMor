@@ -20,28 +20,29 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/django-3.1.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-cacheops-5.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-cors-headers-3.5.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-debug-toolbar-3.1.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-3.2.6[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-cacheops-6.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-cors-headers-3.8.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-filter-2.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-mptt-0.11.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-mptt-0.13.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-pglocks-1.0.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-prometheus-2.1.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/djangorestframework-3.12.2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-rq-2.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-tables2-2.3.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-taggit-1.3.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-timezone-field-4.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-rq-2.4.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-tables2-2.4.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-taggit-1.5.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-timezone-field-4.1.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/djangorestframework-3.12.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/drf-yasg-1.20.0[${PYTHON_MULTI_USEDEP},validation]
-		>=dev-python/jinja-2.11.2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/markdown-3.3.3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/jinja-3.0.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/markdown-3.3.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pillow-8.0.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/psycopg-2.8.6[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pycryptodome-3.9.9[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyyaml-5.3.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/svgwrite-1.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pillow-8.3.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/psycopg-2.9.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pycryptodome-3.10.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pyyaml-5.4.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/svgwrite-1.4.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/tablib-3.0.0[${PYTHON_MULTI_USEDEP}]
 		www-servers/gunicorn[${PYTHON_MULTI_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_MULTI_USEDEP}] )
 	')"
@@ -91,7 +92,7 @@ src_install() {
 	dodir /opt
 	cp -a ../${P} "${ED}"/opt
 	dosym ${P} /opt/netbox
-dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
+	dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
 	dosym ../../../../etc/netbox/configuration.py \
 	/opt/netbox/netbox/netbox/configuration.py
 	dodir /etc/netbox
@@ -110,11 +111,33 @@ dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	local r
-	for r in $REPLACING_VERSIONS; do
-		if [[ $r = "2.5.10" ]]; then
+	for LAST_PREVIOUS_VERSION in $REPLACING_VERSIONS; do
+		if [[ "$LAST_PREVIOUS_VERSION" = "2.5.10" ]]; then
 			ewarn "The home directory of the netbox user is now /var/lib/netbox"
 			ewarn "Please adjust your system."
 		fi
 	done
+
+	if [ -z "${LAST_PREVIOUS_VERSION}" ]; then
+		exit
+	fi
+
+	LAST_BASE_DIRECTORY="/opt/netbox-${LAST_PREVIOUS_VERSION}"
+	NBCP="su -l ${PN} -s /bin/sh -c cp"
+	if [ -f "${LAST_BASE_DIRECTORY}/local_requirements.txt}" ]; then
+		${NBCP} "${LAST_BASE_DIRECTORY}/local_requirements.txt}" /opt/netbox
+	fi
+	if [ -f "${LAST_BASE_DIRECTORY}/netbox/netbox/ldap_config.py" ]; then
+		${NBCP} "${LAST_BASE_DIRECTORY}/netbox/netbox/ldap_config.py" /opt/netbox/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/media" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/media" /opt/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/scripts" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/scripts" /opt/netbox/netbox/
+	fi
+	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
+		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
+	fi
+	cd /opt/netbox && su -l "${PN}" -s /bin/sh -c ./upgrade.sh
 }
