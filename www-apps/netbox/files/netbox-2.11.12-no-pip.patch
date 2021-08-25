@@ -1,11 +1,23 @@
---- a/upgrade.sh	2021-03-15 14:54:09.287164820 +0100
-+++ b/upgrade.sh	2021-03-15 15:08:32.463687738 +0100
-@@ -14,48 +14,6 @@
-   WARN_MISSING_VENV=1
- fi
+--- a/upgrade.sh	2021-08-25 23:49:35.343236769 +0200
++++ b/upgrade.sh	2021-08-25 23:50:31.305521930 +0200
+@@ -2,60 +2,6 @@
+ # This script will prepare NetBox to run after the code has been upgraded to
+ # its most recent release.
 
+-cd "$(dirname "$0")"
+-VIRTUALENV="$(pwd -P)/venv"
+-
+-# Remove the existing virtual environment (if any)
+-if [ -d "$VIRTUALENV" ]; then
+-  COMMAND="rm -rf ${VIRTUALENV}"
+-  echo "Removing old virtual environment..."
+-  eval $COMMAND
+-else
+-  WARN_MISSING_VENV=1
+-fi
+-
 -# Create a new virtual environment
--COMMAND="/usr/bin/python3 -m venv ${VIRTUALENV}"
+-COMMAND="python3 -m venv ${VIRTUALENV}"
 -echo "Creating a new virtual environment at ${VIRTUALENV}..."
 -eval $COMMAND || {
 -  echo "--------------------------------------------------------------------"
