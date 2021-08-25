@@ -82,7 +82,7 @@ dev-python/twentyc-rpc 0.4.0: client for 20c's RESTful API
 dev-python/unpaddedbase64 1.1.0: Unpadded Base64
 dev-python/vcver 0.2.11: provide package versions with version control data.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
-dev-util/clippy 8.0: Standalone clippy tool built from FRR sources
+dev-util/clippy 8.0-r1: Standalone clippy tool built from FRR sources
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.0.0 1.1.25: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
