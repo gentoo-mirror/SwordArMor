@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit autotools pam python-single-r1 systemd
+inherit autotools optfeature pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
