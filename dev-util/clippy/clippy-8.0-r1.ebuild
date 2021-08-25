@@ -18,7 +18,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/flex"
+BDEPEND="
+	sys-devel/flex
+	virtual/libelf:0=
+"
 
 S="${WORKDIR}/frr-${MY_P}"
 
