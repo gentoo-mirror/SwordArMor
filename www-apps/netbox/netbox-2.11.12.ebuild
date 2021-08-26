@@ -139,5 +139,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	cd /opt/netbox && su -l "${PN}" -s /bin/sh -c ./upgrade.sh
+	cd /opt/netbox && su -p -s /bin/sh -c ./upgrade.sh "${PN}"
 }
