@@ -84,12 +84,12 @@ dev-python/twentyc-rpc 0.4.0: client for 20c's RESTful API
 dev-python/unpaddedbase64 1.1.0: Unpadded Base64
 dev-python/vcver 0.2.11: provide package versions with version control data.
 dev-python/websocket-client 0.54.0: WebSocket client for python with hybi13 support
-dev-util/clippy 8.0-r1: Standalone clippy tool built from FRR sources
+dev-util/clippy 8.0.1: Standalone clippy tool built from FRR sources
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.0.0 1.1.25: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
 games-util/factorio-mod-updater 0.1.1 0.2.0 0.2.2: Python script to update mods on a dedicated factorio server
-gemini-client/lagrange 1.6.3 1.6.4: Desktop GUI client for browsing Geminispace
+gemini-client/lagrange 1.6.4 1.6.5: Desktop GUI client for browsing Geminispace
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
@@ -117,7 +117,7 @@ net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
 net-misc/bgpq4 0.0.6 0.0.7: bgp filtering automation tool
 net-misc/bird 1.6.8 2.0.6 2.0.7 2.0.7-r1 2.0.8: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
-net-misc/frr 8.0: The FRRouting Protocol Suite
+net-misc/frr 8.0.1: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2: IPv6 address calculator
 net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2 0.8.0_alpha1: Extensible command-line interface for Netbox
