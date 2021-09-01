@@ -1,5 +1,5 @@
 BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
-DEFINED_PHASES=compile install postinst setup unpack
+DEFINED_PHASES=compile install setup unpack
 DESCRIPTION=Connect to your Mattermost or Slack using your IRC-client of choice
 EAPI=7
 HOMEPAGE=https://github.com/42wim/matterircd
@@ -10,5 +10,5 @@ LICENSE=MIT
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/42wim/matterircd/archive/v0.20.0.tar.gz -> matterircd-0.20.0.tar.gz
-_eclasses_=go-module	236ecaf8d66b4f4c8d98f6f868defed5	user-info	2e75eaea3582b052ec16d9d5aa74ced3	user	1033b6bed7cf367c4507ea9a3ff503d0
+_eclasses_=go-module	66ced1f8651b6b35c0262d39e015fe24	user-info	2e75eaea3582b052ec16d9d5aa74ced3	user	1033b6bed7cf367c4507ea9a3ff503d0
 _md5_=07df73d412bbde790cd39087fbcaf392
