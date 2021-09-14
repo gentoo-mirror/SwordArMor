@@ -47,6 +47,7 @@ dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
 dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
+dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
