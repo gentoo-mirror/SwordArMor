@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="IP address and data center infrastructure management tool"
@@ -20,30 +20,33 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/django-3.2.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-cacheops-6.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-cors-headers-3.7.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-debug-toolbar-3.2.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-3.2.7[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-cors-headers-3.8.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-filter-2.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-mptt-0.12.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-graphiql-debug-toolbar-0.2.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-mptt-0.13.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-pglocks-1.0.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-prometheus-2.1.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-rq-2.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-tables2-2.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-taggit-1.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-timezone-field-4.1.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-taggit-1.5.1[${PYTHON_MULTI_USEDEP}]
+		~dev-python/django-timezone-field-4.2.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/djangorestframework-3.12.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/drf-yasg-1.20.0[${PYTHON_MULTI_USEDEP},validation]
+		>=dev-python/graphene-django-2.15.0[${PYTHON_MULTI_USEDEP}]
+		>=www-servers/gunicorn-20.1.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/jinja-3.0.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/markdown-3.3.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/markdown-include-0.6.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/mkdocs-material-7.2.6[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pillow-8.2.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/psycopg-2.8.6[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pillow-8.3.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/psycopg-2.9.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pycryptodome-3.10.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pyyaml-5.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/svgwrite-1.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/tablib-3.0.0[${PYTHON_MULTI_USEDEP}]
-		www-servers/gunicorn[${PYTHON_MULTI_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_MULTI_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
@@ -139,5 +142,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	cd /opt/netbox && su -l "${PN}" -s /bin/sh -c ./upgrade.sh
+	cd /opt/netbox && su -p -s /bin/sh -c ./upgrade.sh "${PN}"
 }

@@ -1,10 +1,11 @@
---- a/upgrade.sh	2021-05-08 16:28:49.168776455 +0200
-+++ b/upgrade.sh	2021-05-08 16:29:26.172932950 +0200
-@@ -3,58 +3,6 @@
- # its most recent release.
+--- a/upgrade.sh	2021-09-16 16:18:18.520099120 +0200
++++ b/upgrade.sh	2021-09-16 16:19:02.730460864 +0200
+@@ -7,59 +7,6 @@
+ # Python 3.7 or later.
  
  cd "$(dirname "$0")"
 -VIRTUALENV="$(pwd -P)/venv"
+-PYTHON="${PYTHON:-python3}"
 -
 -# Remove the existing virtual environment (if any)
 -if [ -d "$VIRTUALENV" ]; then
@@ -16,7 +17,7 @@
 -fi
 -
 -# Create a new virtual environment
--COMMAND="/usr/bin/python3 -m venv ${VIRTUALENV}"
+-COMMAND="${PYTHON} -m venv ${VIRTUALENV}"
 -echo "Creating a new virtual environment at ${VIRTUALENV}..."
 -eval $COMMAND || {
 -  echo "--------------------------------------------------------------------"
@@ -57,5 +58,5 @@
 -  echo "Skipping local dependencies (local_requirements.txt not found)"
 -fi
  
- # Apply any database migrations
- COMMAND="python3 netbox/manage.py migrate"
+ # Test schema migrations integrity
+ COMMAND="python3 netbox/manage.py showmigrations"
