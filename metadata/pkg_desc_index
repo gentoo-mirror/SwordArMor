@@ -40,15 +40,19 @@ dev-python/ciscoconfparse 1.5.19: Parse, audit, query, build, and modify Cisco I
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/confu 1.7.1: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
+dev-python/django 3.2.7: High-level Python web framework
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-debug-toolbar 3.1.1: A configurable set of panels that display debug information
+dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-mptt 0.11.0 0.12.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
 dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
+dev-python/graphene-django 2.15.0: Graphene Django integration
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mrtparse 1.7: MRT format data parser
@@ -139,7 +143,7 @@ sys-kernel/gentoo-sources 4.14.228 4.14.232: Full sources including the Gentoo p
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/icinga-php-library 0.6.1: Icinga PHP libraries for Icinga Web 2.
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
-www-apps/netbox 2.11.3 2.11.4 2.11.12: IP address and data center infrastructure management tool
+www-apps/netbox 2.11.12 3.0.2: IP address and data center infrastructure management tool
 www-apps/netbox-ddns 1.1.1: Dynamic DNS Connector for NetBox
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.64.1-r1 0.64.2: Library providing a virtual terminal emulator widget
