@@ -11,7 +11,7 @@ SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+#KEYWORDS="~amd64"
 IUSE="ldap"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
