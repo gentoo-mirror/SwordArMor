@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
 DESCRIPTION="Graphene Django integration"
@@ -14,6 +14,19 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=">=dev-python/djangorestframework-3.6.3[${PYTHON_USEDEP}]"
+DEPEND="
+	<dev-python/graphene-4
+	<dev-python/graphql-core-4
+	>=dev-python/django-2.2[${PYTHON_USEDEP}]
+	>=dev-python/djangorestframework-3.6.3[${PYTHON_USEDEP}]
+	>=dev-python/graphene-3.0.0_beta5[${PYTHON_USEDEP}]
+	>=dev-python/graphql-core-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/promise-2.1[${PYTHON_USEDEP}]
+	dev-python/text-unidecode[${PYTHON_USEDEP}]
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-pytest-runner.patch"
+)
