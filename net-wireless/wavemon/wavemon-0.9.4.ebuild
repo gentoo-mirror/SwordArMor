@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools linux-info toolchain-funcs
+inherit autotools linux-info
 
 DESCRIPTION="Ncurses based monitor for IEEE 802.11 wireless LAN cards"
 HOMEPAGE="https://github.com/uoaerg/wavemon/"
@@ -11,22 +11,24 @@ SRC_URI="https://github.com/uoaerg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 
 IUSE="caps"
-RDEPEND="dev-libs/libnl:3
+RDEPEND="
+	dev-libs/libnl:3[utils]
 	sys-libs/ncurses:0=
 	caps? ( sys-libs/libcap )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS=( README.md THANKS )
+DOCS=( README.md )
+
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 )
 
 pkg_pretend() {
-	local CONFIG_CHECK="~CFG80211_WEXT"
+	local CONFIG_CHECK="~CFG80211"
 
 	check_extra_config
 }
@@ -38,9 +40,6 @@ src_prepare() {
 
 	# automagic on libcap, discovered in bug #448406
 	use caps || export ac_cv_lib_cap_cap_get_flag=false
-
-	# Respect CC
-	tc-export CC
 
 	default_src_prepare
 	eautoreconf
