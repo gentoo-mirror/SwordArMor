@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-python/ruamel-yaml-0.16[${PYTHON_USEDEP}]
+	<dev-python/ruamel-yaml-0.17[${PYTHON_USEDEP}]
 	>=dev-python/mypy_extensions-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7[${PYTHON_USEDEP}]
 "
