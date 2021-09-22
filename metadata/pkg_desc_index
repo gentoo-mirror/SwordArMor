@@ -55,6 +55,7 @@ dev-python/graphql-core 3.1.5: GraphQL for Python
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.2: Junos 'EZ' automation for non-programmers
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
