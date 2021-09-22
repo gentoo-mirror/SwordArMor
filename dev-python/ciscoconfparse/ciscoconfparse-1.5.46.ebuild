@@ -17,9 +17,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-dev-python/colorama
-dev-python/passlib
-dev-python/dnspython
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
+	dev-python/loguru[${PYTHON_USEDEP}]
+	dev-python/passlib[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
