@@ -16,7 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
+	doc? (
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-napoleon[${PYTHON_USEDEP}]
+	)
 	dev-python/netaddr[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+distutils_enable_sphinx docs
