@@ -28,7 +28,7 @@ DEPEND="
 	dev-python/pyeapi[${PYTHON_USEDEP}]
 	dev-python/netmiko[${PYTHON_USEDEP}]
 	>=dev-python/junos-eznc-2.2.1[${PYTHON_USEDEP}]
-	dev-python/ciscoconfparse[${PYTHON_USEDEP}]
+	~dev-python/ciscoconfparse-1.5.30[${PYTHON_USEDEP}]
 	dev-python/scp[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.3.0[${PYTHON_USEDEP}]
 	dev-python/ncclient[${PYTHON_USEDEP}]
