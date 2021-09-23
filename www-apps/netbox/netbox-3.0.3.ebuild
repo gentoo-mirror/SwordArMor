@@ -11,7 +11,7 @@ SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+#KEYWORDS="~amd64"
 IUSE="ldap"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
@@ -28,6 +28,7 @@ RDEPEND="
 		>=dev-python/django-mptt-0.13.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-pglocks-1.0.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-prometheus-2.1.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-redis-5.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-rq-2.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-tables2-2.4.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-taggit-1.5.1[${PYTHON_MULTI_USEDEP}]
@@ -47,7 +48,6 @@ RDEPEND="
 		>=dev-python/pyyaml-5.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/svgwrite-1.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/tablib-3.0.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/django-redis[${PYTHON_MULTI_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_MULTI_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
@@ -143,5 +143,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	cd /opt/netbox && su -p -s /bin/sh -c ./upgrade.sh "${PN}"
+	su -p -s /bin/sh -c "/opt/${P}/upgrade.sh" "${PN}"
 }
