@@ -35,7 +35,6 @@ net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
-net-misc/bird:lto - Build with Link Time Optimization (LTO)
 net-misc/frr:fpm - Enable Forwarding Plane Manager support
 net-misc/frr:grpc - Enable gRPC plugin
 net-misc/frr:nhrp - Build Next Hop Resolution Protocol daemon
