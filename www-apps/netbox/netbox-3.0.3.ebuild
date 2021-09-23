@@ -11,7 +11,7 @@ SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+#KEYWORDS="~amd64"
 IUSE="ldap"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
@@ -143,5 +143,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	su -p -s /bin/sh -c ./upgrade.sh "${PN}"
+	su -p -s /bin/sh -c "/opt/${P}/upgrade.sh" "${PN}"
 }
