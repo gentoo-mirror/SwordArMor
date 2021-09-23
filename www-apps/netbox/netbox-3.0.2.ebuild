@@ -47,6 +47,7 @@ RDEPEND="
 		>=dev-python/pyyaml-5.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/svgwrite-1.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/tablib-3.0.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/django-redis[${PYTHON_MULTI_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_MULTI_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
