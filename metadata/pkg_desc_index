@@ -45,7 +45,6 @@ dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driv
 dev-python/django-debug-toolbar 3.1.1: A configurable set of panels that display debug information
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-mptt 0.11.0 0.12.0: utilities for modified preorder tree traversal and trees of model instances
-dev-python/django-redis 5.0.0: Full featured redis cache backend for Django
 dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
 dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
