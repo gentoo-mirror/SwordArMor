@@ -1,0 +1,15 @@
+BDEPEND=sys-devel/flex sys-devel/bison dev-libs/libsodium virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu:= net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0= geoip? ( dev-libs/geoip ) zlib? ( sys-libs/zlib:= )
+DESCRIPTION=high performance network sniffer for packet inspection
+EAPI=7
+HOMEPAGE=http://netsniff-ng.org/
+INHERIT=multilib toolchain-funcs
+IUSE=debug geoip zlib
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-libs/libcli dev-libs/libnl:3 dev-libs/userspace-rcu:= net-libs/libnet:1.1 net-libs/libnetfilter_conntrack net-libs/libpcap sys-libs/ncurses:0= geoip? ( dev-libs/geoip ) zlib? ( sys-libs/zlib:= )
+SLOT=0
+SRC_URI=http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.6.8.tar.xz
+_eclasses_=multilib	4b66d835ec72e021e359bb81eacfe988	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa
+_md5_=7ceb34119687a496024d9ca6a413430e
