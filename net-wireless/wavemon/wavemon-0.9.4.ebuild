@@ -23,10 +23,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md )
 
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
-
 pkg_pretend() {
 	local CONFIG_CHECK="~CFG80211"
 	check_extra_config
@@ -43,6 +39,15 @@ src_prepare() {
 	use caps || export ac_cv_lib_cap_cap_get_flag=false
 
 	eautoreconf
+}
+
+src_configure () {
+	CFLAGS="${CFLAGS}" econf
+}
+
+src_compile() {
+	unset CFLAGS
+	default
 }
 
 src_install() {
