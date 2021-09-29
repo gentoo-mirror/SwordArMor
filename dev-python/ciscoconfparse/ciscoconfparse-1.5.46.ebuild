@@ -24,3 +24,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+export DISTUTILS_USE_SETUPTOOLS=no
+
+distutils_enable_tests pytest
