@@ -33,6 +33,7 @@ net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) suppor
 net-im/dino:gpg - Enable OpenPGP encryption plugin
 net-im/dino:http - Enable HTTP file upload plugin
 net-im/dino:omemo - Enable OMEMO encryption plugin
+net-im/gomuks:encryption - End-to-end encryption support with dev-libs/olm
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
 net-misc/frr:fpm - Enable Forwarding Plane Manager support
