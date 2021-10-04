@@ -166,7 +166,7 @@ go-module_set_globals
 
 DESCRIPTION="A terminal based Matrix client written in Go"
 HOMEPAGE="https://github.com/tulir/gomuks"
-SRC_URI="https://github.com/tulir/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/tulir/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="AGPL-3"
