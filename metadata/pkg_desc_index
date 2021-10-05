@@ -51,7 +51,7 @@ dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and 
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/graphene 3.0.0_beta7: GraphQL Framework for Python
 dev-python/graphene-django 2.15.0: Graphene Django integration
-dev-python/graphql-core 3.1.5: GraphQL for Python
+dev-python/graphql-core 3.1.6: GraphQL for Python
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.2: Junos 'EZ' automation for non-programmers
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
