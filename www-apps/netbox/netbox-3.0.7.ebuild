@@ -20,8 +20,8 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/django-3.2.7[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/django-cors-headers-3.9.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-3.2.8[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-cors-headers-3.10.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-filter-21.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-graphiql-debug-toolbar-0.2.0[${PYTHON_MULTI_USEDEP}]
@@ -37,10 +37,10 @@ RDEPEND="
 		>=dev-python/drf-yasg-1.20.0[${PYTHON_MULTI_USEDEP},validation]
 		>=dev-python/graphene-django-2.15.0[${PYTHON_MULTI_USEDEP}]
 		>=www-servers/gunicorn-20.1.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/jinja-3.0.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/jinja-3.0.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/markdown-3.3.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/markdown-include-0.6.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/mkdocs-material-7.3.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/mkdocs-material-7.3.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pillow-8.3.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/psycopg-2.9.1[${PYTHON_MULTI_USEDEP}]
