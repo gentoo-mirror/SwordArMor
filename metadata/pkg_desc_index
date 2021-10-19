@@ -114,7 +114,7 @@ games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.1.39: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
 games-util/factorio-mod-updater 0.1.1 0.2.0 0.2.2: Python script to update mods on a dedicated factorio server
-gemini-client/lagrange 1.7.1 1.7.2: Desktop GUI client for browsing Geminispace
+gemini-client/lagrange 1.7.2 1.7.3: Desktop GUI client for browsing Geminispace
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
