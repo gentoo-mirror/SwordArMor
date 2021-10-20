@@ -42,6 +42,8 @@ dev-python/confu 1.7.1: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/django 3.2.7: High-level Python web framework
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
+dev-python/django-cryptography 1.0: Easily encrypt data in Django
+dev-python/django-db-file-storage 0.5.5: Custom FILE_STORAGE for Django
 dev-python/django-debug-toolbar 3.1.1: A configurable set of panels that display debug information
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-mptt 0.11.0 0.12.0: utilities for modified preorder tree traversal and trees of model instances
@@ -146,6 +148,7 @@ net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
 net-misc/frr 8.0.1: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2: IPv6 address calculator
+net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
 net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2 0.8.0_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 6.8_p1 6.9_p0 9999: OpenBGPD is a free implementation of BGPv4
