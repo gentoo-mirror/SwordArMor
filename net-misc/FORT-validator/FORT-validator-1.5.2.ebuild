@@ -32,6 +32,8 @@ BDEPEND="
 	sys-devel/automake
 "
 
+S="${WORKDIR}/fort-${PV}"
+
 src_prepare() {
 	default
 	# Don't strip CFLAGS
