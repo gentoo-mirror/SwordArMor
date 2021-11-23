@@ -6,11 +6,10 @@ EAPI=8
 inherit xdg cmake
 
 DESCRIPTION="Desktop GUI client for browsing Geminispace"
-HOMEPAGE="https://gmi.skyjake.fi/lagrange/
-https://git.skyjake.fi/gemini/lagrange"
+HOMEPAGE="https://gmi.skyjake.fi/lagrange/ https://git.skyjake.fi/gemini/lagrange"
 SRC_URI="https://git.skyjake.fi/gemini/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
-LICENSE="|| ( MIT Unlicense ) Apache-2.0 BSD-2 OFL-1.1"
+LICENSE="|| ( MIT Unlicense ) Apache-2.0 BSD-2 CC-BY-SA-4.0 OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse4_1 +fribidi +harfbuzz mp3 webp"
@@ -27,6 +26,7 @@ DEPEND="
 	webp? ( media-libs/libwebp:= )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="app-arch/zip"
 
 src_configure() {
 	# do not add use flags that don't pull dependencies
@@ -47,18 +47,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-
-	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 1.7.0 ; then
-		ewarn "Lagrange 1.7 introduces some backwards incompatible changes:"
-		ewarn
-		ewarn "- Bookmarks file format has changed. Your existing bookmarks will be imported to"
-		ewarn "  the new format. The old bookmarks.txt file can be found in the config directory"
-		ewarn "  and is writable only by v1.6 and earlier versions."
-		ewarn "- Saved UI state format has changed. Downgrading will reset window state, close"
-		ewarn "  all tabs, and clear the navigation cache."
-	fi
 }
