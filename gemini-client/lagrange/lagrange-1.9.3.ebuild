@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg cmake
+inherit cmake xdg
 
 DESCRIPTION="Desktop GUI client for browsing Geminispace"
 HOMEPAGE="https://gmi.skyjake.fi/lagrange/ https://git.skyjake.fi/gemini/lagrange"
