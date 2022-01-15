@@ -1,11 +1,12 @@
 #!/sbin/openrc-run
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="factorio daemon"
 description="2D infinite game"
 command="${FACTORIO_PATH}/bin/x64/factorio"
 command_args="${FACTORIO_OPTS}"
+retry=15
 
 command_background=1
 directory="${FACTORIO_PATH}"
