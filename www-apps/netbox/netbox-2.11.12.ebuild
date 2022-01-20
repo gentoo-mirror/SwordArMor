@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/django-3.2.6[${PYTHON_MULTI_USEDEP}]
+		<dev-python/django-4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-cacheops-6.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-cors-headers-3.8.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_MULTI_USEDEP}]
