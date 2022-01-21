@@ -10,5 +10,5 @@ LICENSE=MIT
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/42wim/matterircd/archive/v0.20.0.tar.gz -> matterircd-0.20.0.tar.gz
-_eclasses_=go-module	82631624a3653e595cf9c18164a8c500	user-info	2e75eaea3582b052ec16d9d5aa74ced3	user	1033b6bed7cf367c4507ea9a3ff503d0
+_eclasses_=go-module	6be3eb7a42e4cecb88f18356a783ee35	user-info	2e75eaea3582b052ec16d9d5aa74ced3	user	1033b6bed7cf367c4507ea9a3ff503d0
 _md5_=07df73d412bbde790cd39087fbcaf392
