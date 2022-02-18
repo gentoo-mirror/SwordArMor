@@ -8,6 +8,6 @@ IUSE=+client debug libssh +filecaps
 LICENSE=GPL-2
 RDEPEND=client? ( sys-libs/ncurses:= ) client? ( sys-libs/readline:= ) filecaps? ( acct-group/bird acct-user/bird ) libssh? ( net-libs/libssh:= ) filecaps? ( sys-libs/libcap )
 SLOT=0
-SRC_URI=https://gitlab.nic.cz/labs/bird/bird/-/archive/71c9484b00b4428ae6c7d7c8eea6d96073683a54/bird-71c9484b00b4428ae6c7d7c8eea6d96073683a54.tar.bz2 -> bird-2.0.9_pre20210209.tar.bz2
+SRC_URI=https://gitlab.nic.cz/labs/bird/-/archive/71c9484b00b4428ae6c7d7c8eea6d96073683a54/bird-71c9484b00b4428ae6c7d7c8eea6d96073683a54.tar.bz2 -> bird-2.0.9_pre20210209.tar.bz2
 _eclasses_=fcaps	ac252c3cc67b265cd7ea456f8d58e150
-_md5_=c2983dc24117697cc6fe8db85532b004
+_md5_=c5d4450f48c0ad08c852ec914d2cccc1
