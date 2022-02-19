@@ -1,0 +1,123 @@
+diff --git a/sysdep/linux/netlink.c b/sysdep/linux/netlink.c
+index 71b290fd..29b744cb 100644
+--- a/sysdep/linux/netlink.c
++++ b/sysdep/linux/netlink.c
+@@ -69,6 +69,10 @@
+ #define RTA_ENCAP  22
+ #endif
+ 
++#ifndef NETLINK_GET_STRICT_CHK
++#define NETLINK_GET_STRICT_CHK 12
++#endif
++
+ #define krt_ipv4(p) ((p)->af == AF_INET)
+ #define krt_ecmp6(p) ((p)->af == AF_INET6)
+ 
+@@ -158,11 +162,39 @@ nl_open_sock(struct nl_sock *nl)
+ }
+ 
+ static void
+-nl_set_strict_dump(struct nl_sock *nl, int strict)
++nl_set_strict_dump(struct nl_sock *nl UNUSED, int strict UNUSED)
+ {
++  /*
++   * Strict checking is not necessary, it improves behavior on newer kernels.
++   * If it is not available (missing SOL_NETLINK compile-time, or ENOPROTOOPT
++   * run-time), we can just ignore it.
++   */
++#ifdef SOL_NETLINK
+   setsockopt(nl->fd, SOL_NETLINK, NETLINK_GET_STRICT_CHK, &strict, sizeof(strict));
++#endif
+ }
+ 
++static void
++nl_set_rcvbuf(int fd, uint val)
++{
++  if (setsockopt(fd, SOL_SOCKET, SO_RCVBUFFORCE, &val, sizeof(val)) < 0)
++    log(L_WARN "KRT: Cannot set netlink rx buffer size to %u: %m", val);
++}
++
++static uint
++nl_cfg_rx_buffer_size(struct config *cfg)
++{
++  uint bufsize = 0;
++
++  struct proto_config *pc;
++  WALK_LIST(pc, cfg->protos)
++    if ((pc->protocol == &proto_unix_kernel) && !pc->disabled)
++      bufsize = MAX(bufsize, ((struct krt_config *) pc)->sys.netlink_rx_buffer);
++
++  return bufsize;
++}
++
++
+ static void
+ nl_open(void)
+ {
+@@ -1965,6 +1997,8 @@ krt_do_scan(struct krt_proto *p UNUSED)	/* CONFIG_ALL_TABLES_AT_ONCE => p is NUL
+ 
+ static sock *nl_async_sk;		/* BIRD socket for asynchronous notifications */
+ static byte *nl_async_rx_buffer;	/* Receive buffer */
++static uint nl_async_bufsize;		/* Kernel rx buffer size for the netlink socket */
++static struct config *nl_last_config;	/* For tracking changes to nl_async_bufsize */
+ 
+ static void
+ nl_async_msg(struct nlmsghdr *h)
+@@ -2100,6 +2134,32 @@ nl_open_async(void)
+     bug("Netlink: sk_open failed");
+ }
+ 
++static void
++nl_update_async_bufsize(void)
++{
++  /* No async socket */
++  if (!nl_async_sk)
++    return;
++
++  /* Already reconfigured */
++  if (nl_last_config == config)
++    return;
++
++  /* Update netlink buffer size */
++  uint bufsize = nl_cfg_rx_buffer_size(config);
++  if (bufsize && (bufsize != nl_async_bufsize))
++  {
++    /* Log message for reconfigurations only */
++    if (nl_last_config)
++      log(L_INFO "KRT: Changing netlink rx buffer size to %u", bufsize);
++
++    nl_set_rcvbuf(nl_async_sk->fd, bufsize);
++    nl_async_bufsize = bufsize;
++  }
++
++  nl_last_config = config;
++}
++
+ 
+ /*
+  *	Interface to the UNIX krt module
+@@ -2128,6 +2188,7 @@ krt_sys_start(struct krt_proto *p)
+ 
+   nl_open();
+   nl_open_async();
++  nl_update_async_bufsize();
+ 
+   return 1;
+ }
+@@ -2135,12 +2196,16 @@ krt_sys_start(struct krt_proto *p)
+ void
+ krt_sys_shutdown(struct krt_proto *p)
+ {
++  nl_update_async_bufsize();
++
+   HASH_REMOVE2(nl_table_map, RTH, krt_pool, p);
+ }
+ 
+ int
+ krt_sys_reconfigure(struct krt_proto *p UNUSED, struct krt_config *n, struct krt_config *o)
+ {
++  nl_update_async_bufsize();
++
+   return (n->sys.table_id == o->sys.table_id) && (n->sys.metric == o->sys.metric);
+ }
+ 
