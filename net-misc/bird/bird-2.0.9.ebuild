@@ -7,12 +7,11 @@ inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
-GIT_HASH="71c9484b00b4428ae6c7d7c8eea6d96073683a54"
-SRC_URI="https://gitlab.nic.cz/labs/${PN}/-/archive/${GIT_HASH}/${PN}-${GIT_HASH}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
@@ -34,8 +33,6 @@ FILECAPS=(
 	CAP_NET_BIND_SERVICE	usr/sbin/bird
 	CAP_NET_RAW				usr/sbin/bird
 )
-
-S="${WORKDIR}/${PN}-${GIT_HASH}"
 
 src_prepare() {
 	default
