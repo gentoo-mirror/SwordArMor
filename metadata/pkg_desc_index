@@ -169,6 +169,7 @@ sys-apps/fwupd 1.4.7 1.4.8 1.5.8 1.5.9: Aims to make updating firmware on Linux 
 sys-kernel/gentoo-sources 4.14.228 4.14.232: Full sources including the Gentoo patchset for the 4.14 kernel tree
 www-apps/cinny 1.3.0: Yet another matrix client
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
+www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/icinga-php-library 0.6.1: Icinga PHP libraries for Icinga Web 2.
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
 www-apps/netbox 2.11.12 3.0.7: IP address and data center infrastructure management tool
