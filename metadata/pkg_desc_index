@@ -62,7 +62,7 @@ dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.11.2: A Python Matrix client library, designed according to sans I/OH
 dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
-dev-python/mrtparse 1.7: MRT format data parser
+dev-python/mrtparse 2.1.0: MRT format data parser
 dev-python/munge 1.2.0: data manipulation library and client
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
 dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
