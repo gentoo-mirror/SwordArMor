@@ -8,5 +8,5 @@ LICENSE=EULA
 RDEPEND=pulseaudio? ( media-sound/pulseaudio ) app-crypt/mit-krb5 dev-libs/atk dev-libs/glib media-libs/freetype media-libs/libv4l:= sys-libs/zlib x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+ x11-libs/libXScrnSaver x11-libs/libnotify
 RESTRICT=binchecks fetch bindist strip
 SLOT=0
-SRC_URI=https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux -> Zoiper5_5.5.5_x86_64.tar.xz
+SRC_URI=https://www.zoiper.com/en/voip-softphone/download/zoiper5/for/linux -> Zoiper5_5.5.10_x86_64.tar.xz
 _md5_=be56afde117a82a1f7d252e3b12e7f19
