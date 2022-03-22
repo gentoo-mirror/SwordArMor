@@ -140,6 +140,7 @@ net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/gomuks 0.2.4: A terminal based Matrix client written in Go
 net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-client of choice
+net-im/neochat 22.02: Client for Matrix, the decentralized communication protocol
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-misc/FORT-validator 1.4.2 1.5.0 1.5.2 1.5.3: FORT validator is an open source RPKI validator
