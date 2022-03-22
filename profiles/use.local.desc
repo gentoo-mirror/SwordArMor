@@ -6,6 +6,9 @@ app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for proc
 dev-java/openjdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
 dev-java/openjdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/openjdk-bin:source - Install JVM sources
+dev-libs/qcoro:asan - Build Address Sanitizer runtime
+dev-libs/qcoro:network - Enable network support
+dev-libs/qcoro:shared - Build shared libraries
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
 dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
 gemini-client/lagrange:fribidi - Use dev-libs/fribidi for bidirectional text
