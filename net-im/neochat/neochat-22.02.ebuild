@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KFMIN=5.77.0
+KFMIN=5.88.0
 QTMIN=5.15.2
 inherit ecm kde.org
 
@@ -35,6 +35,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
+	>=kde-frameworks/sonnet-${KFMIN}:5
 	media-libs/kquickimageeditor:5
 	>=net-libs/libquotient-0.6
 "
@@ -45,3 +46,9 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 "
 BDEPEND="virtual/pkgconfig"
+
+src_unpack() {
+	default
+
+	mv  "${WORKDIR}/${PN}-v${PV}"* ${S} || die
+}
