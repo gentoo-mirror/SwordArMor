@@ -50,5 +50,5 @@ BDEPEND="virtual/pkgconfig"
 src_unpack() {
 	default
 
-	mv  "${WORKDIR}/${PN}-v${PV}"* ${S} || die
+	mv  "${WORKDIR}/${PN}-v${PV}"* "${S}" || die
 }
