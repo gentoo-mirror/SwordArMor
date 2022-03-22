@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/neochat/"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	#SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 	SRC_URI="https://invent.kde.org/network/${PN}/-/archive/v${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"
@@ -22,6 +22,7 @@ SLOT="0"
 DEPEND="
 	app-text/cmark:=
 	dev-libs/qtkeychain:=
+	dev-libs/qcoro:=
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5
