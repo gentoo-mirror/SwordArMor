@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=app-admin/webapp-config
 SLOT=1.2.0
 SRC_URI=https://github.com/signalapp/libsignal-protocol-javascript/archive/v1.2.0.tar.gz -> libsignal-protocol-javascript-1.2.0.tar.gz
-_eclasses_=webapp	60f2eb31dec733d05e8114cc078ebc33
+_eclasses_=webapp	cbf94d7383f416c5ead4634aa89916a9
 _md5_=adf11f61ee86bf28a79bfddd6d66a6fa
