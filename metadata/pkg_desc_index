@@ -139,6 +139,7 @@ net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via D
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
 net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
+net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/dino 0.1.0 9999: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/gomuks 0.2.4: A terminal based Matrix client written in Go
 net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-client of choice
