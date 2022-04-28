@@ -47,6 +47,7 @@ net-misc/frr:ospfapi - Build OSPFAPI support
 net-misc/frr:pam - Add support for PAM (via sys-libs/pam) to the Virtual Terminal Interface Shell (vtysh)
 net-misc/frr:rpki - Enable RPKI
 net-misc/routinator:rta - Enables the command rta for validating Resource Tagged Assertions as described in draft-michaelson-rpki-rta
+net-voip/twinkle:g729 - Add support for the G.729A audio codec
 net-wireless/hostapd:crda - Add CRDA support
 net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS
 net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
