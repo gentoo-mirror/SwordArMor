@@ -1,5 +1,5 @@
-# Copyright 2020 Thomas Schneider <qsx@chaotikum.eu>
-# Licensed under the EUPL
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
