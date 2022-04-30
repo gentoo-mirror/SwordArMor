@@ -9,7 +9,7 @@ SRC_URI="https://www.swordarmor.fr/documents/${MY_P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~ppc-macos ~x86-solaris"
 IUSE=""
 RESTRICT="mirror"
 
