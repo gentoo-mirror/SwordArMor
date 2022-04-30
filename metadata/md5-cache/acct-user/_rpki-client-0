@@ -1,9 +1,9 @@
 DEFINED_PHASES=install postinst preinst prerm pretend
 DESCRIPTION=User for rpki-client
-EAPI=7
+EAPI=8
 INHERIT=acct-user
 KEYWORDS=~amd64 ~x86
 RDEPEND=acct-group/_rpki-client
 SLOT=0
 _eclasses_=user-info	69a1ed744ec33cf2c910ff2bd6084d11	user	ccdfe713e9e8d4a8714f0370512ca086	acct-user	38e6655114f60cacc969baf808da755b
-_md5_=9ea48b99b899fbdfbb96cfc984abcd59
+_md5_=3aae02f3bf25d5648354beb648da1e56
