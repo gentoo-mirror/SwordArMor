@@ -52,6 +52,7 @@ dev-python/command-runner 1.3.0: Platform agnostic command and shell execution t
 dev-python/commonmark 0.8.1-r1: Python parser for the CommonMark Markdown spec
 dev-python/confu 1.7.1: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
+dev-python/deepmerge 1.0.1: Tools to handle merging of nested data structures in python
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
 dev-python/django-db-file-storage 0.5.5: Custom FILE_STORAGE for Django
