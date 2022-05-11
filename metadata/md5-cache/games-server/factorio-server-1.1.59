@@ -7,5 +7,5 @@ KEYWORDS=amd64
 LICENSE=Factorio
 RESTRICT=bindist mirror
 SLOT=1.1
-SRC_URI=https://www.factorio.com/get-download/1.1.57/headless/linux64 -> factorio-server-1.1.57.tar.xz
+SRC_URI=https://www.factorio.com/get-download/1.1.59/headless/linux64 -> factorio-server-1.1.59.tar.xz
 _md5_=c4d84868c292ce3eca9958cb82962d97
