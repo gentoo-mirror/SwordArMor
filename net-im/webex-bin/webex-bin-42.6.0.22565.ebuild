@@ -12,7 +12,7 @@ SRC_URI="https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.r
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
+IUSE="wayland"
 
 RESTRICT="bindist mirror strip"
 
@@ -23,7 +23,7 @@ RDEPEND="
 	app-crypt/libsecret
 	dev-libs/atk
 	dev-libs/nss
-	dev-libs/wayland
+	wayland? ( dev-libs/wayland )
 	media-libs/alsa-lib
 	media-libs/libglvnd
 	media-libs/mesa
