@@ -83,7 +83,7 @@ dev-python/nornir_napalm 0.1.2: NAPALM's plugins for nornir
 dev-python/nornir_netbox 0.3.0: Pluggable multi-threaded framework with inventory management
 dev-python/nornir_utils 0.1.2: Pluggable multi-threaded framework with inventory management
 dev-python/ntc-templates 2.3.2: TextFSM Templates for net-devs, and TextFSM's CliTable wrapper
-dev-python/nwdiag 1.0.4 2.0.0: nwdiag generate network-diagram image file from spec-text file.
+dev-python/nwdiag 1.0.4 2.0.0 3.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/olm 3.1.4: Python CFFI binding to libolm
 dev-python/openstacksdk 0.57.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
