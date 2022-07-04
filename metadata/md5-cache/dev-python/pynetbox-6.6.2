@@ -2,7 +2,7 @@ BDEPEND=test? ( >=dev-python/requests-2.20.0 <dev-python/requests-3.0 dev-python
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-python/requests-2.20.0 <dev-python/requests-3.0 dev-python/six
 DESCRIPTION=Python API client library for NetBox
-EAPI=7
+EAPI=8
 HOMEPAGE=https://github.com/digitalocean/pynetbox
 INHERIT=distutils-r1
 IUSE=test test python_targets_python3_8 python_targets_python3_9 python_targets_python3_10
@@ -12,6 +12,6 @@ RDEPEND=>=dev-python/requests-2.20.0 <dev-python/requests-3.0 dev-python/six pyt
 REQUIRED_USE=|| ( python_targets_python3_8 python_targets_python3_9 python_targets_python3_10 )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
-SRC_URI=mirror://pypi/p/pynetbox/pynetbox-5.3.1.tar.gz
-_eclasses_=multibuild	d26d81f242cb193d899a72bca423d0bd	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	e9da88162e7a3c60376e80c2c2adcdfb	multilib	4fbbbc98f236f1b43acd99476bc3cd85	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	python-utils-r1	32313e7e2fbfba8f62a99ef923fc923c	python-r1	e2883e4f04f0503cdf7f2954e2bf5e15	distutils-r1	64c5b9cc381383c9c1ef74fb199293ea
-_md5_=565820ab9a56409936b5cf34aea39db3
+SRC_URI=mirror://pypi/p/pynetbox/pynetbox-6.6.2.tar.gz
+_eclasses_=multibuild	d26d81f242cb193d899a72bca423d0bd	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	e9da88162e7a3c60376e80c2c2adcdfb	multilib	4fbbbc98f236f1b43acd99476bc3cd85	python-utils-r1	32313e7e2fbfba8f62a99ef923fc923c	python-r1	e2883e4f04f0503cdf7f2954e2bf5e15	distutils-r1	64c5b9cc381383c9c1ef74fb199293ea
+_md5_=3f9b4e5f39162ff4793a5802e486dcc4

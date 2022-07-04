@@ -28,7 +28,6 @@ dev-go/dns 1.1.31: DNS library in Go
 dev-java/openjdk-bin 16.0.1_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-libs/belcard 5.1.3: VCard standard format manipulation library
 dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
-dev-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
 dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
 dev-libs/liblinphone 5.1.3: SIP library supporting voice/video calls and text messaging
 dev-libs/lime 5.0.70: C++ library implementing Open Whisper System Signal protocol
@@ -41,7 +40,7 @@ dev-perl/Net-sFlow 0.11: The sFlow module provides a mechanism to parse and deco
 dev-perl/Parse-Method-Signatures 1.003019: Perl6 like method signature parser
 dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
 dev-perl/ip2as 9999: IP to ASN mapping
-dev-python/actdiag 0.5.4 2.0.0: actdiag generate activity-diagram image file from spec-text file.
+dev-python/actdiag 0.5.4 2.0.0 3.0.0: actdiag generate activity-diagram image file from spec-text file.
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
 dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/ciscoconfparse 1.5.19 1.5.30 1.5.46 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
@@ -98,7 +97,7 @@ dev-python/peeringdb 1.1.0: PeeringDB python client
 dev-python/proxmoxer 1.3.0 1.3.1: Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
 dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
 dev-python/pyeapi 0.8.4: Python Client for eAPI
-dev-python/pynetbox 5.3.1 6.1.2: Python API client library for NetBox
+dev-python/pynetbox 5.3.1 6.1.2 6.6.2: Python API client library for NetBox
 dev-python/python-cinderclient 7.4.0: A client for the OpenStack Cinder API
 dev-python/python-keystoneclient 4.2.0: Client Library for OpenStack Identity
 dev-python/python-novaclient 17.5.0: A client for the OpenStack Nova API
@@ -107,7 +106,7 @@ dev-python/recommonmark 0.6.0: Python docutils-compatibility bridge to CommonMar
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/scp 0.14.1: scp module for paramiko
-dev-python/seqdiag 0.9.6 2.0.0: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/seqdiag 0.9.6 2.0.0 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
