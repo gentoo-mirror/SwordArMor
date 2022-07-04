@@ -18,7 +18,7 @@ app-crypt/certbot-dns-rfc2136 1.14.0 1.15.0 1.19.0 9999: Nginx plugin for certbo
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
-app-text/unicode 2.7 2.8: display unicode character properties
+app-text/unicode 2.7 2.8 2.9: display unicode character properties
 dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
 dev-cpp/libcutl 1.11.0_p20210806: A collection of C++ libraries (successor of libcult)
 dev-cpp/libxsd-frontend 2.0.0_p20211005: A compiler frontend for the W3C XML Schema definition language
@@ -95,6 +95,7 @@ dev-python/oslo-serialization 4.1.0: Oslo Serialization library
 dev-python/oslo-utils 4.9.1: Oslo Utility library
 dev-python/pdfminer-six 20200124 20200402: Community maintained fork of pdfminer
 dev-python/peeringdb 1.1.0: PeeringDB python client
+dev-python/proxmoxer 1.3.0 1.3.1: Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
 dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
 dev-python/pyeapi 0.8.4: Python Client for eAPI
 dev-python/pynetbox 5.3.1 6.1.2: Python API client library for NetBox
@@ -138,7 +139,7 @@ media-libs/bv16-floatingpoint 1.2: BroadVoice 16 kbs codec
 media-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
 media-libs/mediastreamer2 5.1.3: Mediastreaming library for telephony application
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
-net-analyzer/blaeu 1.1.3 1.1.6 9999: Blaeu, creating measurements on RIPE Atlas probes
+net-analyzer/blaeu 1.1.3 1.1.6 1.1.8 9999: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/mtr 0.94-r1 0.95: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
