@@ -3,75 +3,81 @@
 
 EAPI="7"
 
-inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
+inherit flag-o-matic linux-info toolchain-funcs multilib-minimal verify-sig
 
 MY_P=${P/_/-}
 
-DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
+DESCRIPTION="Robust, full-featured Open Source Toolkit for the Transport Layer Security (TLS)"
 HOMEPAGE="https://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
-	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssl.org.asc
 
-LICENSE="openssl"
-SLOT="0/1.1" # .so version of libssl/libcrypto
-[[ "${PV}" = *_pre* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="+asm rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla verify-sig weak-ssl-ciphers"
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/openssl/openssl.git"
+
+	inherit git-r3
+else
+	SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssl.org.asc
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
+fi
+
+LICENSE="Apache-2.0"
+SLOT="0/3" # .so version of libssl/libcrypto
+
+IUSE="+asm cpu_flags_x86_sse2 fips ktls rfc3779 sctp static-libs test tls-compression vanilla verify-sig weak-ssl-ciphers"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-misc/c_rehash-1.7-r1
-	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+COMMON_DEPEND="
+	>=app-misc/c_rehash-1.7-r1
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+"
+
 BDEPEND="
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? (
 		sys-apps/diffutils
 		sys-devel/bc
-		kernel_linux? ( sys-process/procps )
+		sys-process/procps
 	)
 	verify-sig? ( sec-keys/openpgp-keys-openssl )"
+
+DEPEND="${COMMON_DEPEND}"
+
+RDEPEND="${COMMON_DEPEND}"
+
 PDEPEND="app-misc/ca-certificates"
 
 S="${WORKDIR}/${MY_P}"
 
-# force upgrade to prevent broken login, bug 696950
-RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
-
 MULTILIB_WRAPPED_HEADERS=(
-	usr/include/openssl/opensslconf.h
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
-	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
-	"${WORKDIR}"/${P}-test-fixes-expiry.patch
+	/usr/include/openssl/configuration.h
 )
 
 pkg_setup() {
+	if use ktls ; then
+		if kernel_is -lt 4 18 ; then
+			ewarn "Kernel implementation of TLS (USE=ktls) requires kernel >=4.18!"
+		else
+			CONFIG_CHECK="~TLS ~TLS_DEVICE"
+			ERROR_TLS="You will be unable to offload TLS to kernel because CONFIG_TLS is not set!"
+			ERROR_TLS_DEVICE="You will be unable to offload TLS to kernel because CONFIG_TLS_DEVICE is not set!"
+
+			linux-info_pkg_setup
+		fi
+	fi
+
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# must check in pkg_setup; sysctl don't work with userpriv!
-	if use test && use sctp; then
+	if use test && use sctp ; then
 		# test_ssl_new will fail with "Ensure SCTP AUTH chunks are enabled in kernel"
 		# if sctp.auth_enable is not enabled.
 		local sctp_auth_status=$(sysctl -n net.sctp.auth_enable 2>/dev/null)
-		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]]; then
+		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]] ; then
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
-}
-
-src_unpack() {
-	# Can delete this once test fix patch is dropped
-	if use verify-sig ; then
-		# Needed for downloaded patch (which is unsigned, which is fine)
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
-	fi
-
-	default
 }
 
 src_prepare() {
@@ -92,12 +98,11 @@ src_prepare() {
 		fi
 	fi
 
-	eapply_user #332661
+	eapply_user
 
-	if use test && use sctp && has network-sandbox ${FEATURES}; then
-		ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
+	if use test && use sctp && has network-sandbox ${FEATURES} ; then
+		einfo "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox ..."
 		rm test/recipes/80-test_ssl_new.t || die
-		eend $?
 	fi
 
 	# make sure the man pages are suffixed #302165
@@ -118,43 +123,19 @@ src_prepare() {
 	# and 'make depend' uses -Werror for added fun (#417795 again)
 	[[ ${CC} == *clang* ]] && append-flags -Qunused-arguments
 
-	# We really, really need to build OpenSSL w/ strict aliasing disabled.
-	# It's filled with violations and it *will* result in miscompiled
-	# code. This has been in the ebuild for > 10 years but even in 2022,
-	# it's still relevant:
-	# - https://github.com/llvm/llvm-project/issues/55255
-	# - https://github.com/openssl/openssl/issues/18225
-	# Don't remove the no strict aliasing bits below!
-	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
-
-	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
-
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
 	# Prefixify Configure shebang (#141906)
 	sed \
-		-e "1s,/usr/bin/env,${EPREFIX}&," \
+		-e "1s,/usr/bin/env,${BROOT}&," \
 		-i Configure || die
+
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
 		sed \
 			-e '/^$config{dirs}/s@ "test",@@' \
 			-i Configure || die
-	fi
-
-	if use prefix && [[ ${CHOST} == *-solaris* ]] ; then
-		# use GNU ld full option, not to confuse it on Solaris
-		sed -i \
-			-e 's/-Wl,-M,/-Wl,--version-script=/' \
-			-e 's/-Wl,-h,/-Wl,--soname=/' \
-			Configurations/10-main.conf || die
-
-		# fix building on Solaris 10
-		# https://github.com/openssl/openssl/issues/6333
-		sed -i \
-			-e 's/-lsocket -lnsl -ldl/-lsocket -lnsl -ldl -lrt/' \
-			Configurations/10-main.conf || die
 	fi
 
 	# The config script does stupid stuff to prompt the user.  Kill it.
@@ -169,56 +150,48 @@ multilib_src_configure() {
 	unset SCRIPTS #312551
 	unset CROSS_COMPILE #311473
 
-	tc-export CC AR RANLIB RC
+	tc-export AR CC CXX RANLIB RC
 
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
+	echoit() { echo "$@" ; "$@" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
-
-	# See if our toolchain supports __uint128_t.  If so, it's 64bit
-	# friendly and can use the nicely optimized code paths. #460790
-	local ec_nistp_64_gcc_128
-	# Disable it for now though #469976
-	# echo "__uint128_t i;" > "${T}"/128.c
-	# if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
-	# 	ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
-	# fi
 
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"
 	local config="Configure"
 	[[ -z ${sslout} ]] && config="config"
 
-	# "disable-deprecated" option breaks too many consumers.
-	# Don't set it without thorough revdeps testing.
-	# Make sure user flags don't get added *yet* to avoid duplicated
-	# flags.
-	CFLAGS= LDFLAGS= edo ./${config} \
-		${sslout} \
-		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
-		enable-camellia \
-		enable-ec \
-		enable-ec2m \
-		enable-sm2 \
-		enable-srp \
-		$(use elibc_musl && echo "no-async") \
-		${ec_nistp_64_gcc_128} \
-		enable-idea \
-		enable-mdc2 \
-		enable-rc5 \
-		$(use_ssl sslv3 ssl3) \
-		$(use_ssl sslv3 ssl3-method) \
-		$(use_ssl asm) \
-		$(use_ssl rfc3779) \
-		$(use_ssl sctp) \
-		$(use test || echo "no-tests") \
-		$(use_ssl tls-compression zlib) \
-		$(use_ssl tls-heartbeat heartbeats) \
-		$(use_ssl weak-ssl-ciphers) \
-		--prefix="${EPREFIX}"/usr \
-		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
-		--libdir=$(get_libdir) \
-		shared threads
+	local myeconfargs=(
+		${sslout}
+		$(use cpu_flags_x86_sse2 || echo "no-sse2")
+		enable-camellia
+		enable-ec
+		enable-ec2m
+		enable-sm2
+		enable-srp
+		$(use elibc_musl && echo "no-async")
+		enable-idea
+		enable-mdc2
+		enable-rc5
+		$(use fips && echo "enable-fips")
+		$(use_ssl asm)
+		$(use_ssl ktls)
+		$(use_ssl rfc3779)
+		$(use_ssl sctp)
+		$(use_ssl tls-compression zlib)
+		$(use_ssl weak-ssl-ciphers)
+		--prefix="${EPREFIX}"/usr
+		--openssldir="${EPREFIX}"${SSL_CNF_DIR}
+		--libdir=$(get_libdir)
+		shared
+		threads
+	)
+
+	CFLAGS= LDFLAGS= echoit \
+		./${config} \
+		"${myeconfargs[@]}" \
+		|| die
 
 	# Clean out hardcoded flags that openssl uses
 	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
@@ -238,7 +211,8 @@ multilib_src_configure() {
 	sed -i \
 		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
 		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
-		Makefile || die
+		Makefile \
+		|| die
 }
 
 multilib_src_compile() {
@@ -254,7 +228,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	# We need to create $ED/usr on our own to avoid a race condition #665130
-	if [[ ! -d "${ED}/usr" ]]; then
+	if [[ ! -d "${ED}/usr" ]] ; then
 		# We can only create this directory once
 		mkdir "${ED}"/usr || die
 	fi
@@ -266,7 +240,7 @@ multilib_src_install() {
 	# build system: the static archives are built as PIC all the time.
 	# Only way around this would be to manually configure+compile openssl
 	# twice; once with shared lib support enabled and once without.
-	if ! use static-libs; then
+	if ! use static-libs ; then
 		rm "${ED}"/usr/$(get_libdir)/lib{crypto,ssl}.a || die
 	fi
 }
@@ -276,7 +250,7 @@ multilib_src_install_all() {
 	# we provide a shell version via app-misc/c_rehash
 	rm "${ED}"/usr/bin/c_rehash || die
 
-	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/${PN}-c-indent.el
+	dodoc {AUTHORS,CHANGES,NEWS,README,README-PROVIDERS}.md doc/*.txt doc/${PN}-c-indent.el
 
 	# create the certs directory
 	keepdir ${SSL_CNF_DIR}/certs
@@ -286,14 +260,19 @@ multilib_src_install_all() {
 	local m d s
 	for m in $(find . -type f | xargs grep -L '#include') ; do
 		d=${m%/*} ; d=${d#./} ; m=${m##*/}
+
 		[[ ${m} == openssl.1* ]] && continue
+
 		[[ -n $(find -L ${d} -type l) ]] && die "erp, broken links already!"
-		mv ${d}/{,ssl-}${m}
+
+		mv ${d}/{,ssl-}${m} || die
+
 		# fix up references to renamed man pages
-		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m}
-		ln -s ssl-${m} ${d}/openssl-${m}
-		# locate any symlinks that point to this man page ... we assume
-		# that any broken links are due to the above renaming
+		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m} || die
+		ln -s ssl-${m} ${d}/openssl-${m} || die
+
+		# locate any symlinks that point to this man page ...
+		# we assume that any broken links are due to the above renaming
 		for s in $(find -L ${d} -type l) ; do
 			s=${s##*/}
 			rm -f ${d}/${s}

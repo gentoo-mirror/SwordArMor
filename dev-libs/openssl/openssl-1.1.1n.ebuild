@@ -3,14 +3,13 @@
 
 EAPI="7"
 
-inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
+inherit flag-o-matic toolchain-funcs multilib-minimal verify-sig
 
 MY_P=${P/_/-}
 
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-test-fixes-expiry.patch.xz
 	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/openssl.org.asc
 
@@ -35,6 +34,11 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-openssl )"
 PDEPEND="app-misc/ca-certificates"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
+)
+
 S="${WORKDIR}/${MY_P}"
 
 # force upgrade to prevent broken login, bug 696950
@@ -42,12 +46,6 @@ RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
 
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
-)
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
-	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
-	"${WORKDIR}"/${P}-test-fixes-expiry.patch
 )
 
 pkg_setup() {
@@ -62,16 +60,6 @@ pkg_setup() {
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
-}
-
-src_unpack() {
-	# Can delete this once test fix patch is dropped
-	if use verify-sig ; then
-		# Needed for downloaded patch (which is unsigned, which is fine)
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
-	fi
-
-	default
 }
 
 src_prepare() {
@@ -118,19 +106,9 @@ src_prepare() {
 	# and 'make depend' uses -Werror for added fun (#417795 again)
 	[[ ${CC} == *clang* ]] && append-flags -Qunused-arguments
 
-	# We really, really need to build OpenSSL w/ strict aliasing disabled.
-	# It's filled with violations and it *will* result in miscompiled
-	# code. This has been in the ebuild for > 10 years but even in 2022,
-	# it's still relevant:
-	# - https://github.com/llvm/llvm-project/issues/55255
-	# - https://github.com/openssl/openssl/issues/18225
-	# Don't remove the no strict aliasing bits below!
-	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
-
-	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
-
 	append-flags $(test-flags-CC -Wa,--noexecstack)
+	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
 
 	# Prefixify Configure shebang (#141906)
 	sed \
@@ -172,6 +150,7 @@ multilib_src_configure() {
 	tc-export CC AR RANLIB RC
 
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
+	echoit() { echo "$@" ; "$@" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
 
@@ -193,7 +172,8 @@ multilib_src_configure() {
 	# Don't set it without thorough revdeps testing.
 	# Make sure user flags don't get added *yet* to avoid duplicated
 	# flags.
-	CFLAGS= LDFLAGS= edo ./${config} \
+	CFLAGS= LDFLAGS= echoit \
+	./${config} \
 		${sslout} \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
 		enable-camellia \
@@ -211,14 +191,14 @@ multilib_src_configure() {
 		$(use_ssl asm) \
 		$(use_ssl rfc3779) \
 		$(use_ssl sctp) \
-		$(use test || echo "no-tests") \
 		$(use_ssl tls-compression zlib) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl weak-ssl-ciphers) \
 		--prefix="${EPREFIX}"/usr \
 		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
 		--libdir=$(get_libdir) \
-		shared threads
+		shared threads \
+		|| die
 
 	# Clean out hardcoded flags that openssl uses
 	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
