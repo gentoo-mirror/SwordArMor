@@ -9,12 +9,6 @@ dev-java/openjdk-bin:headless-awt - Don't install the X backend for AWT, needed 
 dev-java/openjdk-bin:source - Install JVM sources
 dev-libs/belcard:tools - Build tools
 dev-libs/liblinphone:tools - Build tools
-dev-libs/openssl:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
-dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
-dev-libs/openssl:sslv3 - Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https
-dev-libs/openssl:tls-compression - Enable support for discouraged TLS compression
-dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
-dev-libs/openssl:weak-ssl-ciphers - Build support for SSL/TLS ciphers that are considered "weak"
 dev-libs/qcoro:asan - Build Address Sanitizer runtime
 dev-libs/qcoro:network - Enable network support
 dev-libs/qcoro:shared - Build shared libraries
