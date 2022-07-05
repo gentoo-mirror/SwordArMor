@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,13 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	doc? (
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-napoleon[${PYTHON_USEDEP}]
-	)
+	doc? ( dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )
 	dev-python/netaddr[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-doc-napoleon.patch"
+)
 
 distutils_enable_sphinx docs
