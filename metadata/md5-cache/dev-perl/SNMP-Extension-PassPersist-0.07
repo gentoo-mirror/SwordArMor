@@ -1,0 +1,16 @@
+BDEPEND=dev-lang/perl test? ( virtual/perl-Test-Simple )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Module-Build dev-perl/Class-Accessor dev-perl/IO-String dev-perl/Sort-Key-OID dev-perl/List-MoreUtils dev-lang/perl
+DESCRIPTION=Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
+EAPI=8
+HOMEPAGE=https://metacpan.org/pod/SNMP::Extension::PassPersist
+INHERIT=perl-module
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SA/SAPER/SNMP-Extension-PassPersist-0.07.tar.gz
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	perl-functions	95b2df43c5f3057b6e77bd00b4d953da	readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55	perl-module	f2c1b0dd41761ffc8441cd041e4bb7ec
+_md5_=d751f5f77b18e343715c396bcbf420ee
