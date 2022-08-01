@@ -141,7 +141,6 @@ media-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
 media-libs/mediastreamer2 5.1.3: Mediastreaming library for telephony application
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
 net-analyzer/blaeu 1.1.3 1.1.6 1.1.8 9999: Blaeu, creating measurements on RIPE Atlas probes
-net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/mtr 0.94-r1 0.95: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
@@ -156,14 +155,12 @@ net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are
 net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3: Verizon video conferencing system
-net-im/dino 0.1.0: Modern Jabber/XMPP Client using GTK+/Vala
 net-im/gomuks 0.2.4: A terminal based Matrix client written in Go
 net-im/matterircd 0.20.0: Connect to your Mattermost or Slack using your IRC-client of choice
 net-im/neochat 22.02: Client for Matrix, the decentralized communication protocol
 net-im/webex-bin 42.6.0.22565: Cisco video conferencing and online meeting software
 net-libs/bctoolbox 5.1.3: Utilities library used by Belledonne Communications softwares
 net-libs/bzrtp 5.1.3: Media Path Key Agreement for Unicast Secure RTP
-net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-libs/ortp 5.1.3: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-misc/FORT-validator 1.4.2 1.5.0 1.5.2 1.5.3: FORT validator is an open source RPKI validator
