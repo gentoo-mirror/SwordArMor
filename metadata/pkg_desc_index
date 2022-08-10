@@ -16,7 +16,7 @@ acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 app-crypt/certbot-dns-rfc2136 1.14.0 1.15.0 1.19.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
-app-text/docbook-sgml-utils 0.6.14-r4: Shell scripts to manage DocBook documents
+app-text/docbook-sgml-utils 0.6.14-r4 0.6.14-r5: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
 app-text/unicode 2.7 2.8 2.9: display unicode character properties
 dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
