@@ -38,9 +38,6 @@ net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
 net-firewall/ipt_netflow:dot1q - Enable tagged VLAN support
 net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
 net-im/Quaternion:keychain - Enable support for password storage via dev-libs/qtkeychain
-net-im/dino:gpg - Enable OpenPGP encryption plugin
-net-im/dino:http - Enable HTTP file upload plugin
-net-im/dino:omemo - Enable OMEMO encryption plugin
 net-im/gomuks:encryption - End-to-end encryption support with dev-libs/olm
 net-libs/ortp:ntp-timestamp - Turn on NTP timestamping on received packet
 net-misc/bird:client - Build the ncurses/readline full featured CLI
