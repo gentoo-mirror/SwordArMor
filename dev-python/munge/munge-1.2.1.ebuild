@@ -18,6 +18,8 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	>=dev-python/click-5.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.6[${PYTHON_USEDEP}]
+	>=dev-python/tomlkit-0.7.2[${PYTHON_USEDEP}]
+	<dev-python/tomlkit-0.8.0[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
