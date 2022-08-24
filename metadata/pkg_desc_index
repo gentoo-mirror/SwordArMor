@@ -111,7 +111,6 @@ dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comm
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 0.9.6 2.0.0 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/sphinx-argparse 0.2.5: Sphinx extension that automatically documents argparse commands and options
-dev-python/sphinx_book_theme 0.3.3: A clean book theme for scientific explanations and documentation with Sphinx
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.

@@ -14,7 +14,6 @@ dev-libs/qcoro:network - Enable network support
 dev-libs/qcoro:shared - Build shared libraries
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
 dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
-dev-python/sphinx_book_theme:code_style - Extra code_style support for development
 gemini-client/lagrange:fribidi - Use dev-libs/fribidi for bidirectional text
 gemini-client/lagrange:harfbuzz - Use media-libs/harfbuzz to shape text
 media-libs/mediastreamer2:bv16 - Support for BroadVoice 16 kbs codec via media-libs/bv16-floatingpoint
