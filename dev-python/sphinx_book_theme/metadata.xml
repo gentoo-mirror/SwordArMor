@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alarig@swordarmor.fr</email>
+		<name>Alarig Le Lay</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">sphinx-book-theme</remote-id>
+		<remote-id type="github">executablebooks/sphinx-book-theme</remote-id>
+	</upstream>
+	<use>
+		<flag name="code_style">Extra code_style support for development</flag>
+	</use>
+</pkgmetadata>
