@@ -3,7 +3,7 @@
 
 EAPI=8
 
-#DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
@@ -18,11 +18,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="code_style"
 RESTRICT="test"	# test failed as no docutils<0.17
 
-RDEPEND="dev-python/beautifulsoup4[${PYTHON_USEDEP}]
-	>=dev-python/docutils-0.15[${PYTHON_USEDEP}]
-	dev-python/sphinx[${PYTHON_USEDEP}]
-	~dev-python/pydata-sphinx-theme-0.7.2[${PYTHON_USEDEP}]
+BDEPEND=">=dev-python/sphinx-theme-builder-0.2.0[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+	~dev-python/pydata-sphinx-theme-0.8.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	>=dev-python/sphinx-3[${PYTHON_USEDEP}]
+	<dev-python/sphinx-5[${PYTHON_USEDEP}]
 	code_style? ( dev-vcs/pre-commit )
 "
 
