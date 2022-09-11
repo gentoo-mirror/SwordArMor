@@ -23,6 +23,7 @@ DEPEND="
 	dev-qt/linguist-tools:5=
 	dev-qt/qtmultimedia:5=
 	>=net-libs/libqmatrixclient-0.5.1:=
+	net-libs/libquotient
 	keychain? ( dev-libs/qtkeychain:= )
 "
 
