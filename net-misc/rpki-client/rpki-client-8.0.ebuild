@@ -20,6 +20,7 @@ DEPEND="
 	acct-group/_rpki-client
 	acct-user/_rpki-client
 	dev-libs/libretls
+	dev-libs/openssl[rfc3779]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
