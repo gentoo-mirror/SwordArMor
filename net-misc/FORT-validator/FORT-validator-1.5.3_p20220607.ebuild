@@ -6,10 +6,11 @@ EAPI=7
 inherit autotools fcaps systemd
 
 MY_PN="fort"
+MY_PV="issue83"
 
 DESCRIPTION="FORT validator is an open source RPKI validator"
 HOMEPAGE="https://fortproject.net/validator?2"
-SRC_URI="https://github.com/NICMx/${PN}/releases/download/${PV}/fort-${PV}.tar.gz"
+SRC_URI="https://github.com/NICMx/${PN}/archive/refs/heads/${MY_PV}.zip -> ${MY_PN}-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,7 +33,7 @@ BDEPEND="
 	sys-devel/automake
 "
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_prepare() {
 	default
