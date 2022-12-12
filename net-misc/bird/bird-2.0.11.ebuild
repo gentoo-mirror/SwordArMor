@@ -1,9 +1,9 @@
 # Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit fcaps
+inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
@@ -34,9 +34,11 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-PATCHES=(
-	"${FILESDIR}/${P}-linux-netlink-filters.patch"
-)
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	econf \
