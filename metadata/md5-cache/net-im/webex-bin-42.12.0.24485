@@ -11,6 +11,6 @@ LICENSE=all-rights-reserved
 RDEPEND=app-accessibility/at-spi2-atk app-crypt/libsecret dev-libs/atk dev-libs/nss wayland? ( dev-libs/wayland ) media-libs/alsa-lib media-libs/libglvnd media-libs/mesa media-sound/pulseaudio sys-apps/lshw sys-power/upower virtual/libudev x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXrandr x11-libs/libnotify x11-libs/libxkbcommon x11-libs/pango x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm
 RESTRICT=bindist mirror strip
 SLOT=0
-SRC_URI=https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.rpm -> webex-bin-42.10.0.24000.rpm
+SRC_URI=https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.rpm -> webex-bin-42.12.0.24485.rpm
 _eclasses_=desktop	7eb20ad915a0a318176d51bc2508ff5c	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857	estack	055c42df72f76a4f45ec92b35e83cd56	rpm	f73e907469f65e52192f110dec72dce0
 _md5_=73c8d49032021fd758d18b02bc67c88f
