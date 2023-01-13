@@ -21,8 +21,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-perl/Digest-SHA1 )
 "
 
-PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
-
 #dev-perl/URI is needed for web interface, that is not installed now
 
 src_configure() {

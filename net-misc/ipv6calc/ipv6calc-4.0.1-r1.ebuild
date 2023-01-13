@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="https://www.deepspace6.net/projects/ipv6calc.html"
@@ -9,11 +9,15 @@ SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="geoip test"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="cgi geoip test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	cgi? (
+		dev-perl/URI
+		dev-perl/Digest-SHA1
+	)
 	dev-libs/openssl:=
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
@@ -21,32 +25,46 @@ DEPEND="${RDEPEND}
 	test? ( dev-perl/Digest-SHA1 )
 "
 
-PATCHES=("${FILESDIR}"/${P}-gcc-10.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.1-underlinking.patch
+)
 
-#dev-perl/URI is needed for web interface, that is not installed now
+src_prepare() {
+	if use elibc_musl; then
+		PATCHES+=( "${FILESDIR}"/${P}-musl.patch )
+	fi
+	default
+}
 
 src_configure() {
 	# These options are broken.  You can't disable them.  That's
 	# okay because we want then force enabled.
 	# --disable-db-as-registry
 	# --disable-db-cc-registry
+	local myeconfargs=(
+		--disable-compiler-warning-to-error
+		--disable-bundled-getopt
+		--disable-bundled-md5
+		--enable-shared
+		--enable-dynamic-load
+		--enable-db-ieee
+		--enable-db-ipv4
+		--enable-db-ipv6
+		--disable-dbip
+		--disable-dbip2
+		--disable-external
+		--disable-ip2location
+		--enable-openssl-evp-md5
+		--enable-openssl-md5
+		$(use_enable geoip)
+		$(use_enable cgi mod_ipv6calc )
+	)
+
 	if use geoip; then
-		myconf=$(use_enable geoip)
-		myconf+=" --with-geoip-db=${EPREFIX}/usr/share/GeoIP"
+		myeconfargs+=( "--with-geoip-db=${EPREFIX}/usr/share/GeoIP" )
 	fi
-	econf \
-		--disable-bundled-getopt \
-		--disable-bundled-md5 \
-		--enable-shared \
-		--enable-dynamic-load \
-		--enable-db-ieee \
-		--enable-db-ipv4 \
-		--enable-db-ipv6 \
-		--disable-dbip \
-		--disable-dbip2 \
-		--disable-external \
-		--disable-ip2location \
-		${myconf}
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
