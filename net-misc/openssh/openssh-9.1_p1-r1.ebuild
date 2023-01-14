@@ -51,7 +51,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie +sandbox sctp security-key selinux +ssl static test X X509 xmss"
+IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie sctp security-key selinux +ssl static test X X509 xmss"
 
 RESTRICT="!test? ( test )"
 
@@ -124,6 +124,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.9_p1-allow-ppoll_time64.patch" #834019
 	"${FILESDIR}/${PN}-8.9_p1-gss-use-HOST_NAME_MAX.patch" #834044
 	"${FILESDIR}/${PN}-9.1_p1-build-tests.patch"
+	"${FILESDIR}/${P}-getentropy.patch"
 )
 
 pkg_pretend() {
@@ -342,7 +343,6 @@ src_configure() {
 		$(use_with ssl openssl)
 		$(use_with ssl ssl-engine)
 		$(use_with !elibc_Cygwin hardening) #659210
-		$(use_with sandbox sandbox)
 	)
 
 	if use elibc_musl; then
