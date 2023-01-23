@@ -28,4 +28,11 @@ BDEPEND=""
 src_prepare() {
 	default
 	eautoreconf
+	mv create_keys.sh "${PN}-create_keys.sh"
+}
+
+src_install() {
+	default
+
+	dobin "${PN}-create_keys.sh"
 }
