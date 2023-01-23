@@ -16,8 +16,11 @@ KEYWORDS="~amd64"
 DEPEND="
 	dev-libs/libevent
 	dev-libs/msgpack
+	dev-libs/openssl:0=
 	net-libs/libssh[server]
+	sys-libs/libutempter
 	sys-libs/ncurses
+	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
