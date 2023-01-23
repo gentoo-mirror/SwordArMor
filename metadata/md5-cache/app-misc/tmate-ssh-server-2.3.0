@@ -1,5 +1,5 @@
 BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71-r5 >=sys-devel/libtool-2.4.7
-DEFINED_PHASES=prepare
+DEFINED_PHASES=install prepare
 DEPEND=dev-libs/libevent dev-libs/msgpack dev-libs/openssl:0= net-libs/libssh[server] sys-libs/libutempter sys-libs/ncurses sys-libs/zlib
 DESCRIPTION=tmate SSH server
 EAPI=8
@@ -11,4 +11,4 @@ RDEPEND=dev-libs/libevent dev-libs/msgpack dev-libs/openssl:0= net-libs/libssh[s
 SLOT=0
 SRC_URI=https://github.com/tmate-io/tmate-ssh-server/archive/refs/tags/2.3.0.tar.gz
 _eclasses_=gnuconfig	b6b3e92f8b8c996400074b5f61a59256	toolchain-funcs	ec8bbc28394c7305b43ea07164bd8f5f	multilib	5ca4e49abed8e3a2f7b56920eadee157	libtool	241a8f577b9781a42a7421e53448a44e	autotools	6dcd6b6a486e79928e1243ff9ba41fcc
-_md5_=1b02162e77df1b570da8c26806b576df
+_md5_=2b9775d9fe5a926a6632a3281fb35278
