@@ -36,8 +36,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-ssl_set_npn_protocols.patch" )
+
 src_install() {
 	python_domodule matrix
 	exeinto /usr/lib/weechat
-	newexe main.py matrix.py
+	newexe main.py ${PN}.py
 }
