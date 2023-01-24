@@ -16,18 +16,21 @@ KEYWORDS="~amd64"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="
+	net-irc/weechat[python]
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/webcolors[${PYTHON_USEDEP}]
+		dev-python/aiohttp-socks[${PYTHON_USEDEP}]
+		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
 		dev-python/attrs[${PYTHON_USEDEP}]
+		dev-python/future[${PYTHON_USEDEP}]
 		dev-python/logbook[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/matrix-nio[${PYTHON_USEDEP},e2e]
-		dev-python/aiohttp[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/webcolors[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}"
@@ -35,6 +38,6 @@ BDEPEND=""
 
 src_install() {
 	python_domodule matrix
-	python_scriptinto /usr/lib/weechat/plugins
-	python_newexe main.py matrix.py
+	exeinto /usr/lib/weechat
+	newexe main.py matrix.py
 }

@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7,8})
+PYTHON_COMPAT=(python3_{9..11})
+DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1
 
@@ -18,26 +19,29 @@ IUSE="e2e"
 SRC_URI="https://github.com/poljar/matrix-nio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 CDEPEND="
-	dev-python/logbook[${PYTHON_USEDEP}]
+	dev-python/Faker[${PYTHON_USEDEP}]
 	dev-python/aiofiles[${PYTHON_USEDEP}]
+	dev-python/aiohttp[${PYTHON_USEDEP}]
+	dev-python/aioresponses[${PYTHON_USEDEP}]
+	dev-python/atomicwrites[${PYTHON_USEDEP}]
+	dev-python/h11[${PYTHON_USEDEP}]
+	dev-python/h2[${PYTHON_USEDEP}]
+	dev-python/hpack[${PYTHON_USEDEP}]
+	dev-python/hyperframe[${PYTHON_USEDEP}]
+	dev-python/hypothesis[${PYTHON_USEDEP}]
 	dev-python/jsonschema[${PYTHON_USEDEP}]
+	dev-python/logbook[${PYTHON_USEDEP}]
+	dev-python/mypy[${PYTHON_USEDEP}]
+	dev-python/mypy_extensions[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
-	dev-python/future[${PYTHON_USEDEP}]
-	dev-python/hyper-h2[${PYTHON_USEDEP}]
-	dev-python/h11[${PYTHON_USEDEP}]
-	dev-python/aiohttp[${PYTHON_USEDEP}]
-	dev-python/appdirs[${PYTHON_USEDEP}]
-	dev-python/pymediainfo[${PYTHON_USEDEP}]
-	dev-python/mistune[${PYTHON_USEDEP}]
-
 	media-gfx/cairosvg
 
 	e2e? (
-		dev-python/peewee[${PYTHON_USEDEP}]
+		>=dev-python/peewee-3.9.5[${PYTHON_USEDEP}]
 		dev-python/cachetools[${PYTHON_USEDEP}]
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
-		dev-python/olm[${PYTHON_USEDEP}]
+		>=dev-python/olm-3.1.0[${PYTHON_USEDEP}]
 	)
 "
 
