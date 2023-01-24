@@ -19,6 +19,7 @@ DEPEND="
 	net-irc/weechat[python]
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/aiohttp-socks[${PYTHON_USEDEP}]
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
 		dev-python/attrs[${PYTHON_USEDEP}]
