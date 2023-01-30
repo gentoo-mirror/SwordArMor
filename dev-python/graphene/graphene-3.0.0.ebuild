@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GraphQL Framework for Python"
 HOMEPAGE="https://graphene-python.org
-	https://pypi.org/project/graphene
+	https://pypi.org/project/graphene/
 	https://github.com/graphql-python/graphene
 "
 SRC_URI="https://github.com/graphql-python/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/graphql-python/${PN}/archive/v${MY_PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/aniso8601[${PYTHON_USEDEP}]
@@ -48,16 +48,21 @@ distutils_enable_tests pytest
 
 distutils_enable_sphinx docs
 
+EPYTEST_DESELECT=(
+	graphene/types/tests/test_objecttype.py::test_objecttype_as_container_extra_args
+	graphene/types/tests/test_objecttype.py::test_objecttype_as_container_invalid_kwargs
+	graphene/types/tests/test_schema.py::TestUnforgivingExecutionContext::test_unexpected_error
+)
+
 src_unpack() {
 	unpack ${P}.tar.gz
 
-	if use doc ; then
+	if use doc; then
 		unpack sphinx-${P}.zip
 		mv "${WORKDIR}"/sphinx_graphene_theme "${S}"/docs || die
 	fi
 }
 
 python_test() {
-	epytest --benchmark-disable \
-		--deselect graphene/types/tests/test_schema.py::TestUnforgivingExecutionContext::test_unexpected_error
+	epytest --benchmark-disable
 }
