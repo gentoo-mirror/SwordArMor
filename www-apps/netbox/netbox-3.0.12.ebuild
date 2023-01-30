@@ -32,7 +32,7 @@ RDEPEND="
 		>=dev-python/django-rq-2.5.1[${PYTHON_USEDEP}]
 		>=dev-python/django-tables2-2.4.1[${PYTHON_USEDEP}]
 		>=dev-python/django-taggit-1.5.1[${PYTHON_USEDEP}]
-		~dev-python/django-timezone-field-4.2.1[${PYTHON_USEDEP}]
+		>=dev-python/django-timezone-field-4.2.1[${PYTHON_USEDEP}]
 		>=dev-python/djangorestframework-3.12.4[${PYTHON_USEDEP}]
 		>=dev-python/drf-yasg-1.20.0[${PYTHON_USEDEP},validation]
 		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
