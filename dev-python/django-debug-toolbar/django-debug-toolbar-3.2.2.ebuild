@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -20,8 +20,9 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/django-1.11[${PYTHON_USEDEP}]
-	>=dev-python/sqlparse-0.2.0[${PYTHON_USEDEP}]
+	dev-python/django[${PYTHON_USEDEP}]
+	dev-python/sqlparse[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (
