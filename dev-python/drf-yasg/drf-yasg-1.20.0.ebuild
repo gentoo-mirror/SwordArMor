@@ -28,9 +28,4 @@ RDEPEND="
 	>=dev-python/djangorestframework-3.10.3[${PYTHON_USEDEP}]
 	>=dev-python/django-2.2.16[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-	)
-"
-
-distutils_enable_tests pytest
+BDEPEND=""
