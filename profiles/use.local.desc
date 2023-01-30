@@ -32,6 +32,11 @@ net-analyzer/mtr:ipinfo - Disable support for IP address lookups
 net-analyzer/mtr:jansson - Enable JSON output support through dev-libs/jansson
 net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
 net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
+net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
+net-dialup/freeradius:mongodb - Include support for MongoDB database
+net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
+net-dialup/freeradius:redis - Include support for Redis database
+net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
 net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
