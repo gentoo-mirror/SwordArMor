@@ -113,7 +113,7 @@ dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings fo
 dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/swagger-spec-validator 2.1.0: Validation of Swagger specifications
-dev-python/tablib 3.0.0: Format-agnostic tabular dataset library
+dev-python/tablib 3.1.0: Format-agnostic tabular dataset library
 dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
 dev-python/tomlkit 0.7.2: Style preserving TOML library
 dev-python/twentyc-rpc 0.4.0 1.0.0: client for 20c's RESTful API

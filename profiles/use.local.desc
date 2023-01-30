@@ -12,6 +12,7 @@ dev-libs/liblinphone:tools - Build tools
 dev-libs/qcoro:asan - Build Address Sanitizer runtime
 dev-libs/qcoro:network - Enable network support
 dev-libs/qcoro:shared - Build shared libraries
+dev-python/drf-yasg:validation - Automatic validation by swagger-spec-validator
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
 dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
 gemini-client/lagrange:fribidi - Use dev-libs/fribidi for bidirectional text
