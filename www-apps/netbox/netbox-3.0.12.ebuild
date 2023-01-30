@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+EAPI=8
+PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="IP address and data center infrastructure management tool"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/netbox-community/${PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+#KEYWORDS="~amd64"
 IUSE="ldap"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
@@ -20,31 +20,35 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		<dev-python/django-4[${PYTHON_USEDEP}]
-		>=dev-python/django-cacheops-6.0[${PYTHON_USEDEP}]
-		>=dev-python/django-cors-headers-3.8.0[${PYTHON_USEDEP}]
+		>=dev-python/django-3.2.9[${PYTHON_USEDEP}]
+		>=dev-python/django-cors-headers-3.10.0[${PYTHON_USEDEP}]
 		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_USEDEP}]
-		>=dev-python/django-filter-2.4.0[${PYTHON_USEDEP}]
-		>=dev-python/django-mptt-0.13.1[${PYTHON_USEDEP}]
+		>=dev-python/django-filter-21.1[${PYTHON_USEDEP}]
+		>=dev-python/django-graphiql-debug-toolbar-0.2.0[${PYTHON_USEDEP}]
+		>=dev-python/django-mptt-0.13.4[${PYTHON_USEDEP}]
 		>=dev-python/django-pglocks-1.0.4[${PYTHON_USEDEP}]
 		>=dev-python/django-prometheus-2.1.0[${PYTHON_USEDEP}]
-		>=dev-python/django-rq-2.4.1[${PYTHON_USEDEP}]
-		>=dev-python/django-tables2-2.4.0[${PYTHON_USEDEP}]
+		>=dev-python/django-redis-5.0.0[${PYTHON_USEDEP}]
+		>=dev-python/django-rq-2.5.1[${PYTHON_USEDEP}]
+		>=dev-python/django-tables2-2.4.1[${PYTHON_USEDEP}]
 		>=dev-python/django-taggit-1.5.1[${PYTHON_USEDEP}]
-		~dev-python/django-timezone-field-4.1.2[${PYTHON_USEDEP}]
+		~dev-python/django-timezone-field-4.2.1[${PYTHON_USEDEP}]
 		>=dev-python/djangorestframework-3.12.4[${PYTHON_USEDEP}]
 		>=dev-python/drf-yasg-1.20.0[${PYTHON_USEDEP},validation]
-		>=dev-python/jinja-3.0.1[${PYTHON_USEDEP}]
-		>=dev-python/markdown-3.3.4[${PYTHON_USEDEP}]
+		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
+		>=www-servers/gunicorn-20.1.0[${PYTHON_USEDEP}]
+		>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
+		>=dev-python/markdown-3.3.6[${PYTHON_USEDEP}]
+		>=dev-python/markdown-include-0.6.0[${PYTHON_USEDEP}]
+		>=dev-python/mkdocs-material-7.3.6[${PYTHON_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_USEDEP}]
-		>=dev-python/pillow-8.3.1[${PYTHON_USEDEP}]
-		>=dev-python/psycopg-2.9.1[${PYTHON_USEDEP}]
-		>=dev-python/pycryptodome-3.10.1[${PYTHON_USEDEP}]
-		>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP}]
+		>=dev-python/pillow-8.4.0[${PYTHON_USEDEP}]
+		>=dev-python/psycopg-2.9.2[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 		>=dev-python/svgwrite-1.4.1[${PYTHON_USEDEP}]
-		>=dev-python/tablib-3.0.0[${PYTHON_USEDEP}]
-		www-servers/gunicorn[${PYTHON_USEDEP}]
-		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_USEDEP}] )
+		>=dev-python/tablib-3.1.0[${PYTHON_USEDEP}]
+		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
+		ldap? ( >=dev-python/django-auth-ldap-4.1.0[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
 
@@ -139,5 +143,5 @@ pkg_postinst() {
 	if [ -d "${LAST_BASE_DIRECTORY}/netbox/reports" ]; then
 		${NBCP} -pr "${LAST_BASE_DIRECTORY}/netbox/reports" /opt/netbox/netbox/
 	fi
-	cd /opt/netbox && su -p -s /bin/sh -c ./upgrade.sh "${PN}"
+	su -p -s /bin/sh -c "/opt/${P}/upgrade.sh" "${PN}"
 }
