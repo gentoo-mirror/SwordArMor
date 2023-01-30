@@ -17,6 +17,7 @@ SRC_URI="https://github.com/axnsan12/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="validation"
 
 RDEPEND="
 	>=dev-python/coreapi-2.3.3[${PYTHON_USEDEP}]
@@ -27,5 +28,8 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/djangorestframework-3.10.3[${PYTHON_USEDEP}]
 	>=dev-python/django-2.2.16[${PYTHON_USEDEP}]
+	validation? (
+		>=swagger-spec-validator-2.1.0[${PYTHON_USEDEP}]
+	)
 "
 BDEPEND=""
