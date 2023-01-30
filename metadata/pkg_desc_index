@@ -54,10 +54,11 @@ dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
 dev-python/django-db-file-storage 0.5.5: Custom FILE_STORAGE for Django
-dev-python/django-debug-toolbar 3.1.1: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 3.2.2: A configurable set of panels that display debug information
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-mptt 0.11.0 0.12.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
+dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
 dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
 dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
