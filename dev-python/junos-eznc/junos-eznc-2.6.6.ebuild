@@ -13,11 +13,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 DEPEND="
 	>=dev-python/lxml-3.2.4[${PYTHON_USEDEP}]
-	~dev-python/ncclient-0.6.9[${PYTHON_USEDEP}]
+	~dev-python/ncclient-0.6.13[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.2[${PYTHON_USEDEP}]
 	>=dev-python/scp-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7.1[${PYTHON_USEDEP}]
