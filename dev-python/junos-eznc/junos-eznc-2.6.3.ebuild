@@ -31,3 +31,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+python_install_all() {
+	distutils-r1_python_install_all
+	find "${D}" -name '*.pth' -delete || die
+}
