@@ -74,7 +74,7 @@ dev-python/graphene-django 2.15.0: Graphene Django integration
 dev-python/graphql-core 3.1.6: GraphQL for Python
 dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
-dev-python/junos-eznc 2.6.2 2.6.3: Junos 'EZ' automation for non-programmers
+dev-python/junos-eznc 2.6.2 2.6.3 2.6.6: Junos 'EZ' automation for non-programmers
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
