@@ -1,14 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="utilities for modified preorder tree traversal and trees of model instances"
 HOMEPAGE="https://github.com/django-mptt/django-mptt"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/django-mptt/django-mptt/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,4 +21,7 @@ RDEPEND="
 	dev-python/django-js-asset[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}"
+python_test() {
+	"${EPYTHON}" tests/manage.py test -v2 myapp ||
+		die "Tests failed with ${EPYTHON}"
+}
