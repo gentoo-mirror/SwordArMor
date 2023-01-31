@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Junos 'EZ' automation for non-programmers"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-python/lxml-3.2.4[${PYTHON_USEDEP}]
-	~dev-python/ncclient-0.6.9[${PYTHON_USEDEP}]
+	~dev-python/ncclient-0.6.13[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.2[${PYTHON_USEDEP}]
 	>=dev-python/scp-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.7.1[${PYTHON_USEDEP}]
