@@ -23,6 +23,10 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
+RDEPEND="
+	>=dev-python/Rx-1.6[${PYTHON_USEDEP}]
+	<dev-python/Rx-2
+"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
