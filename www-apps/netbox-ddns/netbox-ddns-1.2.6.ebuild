@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Dynamic DNS Connector for NetBox"
-HOMEPAGE="https://git.grifon.fr/alarig/netbox-ddns"
-SRC_URI="https://git.grifon.fr/alarig/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/sjm-steffann/netbox-ddns"
+SRC_URI="https://github.com/sjm-steffann/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -19,5 +19,3 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-S="${WORKDIR}/${PN}"
