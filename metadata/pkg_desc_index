@@ -200,7 +200,7 @@ www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
 www-apps/netbox 3.0.12: IP address and data center infrastructure management tool
-www-apps/netbox-ddns 1.1.1: Dynamic DNS Connector for NetBox
+www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.66.2 0.68.0 0.70.1: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
