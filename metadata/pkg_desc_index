@@ -51,6 +51,7 @@ dev-python/command-runner 1.3.0: Platform agnostic command and shell execution t
 dev-python/confu 1.7.1 1.8.0: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
+dev-python/django 3.2.9: High-level Python web framework
 dev-python/django-auth-ldap 4.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
