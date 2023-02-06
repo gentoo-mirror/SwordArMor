@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/graphql-core[${PYTHON_USEDEP}]
 	<dev-python/graphql-core-3
 	dev-python/graphql-relay[${PYTHON_USEDEP}]
+	<dev-python/graphql-relay-3
 "
 
 BDEPEND="
