@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit distutils-r1
 
@@ -26,6 +26,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/aniso8601[${PYTHON_USEDEP}]
 	dev-python/graphql-core[${PYTHON_USEDEP}]
+	<dev-python/graphql-core-3
 	dev-python/graphql-relay[${PYTHON_USEDEP}]
 "
 
