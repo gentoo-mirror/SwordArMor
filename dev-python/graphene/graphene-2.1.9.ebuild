@@ -57,6 +57,8 @@ EPYTEST_DESELECT=(
 src_unpack() {
 	unpack ${P}.tar.gz
 
+	rm -r "${S}"/examples
+
 	if use doc; then
 		unpack sphinx-${P}.zip
 		mv "${WORKDIR}"/sphinx_graphene_theme "${S}"/docs || die
