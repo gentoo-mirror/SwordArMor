@@ -21,6 +21,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/django-3.2.9[${PYTHON_USEDEP}]
+		<dev-python/django-4[${PYTHON_USEDEP}]
 		>=dev-python/django-cors-headers-3.10.0[${PYTHON_USEDEP}]
 		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_USEDEP}]
 		>=dev-python/django-filter-21.1[${PYTHON_USEDEP}]
