@@ -74,6 +74,7 @@ dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elastic
 dev-python/graphene 2.1.9: GraphQL Framework for Python
 dev-python/graphene-django 2.15.0: Graphene Django integration
 dev-python/graphql-core 2.3.2: GraphQL for Python
+dev-python/graphql-relay 2.0.1: Relay library for graphql-core-next
 dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.2 2.6.3 2.6.6: Junos 'EZ' automation for non-programmers
