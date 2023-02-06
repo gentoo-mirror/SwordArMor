@@ -24,7 +24,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	>=dev-python/Rx-1.6[[${PYTHON_USEDEP}]
+	>=dev-python/Rx-1.6[${PYTHON_USEDEP}]
 	<dev-python/Rx-2
 "
 
