@@ -44,7 +44,7 @@ RDEPEND="
 		>=dev-python/mkdocs-material-7.3.6[${PYTHON_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pillow-8.4.0[${PYTHON_USEDEP}]
-		>=dev-python/psycopg-2.9.2[${PYTHON_USEDEP}]
+		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 		>=dev-python/svgwrite-1.4.1[${PYTHON_USEDEP}]
 		>=dev-python/tablib-3.1.0[${PYTHON_USEDEP}]
