@@ -165,7 +165,7 @@ net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
 net-im/gomuks 0.2.4: A terminal based Matrix client written in Go
-net-im/webex-bin 42.12.0.24485: Cisco video conferencing and online meeting software
+net-im/webex-bin 43.2.0.25211: Cisco video conferencing and online meeting software
 net-im/weechat-matrix 0.3.0: Weechat Matrix protocol script written in python
 net-libs/bctoolbox 5.1.3: Utilities library used by Belledonne Communications softwares
 net-libs/bzrtp 5.1.3: Media Path Key Agreement for Unicast Secure RTP
@@ -181,7 +181,7 @@ net-misc/frr 8.0.1: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1: IPv6 address calculator
 net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
-net-misc/nbcli 0.6.3_alpha1 0.7.3_alpha2 0.8.0_alpha1: Extensible command-line interface for Netbox
+net-misc/nbcli 0.8.0_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
 net-misc/openbgpd 6.6_p0 6.7_p0 6.8_p0 6.8_p1 6.9_p0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
