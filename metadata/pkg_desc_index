@@ -18,7 +18,7 @@ app-crypt/certbot-dns-rfc2136 1.14.0 1.15.0 1.19.0 9999: Nginx plugin for certbo
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-text/docbook-sgml-utils 0.6.14-r4 0.6.14-r5: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
-app-text/unicode 2.7 2.8 2.9: display unicode character properties
+app-text/unicode 2.8 2.9: display unicode character properties
 dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
 dev-cpp/libcutl 1.11.0_p20210806: A collection of C++ libraries (successor of libcult)
 dev-cpp/libxsd-frontend 2.0.0_p20211005: A compiler frontend for the W3C XML Schema definition language
