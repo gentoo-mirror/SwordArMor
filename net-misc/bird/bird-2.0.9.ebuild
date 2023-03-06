@@ -38,7 +38,7 @@ PATCHES=()
 
 src_prepare() {
 	if use elibc_musl; then
-		PATCHES += "${FILESDIR}/${P}-musl-tests.patch"
+		PATCHES+=("${FILESDIR}/${P}-musl-tests.patch")
 	fi
 	default
 
