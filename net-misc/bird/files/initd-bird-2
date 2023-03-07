@@ -21,7 +21,6 @@ fi
 
 client_args="-s ${SOCK}"
 command_args="${client_args} -c ${CONF_FILE} -P ${pidfile} ${BIRD_OPTS}"
-client_args="${client_args} -r"
 
 depend() {
 	use net
