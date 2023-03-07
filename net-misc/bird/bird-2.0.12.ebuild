@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,14 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
+KEYWORDS=""
 IUSE="+client debug libssh"
 
 RDEPEND="
-	client? ( sys-libs/ncurses:= )
-	client? ( sys-libs/readline:= )
+	client? (
+		sys-libs/ncurses:=
+		sys-libs/readline:=
+	)
 	filecaps? (
 		acct-group/bird
 		acct-user/bird
@@ -34,14 +36,12 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.9-musl-tests.patch"
+)
 
 src_prepare() {
-	if use elibc_musl; then
-		PATCHES+=("${FILESDIR}/${P}-musl-tests.patch")
-	fi
 	default
-
 	eautoreconf
 }
 
@@ -57,10 +57,13 @@ src_install() {
 	if use client; then
 		dobin birdc
 	fi
+
 	dobin birdcl
 	dosbin bird
+
 	newinitd "${FILESDIR}/initd-${PN}-2" ${PN}
 	newconfd "${FILESDIR}/confd-${PN}-2" ${PN}
+
 	dodoc doc/bird.conf.example
 }
 
