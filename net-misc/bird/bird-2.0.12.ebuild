@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
-IUSE="+client debug libssh"
+IUSE="+client custom-cflags debug libssh"
 
 RDEPEND="
 	client? (
@@ -46,11 +46,25 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--localstatedir="${EPREFIX}/var" \
-		$(use_enable client) \
-		$(use_enable debug) \
+	# This export makes compilation and test phases verbose
+	export VERBOSE=1
+
+	# lto must be enabled by default as bird is mono-threaded and use several
+	# optimisations to be fast, at it may very likely be exposed to several
+	# thounsand BGP updates per seconds
+	# Although, we make it possible to desactivate it if wanted
+	if use custom-cflags; then
+		export bird_cv_c_lto=no
+	fi
+
+	local myargs=(
+		--localstatedir="${EPREFIX}/var"
+		$(use_enable client)
+		$(use_enable debug)
 		$(use_enable libssh)
+	)
+
+	econf "${myargs[@]}"
 }
 
 src_install() {
