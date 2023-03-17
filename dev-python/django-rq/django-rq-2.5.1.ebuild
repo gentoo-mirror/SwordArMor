@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 DEPEND="
 	>=dev-python/django-2.0[${PYTHON_USEDEP}]
 	>=dev-python/rq-1.2[${PYTHON_USEDEP}]
-	>=dev-python/redis-py-3[${PYTHON_USEDEP}]
+	>=dev-python/redis-3[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
