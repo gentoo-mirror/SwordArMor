@@ -89,7 +89,7 @@ dev-python/mrtparse 2.1.0: MRT format data parser
 dev-python/munge 1.2.0 1.2.1: data manipulation library and client
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
 dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
-dev-python/ncclient 0.6.9 0.6.12: Python library for NETCONF clients
+dev-python/ncclient 0.6.9 0.6.12 0.6.13: Python library for NETCONF clients
 dev-python/netflow 0.10.3: NetFlow v1, v5, v9 and IPFIX tool suite implemented in Python 3
 dev-python/netmiko 3.4.0: Multivendor library to simplify Paramiko SSH connections to netdev
 dev-python/nornir 3.1.1 3.2.0: Pluggable multi-threaded framework with inventory management
