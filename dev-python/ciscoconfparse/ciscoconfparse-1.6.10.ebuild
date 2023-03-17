@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Parse, audit, query, build, and modify Cisco IOS-style configurations"
@@ -25,7 +26,5 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-export DISTUTILS_USE_SETUPTOOLS=no
 
 distutils_enable_tests pytest
