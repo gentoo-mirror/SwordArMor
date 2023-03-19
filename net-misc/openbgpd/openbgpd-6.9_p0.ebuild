@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	${DEPEND}
-	!!net-misc/quagga
+	!!net-misc/frr
 	acct-group/_bgpd
 	acct-user/_bgpd
 "

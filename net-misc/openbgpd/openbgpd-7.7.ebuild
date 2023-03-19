@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic systemd
+inherit systemd
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	${DEPEND}
-	!!net-misc/quagga
+	!!net-misc/frr
 	acct-group/_bgpd
 	acct-user/_bgpd
 "
@@ -29,11 +29,6 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	append-cflags -fcommon
-	default
-}
 
 src_install() {
 	default
