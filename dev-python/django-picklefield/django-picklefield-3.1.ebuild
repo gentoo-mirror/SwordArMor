@@ -20,7 +20,7 @@ distutils_enable_tests unittest
 
 src_prepare() {
 	# Fix for >=django-3.2
-	echo "DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'" >> tests/settings.py || die
+	use test && (echo "DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'" >> tests/settings.py || die)
 	distutils-r1_src_prepare
 }
 
