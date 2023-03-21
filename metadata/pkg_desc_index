@@ -45,7 +45,9 @@ dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in
 dev-perl/ip2as 9999: IP to ASN mapping
 dev-python/Rx 1.6.3: Reactive Extensions (Rx) for Python
 dev-python/actdiag 0.5.4 2.0.0 3.0.0: actdiag generate activity-diagram image file from spec-text file.
+dev-python/aiosmtpd 1.4.4: asyncio based SMTP server
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
+dev-python/authheaders 0.15.2: A library wrapping email authentication header verification and generation
 dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/ciscoconfparse 1.5.19 1.5.30 1.5.46 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
@@ -53,17 +55,25 @@ dev-python/confu 1.7.1 1.8.0: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
 dev-python/django 3.2.9: High-level Python web framework
+dev-python/django-allauth 0.50.0 0.53.1: Django 3rd party (social) account authentication
+dev-python/django-appconf 1.0.5-r1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 4.1.0: Django LDAP authentication backend
 dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
+dev-python/django-compressor 4.3.1: Compresses linked and inline JavaScript or CSS into single cached files
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
 dev-python/django-db-file-storage 0.5.5: Custom FILE_STORAGE for Django
 dev-python/django-debug-toolbar 3.2.2: A configurable set of panels that display debug information
+dev-python/django-extensions 3.2.1: A collection of custom extensions for the Django Framework
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
+dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
+dev-python/django-haystack 3.2.1: Pluggable search for Django
 dev-python/django-js-asset 2.0: script tag with additional attributes for django.forms.Media
 dev-python/django-mptt 0.13.4: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
+dev-python/django-picklefield 3.1: Pickled object field for Django
 dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometheus
+dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
 dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
 dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
 dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
@@ -72,6 +82,10 @@ dev-python/djangorestframework 3.12.4: Web APIs with django made easy
 dev-python/drf-yasg 1.20.0: Automated generation of real Swagger schemas from Django code
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elasticsearch
+dev-python/falcon 3.1.1: A supersonic micro-framework for building cloud APIs
+dev-python/flufl-bounce 4.0: Email bounce detectors
+dev-python/flufl-i18n 4.1.1: A high level API for Python internationalization
+dev-python/flufl-testing 0.8: Small collection of test tool plugins
 dev-python/graphene 2.1.9: GraphQL Framework for Python
 dev-python/graphene-django 2.15.0: Graphene Django integration
 dev-python/graphql-core 2.3.2: GraphQL for Python
@@ -80,6 +94,8 @@ dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.2 2.6.3 2.6.6: Junos 'EZ' automation for non-programmers
 dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/lazr-config 2.2.3-r2: Create configuration schemas, and process and validate configurations
+dev-python/lazr-delegates 2.1.0: Easily write objects that delegate behavior
 dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
@@ -118,7 +134,11 @@ dev-python/python-cinderclient 7.4.0: A client for the OpenStack Cinder API
 dev-python/python-keystoneclient 4.2.0: Client Library for OpenStack Identity
 dev-python/python-novaclient 17.5.0: A client for the OpenStack Nova API
 dev-python/python-openstackclient 5.5.0: A client for the OpenStack APIs
+dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
+dev-python/rcssmin 1.1.1: CSS minifier written in python
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
+dev-python/rjsmin 1.2.1: Javascript minifier written in python
+dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
 dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 0.9.6 2.0.0 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
@@ -172,6 +192,12 @@ net-libs/bctoolbox 5.1.3: Utilities library used by Belledonne Communications so
 net-libs/bzrtp 5.1.3: Media Path Key Agreement for Unicast Secure RTP
 net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
 net-libs/ortp 5.1.3: Open Real-time Transport Protocol (RTP, RFC3550) stack
+net-mail/HyperKitty 1.3.7: A web interface to access GNU Mailman v3 archives
+net-mail/django-mailman3 1.3.9: Django-based interfaces interacting with Mailman 3
+net-mail/mailman 3.3.8: Mailman -- the GNU mailing list manager
+net-mail/mailman-web 0.0.6: Django project that contains default and url settings for Mailman3 Web Interface
+net-mail/mailmanclient 3.3.5: Python bindings for the GNU Mailman 3 REST API
+net-mail/postorius 1.3.8: A web user interface for GNU Mailman 3
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-misc/FORT-validator 1.5.2 1.5.3 1.5.3_p20220607: FORT validator is an open source RPKI validator
 net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
