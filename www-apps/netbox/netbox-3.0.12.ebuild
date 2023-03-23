@@ -97,9 +97,9 @@ src_install() {
 	dodir /opt
 	cp -a ../${P} "${ED}"/opt
 	dosym ${P} /opt/netbox
-	dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
-	dosym ../../../../etc/netbox/configuration.py \
-	/opt/netbox/netbox/netbox/configuration.py
+	dosym /etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
+	dosym /etc/netbox/configuration.py \
+		/opt/netbox/netbox/netbox/configuration.py
 	dodir /etc/netbox
 	insinto /etc/netbox
 	newins netbox/netbox/configuration.example.py configuration.py
