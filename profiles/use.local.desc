@@ -41,6 +41,7 @@ net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
+net-dns/flamethrower:doh - Build DNS-over-HTTPS support
 net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
 net-firewall/ipt_netflow:dot1q - Enable tagged VLAN support
 net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) support
