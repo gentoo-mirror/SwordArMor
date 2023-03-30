@@ -12,13 +12,12 @@ SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/8" # soname version
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="doc +cxx debug ssl gnutls"
+IUSE="doc +cxx debug"
 
 RDEPEND="
-	ssl? (
-		net-libs/gnutls:=
-		dev-libs/libgcrypt:=
-	)"
+	dev-libs/libgcrypt:=
+	net-libs/gnutls:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
@@ -51,7 +50,7 @@ src_configure() {
 		--disable-static
 		--with-pkg-config
 		# don't bother with openssl, incompatible with the 1.1 API
-		--with-sslstack=$(usex ssl gnu nossl)
+		--with-sslstack=gnu
 		$(use_enable cxx stdcpp)
 	)
 	econf "${myeconfargs[@]}"
