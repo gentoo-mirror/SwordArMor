@@ -46,6 +46,7 @@ dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in
 dev-perl/ip2as 9999: IP to ASN mapping
 dev-python/Rx 1.6.3: Reactive Extensions (Rx) for Python
 dev-python/actdiag 0.5.4 2.0.0 3.0.0: actdiag generate activity-diagram image file from spec-text file.
+dev-python/aenum 3.1.12: Advanced Enumerations (compatible with Python's stdlib Enum)
 dev-python/aiosmtpd 1.4.4: asyncio based SMTP server
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
 dev-python/authheaders 0.15.2: A library wrapping email authentication header verification and generation
@@ -105,6 +106,7 @@ dev-python/matrix-nio 0.20.1: A Python Matrix client library, designed according
 dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
 dev-python/mrtparse 2.1.0: MRT format data parser
 dev-python/munge 1.2.0 1.2.1: data manipulation library and client
+dev-python/mysql-replication 0.31: Pure Python Implementation of MySQL replication protocol
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
 dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
 dev-python/ncclient 0.6.9 0.6.12 0.6.13: Python library for NETCONF clients
