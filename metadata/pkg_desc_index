@@ -103,6 +103,7 @@ dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.20.1: A Python Matrix client library, designed according to sans I/OH
+dev-python/mautrix 0.19.7: A Python 3 asyncio Matrix framework
 dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
 dev-python/mrtparse 2.1.0: MRT format data parser
 dev-python/munge 1.2.0 1.2.1: data manipulation library and client
