@@ -18,6 +18,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	<dev-python/mistune-3.0
+	>=dev-python/mistune-2.0.0[${PYTHON_USEDEP}]
 	dev-lang/sassc
 	dev-python/django-compressor[${PYTHON_USEDEP}]
 	dev-python/django-extensions[${PYTHON_USEDEP}]
