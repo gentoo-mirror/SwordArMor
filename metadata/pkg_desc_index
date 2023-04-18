@@ -14,6 +14,7 @@ acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
+app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
 app-crypt/certbot-dns-rfc2136 1.14.0 1.15.0 1.19.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-text/docbook-sgml-utils 0.6.14-r4 0.6.14-r5: Shell scripts to manage DocBook documents
