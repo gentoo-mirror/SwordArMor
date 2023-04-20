@@ -30,13 +30,12 @@ src_install() {
 	cd "${BUILD_DIR}"
 
 	insinto /usr/$(get_libdir)/lv2/
-	doins bin/rnnoise_mono.lv2/librnnoise_mono.so
-	doins bin/rnnoise_stereo.lv2/librnnoise_stereo.so
+	doins -r bin/rnnoise_{mono,stereo}.lv2/
 
 	insinto /usr/$(get_libdir)/vst3/
 	doins bin/rnnoise.vst3/Contents/x86_64-linux/rnnoise.so
 
-	insinto /usr/$(get_libdir)/vst/
+	insinto /usr/$(get_libdir)
 	doins -r bin/vst
 
 	insinto /usr/$(get_libdir)/ladspa/
