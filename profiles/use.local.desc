@@ -48,6 +48,7 @@ net-firewall/ipt_netflow:natevents - Netflow NAT translation events (NEL) suppor
 net-im/Quaternion:keychain - Enable support for password storage via dev-libs/qtkeychain
 net-im/gomuks:encryption - End-to-end encryption support with dev-libs/olm
 net-libs/ortp:ntp-timestamp - Turn on NTP timestamping on received packet
+net-misc/bird:bmp - Compile with BMP support (alpha support, not prod ready)
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/bird:libssh - Enables net-libs/libssh binding, mendatory for RPKI support
 net-misc/frr:fpm - Enable Forwarding Plane Manager support
