@@ -15,7 +15,6 @@ acct-user/fort 0: User for FORT RPKI validator
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
-app-crypt/certbot-dns-rfc2136 1.14.0 1.15.0 1.19.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-text/docbook-sgml-utils 0.6.14-r4 0.6.14-r5: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
@@ -52,7 +51,6 @@ dev-python/aiosmtpd 1.4.4: asyncio based SMTP server
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
 dev-python/authheaders 0.15.2: A library wrapping email authentication header verification and generation
 dev-python/blockdiag 3.0.0: Generate block-diagram image from text
-dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/ciscoconfparse 1.5.19 1.5.30 1.5.46 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
 dev-python/confu 1.7.1 1.8.0: Configuration file validation and generation
@@ -62,11 +60,9 @@ dev-python/django 3.2.9: High-level Python web framework
 dev-python/django-allauth 0.50.0 0.53.1: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.5-r1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 4.1.0: Django LDAP authentication backend
-dev-python/django-cacheops 5.1 6.0: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-compressor 4.3.1: Compresses linked and inline JavaScript or CSS into single cached files
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
-dev-python/django-db-file-storage 0.5.5: Custom FILE_STORAGE for Django
 dev-python/django-debug-toolbar 3.2.2: A configurable set of panels that display debug information
 dev-python/django-extensions 3.2.1: A collection of custom extensions for the Django Framework
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
@@ -79,9 +75,6 @@ dev-python/django-picklefield 3.1: Pickled object field for Django
 dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometheus
 dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
 dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
-dev-python/django-tables2 2.4.0: Table/data-grid framework for Django
-dev-python/django-taggit 1.3.0 1.4.0: Simple tagging for Django
-dev-python/django-timezone-field 4.1 4.1.2: A Django app providing database and form fields for pytz timezone objects
 dev-python/djangorestframework 3.12.4: Web APIs with django made easy
 dev-python/drf-yasg 1.20.0: Automated generation of real Swagger schemas from Django code
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
@@ -97,7 +90,6 @@ dev-python/graphql-relay 2.0.1: Relay library for graphql-core-next
 dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.6 2.6.7: Junos 'EZ' automation for non-programmers
-dev-python/keystoneauth 4.3.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/lazr-config 2.2.3-r2: Create configuration schemas, and process and validate configurations
 dev-python/lazr-delegates 2.1.0: Easily write objects that delegate behavior
 dev-python/loguru 0.5.3: Python logging made (stupidly) simple
@@ -112,7 +104,6 @@ dev-python/mysql-replication 0.31: Pure Python Implementation of MySQL replicati
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
 dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
 dev-python/ncclient 0.6.9 0.6.12 0.6.13: Python library for NETCONF clients
-dev-python/netflow 0.10.3: NetFlow v1, v5, v9 and IPFIX tool suite implemented in Python 3
 dev-python/netmiko 3.4.0: Multivendor library to simplify Paramiko SSH connections to netdev
 dev-python/nornir 3.1.1 3.2.0: Pluggable multi-threaded framework with inventory management
 dev-python/nornir_napalm 0.1.2: NAPALM's plugins for nornir
@@ -121,28 +112,15 @@ dev-python/nornir_utils 0.1.2: Pluggable multi-threaded framework with inventory
 dev-python/ntc-templates 2.3.2: TextFSM Templates for net-devs, and TextFSM's CliTable wrapper
 dev-python/nwdiag 1.0.4 2.0.0 3.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/odfpy 1.4.2: Python API and tools to manipulate OpenDocument files
-dev-python/openstacksdk 0.57.0: A collection of libraries for building applications to work with OpenStack.
-dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
-dev-python/osc-lib 2.4.0: A package of common support modules for writing OSC plugins.
-dev-python/oslo-config 8.7.0: Oslo Configuration API
-dev-python/oslo-i18n 5.0.1: Oslo i18n library
-dev-python/oslo-serialization 4.1.0: Oslo Serialization library
-dev-python/oslo-utils 4.9.1: Oslo Utility library
 dev-python/peeringdb 1.1.0 1.3.0: PeeringDB python client
 dev-python/promise 2.3.0: Promises/A+ implementation for Python
 dev-python/proxmoxer 1.3.0 1.3.1: Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
-dev-python/pyasn 1.6.1: Offline IP address to Autonomous System Number lookup module
 dev-python/pyeapi 0.8.4: Python Client for eAPI
 dev-python/pygal 3.0.0-r2: A python SVG charts generator
 dev-python/pynetbox 5.3.1 6.1.2 6.6.2: Python API client library for NetBox
 dev-python/pytest-benchmark 3.4.1 4.0.0: py.test fixture for benchmarking code
-dev-python/python-cinderclient 7.4.0: A client for the OpenStack Cinder API
-dev-python/python-keystoneclient 4.2.0: Client Library for OpenStack Identity
-dev-python/python-novaclient 17.5.0: A client for the OpenStack Nova API
-dev-python/python-openstackclient 5.5.0: A client for the OpenStack APIs
 dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
 dev-python/rcssmin 1.1.1: CSS minifier written in python
-dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
 dev-python/rjsmin 1.2.1: Javascript minifier written in python
 dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
 dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
@@ -181,7 +159,6 @@ net-analyzer/mtr 0.94-r1 0.95: My TraceRoute, an Excellent network diagnostic to
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
-net-analyzer/nagios-check-zfs-linux 1.2: Nagios plugin to check ZFS pool in the Linux environment
 net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packet inspection
 net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
 net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
@@ -190,7 +167,6 @@ net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via D
 net-dns/dnsperf 2.11.0: DNS Performance Testing Tools
 net-dns/flamethrower 0.11.0: DNS performance and functional testing utility
 net-dns/nagios-check_dane 0.1 1.0 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
-net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
