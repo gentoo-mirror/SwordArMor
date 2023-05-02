@@ -16,16 +16,14 @@ acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
-app-text/docbook-sgml-utils 0.6.14-r4 0.6.14-r5: Shell scripts to manage DocBook documents
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
-app-text/unicode 2.8 2.9: display unicode character properties
+app-text/unicode 2.9: display unicode character properties
 dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
 dev-cpp/libcutl 1.11.0_p20210806: A collection of C++ libraries (successor of libcult)
 dev-cpp/libxsd-frontend 2.0.0_p20211005: A compiler frontend for the W3C XML Schema definition language
 dev-cpp/xsd 4.0.0_p20210722: A cross-platform W3C XML Schema to C++ data binding compiler
 dev-db/soci 4.0.3: Database access library for C++
 dev-go/dns 1.1.31: DNS library in Go
-dev-java/openjdk-bin 16.0.1_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-libs/belcard 5.1.3: VCard standard format manipulation library
 dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
 dev-libs/icinga-php-library 0.6.1 0.9.1: Icinga PHP libraries for Icinga Web 2
@@ -45,25 +43,25 @@ dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sor
 dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
 dev-perl/ip2as 9999: IP to ASN mapping
 dev-python/Rx 1.6.3: Reactive Extensions (Rx) for Python
-dev-python/actdiag 0.5.4 2.0.0 3.0.0: actdiag generate activity-diagram image file from spec-text file.
+dev-python/actdiag 3.0.0: actdiag generate activity-diagram image file from spec-text file.
 dev-python/aenum 3.1.12: Advanced Enumerations (compatible with Python's stdlib Enum)
 dev-python/aiosmtpd 1.4.4: asyncio based SMTP server
 dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
 dev-python/authheaders 0.15.2: A library wrapping email authentication header verification and generation
 dev-python/blockdiag 3.0.0: Generate block-diagram image from text
-dev-python/ciscoconfparse 1.5.19 1.5.30 1.5.46 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
+dev-python/cfu 1.5.0: Configuration file validation and generation
+dev-python/ciscoconfparse 1.5.30 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
 dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
-dev-python/confu 1.7.1 1.8.0: Configuration file validation and generation
+dev-python/confu 1.8.0: Configuration file validation and generation
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
 dev-python/django 3.2.9: High-level Python web framework
 dev-python/django-allauth 0.50.0 0.53.1: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.5-r1: A helper class for handling configuration defaults of packaged apps gracefully
-dev-python/django-auth-ldap 4.1.0: Django LDAP authentication backend
 dev-python/django-compressor 4.3.1: Compresses linked and inline JavaScript or CSS into single cached files
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
-dev-python/django-debug-toolbar 3.2.2: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 3.2.2 3.4: A configurable set of panels that display debug information
 dev-python/django-extensions 3.2.1: A collection of custom extensions for the Django Framework
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
@@ -99,7 +97,6 @@ dev-python/matrix-nio 0.20.1: A Python Matrix client library, designed according
 dev-python/mautrix 0.19.7 0.19.11: A Python 3 asyncio Matrix framework
 dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
 dev-python/mrtparse 2.1.0: MRT format data parser
-dev-python/munge 1.2.0 1.2.1: data manipulation library and client
 dev-python/mysql-replication 0.31: Pure Python Implementation of MySQL replication protocol
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
 dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
@@ -110,14 +107,14 @@ dev-python/nornir_napalm 0.1.2: NAPALM's plugins for nornir
 dev-python/nornir_netbox 0.3.0: Pluggable multi-threaded framework with inventory management
 dev-python/nornir_utils 0.1.2: Pluggable multi-threaded framework with inventory management
 dev-python/ntc-templates 2.3.2: TextFSM Templates for net-devs, and TextFSM's CliTable wrapper
-dev-python/nwdiag 1.0.4 2.0.0 3.0.0: nwdiag generate network-diagram image file from spec-text file.
+dev-python/nwdiag 3.0.0: nwdiag generate network-diagram image file from spec-text file.
 dev-python/odfpy 1.4.2: Python API and tools to manipulate OpenDocument files
 dev-python/peeringdb 1.1.0 1.3.0: PeeringDB python client
 dev-python/promise 2.3.0: Promises/A+ implementation for Python
-dev-python/proxmoxer 1.3.0 1.3.1: Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
+dev-python/pydata-sphinx-theme 0.8.0: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pyeapi 0.8.4: Python Client for eAPI
 dev-python/pygal 3.0.0-r2: A python SVG charts generator
-dev-python/pynetbox 5.3.1 6.1.2 6.6.2: Python API client library for NetBox
+dev-python/pynetbox 5.3.1 6.6.2: Python API client library for NetBox
 dev-python/pytest-benchmark 3.4.1 4.0.0: py.test fixture for benchmarking code
 dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
 dev-python/rcssmin 1.1.1: CSS minifier written in python
@@ -125,7 +122,8 @@ dev-python/rjsmin 1.2.1: Javascript minifier written in python
 dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
 dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/scp 0.14.1: scp module for paramiko
-dev-python/seqdiag 0.9.6 2.0.0 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
@@ -193,7 +191,7 @@ net-misc/frr 8.0.1: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1: IPv6 address calculator
 net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
-net-misc/nbcli 0.8.0_alpha1: Extensible command-line interface for Netbox
+net-misc/nbcli 0.8.0_alpha1 0.9.1_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
 net-misc/openbgpd 6.9_p0 7.7 7.8 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
