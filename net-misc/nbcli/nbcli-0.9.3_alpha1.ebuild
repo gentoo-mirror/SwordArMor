@@ -9,7 +9,10 @@ inherit distutils-r1
 MY_P="${P/_alpha/.dev}"
 
 DESCRIPTION="Extensible command-line interface for Netbox"
-HOMEPAGE="https://github.com/ericgeldmacher/nbcli"
+HOMEPAGE="
+https://github.com/ericgeldmacher/nbcli
+https://codeberg.org/nbcli/nbcli/tags
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -19,8 +22,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=dev-python/pynetbox-5.0.3
-	<dev-python/pynetbox-6
+	>=dev-python/pynetbox-6.6.0
+	<dev-python/pynetbox-7
 	dev-python/pyyaml
 "
 RDEPEND="${DEPEND}"
