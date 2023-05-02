@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="seqdiag generate sequence-diagram image file from spec-text file."
