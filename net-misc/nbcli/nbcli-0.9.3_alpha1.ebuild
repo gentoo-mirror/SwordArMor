@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
@@ -11,7 +12,7 @@ MY_P="${P/_alpha/.dev}"
 DESCRIPTION="Extensible command-line interface for Netbox"
 HOMEPAGE="
 https://github.com/ericgeldmacher/nbcli
-https://codeberg.org/nbcli/nbcli/tags
+https://codeberg.org/nbcli/nbcli
 "
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
