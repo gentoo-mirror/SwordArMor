@@ -4,7 +4,6 @@
 
 dev-cpp/belr:tools - Build tools
 dev-libs/belcard:tools - Build tools
-dev-libs/liblinphone:tools - Build tools
 dev-libs/qcoro:asan - Build Address Sanitizer runtime
 dev-libs/qcoro:network - Enable network support
 dev-libs/qcoro:shared - Build shared libraries
