@@ -200,7 +200,7 @@ net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
 net-misc/routinator 0.7.1 0.8.3 0.10.0: An RPKI relying party software
-net-misc/rpki-client 7.8 8.0 8.3: Portability shim for OpenBSD's rpki-client
+net-misc/rpki-client 7.8 8.0 8.4: Portability shim for OpenBSD's rpki-client
 net-misc/urlview 0.9_p21: A curses URL parser for text files
 net-nds/apachedirectorystudio 2.0.0.20200411: Apache Directory Studio is an universal LDAP directory tool.
 net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux
