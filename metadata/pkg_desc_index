@@ -149,6 +149,7 @@ media-libs/bv16-floatingpoint 1.2: BroadVoice 16 kbs codec
 media-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
 media-libs/mediastreamer2 5.1.3: Mediastreaming library for telephony application
 media-libs/noise-suppression-for-voice 1.03: A real-time noise suppression plugin for voice
+media-video/jellyfin-ffmpeg 5.1.3_p1: FFmpeg for Jellyfin
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
 net-analyzer/blaeu 1.1.8 1.1.9: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/check_ssl_cert 2.68.0: A shell script to check an SSL/TLS connection
