@@ -129,6 +129,7 @@ net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
 net-misc/routinator:rta - Enables the command rta for validating Resource Tagged Assertions as described in draft-michaelson-rpki-rta
 net-voip/twinkle:g729 - Add support for the G.729A audio codec
 www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
+www-apps/tt-rss:daemon - Install additional init scripts for automated RSS updates
 x11-libs/vte:icu - Enable legacy charset support using dev-libs/icu
 x11-libs/vte:mouse - Enable mouse support.
 x11-libs/vte:systemd - Support moving terminal child processes to their own systemd user scopes to avoid terminal getting killed due to child causing OOM

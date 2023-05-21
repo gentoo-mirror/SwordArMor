@@ -212,6 +212,7 @@ www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphi
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
 www-apps/netbox 3.0.12: IP address and data center infrastructure management tool
 www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
+www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.70.2 0.70.3: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
