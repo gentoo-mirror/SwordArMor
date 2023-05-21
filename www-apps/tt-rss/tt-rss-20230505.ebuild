@@ -52,10 +52,6 @@ need_httpd_cgi # From webapp.eclass
 
 S="${WORKDIR}/${PN}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-no-chmod.patch
-)
-
 src_install() {
 	webapp_src_preinst
 
