@@ -131,7 +131,7 @@ dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequenc
 dev-python/tablib 3.1.0: Format-agnostic tabular dataset library
 dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
 dev-python/tomlkit 0.7.2: Style preserving TOML library
-dev-python/twentyc-rpc 0.4.0 1.0.0: client for 20c's RESTful API
+dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
 dev-python/yamllint 1.26.3: A linter for YAML files
 dev-python/yamlordereddictloader 0.4.0: YAML loader and dump for PyYAML allowing to keep keys order
 dev-ruby/awesome_print 1.9.2: Pretty print your Ruby objects with style
