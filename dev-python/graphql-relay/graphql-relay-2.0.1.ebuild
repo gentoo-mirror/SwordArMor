@@ -10,6 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Relay library for graphql-core-next"
 HOMEPAGE="https://github.com/graphql-python/graphql-relay-py"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
+S=${WORKDIR}/${P}
 
 LICENSE="MIT"
 SLOT="0"
