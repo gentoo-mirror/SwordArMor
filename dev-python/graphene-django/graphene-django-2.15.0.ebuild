@@ -9,7 +9,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Graphene Django integration"
 HOMEPAGE="https://pypi.org/project/graphene-django/"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
-S=${WORKDIR}/${P^}
+S=${WORKDIR}/${P}
 
 LICENSE="MIT"
 SLOT="0"
