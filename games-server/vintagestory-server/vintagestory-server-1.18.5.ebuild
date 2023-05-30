@@ -12,6 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	acct-group/vintagestory
+	acct-user/vintagestory
 	dev-lang/mono
 	net-misc/curl
 	net-misc/wget
