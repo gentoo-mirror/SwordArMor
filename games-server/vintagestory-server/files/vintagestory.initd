@@ -13,9 +13,9 @@ pidfile="/run/${RC_SVCNAME}.pid"
 command_user="vintagestory"
 command_group="vintagestory"
 
-command_args="/opt/vintagestory-server/VintagestoryServer.exe --dataPath ${DATAPATH}"
-
 DATAPATH="/var/lib/vintagestory"
+
+command_args="/opt/vintagestory-server/VintagestoryServer.exe --dataPath ${DATAPATH}"
 
 start_pre() {
 	checkpath -d -m 0750 -o "${command_user}:${command_group}" \
