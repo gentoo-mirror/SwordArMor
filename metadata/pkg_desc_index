@@ -6,6 +6,7 @@ acct-group/factorio 0: System group: factorio
 acct-group/fort 0: System group: fort
 acct-group/rancid 0: System group: rancid
 acct-group/routinator 0: System group: routinator
+acct-group/vintagestory 0: System group: vintagestory
 acct-user/_bgpd 0: User for OpenBGPD
 acct-user/_rpki-client 0: User for rpki-client
 acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
@@ -14,6 +15,7 @@ acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
+acct-user/vintagestory 0: User for games-server/vintagestory-server
 app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
