@@ -141,6 +141,7 @@ dev-util/clippy 8.0.1: Standalone clippy tool built from FRR sources
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.1.76: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
+games-server/vintagestory-server 1.18.5: Server for Vintage Story
 gemini-client/lagrange 1.12.1 1.13.5: Desktop GUI client for browsing Geminispace
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
