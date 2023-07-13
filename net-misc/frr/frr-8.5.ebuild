@@ -1,9 +1,9 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
@@ -14,8 +14,8 @@ S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp systemd test"
+KEYWORDS="amd64 ~arm64 ~x86"
+IUSE="doc fpm grpc ipv6 nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -23,34 +23,37 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-user/frr
 	dev-libs/json-c:0=
-	net-dns/c-ares:0=
+	>=net-libs/libyang-2.0.0
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
-	>=net-libs/libyang-2.0.0
 	grpc? ( net-libs/grpc:= )
+	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
-	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
+	rpki? ( >=net-libs/rtrlib-0.8.0[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
 "
-
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	~dev-util/clippy-${PV}
 	sys-devel/flex
-	virtual/yacc
-	~dev-util/clippy-"${PV}"
+	app-alternatives/yacc
+	doc? ( dev-python/sphinx )
 "
-
 DEPEND="
 	${COMMON_DEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
 "
-
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 	!net-misc/quagga
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
+	"${FILESDIR}"/${PN}-8.4.1-logrotate.patch
+)
 
 src_prepare() {
 	default
@@ -73,7 +76,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/run/frr
 		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules
 		--with-clippy="${BROOT}"/usr/bin/clippy
-		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples
 		--enable-user=frr
 		--enable-group=frr
 		--enable-vty-group=frr
@@ -89,7 +91,6 @@ src_configure() {
 		$(usex ospfapi '--enable-ospfclient' '' '' '')
 		$(use_enable rpki)
 		$(use_enable snmp)
-		$(use_enable systemd)
 	)
 
 	econf "${myconf[@]}"
