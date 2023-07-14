@@ -36,6 +36,10 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-musl-tests.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
@@ -44,14 +48,6 @@ src_prepare() {
 src_configure() {
 	# This export makes compilation and test phases verbose
 	export VERBOSE=1
-
-	# lto must be enabled by default as bird is mono-threaded and use several
-	# optimisations to be fast, at it may very likely be exposed to several
-	# thounsand BGP updates per seconds
-	# Although, we make it possible to desactivate it if wanted
-	if use custom-cflags; then
-		export bird_cv_c_lto=no
-	fi
 
 	protocols="bfd babel bgp mrt ospf perf pipe radv rip rpki static"
 	if use bmp; then
@@ -65,6 +61,12 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable libssh)
 	)
+
+	# lto must be enabled by default as bird is mono-threaded and use several
+	# optimisations to be fast, as it may very likely be exposed to several
+	# thounsand BGP updates per seconds
+	# Although, we make it possible to deactivate it if wanted
+	use custom-cflags && myargs+=( bird_cv_c_lto=no )
 
 	econf "${myargs[@]}"
 }
