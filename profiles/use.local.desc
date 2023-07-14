@@ -99,11 +99,6 @@ net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
 net-dialup/freeradius-client:scp - Add service type hints derived from username prefix
 net-dialup/freeradius-client:shadow - Enable shadow password support
-net-dialup/ppp:activefilter - Enables active filter support
-net-dialup/ppp:dhcp - Installs PPP DHCP client plugin for IP address allocation by a DHCP server (see http://www.netservers.co.uk/gpl/)
-net-dialup/ppp:eap-tls - Enables support for Extensible Authentication Protocol and Transport Level Security (see http://www.nikhef.nl/~janjust/ppp/index.html)
-net-dialup/ppp:gtk - Installs GTK+ password prompting program that can be used by passprompt.so PPP plugin for reading the password from a X11 input terminal
-net-dialup/ppp:radius - Enables RADIUS support
 net-dns/flamethrower:doh - Build DNS-over-HTTPS support
 net-firewall/ipt_netflow:dot1d - Enable bridge support (to override interfaces)
 net-firewall/ipt_netflow:dot1q - Enable tagged VLAN support
