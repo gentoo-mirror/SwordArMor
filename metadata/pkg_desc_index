@@ -1,0 +1,228 @@
+acct-group/_bgpd 0: System group: _bgpd
+acct-group/_rpki-client 0: System group: _rpki-client
+acct-group/as-stats 0: System group: as-stats
+acct-group/bird 0: System group: bird
+acct-group/factorio 0: System group: factorio
+acct-group/fort 0: System group: fort
+acct-group/rancid 0: System group: rancid
+acct-group/routinator 0: System group: routinator
+acct-group/vintagestory 0: System group: vintagestory
+acct-user/_bgpd 0: User for OpenBGPD
+acct-user/_rpki-client 0: User for rpki-client
+acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
+acct-user/bird 0: User for BIRD
+acct-user/factorio 0: User for games-server/factorio-server
+acct-user/fort 0: User for FORT RPKI validator
+acct-user/rancid 0: User for net-misc/rancid
+acct-user/routinator 0: User for routinator RPKI validator
+acct-user/vintagestory 0: User for games-server/vintagestory-server
+app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
+app-misc/live-build 20210407: Debian live system build components
+app-misc/tmate-ssh-server 2.3.0: tmate SSH server
+app-text/html2gmi 9999: Command line application to convert HTML to GMI
+app-text/unicode 2.9: display unicode character properties
+dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
+dev-cpp/libcutl 1.11.0_p20210806: A collection of C++ libraries (successor of libcult)
+dev-cpp/libxsd-frontend 2.0.0_p20211005: A compiler frontend for the W3C XML Schema definition language
+dev-cpp/xsd 4.0.0_p20210722: A cross-platform W3C XML Schema to C++ data binding compiler
+dev-db/soci 4.0.3: Database access library for C++
+dev-go/dns 1.1.31: DNS library in Go
+dev-libs/belcard 5.1.3: VCard standard format manipulation library
+dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
+dev-libs/icinga-php-library 0.6.1 0.9.1: Icinga PHP libraries for Icinga Web 2
+dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
+dev-libs/lime 5.0.70: C++ library implementing Open Whisper System Signal protocol
+dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
+dev-libs/qcoro 0.4.0: C++ Coroutine library for Qt5 and Qt6
+dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
+dev-perl/B-Hooks-OP-PPAddr 0.06: provides a C API for XS modules to hook into the execution of perl opcodes
+dev-perl/IXPManager 5.8.0: Perl lib for IXP-Manager
+dev-perl/MooseX-Traits 0.13: Automatically apply roles at object creation time
+dev-perl/Net-sFlow 0.11: The sFlow module provides a mechanism to parse and decode sFlow datagrams
+dev-perl/Parse-Method-Signatures 1.003019: Perl6 like method signature parser
+dev-perl/SNMP-Extension-PassPersist 0.07: Framework to write Net-SNMP extensions using pass or pass_persist mechanisms.
+dev-perl/Sort-Key-OID 0.05: Module extending the Sort::Key modules family to sort OID values.
+dev-perl/TryCatch 1.003002: provide a nicer syntax and method to catch errors in Perl
+dev-perl/ip2as 9999: IP to ASN mapping
+dev-python/Rx 1.6.3: Reactive Extensions (Rx) for Python
+dev-python/actdiag 3.0.0: actdiag generate activity-diagram image file from spec-text file.
+dev-python/aenum 3.1.12: Advanced Enumerations (compatible with Python's stdlib Enum)
+dev-python/aiosmtpd 1.4.4: asyncio based SMTP server
+dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
+dev-python/authheaders 0.15.2: A library wrapping email authentication header verification and generation
+dev-python/blockdiag 3.0.0: Generate block-diagram image from text
+dev-python/cfu 1.5.0: Configuration file validation and generation
+dev-python/ciscoconfparse 1.5.30 1.6.10: Parse, audit, query, build, and modify Cisco IOS-style configurations
+dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
+dev-python/confu 1.8.0: Configuration file validation and generation
+dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
+dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
+dev-python/django 3.2.9: High-level Python web framework
+dev-python/django-allauth 0.50.0 0.53.1: Django 3rd party (social) account authentication
+dev-python/django-appconf 1.0.5-r1: A helper class for handling configuration defaults of packaged apps gracefully
+dev-python/django-compressor 4.3.1: Compresses linked and inline JavaScript or CSS into single cached files
+dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
+dev-python/django-cryptography 1.0: Easily encrypt data in Django
+dev-python/django-debug-toolbar 3.2.2 3.4: A configurable set of panels that display debug information
+dev-python/django-extensions 3.2.1: A collection of custom extensions for the Django Framework
+dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
+dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
+dev-python/django-haystack 3.2.1: Pluggable search for Django
+dev-python/django-js-asset 2.0: script tag with additional attributes for django.forms.Media
+dev-python/django-mptt 0.13.4: utilities for modified preorder tree traversal and trees of model instances
+dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
+dev-python/django-picklefield 3.1: Pickled object field for Django
+dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometheus
+dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
+dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
+dev-python/djangorestframework 3.12.4: Web APIs with django made easy
+dev-python/dmidecode 0.9.0: dmidecode py
+dev-python/drf-yasg 1.20.0: Automated generation of real Swagger schemas from Django code
+dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
+dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elasticsearch
+dev-python/falcon 3.1.1: A supersonic micro-framework for building cloud APIs
+dev-python/flufl-bounce 4.0: Email bounce detectors
+dev-python/flufl-i18n 4.1.1: A high level API for Python internationalization
+dev-python/flufl-testing 0.8: Small collection of test tool plugins
+dev-python/graphene 2.1.9: GraphQL Framework for Python
+dev-python/graphene-django 2.15.0: Graphene Django integration
+dev-python/graphql-core 2.3.2: GraphQL for Python
+dev-python/graphql-relay 2.0.1: Relay library for graphql-core-next
+dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
+dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
+dev-python/junos-eznc 2.6.6 2.6.7: Junos 'EZ' automation for non-programmers
+dev-python/lazr-config 2.2.3-r2: Create configuration schemas, and process and validate configurations
+dev-python/lazr-delegates 2.1.0: Easily write objects that delegate behavior
+dev-python/loguru 0.5.3: Python logging made (stupidly) simple
+dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
+dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
+dev-python/matrix-nio 0.20.1: A Python Matrix client library, designed according to sans I/OH
+dev-python/mautrix 0.19.7 0.19.11: A Python 3 asyncio Matrix framework
+dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
+dev-python/mrtparse 2.1.0: MRT format data parser
+dev-python/mysql-replication 0.31: Pure Python Implementation of MySQL replication protocol
+dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
+dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
+dev-python/ncclient 0.6.9 0.6.12 0.6.13: Python library for NETCONF clients
+dev-python/netmiko 3.4.0: Multivendor library to simplify Paramiko SSH connections to netdev
+dev-python/nornir 3.1.1 3.2.0: Pluggable multi-threaded framework with inventory management
+dev-python/nornir_napalm 0.1.2: NAPALM's plugins for nornir
+dev-python/nornir_netbox 0.3.0: Pluggable multi-threaded framework with inventory management
+dev-python/nornir_utils 0.1.2: Pluggable multi-threaded framework with inventory management
+dev-python/ntc-templates 2.3.2: TextFSM Templates for net-devs, and TextFSM's CliTable wrapper
+dev-python/nwdiag 3.0.0: nwdiag generate network-diagram image file from spec-text file.
+dev-python/odfpy 1.4.2: Python API and tools to manipulate OpenDocument files
+dev-python/peeringdb 1.3.0 1.5.0: PeeringDB python client
+dev-python/promise 2.3.0: Promises/A+ implementation for Python
+dev-python/py-dmidecode 0.1.1: python library to parse the output of dmidecode
+dev-python/pydata-sphinx-theme 0.8.0: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pyeapi 0.8.4: Python Client for eAPI
+dev-python/pygal 3.0.0-r2: A python SVG charts generator
+dev-python/pynetbox 5.3.1 6.6.2: Python API client library for NetBox
+dev-python/pytest-benchmark 3.4.1 4.0.0: py.test fixture for benchmarking code
+dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
+dev-python/rcssmin 1.1.1: CSS minifier written in python
+dev-python/rjsmin 1.2.1: Javascript minifier written in python
+dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
+dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/scp 0.14.1: scp module for paramiko
+dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
+dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
+dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block diagrams using blockdiag
+dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
+dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
+dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
+dev-python/tablib 3.1.0: Format-agnostic tabular dataset library
+dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
+dev-python/tomlkit 0.7.2: Style preserving TOML library
+dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
+dev-python/yamllint 1.26.3: A linter for YAML files
+dev-python/yamlordereddictloader 0.4.0: YAML loader and dump for PyYAML allowing to keep keys order
+dev-ruby/awesome_print 1.9.2: Pretty print your Ruby objects with style
+dev-util/bcunit 3.0.2: BC Unit Test Framework
+dev-util/cli 1.2.0_pre20210722: Command Line Interface compiler for C++
+dev-util/clippy 8.4.2 8.5 8.5.2: Standalone clippy tool built from FRR sources
+games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
+games-server/factorio-server 1.1.76: Factorio is a game in which you build and maintain factories
+games-server/minecraft-server 1.17.1: The official server for the sandbox video game
+games-server/vintagestory-server 1.18.5: Server for Vintage Story
+gemini-client/lagrange 1.12.1 1.13.5: Desktop GUI client for browsing Geminispace
+mail-filter/sieve-connect 0.90: Sieve Command Line Interface
+media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
+media-libs/bcmatroska2 0.23: Matroska media container support
+media-libs/bv16-floatingpoint 1.2: BroadVoice 16 kbs codec
+media-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
+media-libs/mediastreamer2 5.1.3: Mediastreaming library for telephony application
+media-libs/noise-suppression-for-voice 1.03: A real-time noise suppression plugin for voice
+media-video/jellyfin-ffmpeg 5.1.3_p1: FFmpeg for Jellyfin
+net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
+net-analyzer/blaeu 1.1.8 1.1.9: Blaeu, creating measurements on RIPE Atlas probes
+net-analyzer/check_ssl_cert 2.68.0: A shell script to check an SSL/TLS connection
+net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
+net-analyzer/mtr 0.94-r1 0.95: My TraceRoute, an Excellent network diagnostic tool
+net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
+net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
+net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
+net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packet inspection
+net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
+net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
+net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
+net-dialup/ppp 2.4.9-r9: Point-to-Point Protocol (PPP)
+net-dns/asdig 0.97: Simple client for retrieving AS from IP published via DNS
+net-dns/dnsperf 2.11.0: DNS Performance Testing Tools
+net-dns/flamethrower 0.11.0: DNS performance and functional testing utility
+net-dns/nagios-check_dane 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
+net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
+net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
+net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
+net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
+net-im/gomuks 0.2.4 0.3.0: A terminal based Matrix client written in Go
+net-im/profanity 0.13.1: A console based XMPP client inspired by Irssi
+net-im/webex-bin 43.2.0.25211: Cisco video conferencing and online meeting software
+net-im/weechat-matrix 0.3.0: Weechat Matrix protocol script written in python
+net-libs/bctoolbox 5.1.3 5.2.16: Utilities library used by Belledonne Communications softwares
+net-libs/bzrtp 5.1.3: Media Path Key Agreement for Unicast Secure RTP
+net-libs/libtins 4.2: Multiplatform C++ network packet sniffing and crafting library
+net-libs/ortp 5.1.3: Open Real-time Transport Protocol (RTP, RFC3550) stack
+net-mail/HyperKitty 1.3.7: A web interface to access GNU Mailman v3 archives
+net-mail/django-mailman3 1.3.9: Django-based interfaces interacting with Mailman 3
+net-mail/mailman 3.3.8: Mailman -- the GNU mailing list manager
+net-mail/mailman-meta 3: Meta ebuild for GNU Mailman 3
+net-mail/mailman-web 0.0.6: Django project that contains default and url settings for Mailman3 Web Interface
+net-mail/mailmanclient 3.3.5: Python bindings for the GNU Mailman 3 REST API
+net-mail/postorius 1.3.8: A web user interface for GNU Mailman 3
+net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
+net-misc/FORT-validator 1.5.2 1.5.3 1.5.3_p20220607: FORT validator is an open source RPKI validator
+net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
+net-misc/bgpq4 1.4 1.7: bgp filtering automation tool
+net-misc/bird 1.6.8 2.0.11 2.13.1 3.0_alpha1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
+net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
+net-misc/frr 8.4.2 8.5 8.5.2: The FRRouting Protocol Suite
+net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
+net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1: IPv6 address calculator
+net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
+net-misc/nbcli 0.8.0_alpha1 0.9.3_alpha1: Extensible command-line interface for Netbox
+net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
+net-misc/openbgpd 7.7 7.8 8.0 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
+net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
+net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
+net-misc/routinator 0.7.1 0.8.3 0.10.0: An RPKI relying party software
+net-misc/rpki-client 7.8 8.0 8.4: Portability shim for OpenBSD's rpki-client
+net-misc/urlview 0.9_p21: A curses URL parser for text files
+net-nds/apachedirectorystudio 2.0.0.20200411: Apache Directory Studio is an universal LDAP directory tool.
+net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux
+net-voip/twinkle 1.10.2: Twinkle is a SIP-based VoIP client.
+net-wireless/wavemon 0.9.4: Ncurses based monitor for IEEE 802.11 wireless LAN cards
+www-apps/cinny 1.3.0: Yet another matrix client
+www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
+www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
+www-apps/netbox 3.0.12: IP address and data center infrastructure management tool
+www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
+www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
+www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
+x11-libs/vte 0.70.2 0.70.3: Library providing a virtual terminal emulator widget
+x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
+x11-terms/rxvt-unicode 9.22-r9: rxvt clone with xft and unicode support
