@@ -165,10 +165,11 @@ net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packe
 net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
 net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
-net-dns/asdig 0.97 9999: Simple client for retrieving AS from IP published via DNS
+net-dns/asdig 0.97: Simple client for retrieving AS from IP published via DNS
 net-dns/dnsperf 2.11.0: DNS Performance Testing Tools
 net-dns/flamethrower 0.11.0: DNS performance and functional testing utility
 net-dns/nagios-check_dane 1.1: Nagios/Icinga plugin for checking DANE/TLSA records
+net-dns/nagios-check_dns_sync 9999: A nagios-like plugin to check that zones are synced
 net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
