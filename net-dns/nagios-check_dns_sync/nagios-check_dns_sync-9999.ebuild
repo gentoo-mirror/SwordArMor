@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 git-r3
 
 MY_PN=${PN/nagios-/}
