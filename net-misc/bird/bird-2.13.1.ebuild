@@ -37,7 +37,7 @@ FILECAPS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${P}-musl-tests.patch"
+	"${FILESDIR}/${PN}-2.0.12-musl-tests.patch"
 )
 
 src_prepare() {
