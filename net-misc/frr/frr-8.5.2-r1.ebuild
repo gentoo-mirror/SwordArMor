@@ -48,6 +48,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 	!net-misc/quagga
+	sys-apps/util-linux
 "
 
 PATCHES=(
