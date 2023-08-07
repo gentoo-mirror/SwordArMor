@@ -210,6 +210,7 @@ net-nds/apachedirectorystudio 2.0.0.20200411: Apache Directory Studio is an univ
 net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux
 net-voip/twinkle 1.10.2: Twinkle is a SIP-based VoIP client.
 net-wireless/wavemon 0.9.4: Ncurses based monitor for IEEE 802.11 wireless LAN cards
+sys-apps/brcmocmcore 12.0.1354.0: HPE Storage Emulex(BRCM) OneCommand Manager
 www-apps/cinny 1.3.0: Yet another matrix client
 www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/element 1.11.36: A glossy Matrix collaboration client for the web
