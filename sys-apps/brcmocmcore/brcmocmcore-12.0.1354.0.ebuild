@@ -11,7 +11,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="sys-libs/brcmocmcorelibs"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
