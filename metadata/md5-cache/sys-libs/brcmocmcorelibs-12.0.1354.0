@@ -1,0 +1,12 @@
+BDEPEND=app-arch/rpm2targz
+DEFINED_PHASES=install unpack
+DESCRIPTION=Libs for sys-apps/brcmocmcore
+EAPI=8
+HOMEPAGE=https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX-e9ee92fe1202416da05b56b08c
+INHERIT=rpm
+KEYWORDS=~amd64
+LICENSE=all-rights-reserved
+SLOT=0
+SRC_URI=https://herbizarre.swordarmor.fr/garbage/brcmocmcorelibs-12.0.1354.0-1.x86_64.rpm
+_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	745ef34afb8c31915d9d42a6aca23a35
+_md5_=01422257894fa4e70be4d6560aa412b1

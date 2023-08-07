@@ -3,15 +3,17 @@
 
 EAPI=8
 
-DESCRIPTION="HPE Storage Emulex(BRCM) OneCommand Manager"
+inherit rpm
+
+DESCRIPTION="Libs for sys-apps/brcmocmcore"
 HOMEPAGE="https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX-e9ee92fe1202416da05b56b08c"
-SRC_URI="https://herbizarre.swordarmor.fr/garbage/${P}-1.x86_64.tar.xz"
+SRC_URI="https://herbizarre.swordarmor.fr/garbage/${P}-1.x86_64.rpm"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="sys-libs/brcmocmcorelibs"
+DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
