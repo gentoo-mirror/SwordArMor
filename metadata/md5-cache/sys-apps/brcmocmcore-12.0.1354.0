@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=sys-libs/brcmocmcorelibs
+DEPEND=net-libs/libnsl:0/2 sys-libs/brcmocmcorelibs sys-libs/hbaapiwrapper
 DESCRIPTION=HPE Storage Emulex(BRCM) OneCommand Manager
 EAPI=8
 HOMEPAGE=https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX-e9ee92fe1202416da05b56b08c
 KEYWORDS=~amd64
 LICENSE=all-rights-reserved
-RDEPEND=sys-libs/brcmocmcorelibs
+RDEPEND=net-libs/libnsl:0/2 sys-libs/brcmocmcorelibs sys-libs/hbaapiwrapper
 SLOT=0
 SRC_URI=https://herbizarre.swordarmor.fr/garbage/brcmocmcore-12.0.1354.0-1.x86_64.tar.xz
-_md5_=45878fabed081a3b0f6c3d803c34e2c7
+_md5_=258825deb2adb58993b2b38b678e6541
