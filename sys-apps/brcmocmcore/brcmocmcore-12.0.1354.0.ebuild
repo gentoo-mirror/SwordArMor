@@ -11,12 +11,17 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="sys-libs/brcmocmcorelibs"
+DEPEND="
+	net-libs/libnsl:0/2
+	sys-libs/brcmocmcorelibs
+	sys-libs/hbaapiwrapper
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
 S="${WORKDIR}"
 
 src_install() {
+	rm -r "${S}/usr/lib/.build-id" || die "rm of /usr/lib/.build-id failed"
 	cp -a "${S}/"* "${D}/" || die "Install failed!"
 }
