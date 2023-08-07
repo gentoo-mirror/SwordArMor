@@ -20,5 +20,6 @@ BDEPEND=""
 S="${WORKDIR}"
 
 src_install() {
+	rm -r "${S}/usr/lib/.build-id" || die "rm of /usr/lib/.build-id failed"
 	cp -a "${S}/"* "${D}/" || die "Install failed!"
 }
