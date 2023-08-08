@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-lang/perl net-analyzer/munin net-dns/bind-tools net-misc/iputils
 SLOT=0
-_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
+_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991
 _md5_=60ddcded50e88a291797c8484caab472
