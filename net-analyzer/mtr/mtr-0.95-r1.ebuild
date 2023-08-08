@@ -1,39 +1,46 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools bash-completion-r1 fcaps
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
 HOMEPAGE="https://www.bitwizard.nl/mtr/"
-SRC_URI="https://github.com/traviscross/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/traviscross/mtr"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/traviscross/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="gtk +ipinfo +ipv6 jansson ncurses"
+# TODO: This is an inherited RESTRICT - figure out why!
+RESTRICT="test"
 
 RDEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:3
 	)
-	jansson? ( dev-libs/jansson )
-	ncurses? ( sys-libs/ncurses:0= )
+	jansson? ( dev-libs/jansson:= )
+	ncurses? ( sys-libs/ncurses:= )
 "
-DEPEND="
-	${RDEPEND}
-"
-BDEPEND="
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS FORMATS NEWS README.md SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
+
 PATCHES=(
-	"${FILESDIR}/${PN}-0.88-tinfo.patch"
-	"${FILESDIR}/${P}-ipv4-sockets.patch"
+	"${FILESDIR}"/${PN}-0.88-tinfo.patch
+	"${FILESDIR}"/${P}-fortify-source-3.patch
+	"${FILESDIR}"/${PN}-0.94-ipv4-sockets.patch
 )
-RESTRICT="test"
 
 src_prepare() {
 	default
