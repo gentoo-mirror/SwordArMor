@@ -17,6 +17,7 @@ acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 acct-user/vintagestory 0: User for games-server/vintagestory-server
 app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
+app-misc/live-build 20210407: Debian live system build components
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
 app-text/unicode 2.9: display unicode character properties
@@ -74,6 +75,7 @@ dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometh
 dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
 dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
 dev-python/djangorestframework 3.12.4: Web APIs with django made easy
+dev-python/dmidecode 0.9.0: dmidecode py
 dev-python/drf-yasg 1.20.0: Automated generation of real Swagger schemas from Django code
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elasticsearch
@@ -111,6 +113,7 @@ dev-python/nwdiag 3.0.0: nwdiag generate network-diagram image file from spec-te
 dev-python/odfpy 1.4.2: Python API and tools to manipulate OpenDocument files
 dev-python/peeringdb 1.3.0 1.5.0: PeeringDB python client
 dev-python/promise 2.3.0: Promises/A+ implementation for Python
+dev-python/py-dmidecode 0.1.1: python library to parse the output of dmidecode
 dev-python/pydata-sphinx-theme 0.8.0: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pyeapi 0.8.4: Python Client for eAPI
 dev-python/pygal 3.0.0-r2: A python SVG charts generator
@@ -138,7 +141,7 @@ dev-python/yamlordereddictloader 0.4.0: YAML loader and dump for PyYAML allowing
 dev-ruby/awesome_print 1.9.2: Pretty print your Ruby objects with style
 dev-util/bcunit 3.0.2: BC Unit Test Framework
 dev-util/cli 1.2.0_pre20210722: Command Line Interface compiler for C++
-dev-util/clippy 8.4.2 8.5 8.5.2: Standalone clippy tool built from FRR sources
+dev-util/clippy 8.5 8.5.2 9.0: Standalone clippy tool built from FRR sources
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
 games-server/factorio-server 1.1.76: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
@@ -164,6 +167,7 @@ net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packe
 net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
 net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
+net-dialup/ppp 2.4.9-r9: Point-to-Point Protocol (PPP)
 net-dns/asdig 0.97: Simple client for retrieving AS from IP published via DNS
 net-dns/dnsperf 2.11.0: DNS Performance Testing Tools
 net-dns/flamethrower 0.11.0: DNS performance and functional testing utility
@@ -183,6 +187,7 @@ net-libs/ortp 5.1.3: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-mail/HyperKitty 1.3.7: A web interface to access GNU Mailman v3 archives
 net-mail/django-mailman3 1.3.9: Django-based interfaces interacting with Mailman 3
 net-mail/mailman 3.3.8: Mailman -- the GNU mailing list manager
+net-mail/mailman-meta 3: Meta ebuild for GNU Mailman 3
 net-mail/mailman-web 0.0.6: Django project that contains default and url settings for Mailman3 Web Interface
 net-mail/mailmanclient 3.3.5: Python bindings for the GNU Mailman 3 REST API
 net-mail/postorius 1.3.8: A web user interface for GNU Mailman 3
@@ -192,7 +197,7 @@ net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
 net-misc/bgpq4 1.4 1.7: bgp filtering automation tool
 net-misc/bird 1.6.8 2.0.11 2.13.1 3.0_alpha1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
-net-misc/frr 8.4.2 8.5 8.5.2-r1: The FRRouting Protocol Suite
+net-misc/frr 8.5 8.5.2-r1 9.0: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
 net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1: IPv6 address calculator
 net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
