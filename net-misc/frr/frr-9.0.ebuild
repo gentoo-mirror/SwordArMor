@@ -25,6 +25,7 @@ COMMON_DEPEND="
 	dev-libs/json-c:0=
 	dev-libs/protobuf-c:0=
 	>=net-libs/libyang-2.0.0
+	<net-libs/libyang-2.1.111
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
