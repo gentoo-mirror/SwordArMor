@@ -201,7 +201,7 @@ net-misc/openbgpd 7.7 7.8 8.0 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
-net-misc/routinator 0.7.1 0.8.3 0.10.0: An RPKI relying party software
+net-misc/routinator 0.8.3 0.10.0 0.13.0: An RPKI relying party software
 net-misc/rpki-client 7.8 8.0 8.4: Portability shim for OpenBSD's rpki-client
 net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux
 net-voip/twinkle 1.10.2: Twinkle is a SIP-based VoIP client.
