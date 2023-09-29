@@ -186,7 +186,7 @@ net-mail/mailman-web 0.0.6: Django project that contains default and url setting
 net-mail/mailmanclient 3.3.5: Python bindings for the GNU Mailman 3 REST API
 net-mail/postorius 1.3.8: A web user interface for GNU Mailman 3
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-net-misc/FORT-validator 1.5.2 1.5.3 1.5.3_p20220607: FORT validator is an open source RPKI validator
+net-misc/FORT-validator 1.5.3 1.5.3_p20220607 1.5.4: FORT validator is an open source RPKI validator
 net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
 net-misc/bgpq4 1.4 1.7: bgp filtering automation tool
 net-misc/bird 1.6.8 2.0.11 2.13.1 3.0_alpha1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
