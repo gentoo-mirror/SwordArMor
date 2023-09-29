@@ -21,7 +21,9 @@ DEPEND="
 	acct-user/fort
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
+	dev-libs/libxml2
 	dev-libs/openssl
+	net-misc/curl
 "
 RDEPEND="
 	${DEPEND}
@@ -32,7 +34,7 @@ BDEPEND="
 	sys-devel/automake
 "
 
-S="${WORKDIR}/fort-${PV}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	default
