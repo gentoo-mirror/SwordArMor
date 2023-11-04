@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-alternatives/bc net-misc/curl sys-apps/coreutils sys-apps/file net-dns/bind-tools net-analyzer/nmap dev-libs/openssl
 SLOT=0
 SRC_URI=https://github.com/matteocorti/check_ssl_cert/releases/download/v2.68.0/check_ssl_cert-2.68.0.tar.bz2
-_eclasses_=toolchain-funcs	70ec42843fec87d20fd94c67e77cdbff	multilib	c19072c3cd7ac5cb21de013f7e9832e0	bash-completion-r1	f5e7a020fd9c741740756aac61bf75ff
+_eclasses_=toolchain-funcs	edeef89edaf21d30225d31702ab117ac	multilib	c19072c3cd7ac5cb21de013f7e9832e0	bash-completion-r1	f5e7a020fd9c741740756aac61bf75ff
 _md5_=35bf97e7394b0e4ab1067674be8fc1b7
