@@ -10,5 +10,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=acct-group/as-stats acct-user/as-stats as-stats-gui? ( www-misc/as-stats-gui ) dev-lang/php:*[sqlite] dev-perl/DBD-SQLite dev-perl/File-Find-Rule dev-perl/JSON-XS dev-perl/Net-Patricia dev-perl/Net-sFlow ip2as? ( dev-perl/ip2as ) net-analyzer/rrdtool[perl] app-admin/webapp-config
 SLOT=9999
-_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991	webapp	de2d3d345b44597c10d7104a7bcdf7b2
+_eclasses_=git-r3	5133e393e8717a3a093660f990801dc1	webapp	de2d3d345b44597c10d7104a7bcdf7b2
 _md5_=8ddd125dab1852a49391fa35799d07d7
