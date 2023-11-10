@@ -30,7 +30,6 @@ dev-go/dns 1.1.31: DNS library in Go
 dev-libs/belcard 5.1.3: VCard standard format manipulation library
 dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
 dev-libs/icinga-php-library 0.6.1 0.9.1: Icinga PHP libraries for Icinga Web 2
-dev-libs/libcli 1.10.2: Shared C library to include Cisco-like CLI into other software
 dev-libs/lime 5.0.70: C++ library implementing Open Whisper System Signal protocol
 dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
 dev-libs/qcoro 0.4.0: C++ Coroutine library for Qt5 and Qt6
@@ -192,10 +191,10 @@ net-mail/mailman-web 0.0.6: Django project that contains default and url setting
 net-mail/mailmanclient 3.3.5: Python bindings for the GNU Mailman 3 REST API
 net-mail/postorius 1.3.8: A web user interface for GNU Mailman 3
 net-mail/swaks 20190914.0 20201014.0: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
-net-misc/FORT-validator 1.5.2 1.5.3 1.5.3_p20220607: FORT validator is an open source RPKI validator
+net-misc/FORT-validator 1.5.3 1.5.3_p20220607 1.5.4: FORT validator is an open source RPKI validator
 net-misc/bgpdump 1.6.2: Utility and C Library for parsing MRT files
 net-misc/bgpq4 1.4 1.7: bgp filtering automation tool
-net-misc/bird 1.6.8 2.0.11 2.13.1 3.0_alpha1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
+net-misc/bird 1.6.8 2.0.11 2.13.1 2.14 3.0_alpha1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
 net-misc/dhcpd-pools 3.1: ISC dhcpd lease analysis and reporting
 net-misc/frr 8.5 8.5.2-r1 9.0: The FRRouting Protocol Suite
 net-misc/ipdecap 0.7.2: Decapsulate traffic encapsulated traffic from a pcap
@@ -203,17 +202,15 @@ net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1
 net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
 net-misc/nbcli 0.8.0_alpha1 0.9.3_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
-net-misc/openbgpd 7.7 7.8 8.0 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/openbgpd 8.0 8.2 8.3 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
 net-misc/routinator 0.7.1 0.8.3 0.10.0: An RPKI relying party software
 net-misc/rpki-client 7.8 8.0 8.4: Portability shim for OpenBSD's rpki-client
-net-misc/urlview 0.9_p21: A curses URL parser for text files
-net-nds/apachedirectorystudio 2.0.0.20200411: Apache Directory Studio is an universal LDAP directory tool.
 net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux
 net-voip/twinkle 1.10.2: Twinkle is a SIP-based VoIP client.
-net-wireless/wavemon 0.9.4: Ncurses based monitor for IEEE 802.11 wireless LAN cards
+net-wireless/wavemon 0.9.5: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 sys-apps/brcmocmcore 12.0.1354.0: HPE Storage Emulex(BRCM) OneCommand Manager
 sys-libs/brcmocmcorelibs 12.0.1354.0: Libs for sys-apps/brcmocmcore
 sys-libs/hbaapiwrapper 12.0.1354.0: Libs for sys-apps/brcmocmcore

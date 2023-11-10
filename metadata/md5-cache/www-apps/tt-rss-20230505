@@ -11,5 +11,5 @@ RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=20230505
 SRC_URI=https://herbizarre.swordarmor.fr/garbage/tt-rss-20230505.tar.gz
-_eclasses_=webapp	1aad5c010cfdf11d0376c80467b0de4c
+_eclasses_=webapp	de2d3d345b44597c10d7104a7bcdf7b2
 _md5_=62e516d848e8dee5c6cb482fbce4f9f1

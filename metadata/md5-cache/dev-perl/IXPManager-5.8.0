@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/inex/IXP-Manager/archive/refs/tags/v5.8.0.tar.gz -> IXPManager-5.8.0.tar.gz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	perl-functions	c3fca037246e877693badea0df3b0ef8	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	dd4003d3308d7cad2b2d4e2b8298ffb2
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	perl-functions	c3fca037246e877693badea0df3b0ef8	toolchain-funcs	edeef89edaf21d30225d31702ab117ac	multilib	c19072c3cd7ac5cb21de013f7e9832e0	perl-module	4e37e1004a0a27e41bb7025c0b974676
 _md5_=a20ec3b09b71387cc788e42e50d23af3
