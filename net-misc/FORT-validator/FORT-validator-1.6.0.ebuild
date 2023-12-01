@@ -21,7 +21,9 @@ DEPEND="
 	acct-user/fort
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
+	dev-libs/libxml2
 	dev-libs/openssl
+	net-misc/curl
 "
 RDEPEND="
 	${DEPEND}
