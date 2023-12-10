@@ -45,7 +45,7 @@ src_configure() {
 	# This export makes compilation and test phases verbose
 	export VERBOSE=1
 
-	protocols="bfd babel bgp mrt ospf perf pipe radv rip rpki static"
+	protocols="aggregator bfd babel bgp l3vpn mrt ospf perf pipe radv rip rpki static"
 	if use bmp; then
 		protocols="${protocols} bmp"
 	fi
