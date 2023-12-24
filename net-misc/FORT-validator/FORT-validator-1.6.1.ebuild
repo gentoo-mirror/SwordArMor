@@ -6,11 +6,10 @@ EAPI=7
 inherit autotools fcaps systemd
 
 MY_PN="fort"
-MY_PV="issue83"
 
 DESCRIPTION="FORT validator is an open source RPKI validator"
 HOMEPAGE="https://fortproject.net/validator?2"
-SRC_URI="https://github.com/NICMx/${PN}/archive/refs/heads/${MY_PV}.zip -> ${MY_PN}-${PV}.zip"
+SRC_URI="https://github.com/NICMx/${PN}/releases/download/${PV}/fort-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,7 +21,9 @@ DEPEND="
 	acct-user/fort
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
+	dev-libs/libxml2
 	dev-libs/openssl
+	net-misc/curl
 "
 RDEPEND="
 	${DEPEND}
@@ -33,14 +34,12 @@ BDEPEND="
 	sys-devel/automake
 "
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	default
 	# Don't strip CFLAGS
 	sed -i 's/fort_CFLAGS  =/fort_CFLAGS  = ${CFLAGS} /' src/Makefile.am || die
-	# Don’t compile debug by default
-	sed -i '/fort_CFLAGS/ s/ -g / /' src/Makefile.am || die
 	# Don't test network
 	sed -i '/http/d' test/Makefile.am || die
 	eautoreconf
