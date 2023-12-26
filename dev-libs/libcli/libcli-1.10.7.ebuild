@@ -1,9 +1,7 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit eutils
+EAPI=8
 
 DESCRIPTION="Shared C library to include Cisco-like CLI into other software"
 HOMEPAGE="https://dparrish.com/pages/libcli"
@@ -14,11 +12,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="virtual/libcrypt"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-src_prepare() {
-	eapply -p2 "${FILESDIR}/${PN}-Makefile.patch"
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-Makefile.patch"
+)
