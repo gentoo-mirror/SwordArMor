@@ -29,6 +29,7 @@ dev-go/dns 1.1.31: DNS library in Go
 dev-libs/belcard 5.1.3: VCard standard format manipulation library
 dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
 dev-libs/icinga-php-library 0.6.1 0.9.1: Icinga PHP libraries for Icinga Web 2
+dev-libs/libcli 1.10.7: Shared C library to include Cisco-like CLI into other software
 dev-libs/lime 5.0.70: C++ library implementing Open Whisper System Signal protocol
 dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
 dev-libs/qcoro 0.4.0: C++ Coroutine library for Qt5 and Qt6
