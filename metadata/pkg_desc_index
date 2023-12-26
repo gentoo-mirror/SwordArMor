@@ -140,7 +140,7 @@ dev-util/bcunit 3.0.2: BC Unit Test Framework
 dev-util/cli 1.2.0_pre20210722: Command Line Interface compiler for C++
 dev-util/clippy 8.5 8.5.2 9.0: Standalone clippy tool built from FRR sources
 games-misc/fortune-mod-fforde 0.1: Quotes from Jasper Fforde books
-games-server/factorio-server 1.1.76: Factorio is a game in which you build and maintain factories
+games-server/factorio-server 1.1.100: Factorio is a game in which you build and maintain factories
 games-server/minecraft-server 1.17.1: The official server for the sandbox video game
 games-server/vintagestory-server 1.18.5: Server for Vintage Story
 gemini-client/lagrange 1.12.1 1.13.5: Desktop GUI client for browsing Geminispace
