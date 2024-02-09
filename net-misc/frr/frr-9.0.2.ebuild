@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc fpm grpc ipv6 nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -23,7 +23,9 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-user/frr
 	dev-libs/json-c:0=
+	dev-libs/protobuf-c:0=
 	>=net-libs/libyang-2.0.0
+	<net-libs/libyang-2.1.111
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
@@ -35,7 +37,7 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	~dev-util/clippy-${PV}
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 	doc? ( dev-python/sphinx )
 "
@@ -47,7 +49,6 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
-	!net-misc/quagga
 "
 
 PATCHES=(
@@ -142,7 +143,7 @@ src_install() {
 
 	# Install init scripts
 	systemd_dounit tools/frr.service
-	newinitd "${FILESDIR}"/frr-openrc-v1 frr
+	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
