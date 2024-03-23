@@ -11,8 +11,8 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
-IUSE="+client debug libssh"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+IUSE="bmp +client custom-cflags debug libssh"
 
 RDEPEND="
 	client? (
@@ -36,21 +36,35 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.0.9-musl-tests.patch"
-)
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--localstatedir="${EPREFIX}/var" \
-		$(use_enable client) \
-		$(use_enable debug) \
+	# This export makes compilation and test phases verbose
+	export VERBOSE=1
+
+	protocols="aggregator bfd babel bgp l3vpn mrt ospf perf pipe radv rip rpki static"
+	if use bmp; then
+		protocols="${protocols} bmp"
+	fi
+
+	local myargs=(
+		--localstatedir="${EPREFIX}/var"
+		--with-protocols="${protocols}"
+		$(use_enable client)
+		$(use_enable debug)
 		$(use_enable libssh)
+	)
+
+	# lto must be enabled by default as bird is mono-threaded and use several
+	# optimisations to be fast, as it may very likely be exposed to several
+	# thounsand BGP updates per seconds
+	# Although, we make it possible to deactivate it if wanted
+	use custom-cflags && myargs+=( bird_cv_c_lto=no )
+
+	econf "${myargs[@]}"
 }
 
 src_install() {
