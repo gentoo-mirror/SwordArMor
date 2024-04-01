@@ -79,7 +79,6 @@ dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elasticsearch
 dev-python/falcon 3.1.1: A supersonic micro-framework for building cloud APIs
 dev-python/flufl-bounce 4.0: Email bounce detectors
-dev-python/flufl-i18n 4.1.1: A high level API for Python internationalization
 dev-python/flufl-testing 0.8: Small collection of test tool plugins
 dev-python/graphene 2.1.9: GraphQL Framework for Python
 dev-python/graphene-django 2.15.0: Graphene Django integration
