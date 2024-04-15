@@ -4,12 +4,12 @@
 EAPI=8
 
 MY_P="frr-${PV}"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone clippy tool built from FRR sources"
 HOMEPAGE="https://frrouting.org/"
-SRC_URI="https://github.com/FRRouting/frr/archive/${MY_P}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/FRRouting/frr/archive/${MY_P}.tar.gz"
 S="${WORKDIR}/frr-${MY_P}"
 
 LICENSE="GPL-2"
