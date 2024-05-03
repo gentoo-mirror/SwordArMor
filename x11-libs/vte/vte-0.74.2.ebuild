@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org meson python-any-r1 vala xdg
+inherit flag-o-matic gnome.org meson python-any-r1 vala xdg
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"      # vte_api_version in meson.build
 IUSE="+crypt debug gtk-doc +icu +introspection mouse systemd +vala vanilla"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
@@ -21,12 +21,13 @@ REQUIRED_USE="
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
-SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-0.70.0-command-notify.patch.xz )"
+SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-0.74.0-command-notify.patch.xz )"
 
 DEPEND="
 	>=x11-libs/gtk+-3.24.22:3[introspection?]
+	>=x11-libs/cairo-1.0
 	>=dev-libs/fribidi-1.0.0
-	>=dev-libs/glib-2.52:2
+	>=dev-libs/glib-2.60:2
 	crypt?  ( >=net-libs/gnutls-3.2.7:0= )
 	icu? ( dev-libs/icu:= )
 	>=x11-libs/pango-1.22.0
@@ -57,9 +58,9 @@ src_prepare() {
 	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.66.2-musl-W_EXITCODE.patch
 
 	if ! use vanilla; then
-		# Part of https://src.fedoraproject.org/rpms/vte291/raw/f37/f/vte291-cntnr-precmd-preexec-scroll.patch
+		# From https://src.fedoraproject.org/rpms/vte291/raw/rawhide/f/vte291-cntnr-precmd-preexec-scroll.patch
 		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
-		eapply "${WORKDIR}"/${PN}-0.70.0-command-notify.patch
+		eapply "${WORKDIR}"/${PN}-0.74.0-command-notify.patch
 	fi
 
 	if ! use mouse; then
@@ -72,6 +73,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
+	filter-lto
+
 	local emesonargs=(
 		-Da11y=true
 		$(meson_use debug debugg)
@@ -90,7 +94,10 @@ src_configure() {
 }
 
 src_install() {
-	meson_install # not meson_src_install because this would include einstalldocs, which would result in file collisions with gui-libs/vte
+	# not meson_src_install because this would include einstalldocs, which
+	# would result in file collisions with gui-libs/vte
+	meson_install
+
 	# Remove files that are provided by gui-libs/vte-common
 	rm "${ED}"/usr/libexec/vte-urlencode-cwd || die
 	rm "${ED}"/etc/profile.d/vte.sh || die
