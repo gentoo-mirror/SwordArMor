@@ -220,6 +220,6 @@ www-apps/netbox 3.0.12: IP address and data center infrastructure management too
 www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
 www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
-x11-libs/vte 0.70.2 0.70.3: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.70.3 0.74.2: Library providing a virtual terminal emulator widget
 x11-plugins/purple-discord 9999: Pidgin/Purple PRotocol PLugin for Discord
 x11-terms/rxvt-unicode 9.22-r9: rxvt clone with xft and unicode support
