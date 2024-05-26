@@ -1,7 +1,7 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools fcaps systemd
 
@@ -22,7 +22,7 @@ DEPEND="
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
 	dev-libs/libxml2
-	dev-libs/openssl
+	dev-libs/openssl[rfc3779]
 	net-misc/curl
 "
 RDEPEND="
