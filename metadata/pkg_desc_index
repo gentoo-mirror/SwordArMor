@@ -199,7 +199,7 @@ net-misc/ipv6calc 1.0.0 2.1.0 2.1.1 2.2.0 3.0.2 3.1.1 3.2.0 4.0.0 4.0.1 4.0.1-r1
 net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
 net-misc/nbcli 0.8.0_alpha1 0.9.3_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
-net-misc/openbgpd 8.0 8.2 8.3 9999: OpenBGPD is a free implementation of BGPv4
+net-misc/openbgpd 8.2 8.3 8.4 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
