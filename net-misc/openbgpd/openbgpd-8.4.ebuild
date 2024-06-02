@@ -28,10 +28,6 @@ BDEPEND="
 	dev-build/libtool
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-rtr-v1-support.patch"
-)
-
 src_install() {
 	default
 
