@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit perl-functions
+inherit perl-functions optfeature
 
 DESCRIPTION="Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH"
 HOMEPAGE="https://www.jetmore.org/john/code/swaks/
@@ -14,23 +14,21 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="
-	>=dev-perl/Authen-DigestMD5-0.04
-	>=dev-perl/Authen-NTLM-1.02
-	>=dev-perl/Net-DNS-0.65
-	>=virtual/perl-Digest-MD5-2.39
-	>=virtual/perl-MIME-Base64-3.07
-	>=virtual/perl-Time-HiRes-1.97
-	>=virtual/perl-Time-Local-1.19
-	dev-perl/CGI
-	dev-perl/DBI
-	dev-perl/Email-Send
-	dev-perl/Email-Valid
-	dev-perl/Params-Validate
-	dev-perl/URI
-	virtual/perl-Data-Dumper
+	virtual/perl-MIME-Base64
+	virtual/perl-Digest-MD5
 	virtual/perl-Digest-SHA
-	virtual/perl-Getopt-Long
+	dev-perl/Authen-NTLM
+	dev-perl/Authen-SASL
+	dev-perl/Net-DNS
+	dev-perl/Net-SSLeay
+	virtual/perl-Time-HiRes
 "
+	# Net::Netrc
+	# IPC::Open2
+	# IO::Socket::UNIX
+	# IO::Socket::IP
+	# POSIX
+	# Sys::Hostname
 BDEPEND="app-text/txt2man"
 
 src_compile() {
