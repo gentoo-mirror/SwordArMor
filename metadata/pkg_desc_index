@@ -148,7 +148,6 @@ games-server/minecraft-server 1.17.1: The official server for the sandbox video 
 games-server/vintagestory-server 1.18.5: Server for Vintage Story
 gemini-client/lagrange 1.12.1 1.13.5: Desktop GUI client for browsing Geminispace
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
-media-gfx/libsane-dsseries-bin 1.0.5_p1: SANE driver for Brother DS-series scanners
 media-libs/bcmatroska2 0.23: Matroska media container support
 media-libs/bv16-floatingpoint 1.2: BroadVoice 16 kbs codec
 media-libs/ccrtp 2.1.2: GNU ccRTP is an implementation of RTP
