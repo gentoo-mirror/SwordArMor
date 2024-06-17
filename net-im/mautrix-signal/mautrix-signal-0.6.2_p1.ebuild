@@ -7,7 +7,7 @@ inherit go-module systemd
 
 DESCRIPTION="A Matrix-Signal puppeting bridge"
 HOMEPAGE="https://github.com/mautrix/signal"
-SRC_URI="https://github.com/mautrix/signal/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+SRC_URI="https://herbizarre.swordarmor.fr/garbage/${P}.zip
 	https://herbizarre.swordarmor.fr/garbage/${P}-deps.tar.xz
 "
 S="${WORKDIR}/signal-${PV}"
