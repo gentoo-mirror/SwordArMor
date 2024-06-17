@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/mautrix/signal"
 SRC_URI="https://herbizarre.swordarmor.fr/garbage/${P}.zip
 	https://herbizarre.swordarmor.fr/garbage/${P}-deps.tar.xz
 "
-S="${WORKDIR}/signal-${PV}"
+S="${WORKDIR}/signal-73fcf0c42c3b118ccb96df14a5765060fa3c1af6"
 
 LICENSE="AGPL-3"
 SLOT="0"
