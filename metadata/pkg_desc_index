@@ -31,7 +31,7 @@ dev-libs/belcard 5.1.3: VCard standard format manipulation library
 dev-libs/belle-sip 5.1.3: SIP (RFC3261) implementation
 dev-libs/icinga-php-library 0.6.1 0.9.1: Icinga PHP libraries for Icinga Web 2
 dev-libs/libcli 1.10.7: Shared C library to include Cisco-like CLI into other software
-dev-libs/libsignal-ffi 0.48.0: A C ABI library which exposes Signal protocol logic
+dev-libs/libsignal-ffi 0.51.0: A C ABI library which exposes Signal protocol logic
 dev-libs/lime 5.0.70: C++ library implementing Open Whisper System Signal protocol
 dev-libs/olm 3.1.4: Implementation of the olm and megolm cryptographic ratchets
 dev-libs/qcoro 0.4.0: C++ Coroutine library for Qt5 and Qt6
@@ -176,6 +176,7 @@ net-firewall/ipt_netflow 2.5.1-r2 2.6 9999: Netflow iptables module
 net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
 net-im/gomuks 0.2.4 0.3.0: A terminal based Matrix client written in Go
+net-im/mautrix-signal 0.6.2: A Matrix-Signal puppeting bridge
 net-im/mautrix-telegram 0.15.0: A Matrix-Telegram Messenger puppeting bridge
 net-im/profanity 0.13.1: A console based XMPP client inspired by Irssi
 net-im/webex-bin 43.2.0.25211: Cisco video conferencing and online meeting software
