@@ -3,15 +3,14 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 optfeature systemd
+inherit distutils-r1 optfeature pypi systemd
 
 DESCRIPTION="A Matrix-Telegram Messenger puppeting bridge "
 HOMEPAGE="https://github.com/mautrix/telegram/"
-SRC_URI="https://github.com/mautrix/telegram/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-S="${WORKDIR}/telegram-${PV}"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -22,21 +21,21 @@ RDEPEND="
 	app-arch/brotli[python]
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/aiodns[${PYTHON_USEDEP}]
-	>=dev-python/asyncpg-0.20[${PYTHON_USEDEP}]
-	!<dev-python/asyncpg-0.30[${PYTHON_USEDEP}]
+	dev-python/aiosqlite[${PYTHON_USEDEP}]
+	dev-python/asyncpg[${PYTHON_USEDEP}]
 	dev-python/commonmark[${PYTHON_USEDEP}]
 	dev-python/cryptg[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
-	>=dev-python/mautrix-0.20.3[${PYTHON_USEDEP}]
-	!<dev-python/mautrix-0.21[${PYTHON_USEDEP}]
+	dev-python/mautrix[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/python-olm[${PYTHON_USEDEP}]
 	dev-python/phonenumbers[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.15.35[${PYTHON_USEDEP}]
-	!<dev-python/ruamel-yaml-0.19[${PYTHON_USEDEP}]
-	>=dev-python/tulir-telethon-1.33.0_alpha1[${PYTHON_USEDEP}]
+	dev-python/python-socks[${PYTHON_USEDEP}]
+	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
+	>=dev-python/tulir-telethon-1.34.0_alpha2[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
 	dev-python/yarl[${PYTHON_USEDEP}]
 "
