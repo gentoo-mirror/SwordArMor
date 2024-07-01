@@ -248,11 +248,11 @@ src_compile() {
 			-fprofile-update=atomic
 			-fprofile-dir="${T}"/pgo
 			-fprofile-generate="${T}"/pgo
-			-fprofile-correction
 		)
 		pgo_use_flags=(
 			-fprofile-use="${T}"/pgo
 			-fprofile-dir="${T}"/pgo
+			-fprofile-correction
 		)
 		if flag=$(test-flags-CC -fprofile-partial-training); then
 			pgo_generate_flags+=( "${flag}" )
