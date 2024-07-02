@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit python-r1
 
 MY_PN=${PN/nagios-/}
@@ -13,20 +13,18 @@ HOMEPAGE="https://github.com/debfx/check_dane"
 MY_GITHUB_AUTHOR="debfx"
 SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	>=dev-lang/python-3.4
+DEPEND="
 	dev-libs/openssl
 	dev-python/dnspython
 "
-BDEPEND=""
-
-S="${WORKDIR}/${MY_PN}-${PV}"
+RDEPEND="${PYTHON_DEPS}"
 
 src_install() {
 	python_scriptinto /usr/lib64/nagios/plugins/
