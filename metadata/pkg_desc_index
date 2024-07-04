@@ -127,6 +127,7 @@ dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent
 dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
+dev-python/shared-secret-authenticator 2.0.1: Shared Secret Authenticator passwordd provider for Matrix Synapse
 dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block diagrams using blockdiag
