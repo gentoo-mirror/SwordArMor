@@ -178,6 +178,7 @@ net-im/Quaternion 0.0.95.1: A Qt5-based IM client for the Matrix protocol
 net-im/bluejeans-bin 2.29.1.3 2.30.0.89 2.30.1.18: Verizon video conferencing system
 net-im/gomuks 0.2.4 0.3.0: A terminal based Matrix client written in Go
 net-im/mautrix-signal 0.6.2_p1: A Matrix-Signal puppeting bridge
+net-im/mautrix-slack 0_pre20240501: A Matrix-Slack puppeting bridge based on slack-go
 net-im/mautrix-telegram 0.15.1: A Matrix-Telegram Messenger puppeting bridge
 net-im/profanity 0.13.1: A console based XMPP client inspired by Irssi
 net-im/sliding-sync 0.99.18: Proxy implementation of MSC3575's sync protocol.
