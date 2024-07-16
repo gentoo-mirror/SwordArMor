@@ -7,10 +7,10 @@ inherit go-module systemd
 
 DESCRIPTION="A Matrix-Signal puppeting bridge"
 HOMEPAGE="https://github.com/mautrix/signal"
-SRC_URI="https://herbizarre.swordarmor.fr/garbage/${P}.zip
+SRC_URI="https://github.com/mautrix/signal/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://herbizarre.swordarmor.fr/garbage/${P}-deps.tar.xz
 "
-S="${WORKDIR}/signal-73fcf0c42c3b118ccb96df14a5765060fa3c1af6"
+S="${WORKDIR}/signal-${PV}"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	~dev-libs/libsignal-ffi-0.51.0
+	~dev-libs/libsignal-ffi-0.52.0
 	dev-libs/olm
 "
 
