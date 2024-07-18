@@ -121,6 +121,7 @@ dev-python/pygal 3.0.0-r2: A python SVG charts generator
 dev-python/pynetbox 5.3.1 6.6.2: Python API client library for NetBox
 dev-python/pytest-benchmark 3.4.1 4.0.0: py.test fixture for benchmarking code
 dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
+dev-python/pyunycode 0.1.1: Punycode converter library for python
 dev-python/rcssmin 1.1.1: CSS minifier written in python
 dev-python/rjsmin 1.2.1: Javascript minifier written in python
 dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
