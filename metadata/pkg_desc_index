@@ -165,6 +165,7 @@ net-analyzer/mtr 0.95 0.95-r1: My TraceRoute, an Excellent network diagnostic to
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
 net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
+net-analyzer/nagios-check_domain_expiration_rdap 9999: Check for a domain expiration using RDAP
 net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packet inspection
 net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
 net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
