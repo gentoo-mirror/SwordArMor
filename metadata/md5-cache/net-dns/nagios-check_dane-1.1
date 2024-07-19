@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=dev-libs/openssl dev-python/dnspython
+DEPEND=dev-libs/openssl dev-python/dnspython[python_targets_python3_10(-)?,python_targets_python3_11(-)?,python_targets_python3_12(-)?]
 DESCRIPTION=Nagios/Icinga plugin for checking DANE/TLSA records
 EAPI=8
 HOMEPAGE=https://github.com/debfx/check_dane
@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( python_targets_python3_10 python_targets_python3_11 python_tar
 SLOT=0
 SRC_URI=https://github.com/debfx/check_dane/archive/1.1.tar.gz -> nagios-check_dane-1.1.tar.gz
 _eclasses_=out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	d67e78a235f541871c7dfe4cf7931489	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	python-utils-r1	8b220bbce5c119fb1d4d5c2f5588f3ea	python-r1	428f5c53276c2adc06a89108fc2f9f46
-_md5_=bba88e1014d08bdf9aab6dacd7cac6cf
+_md5_=eb3760ac940be18c28365cfe03ad0239
