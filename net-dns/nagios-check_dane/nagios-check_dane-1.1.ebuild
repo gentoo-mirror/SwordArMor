@@ -22,12 +22,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	dev-libs/openssl
-	dev-python/dnspython
+	dev-python/dnspython[${PYTHON_USEDEP}]
 "
 RDEPEND="${PYTHON_DEPS}"
 
 src_install() {
-	python_scriptinto /usr/lib64/nagios/plugins/
+	python_scriptinto /usr/$(get_libdir)/nagios/plugins/
 	python_foreach_impl python_doscript check_dane
 
 	dodoc README.md
