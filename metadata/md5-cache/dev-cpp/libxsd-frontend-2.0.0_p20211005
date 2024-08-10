@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=dev-cpp/libcutl dev-libs/boost:= dev-libs/xerces-c
 SLOT=0
 SRC_URI=https://git.codesynthesis.com/cgit/libxsd-frontend/libxsd-frontend/snapshot/1cc4abe.tar.gz -> libxsd-frontend-2.0.0_p20211005.tar.gz
-_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e7e7331166166e7a516d19e264b098c2	multilib	c19072c3cd7ac5cb21de013f7e9832e0	vcs-snapshot	3d327d546f76e4c2054573ff0d78fad2
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	0c713337f7872f1a002cecaaea9bef73	multilib	c19072c3cd7ac5cb21de013f7e9832e0	vcs-snapshot	3d327d546f76e4c2054573ff0d78fad2
 _md5_=a848004f484a586a9915c217c141c62b
