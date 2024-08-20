@@ -10,7 +10,6 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="A web interface to access GNU Mailman v3 archives"
 HOMEPAGE="https://www.list.org https://gitlab.com/mailman/hyperkitty"
-S="${WORKDIR}/HyperKitty-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
