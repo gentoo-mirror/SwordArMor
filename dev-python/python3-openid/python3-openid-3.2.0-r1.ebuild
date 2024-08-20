@@ -10,6 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="OpenID support for modern servers and consumers"
 HOMEPAGE="https://github.com/necaris/python3-openid"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
