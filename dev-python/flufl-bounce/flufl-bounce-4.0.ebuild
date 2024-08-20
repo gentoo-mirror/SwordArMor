@@ -3,15 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{10..12} )
+inherit distutils-r1 pypi
 
 MY_PN=${PN/-/.}
 
 DESCRIPTION="Email bounce detectors"
 HOMEPAGE="https://gitlab.com/warsaw/flufl.bounce"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
+SRC_URI="$(pypi_sdist_url --no-normalize flufl.bounce ${PV})"
 
 LICENSE="Apache-2.0"
 SLOT="0"
