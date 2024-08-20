@@ -10,6 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="A collection of custom extensions for the Django Framework"
 HOMEPAGE="https://github.com/django-extensions/django-extensions"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="MIT"
 SLOT="0"
