@@ -40,18 +40,19 @@ RDEPEND="
 		>=www-servers/gunicorn-20.1.0[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
 		>=dev-python/markdown-3.3.6[${PYTHON_USEDEP}]
-		>=dev-python/markdown-include-0.6.0[${PYTHON_USEDEP}]
+		>=dev-python/markdown-include-0.8.1[${PYTHON_USEDEP}]
 		>=dev-python/mkdocs-material-8.2.8[${PYTHON_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pillow-9.0.1[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
+		>=dev-python/social-auth-app-django-5.0.0[${PYTHON_USEDEP}]
+		>=dev-python/social-auth-core-4.2.0[${PYTHON_USEDEP}]
 		>=dev-python/svgwrite-1.4.2[${PYTHON_USEDEP}]
 		>=dev-python/tablib-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/tzdata-2021.5[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-4.1.0[${PYTHON_USEDEP}] )
-		dev-python/social-auth-app-django[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 
