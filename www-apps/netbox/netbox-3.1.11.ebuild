@@ -51,6 +51,7 @@ RDEPEND="
 		>=dev-python/tzdata-2021.5[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-4.1.0[${PYTHON_USEDEP}] )
+		dev-python/social-auth-app-django[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 

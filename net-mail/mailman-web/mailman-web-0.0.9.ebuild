@@ -16,7 +16,8 @@ KEYWORDS="~amd64"
 IUSE="mysql"
 
 RDEPEND="
-	dev-python/django[${PYTHON_USEDEP}]
+	>=dev-python/django-4.0[${PYTHON_USEDEP}]
+	<dev-python/django-4.3
 	dev-python/whoosh[${PYTHON_USEDEP}]
 	net-mail/HyperKitty[${PYTHON_USEDEP}]
 	net-mail/postorius[${PYTHON_USEDEP}]
