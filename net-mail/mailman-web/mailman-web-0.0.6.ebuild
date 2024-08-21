@@ -4,18 +4,17 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Django project that contains default and url settings for Mailman3 Web Interface"
 HOMEPAGE="https://pypi.org/project/mailman-web/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url --no-normalize ${MY_PN})"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="mysql"
 
-DEPEND=""
 RDEPEND="
 	mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
 	dev-python/cmarkgfm[${PYTHON_USEDEP}]
@@ -23,4 +22,3 @@ RDEPEND="
 	net-mail/HyperKitty[${PYTHON_USEDEP}]
 	net-mail/postorius[${PYTHON_USEDEP}]
 "
-BDEPEND=""
