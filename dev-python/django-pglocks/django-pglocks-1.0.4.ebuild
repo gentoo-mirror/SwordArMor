@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="PostgreSQL locking context managers and functions for Django"
 HOMEPAGE="https://github.com/Xof/django-pglocks"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url --no-normalize)"
 
 LICENSE="MIT"
 SLOT="0"

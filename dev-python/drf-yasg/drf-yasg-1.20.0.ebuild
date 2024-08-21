@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{3..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Automated generation of real Swagger schemas from Django code"
@@ -32,4 +32,3 @@ RDEPEND="
 		>=dev-python/swagger-spec-validator-2.1.0[${PYTHON_USEDEP}]
 	)
 "
-BDEPEND=""

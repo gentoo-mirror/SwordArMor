@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -19,6 +19,7 @@ SRC_URI="https://github.com/graphql-python/${PN}/archive/v${MY_PV}.tar.gz -> ${P
 	doc? ( https://graphene-python.org/sphinx_graphene_theme.zip -> sphinx-${P}.zip )
 "
 
+S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -43,8 +44,6 @@ BDEPEND="
 		dev-python/snapshottest[${PYTHON_USEDEP}]
 	)
 "
-
-S="${WORKDIR}/${MY_P}"
 
 distutils_enable_tests pytest
 
