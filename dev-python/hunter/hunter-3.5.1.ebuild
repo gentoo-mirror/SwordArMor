@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 multiprocessing
 
@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-3.3.1[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.3.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/aspectlib[${PYTHON_USEDEP}]
 		dev-python/ipdb[${PYTHON_USEDEP}]
@@ -30,7 +30,7 @@ BDEPEND="
 		dev-python/process-tests[${PYTHON_USEDEP}]
 		dev-python/pytest-benchmark[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-		sys-devel/gdb
+		dev-debug/gdb
 	)
 "
 
