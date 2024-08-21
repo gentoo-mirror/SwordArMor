@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{10..12} )
+inherit distutils-r1 pypi
 
 DESCRIPTION="Django Debug Toolbar for GraphiQL IDE"
 HOMEPAGE="https://pypi.org/project/django-graphiql-debug-toolbar/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url --no-normalize)"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,4 +20,3 @@ DEPEND="
 	>=dev-python/django-debug-toolbar-3.1[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
