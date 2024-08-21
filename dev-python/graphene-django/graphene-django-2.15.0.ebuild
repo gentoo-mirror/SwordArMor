@@ -3,13 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Graphene Django integration"
 HOMEPAGE="https://pypi.org/project/graphene-django/"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
-S=${WORKDIR}/${P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,7 +26,6 @@ DEPEND="
 	dev-python/text-unidecode[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/${P}-pytest-runner.patch"
