@@ -81,7 +81,7 @@ dev-python/django-picklefield 3.1: Pickled object field for Django
 dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometheus
 dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
 dev-python/django-rq 2.5.1: A simple app that provides django integration for RQ (Redis Queue)
-dev-python/djangorestframework 3.12.4: Web APIs with django made easy
+dev-python/djangorestframework 3.12.4 3.13.1: Web APIs with django made easy
 dev-python/dmidecode 0.9.0: dmidecode py
 dev-python/docstring-parser 0.15: Parse Python docstrings in reST, Google and Numpydoc format
 dev-python/drf-yasg 1.20.0 1.21.3: Automated generation of real Swagger schemas from Django code
