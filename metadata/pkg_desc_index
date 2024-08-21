@@ -63,7 +63,7 @@ dev-python/coreapi 2.3.3-r2: Python client library for Core API
 dev-python/coreschema 0.0.4-r1: Core Schema
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
-dev-python/django 3.2.9 3.2.25: High-level Python web framework
+dev-python/django 3.2.9 3.2.25 4.0.10: High-level Python web framework
 dev-python/django-allauth 0.50.0 0.53.1 64.1.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.5-r1 1.0.6: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-compressor 4.3.1 4.5.1: Compresses linked and inline JavaScript or CSS into single cached files
