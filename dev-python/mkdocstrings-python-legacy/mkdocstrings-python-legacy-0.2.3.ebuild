@@ -27,7 +27,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i 's/-expression//' pyproject.toml || die
+	sed -i 's/-expression//;/^license/d' pyproject.toml || die
 	use test && { mkdir -p "${S}"/docs || die ; }
 
 	distutils-r1_python_prepare_all
