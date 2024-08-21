@@ -4,6 +4,7 @@ acct-group/as-stats 0: System group: as-stats
 acct-group/bird 0: System group: bird
 acct-group/factorio 0: System group: factorio
 acct-group/fort 0: System group: fort
+acct-group/netbox 0-r2: System group: netbox
 acct-group/rancid 0: System group: rancid
 acct-group/routinator 0: System group: routinator
 acct-group/vintagestory 0: System group: vintagestory
@@ -13,6 +14,7 @@ acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
 acct-user/bird 0: User for BIRD
 acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
+acct-user/netbox 0-r2: user for netbox
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 acct-user/vintagestory 0: User for games-server/vintagestory-server
@@ -56,9 +58,11 @@ dev-python/blockdiag 3.0.0: Generate block-diagram image from text
 dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
 dev-python/confu 1.8.0: Configuration file validation and generation
+dev-python/coreapi 2.3.3-r2: Python client library for Core API
+dev-python/coreschema 0.0.4-r1: Core Schema
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
 dev-python/deepdiff 5.8.1: Deep Difference and Search of any Python object/data
-dev-python/django 3.2.9: High-level Python web framework
+dev-python/django 3.2.9 3.2.25: High-level Python web framework
 dev-python/django-allauth 0.50.0 0.53.1 64.1.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.5-r1 1.0.6: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-compressor 4.3.1 4.5.1: Compresses linked and inline JavaScript or CSS into single cached files
@@ -89,7 +93,8 @@ dev-python/graphene 2.1.9: GraphQL Framework for Python
 dev-python/graphene-django 2.15.0: Graphene Django integration
 dev-python/graphql-core 2.3.2: GraphQL for Python
 dev-python/graphql-relay 2.0.1: Relay library for graphql-core-next
-dev-python/hunter 3.4.3-r1 3.5.1: Hunter is a flexible code tracing toolkit
+dev-python/hunter 3.5.1: Hunter is a flexible code tracing toolkit
+dev-python/itypes 1.2.0-r1: Basic immutable container types for python
 dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.6 2.6.7: Junos 'EZ' automation for non-programmers
 dev-python/lazr-config 2.2.3-r2 3.0: Create configuration schemas, and process and validate configurations
@@ -121,7 +126,7 @@ dev-python/pydata-sphinx-theme 0.8.0: Bootstrap-based Sphinx theme from the PyDa
 dev-python/pyeapi 0.8.4: Python Client for eAPI
 dev-python/pygal 3.0.0-r2: A python SVG charts generator
 dev-python/pynetbox 5.3.1 6.6.2: Python API client library for NetBox
-dev-python/pytest-benchmark 3.4.1 4.0.0: py.test fixture for benchmarking code
+dev-python/pytest-benchmark 4.0.0: py.test fixture for benchmarking code
 dev-python/python3-openid 3.2.0-r1: OpenID support for modern servers and consumers
 dev-python/pyunycode 0.1.1: Punycode converter library for python
 dev-python/rcssmin 1.1.1 1.1.2: CSS minifier written in python
@@ -131,13 +136,14 @@ dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comm
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/shared-secret-authenticator 2.0.1: Shared Secret Authenticator passwordd provider for Matrix Synapse
+dev-python/sphinx-py3doc-enhanced-theme 2.4.0: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
-dev-python/tablib 3.1.0: Format-agnostic tabular dataset library
+dev-python/tablib 3.1.0 3.2.0: Format-agnostic tabular dataset library
 dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
 dev-python/tomlkit 0.7.2: Style preserving TOML library
 dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
@@ -229,7 +235,7 @@ www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/element 1.11.73: A glossy Matrix collaboration client for the web
 www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
-www-apps/netbox 3.0.12: IP address and data center infrastructure management tool
+www-apps/netbox 3.0.12 3.1.11: IP address and data center infrastructure management tool
 www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
 www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
