@@ -16,6 +16,7 @@ dev-python/drf-yasg:validation - Automatic validation by swagger-spec-validator
 dev-python/dublintraceroute:analysis - Additional analysis functionality, uses dev-python/pandas and dev-python/matplotlib
 dev-python/elasticsearch-py:async - Add async support
 dev-python/matrix-nio:e2e - Enable matrix end-to-end encryption
+dev-python/pytkdocs:numpy-style - Numpy style support via dev-python/docstring-parser.
 gemini-client/lagrange:fribidi - Use dev-libs/fribidi for bidirectional text
 gemini-client/lagrange:harfbuzz - Use media-libs/harfbuzz to shape text
 media-libs/mediastreamer2:bv16 - Support for BroadVoice 16 kbs codec via media-libs/bv16-floatingpoint
