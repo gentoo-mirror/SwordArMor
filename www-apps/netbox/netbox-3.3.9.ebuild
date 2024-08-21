@@ -98,6 +98,11 @@ Finally, if you are using webhooks, start the netbox-rqworker service.
 [2] https://netbox.readthedocs.io/en/stable/installation/upgrading/
 "
 
+src_prepare() {
+	default
+	python_fix_shebang netbox/manage.py
+}
+
 src_install() {
 	dodir /opt
 	cp -a ../${P} "${ED}"/opt
