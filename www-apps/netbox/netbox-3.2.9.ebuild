@@ -43,7 +43,7 @@ RDEPEND="
 		>=dev-python/markdown-3.4.1[${PYTHON_USEDEP}]
 		>=dev-python/markdown-include-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/mkdocs-material-8.4.0[${PYTHON_USEDEP}]
-		>=dev-python/mkdocstrings-python-legacy-0.2.3[${PYTHON_USEDEP}]
+		dev-python/mkdocstrings-python[${PYTHON_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pillow-9.2.0[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
