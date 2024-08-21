@@ -9,6 +9,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Django project that contains default and url settings for Mailman3 Web Interface"
 HOMEPAGE="https://pypi.org/project/mailman-web/"
 SRC_URI="$(pypi_sdist_url --no-normalize ${MY_PN})"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="MIT"
 SLOT="0"
