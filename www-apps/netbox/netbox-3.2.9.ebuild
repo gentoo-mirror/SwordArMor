@@ -109,7 +109,7 @@ src_install() {
 		/opt/netbox/netbox/netbox/configuration.py
 	dodir /etc/netbox
 	insinto /etc/netbox
-	newins netbox/netbox/configuration.example.py configuration.py
+	newins netbox/netbox/configuration_example.py configuration.py
 	doins "${FILESDIR}"/gunicorn_config.py
 	fowners -R netbox:netbox /etc/netbox /opt/${P}
 	fowners -h netbox:netbox /opt/netbox
