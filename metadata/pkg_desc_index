@@ -56,6 +56,7 @@ dev-python/anytree 2.8.0: Powerful and Lightweight Python Tree Data Structure
 dev-python/authheaders 0.15.2 0.16.3: A library wrapping email authentication header verification and generation
 dev-python/blockdiag 3.0.0: Generate block-diagram image from text
 dev-python/cfu 1.5.0: Configuration file validation and generation
+dev-python/cmarkgfm 2022.10.27: Python bindings for GitHub's cmark
 dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
 dev-python/confu 1.8.0: Configuration file validation and generation
 dev-python/coreapi 2.3.3-r2: Python client library for Core API
@@ -136,6 +137,8 @@ dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comm
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/shared-secret-authenticator 2.0.1: Shared Secret Authenticator passwordd provider for Matrix Synapse
+dev-python/social-auth-app-django 5.0.0: Python Social Auth - Application - Django
+dev-python/social-auth-core 4.2.0: Python Social Auth - Core
 dev-python/sphinx-py3doc-enhanced-theme 2.4.0: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
