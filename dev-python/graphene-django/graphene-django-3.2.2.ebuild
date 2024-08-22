@@ -10,6 +10,7 @@ DESCRIPTION="Graphene Django integration"
 HOMEPAGE="https://pypi.org/project/graphene-django/"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
 
+S="${WORKDIR}/${P/_/-}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -23,3 +24,12 @@ DEPEND="
 	<dev-python/aniso8601-10
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	test? (
+		dev-python/inflection[${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
+
+distutils_enable_tests pytest
