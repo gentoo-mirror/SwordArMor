@@ -24,3 +24,12 @@ DEPEND="
 	<dev-python/aniso8601-10
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	test? (
+		dev-python/inflection[${PYTHON_USEDEP}]
+		dev-python/pytest-django[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
+
+distutils_enable_tests pytest
