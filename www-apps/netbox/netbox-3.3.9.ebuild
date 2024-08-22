@@ -21,8 +21,8 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/bleach-5.0.1[${PYTHON_USEDEP}]
-		>=dev-python/django-4.0.8[${PYTHON_USEDEP}]
 		<dev-python/django-4.1[${PYTHON_USEDEP}]
+		>=dev-python/django-4.0.8[${PYTHON_USEDEP}]
 		>=dev-python/django-cors-headers-3.13.0[${PYTHON_USEDEP}]
 		>=dev-python/django-debug-toolbar-3.7.0[${PYTHON_USEDEP}]
 		>=dev-python/django-filter-22.1[${PYTHON_USEDEP}]
@@ -37,8 +37,8 @@ RDEPEND="
 		>=dev-python/django-timezone-field-5.0[${PYTHON_USEDEP}]
 		>=dev-python/djangorestframework-3.14.0[${PYTHON_USEDEP}]
 		>=dev-python/drf-yasg-1.21.4[${PYTHON_USEDEP},validation]
-		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
 		<dev-python/graphene-django-3
+		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
 		>=www-servers/gunicorn-20.1.0[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
 		>=dev-python/markdown-3.3.7[${PYTHON_USEDEP}]
