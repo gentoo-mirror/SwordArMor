@@ -38,6 +38,7 @@ RDEPEND="
 		>=dev-python/djangorestframework-3.14.0[${PYTHON_USEDEP}]
 		>=dev-python/drf-yasg-1.21.4[${PYTHON_USEDEP},validation]
 		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
+		<dev-python/graphene-django-3
 		>=www-servers/gunicorn-20.1.0[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
 		>=dev-python/markdown-3.3.7[${PYTHON_USEDEP}]
@@ -50,6 +51,7 @@ RDEPEND="
 		>=dev-python/sentry-sdk-1.11.1[${PYTHON_USEDEP}]
 		>=dev-python/social-auth-app-django-5.0.0[${PYTHON_USEDEP}]
 		>=dev-python/social-auth-core-4.3.0[${PYTHON_USEDEP}]
+		dev-python/python-jose[${PYTHON_USEDEP}]
 		>=dev-python/svgwrite-1.4.3[${PYTHON_USEDEP}]
 		>=dev-python/tablib-3.2.1[${PYTHON_USEDEP}]
 		>=dev-python/tzdata-2022.7[${PYTHON_USEDEP}]
