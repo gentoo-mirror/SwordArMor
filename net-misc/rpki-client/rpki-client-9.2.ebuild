@@ -19,8 +19,10 @@ IUSE=""
 DEPEND="
 	acct-group/_rpki-client
 	acct-user/_rpki-client
+	dev-libs/expat
 	dev-libs/libretls
 	dev-libs/openssl[rfc3779]
+	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
