@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20240116 sys-devel/gnuconfig || ( >=dev-build/automake-1.16.5:1.16 ) || ( >=dev-build/autoconf-2.72-r1:2.72 >=dev-build/autoconf-2.71-r6:2.71 ) >=dev-build/libtool-2.4.7-r3 virtual/pkgconfig
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20240116 sys-devel/gnuconfig || ( >=dev-build/automake-1.17-r1:1.17 >=dev-build/automake-1.16.5:1.16 ) || ( >=dev-build/autoconf-2.72-r1:2.72 >=dev-build/autoconf-2.71-r6:2.71 ) >=dev-build/libtool-2.4.7-r3 virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-libs/libXrender gdk-pixbuf? ( x11-libs/gdk-pixbuf ) kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft ) x11-base/xorg-proto
 DESCRIPTION=rxvt clone with xft and unicode support
@@ -12,5 +12,5 @@ RDEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-li
 RESTRICT=test
 SLOT=0
 SRC_URI=http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2 https://dev.gentoo.org/~marecki/dists/rxvt-unicode/rxvt-unicode-9.22_24-bit-color_cpixl-20201108.patch.xz
-_eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	dc70c1dc473b68317fc4a86f5fbfc57d	desktop	021728fdc1b03b36357dbc89489e0f0d	flag-o-matic	d309b9713dfc18e754cba88d3ba69653	systemd	c8b03e8df84486aa991d4396686e8942	prefix	eab3c99d77fe00506c109c8a736186f7
+_eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	d12ccbad07b44642a75ac97a3334d8e0	desktop	021728fdc1b03b36357dbc89489e0f0d	flag-o-matic	e503ea5acc20410237ba33ec3f7c857d	systemd	c8b03e8df84486aa991d4396686e8942	prefix	eab3c99d77fe00506c109c8a736186f7
 _md5_=fc7ec2e771005c9283998e846ee93c40
