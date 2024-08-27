@@ -82,6 +82,7 @@ dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometh
 dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
 dev-python/django-rich 1.5.0 1.7.0: Extensions for using Rich with Django
 dev-python/django-rq 2.5.1 2.6.0 2.7.0 2.8.1: A simple app that provides django integration for RQ (Redis Queue)
+dev-python/django-taggit 4.0.0: Simple tagging for Django
 dev-python/djangorestframework 3.12.4 3.13.1 3.14.0: Web APIs with django made easy
 dev-python/dmidecode 0.9.0: dmidecode py
 dev-python/docstring-parser 0.15: Parse Python docstrings in reST, Google and Numpydoc format
