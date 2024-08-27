@@ -1,11 +1,28 @@
---- a/upgrade.sh	2021-09-16 16:18:18.520099120 +0200
-+++ b/upgrade.sh	2021-09-16 16:19:02.730460864 +0200
-@@ -7,59 +7,6 @@
- # Python 3.7 or later.
+--- netbox-3.4.9/upgrade.sh	2024-08-27 16:21:54.879232222 +0200
++++ netbox-3.4.9/upgrade.sh	2024-08-27 16:24:31.613537938 +0200
+@@ -7,76 +7,6 @@
+ # Python 3.8 or later.
  
  cd "$(dirname "$0")"
 -VIRTUALENV="$(pwd -P)/venv"
 -PYTHON="${PYTHON:-python3}"
+-
+-# Validate the minimum required Python version
+-COMMAND="${PYTHON} -c 'import sys; exit(1 if sys.version_info < (3, 8) else 0)'"
+-PYTHON_VERSION=$(eval "${PYTHON} -V")
+-eval $COMMAND || {
+-  echo "--------------------------------------------------------------------"
+-  echo "ERROR: Unsupported Python version: ${PYTHON_VERSION}. NetBox requires"
+-  echo "Python 3.8 or later. To specify an alternate Python executable, set"
+-  echo "the PYTHON environment variable. For example:"
+-  echo ""
+-  echo "  sudo PYTHON=/usr/bin/python3.8 ./upgrade.sh"
+-  echo ""
+-  echo "To show your current Python version: ${PYTHON} -V"
+-  echo "--------------------------------------------------------------------"
+-  exit 1
+-}
+-echo "Using ${PYTHON_VERSION}"
 -
 -# Remove the existing virtual environment (if any)
 -if [ -d "$VIRTUALENV" ]; then
@@ -58,5 +75,14 @@
 -  echo "Skipping local dependencies (local_requirements.txt not found)"
 -fi
  
- # Test schema migrations integrity
- COMMAND="python3 netbox/manage.py showmigrations"
+ # Apply any database migrations
+ COMMAND="python3 netbox/manage.py migrate"
+@@ -91,7 +21,7 @@
+ # Build the local documentation
+ COMMAND="mkdocs build"
+ echo "Building documentation ($COMMAND)..."
+-eval $COMMAND || exit 1
++eval $COMMAND || echo "Making doc failed but who cares"
+ 
+ # Collect static files
+ COMMAND="python3 netbox/manage.py collectstatic --no-input"
