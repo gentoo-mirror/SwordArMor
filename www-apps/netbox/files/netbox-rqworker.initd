@@ -4,8 +4,8 @@
 
 name="netbox-rqworker daemon"
 description="nnetbox-rqworker daemon"
-command=/usr/bin/python3
-command_args="/opt/netbox/netbox/manage.py rqworker"
+command=/opt/netbox/netbox/manage.py
+command_args=rqworker
 command_user=netbox:netbox
 directory=/opt/netbox/netbox
 error_log=/var/log/netbox/netbox-rcworker.log
