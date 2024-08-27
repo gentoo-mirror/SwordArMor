@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{11..12} )
 inherit python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="IP address and data center infrastructure management tool"
@@ -20,34 +20,41 @@ RDEPEND="
 	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/django-3.2.9[${PYTHON_USEDEP}]
-		<dev-python/django-4[${PYTHON_USEDEP}]
-		>=dev-python/django-cors-headers-3.10.0[${PYTHON_USEDEP}]
-		>=dev-python/django-debug-toolbar-3.2.2[${PYTHON_USEDEP}]
-		>=dev-python/django-filter-21.1[${PYTHON_USEDEP}]
+		>=dev-python/bleach-5.0.1[${PYTHON_USEDEP}]
+		<dev-python/django-4.2[${PYTHON_USEDEP}]
+		>=dev-python/django-4.1.8[${PYTHON_USEDEP}]
+		>=dev-python/django-cors-headers-3.14.0[${PYTHON_USEDEP}]
+		>=dev-python/django-debug-toolbar-4.0.0[${PYTHON_USEDEP}]
+		>=dev-python/django-filter-23.1[${PYTHON_USEDEP}]
 		>=dev-python/django-graphiql-debug-toolbar-0.2.0[${PYTHON_USEDEP}]
-		>=dev-python/django-mptt-0.13.4[${PYTHON_USEDEP}]
+		>=dev-python/django-mptt-0.14[${PYTHON_USEDEP}]
 		>=dev-python/django-pglocks-1.0.4[${PYTHON_USEDEP}]
-		>=dev-python/django-prometheus-2.1.0[${PYTHON_USEDEP}]
-		>=dev-python/django-redis-5.0.0[${PYTHON_USEDEP}]
-		>=dev-python/django-rq-2.5.1[${PYTHON_USEDEP}]
-		>=dev-python/django-tables2-2.4.1[${PYTHON_USEDEP}]
-		>=dev-python/django-taggit-1.5.1[${PYTHON_USEDEP}]
-		>=dev-python/django-timezone-field-4.2.1[${PYTHON_USEDEP}]
-		>=dev-python/djangorestframework-3.12.4[${PYTHON_USEDEP}]
-		>=dev-python/drf-yasg-1.20.0[${PYTHON_USEDEP},validation]
-		>=dev-python/graphene-django-2.15.0[${PYTHON_USEDEP}]
+		>=dev-python/django-prometheus-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/django-redis-5.2.0[${PYTHON_USEDEP}]
+		>=dev-python/django-rich-1.5.0[${PYTHON_USEDEP}]
+		>=dev-python/django-rq-2.7.0[${PYTHON_USEDEP}]
+		>=dev-python/django-tables2-2.5.3[${PYTHON_USEDEP}]
+		>=dev-python/django-taggit-3.1.0[${PYTHON_USEDEP}]
+		>=dev-python/django-timezone-field-5.0[${PYTHON_USEDEP}]
+		>=dev-python/djangorestframework-3.14.0[${PYTHON_USEDEP}]
+		>=dev-python/drf-yasg-1.21.5[${PYTHON_USEDEP},validation]
+		>=dev-python/graphene-django-3.0.0[${PYTHON_USEDEP}]
 		>=www-servers/gunicorn-20.1.0[${PYTHON_USEDEP}]
-		>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
-		>=dev-python/markdown-3.3.6[${PYTHON_USEDEP}]
-		>=dev-python/markdown-include-0.6.0[${PYTHON_USEDEP}]
-		>=dev-python/mkdocs-material-7.3.6[${PYTHON_USEDEP}]
+		>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+		>=dev-python/markdown-3.3.7[${PYTHON_USEDEP}]
+		>=dev-python/mkdocs-material-9.1.8[${PYTHON_USEDEP}]
+		dev-python/mkdocstrings-python[${PYTHON_USEDEP}]
 		>=dev-python/netaddr-0.8.0[${PYTHON_USEDEP}]
-		>=dev-python/pillow-8.4.0[${PYTHON_USEDEP}]
+		>=dev-python/pillow-9.5.0[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
-		>=dev-python/svgwrite-1.4.1[${PYTHON_USEDEP}]
-		>=dev-python/tablib-3.1.0[${PYTHON_USEDEP}]
+		>=dev-python/sentry-sdk-1.21.0[${PYTHON_USEDEP}]
+		>=dev-python/social-auth-app-django-5.0.0[${PYTHON_USEDEP}]
+		>=dev-python/social-auth-core-4.4.2[${PYTHON_USEDEP}]
+		dev-python/python-jose[${PYTHON_USEDEP}]
+		>=dev-python/svgwrite-1.4.3[${PYTHON_USEDEP}]
+		>=dev-python/tablib-3.4.0[${PYTHON_USEDEP}]
+		>=dev-python/tzdata-2023.3[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
 		ldap? ( >=dev-python/django-auth-ldap-4.1.0[${PYTHON_USEDEP}] )
 	')"
@@ -93,6 +100,11 @@ Finally, if you are using webhooks, start the netbox-rqworker service.
 [2] https://netbox.readthedocs.io/en/stable/installation/upgrading/
 "
 
+src_prepare() {
+	default
+	python_fix_shebang netbox/manage.py
+}
+
 src_install() {
 	dodir /opt
 	cp -a ../${P} "${ED}"/opt
@@ -102,7 +114,7 @@ src_install() {
 		/opt/netbox/netbox/netbox/configuration.py
 	dodir /etc/netbox
 	insinto /etc/netbox
-	newins netbox/netbox/configuration.example.py configuration.py
+	newins netbox/netbox/configuration_example.py configuration.py
 	doins "${FILESDIR}"/gunicorn_config.py
 	fowners -R netbox:netbox /etc/netbox /opt/${P}
 	fowners -h netbox:netbox /opt/netbox
