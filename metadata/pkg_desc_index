@@ -246,7 +246,7 @@ www-apps/element 1.11.73: A glossy Matrix collaboration client for the web
 www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
 www-apps/netbox 3.1.11 3.2.9 3.3.9 3.4.9 3.5.8 3.6.8: IP address and data center infrastructure management tool
-www-apps/netbox-ddns 1.2.6: Dynamic DNS Connector for NetBox
+www-apps/netbox-ddns 1.2.6 1.2.9: Dynamic DNS Connector for NetBox
 www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
 x11-libs/vte 0.70.3 0.74.2: Library providing a virtual terminal emulator widget
