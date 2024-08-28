@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
@@ -15,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	dev-python/django[${PYTHON_USEDEP}]
+	<dev-python/django-4.3
+	>=dev-python/django-3.2[${PYTHON_USEDEP}]
 	dev-python/readme-renderer[${PYTHON_USEDEP}]
 	net-mail/django-mailman3[${PYTHON_USEDEP}]
 	net-mail/mailmanclient[${PYTHON_USEDEP}]
