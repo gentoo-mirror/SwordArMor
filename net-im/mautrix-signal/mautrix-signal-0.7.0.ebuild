@@ -26,7 +26,7 @@ BDEPEND="
 "
 
 src_compile() {
-	ego build
+	ego build  ${GOFLAGS} ./cmd/mautrix-signal
 }
 
 src_install() {
