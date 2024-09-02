@@ -33,10 +33,10 @@ src_unpack() {
 	default
 	cargo_gen_config
 	ln -s "${WORKDIR}/vendor/" "${WORKDIR}/libsignal-${PV}/vendor" || die
-	sed -i "${ECARGO_HOME}/config" -e '/source.crates-io/d'  || die
-	sed -i "${ECARGO_HOME}/config" -e '/replace-with = "gentoo"/d'  || die
-	sed -i "${ECARGO_HOME}/config" -e '/local-registry = "\/nonexistent"/d'  || die
-	cat "${WORKDIR}/vendor/vendor-config.toml" >> "${ECARGO_HOME}/config" || die
+	sed -i "${ECARGO_HOME}/config.toml" -e '/source.crates-io/d'  || die
+	sed -i "${ECARGO_HOME}/config.toml" -e '/replace-with = "gentoo"/d'  || die
+	sed -i "${ECARGO_HOME}/config.toml" -e '/local-registry = "\/nonexistent"/d'  || die
+	cat "${WORKDIR}/vendor/vendor-config.toml" >> "${ECARGO_HOME}/config.toml" || die
 }
 
 src_install() {
