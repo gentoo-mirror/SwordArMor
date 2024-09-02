@@ -7,7 +7,7 @@ EAPI=8
 
 CRATES=" "
 
-inherit cargo
+inherit cargo rust-toolchain
 
 DESCRIPTION="A C ABI library which exposes Signal protocol logic"
 HOMEPAGE="https://github.com/signalapp/libsignal"
@@ -46,5 +46,5 @@ src_install() {
 		TARGET=release
 	fi
 
-	dolib.a "${WORKDIR}/${P/-ffi/}/target/${TARGET}/${PN/-/_}.a"
+	dolib.a "${WORKDIR}/${P/-ffi/}/target/$(rust_abi)/${TARGET}/${PN/-/_}.a"
 }
