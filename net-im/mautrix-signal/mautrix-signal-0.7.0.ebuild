@@ -39,6 +39,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
+	keepdir /etc/mautrix
 	fowners -R root:mautrix /etc/mautrix
 	fperms -R 770 /etc/mautrix
 }
