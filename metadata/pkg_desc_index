@@ -69,7 +69,7 @@ dev-python/django-appconf 1.0.5-r1 1.0.6: A helper class for handling configurat
 dev-python/django-compressor 4.3.1 4.5.1: Compresses linked and inline JavaScript or CSS into single cached files
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-cryptography 1.0: Easily encrypt data in Django
-dev-python/django-debug-toolbar 3.2.2 3.4: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 4.3.0: A configurable set of panels that display various debug information
 dev-python/django-extensions 3.2.1 3.2.3: A collection of custom extensions for the Django Framework
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
