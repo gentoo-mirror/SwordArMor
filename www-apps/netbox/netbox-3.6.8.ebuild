@@ -24,6 +24,7 @@ RDEPEND="
 		<dev-python/django-5.0[${PYTHON_USEDEP}]
 		>=dev-python/django-4.2.8[${PYTHON_USEDEP}]
 		>=dev-python/django-cors-headers-4.3.1[${PYTHON_USEDEP}]
+		<=dev-python/django-debug-toolbar-4.3.0
 		>=dev-python/django-debug-toolbar-4.2.0[${PYTHON_USEDEP}]
 		>=dev-python/django-filter-23.5[${PYTHON_USEDEP}]
 		>=dev-python/django-graphiql-debug-toolbar-0.2.0[${PYTHON_USEDEP}]
