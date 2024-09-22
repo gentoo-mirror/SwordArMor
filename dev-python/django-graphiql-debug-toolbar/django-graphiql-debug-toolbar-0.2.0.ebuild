@@ -9,6 +9,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Django Debug Toolbar for GraphiQL IDE"
 HOMEPAGE="https://pypi.org/project/django-graphiql-debug-toolbar/"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="MIT"
 SLOT="0"
