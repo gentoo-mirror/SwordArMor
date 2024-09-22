@@ -11,6 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="PostgreSQL locking context managers and functions for Django"
 HOMEPAGE="https://github.com/Xof/django-pglocks"
 SRC_URI="$(pypi_sdist_url --no-normalize)"
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="MIT"
 SLOT="0"
