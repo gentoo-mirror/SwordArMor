@@ -4,6 +4,7 @@ acct-group/as-stats 0: System group: as-stats
 acct-group/bird 0: System group: bird
 acct-group/factorio 0: System group: factorio
 acct-group/fort 0: System group: fort
+acct-group/frr_exporter 0: System group: frr_exporter
 acct-group/netbox 0-r2: System group: netbox
 acct-group/rancid 0: System group: rancid
 acct-group/routinator 0: System group: routinator
@@ -14,11 +15,13 @@ acct-user/as-stats 0: User for net-analyzer/AS-Stats and www-misc/as-stats-gui
 acct-user/bird 0: User for BIRD
 acct-user/factorio 0: User for games-server/factorio-server
 acct-user/fort 0: User for FORT RPKI validator
+acct-user/frr_exporter 0: User for app-metrics/frr_exporter
 acct-user/netbox 0-r2: user for netbox
 acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 acct-user/vintagestory 0: User for games-server/vintagestory-server
 app-admin/gandi-cli 1.6: Command line interface to Gandi.net products using the public API
+app-metrics/frr_exporter 1.3.1: Prometheus exporter for Free Range Routing
 app-misc/live-build 20210407: Debian live system build components
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-shells/bash 5.2_p26-r6: The standard GNU Bourne again shell
