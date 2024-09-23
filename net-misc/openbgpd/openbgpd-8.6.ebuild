@@ -1,7 +1,7 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd
 
@@ -12,23 +12,23 @@ DESCRIPTION="OpenBGPD is a free implementation of BGPv4"
 HOMEPAGE="http://www.openbgpd.org/index.html"
 SRC_URI="mirror://openbsd/OpenBGPD/${PN}-${MY_PV}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="
-	${DEPEND}
 	!!net-misc/frr
 	acct-group/_bgpd
 	acct-user/_bgpd
+	dev-libs/libevent
+	net-libs/libmnl
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/libtool
+	dev-build/libtool
 "
-
-S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	default
