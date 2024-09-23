@@ -1,0 +1,11 @@
+[Unit]
+Description=FRR Exporter
+Documentation="https://github.com/prometheus-community/frr_exporter"
+
+[Service]
+User=frr_exporter
+EnvironmentFile=/etc/sysconfig/frr_exporter
+ExecStart=/usr/bin/frr_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
