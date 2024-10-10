@@ -234,7 +234,7 @@ net-misc/irrtoolset 5.1.3: The Internet Routing Registry Toolset
 net-misc/nbcli 0.8.0_alpha1 0.9.3_alpha1: Extensible command-line interface for Netbox
 net-misc/netcalc 0.6.2: Advanced network calculator and address planning helper
 net-misc/openbgpd 8.4 8.5 8.6 9999: OpenBGPD is a free implementation of BGPv4
-net-misc/openssh 8.9_p1-r2 9.0_p1-r2 9.0_p1-r6 9.1_p1 9.1_p1-r1: Port of OpenBSD's free SSH release
+net-misc/openssh 9.8_p1-r2: Port of OpenBSD's free SSH release
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
 net-misc/routinator 0.10.0: An RPKI relying party software
