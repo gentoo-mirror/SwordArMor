@@ -7,7 +7,7 @@ inherit desktop
 
 MY_PV="${PV//.20/.v20}"
 MY_PN="ApacheDirectoryStudio"
-MY_PKGM=15
+MY_PKGM=17
 
 DESCRIPTION="Apache Directory Studio is an universal LDAP directory tool."
 HOMEPAGE="https://directory.apache.org/studio/"
