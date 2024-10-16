@@ -23,7 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	ego build
+	ego build ${GOFLAGS} ./cmd/mautrix-slack
 }
 
 src_install() {
