@@ -33,9 +33,6 @@ src_install() {
 	fowners -R root:mautrix /var/log/mautrix
 	fperms -R 770 /var/log/mautrix
 
-	insinto "/etc/mautrix"
-	newins "example-config.yaml" "${PN/-/_}.yaml"
-
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
