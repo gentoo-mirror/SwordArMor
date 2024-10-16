@@ -32,7 +32,6 @@ src_install() {
 	keepdir /var/log/mautrix/slack
 	fowners -R root:mautrix /var/log/mautrix
 	fperms -R 770 /var/log/mautrix
-	sed -i -e "s/\.\/logs/\/var\/log\/mautrix\/slack/" "example-config.yaml" || die
 
 	insinto "/etc/mautrix"
 	newins "example-config.yaml" "${PN/-/_}.yaml"
