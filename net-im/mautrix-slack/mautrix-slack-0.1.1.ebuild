@@ -35,9 +35,6 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
-
-	fowners -R root:mautrix /etc/mautrix
-	fperms -R 770 /etc/mautrix
 }
 
 pkg_postinst() {
@@ -55,5 +52,5 @@ pkg_postinst() {
 
 pkg_config() {
 	su - "${PN}" -s /bin/sh -c \
-	   "/usr/bin/${PN} -c /etc/mautrix/${PN/-/_}.yaml -g -r /var/lib/${PN/-/\/}/registration.yaml"
+		"/usr/bin/${PN} -c /etc/mautrix/${PN/-/_}.yaml -g -r /var/lib/${PN/-/\/}/registration.yaml"
 }
