@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/mautrix/slack"
 SRC_URI="https://github.com/mautrix/slack/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://herbizarre.swordarmor.fr/garbage/${P}-deps.tar.xz
 "
-S="${WORKDIR}/slack-${COMMIT}"
+S="${WORKDIR}/slack-${PV}"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	ego build
+	ego build ${GOFLAGS} ./cmd/mautrix-slack
 }
 
 src_install() {
