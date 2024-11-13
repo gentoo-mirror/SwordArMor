@@ -18,7 +18,7 @@ SLOT="2"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=virtual/jre-1.8.0
+	>=virtual/jre-11
 	app-crypt/libsecret
 	x11-libs/gtk+:3
 "
