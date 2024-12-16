@@ -5,6 +5,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.71.1" # actually 1.70
+
 CRATES=" "
 
 inherit cargo
@@ -29,7 +31,6 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 DEPEND="
 	acct-group/routinator
 	acct-user/routinator
-	|| ( >=dev-lang/rust-1.70 >=dev-lang/rust-bin-1.70 )
 "
 RDEPEND="${DEPEND}"
 
