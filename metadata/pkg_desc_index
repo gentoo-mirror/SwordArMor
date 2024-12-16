@@ -237,7 +237,7 @@ net-misc/openbgpd 8.4 8.5 8.6 9999: OpenBGPD is a free implementation of BGPv4
 net-misc/openssh 9.8_p1-r2: Port of OpenBSD's free SSH release
 net-misc/rancid 3.13: Really Awesome New Cisco confIg Differ
 net-misc/ris-pydot-graph 0.1: Draw a graph from RIS BGP data
-net-misc/routinator 0.10.0: An RPKI relying party software
+net-misc/routinator 0.14.0: An RPKI relying party software
 net-misc/rpki-client 8.8 9.2 9.3: Portability shim for OpenBSD's rpki-client
 net-nds/apachedirectorystudio 2.0.0.20200411 2.0.0.20210717: Apache Directory Studio is an universal LDAP directory tool.
 net-print/epson-inkjet-printer-escpr2 1.1.48: Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux

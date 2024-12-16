@@ -145,6 +145,7 @@ net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:security-key - Include builtin U2F/FIDO support
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
 net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
+net-misc/routinator:aspa - Validate ASPA objects
 net-misc/routinator:rta - Enables the command rta for validating Resource Tagged Assertions as described in draft-michaelson-rpki-rta
 net-voip/twinkle:g729 - Add support for the G.729A audio codec
 www-apps/converse-js:omemo - Enable OMEMO encryption with www-apps/libsignal-protocol-javascript.
