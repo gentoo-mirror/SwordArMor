@@ -20,13 +20,11 @@ SRC_URI="
 	https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://herbizarre.swordarmor.fr/garbage/${P}-vendor.tar.xz
 "
-RESTRICT="mirror"
+S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="aspa rta"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 DEPEND="
 	acct-group/routinator
@@ -57,6 +55,8 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}-confd" ${PN}
 
 	cargo_src_install
+
+	doman doc/routinator.1
 }
 
 pkg_postinst() {
