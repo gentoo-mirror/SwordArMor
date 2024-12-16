@@ -44,6 +44,7 @@ src_unpack() {
 
 src_configure() {
 	local myfeatures=(
+		$(usev aspa)
 		$(usev rta)
 	)
 
@@ -52,11 +53,13 @@ src_configure() {
 
 src_install() {
 	newinitd "${FILESDIR}/${PN}-initd" ${PN}
-	newconfd "${FILESDIR}/${PN}-confd" ${PN}
 
 	cargo_src_install
 
 	doman doc/routinator.1
+
+	insinto /etc
+	doins "${FILESDIR}/${PN}.conf"
 }
 
 pkg_postinst() {

@@ -5,8 +5,7 @@
 name="routinator daemon"
 description="An RPKI relying party software"
 command=/usr/bin/routinator
-command_args="--syslog --config /etc/routinator.conf --repository-dir=${ROUTINATOR_BASEDIR}/repository server
-${ROUTINATOR_OPTS}"
+command_args="--config /etc/routinator.conf server"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_args_background="--detach --pid-file=${pidfile}"
 
