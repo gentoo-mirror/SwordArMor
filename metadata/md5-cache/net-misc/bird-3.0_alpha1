@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=client? ( sys-libs/ncurses:= sys-libs/readline:= ) filecaps? ( acct-group/bird acct-user/bird ) libssh? ( net-libs/libssh:= )
 SLOT=0
 SRC_URI=https://bird.network.cz/download/3.0pre/bird-3.0alpha1.tar.gz
-_eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	d12ccbad07b44642a75ac97a3334d8e0	fcaps	c0a086b957a1b183a8d136eabf02f191
+_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	fa554cc3cff825d21dfe3f24841e29cf	multilib	b2a329026f2e404e9e371097dda47f96	libtool	6b28392a775f807c8be5fc7ec9a605b9	autotools	7d91cc798a8afd8f4e0c6e9587296ebe	fcaps	27152c9e4da035accb14a2d7879744ef
 _md5_=9af2b3c59484a7af9d05075883b51b98
