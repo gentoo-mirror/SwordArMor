@@ -11,7 +11,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="bmp +client custom-cflags debug libssh"
 
 RDEPEND="
@@ -45,7 +45,7 @@ src_configure() {
 	# This export makes compilation and test phases verbose
 	export VERBOSE=1
 
-	protocols="bfd babel bgp mrt ospf perf pipe radv rip rpki static"
+	protocols="aggregator babel bfd bgp l3vpn mrt ospf perf pipe radv rip rpki static"
 	if use bmp; then
 		protocols="${protocols} bmp"
 	fi
