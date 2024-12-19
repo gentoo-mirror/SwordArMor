@@ -47,7 +47,6 @@ src_configure() {
 
 	local myargs=(
 		--localstatedir="${EPREFIX}/var"
-		--with-protocols="${protocols}"
 		$(use_enable client)
 		$(use_enable debug)
 		$(use_enable libssh)
