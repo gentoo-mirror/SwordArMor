@@ -7,12 +7,11 @@ inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
-MY_PV="${PV/_/}"
-SRC_URI="https://bird.network.cz/download/3.0pre/bird-${MY_PV}.tar.gz"
+SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="+client custom-cflags debug libssh"
 
 RDEPEND="
@@ -37,8 +36,6 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
 src_prepare() {
 	default
 	eautoreconf
@@ -48,20 +45,19 @@ src_configure() {
 	# This export makes compilation and test phases verbose
 	export VERBOSE=1
 
-	# lto must be enabled by default as bird is mono-threaded and use several
-	# optimisations to be fast, at it may very likely be exposed to several
-	# thounsand BGP updates per seconds
-	# Although, we make it possible to desactivate it if wanted
-	if use custom-cflags; then
-		export bird_cv_c_lto=no
-	fi
-
 	local myargs=(
 		--localstatedir="${EPREFIX}/var"
+		--with-protocols="${protocols}"
 		$(use_enable client)
 		$(use_enable debug)
 		$(use_enable libssh)
 	)
+
+	# lto must be enabled by default as bird is mono-threaded and use several
+	# optimisations to be fast, as it may very likely be exposed to several
+	# thounsand BGP updates per seconds
+	# Although, we make it possible to deactivate it if wanted
+	use custom-cflags && myargs+=( bird_cv_c_lto=no )
 
 	econf "${myargs[@]}"
 }
