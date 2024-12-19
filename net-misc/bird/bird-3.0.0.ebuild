@@ -36,6 +36,10 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-nest-rt-table.c.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
