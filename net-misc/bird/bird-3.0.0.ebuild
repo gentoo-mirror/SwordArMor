@@ -11,7 +11,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+#KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="+client custom-cflags debug libssh"
 
 RDEPEND="
@@ -47,7 +47,6 @@ src_configure() {
 
 	local myargs=(
 		--localstatedir="${EPREFIX}/var"
-		--with-protocols="${protocols}"
 		$(use_enable client)
 		$(use_enable debug)
 		$(use_enable libssh)
