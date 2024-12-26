@@ -30,6 +30,14 @@ BDEPEND="
 	dev-build/libtool
 "
 
+src_configure() {
+	local myargs=(
+		--localstatedir="${EPREFIX}/var"
+	)
+
+	econf "${myargs[@]}"
+}
+
 src_install() {
 	default
 
