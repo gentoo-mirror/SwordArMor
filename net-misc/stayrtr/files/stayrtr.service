@@ -1,0 +1,12 @@
+[Unit]
+Description=RPKI-To-Router server implementation in Go
+After=network.target
+
+[Service]
+User=stayrtr
+Group=mautrix
+Restart=always
+ExecStart=/usr/bin/stayrtr -bind :323 -cache /var/db/rpki-client/json
+
+[Install]
+WantedBy=multi-user.target
