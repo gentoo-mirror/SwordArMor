@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module systemd
+inherit fcaps go-module systemd
 
 DESCRIPTION="RPKI-To-Router server implementation in Go"
 HOMEPAGE="https://github.com/bgp/stayrtr"
@@ -20,6 +20,13 @@ RDEPEND="
 	net-misc/rpki-client
 "
 DEPEND="${RDEPEND}"
+
+
+FILECAPS=(
+	CAP_NET_ADMIN			usr/bin/stayrtr
+	CAP_NET_BIND_SERVICE	usr/bin/stayrtr
+	CAP_NET_RAW				usr/bin/stayrtr
+)
 
 src_compile() {
 	ego build -trimpath -ldflags "-X main.version=${PV}" ${GOFLAGS} ./cmd/stayrtr/stayrtr.go
