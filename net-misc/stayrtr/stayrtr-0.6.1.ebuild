@@ -23,9 +23,7 @@ DEPEND="${RDEPEND}"
 
 
 FILECAPS=(
-	CAP_NET_ADMIN			usr/bin/stayrtr
-	CAP_NET_BIND_SERVICE	usr/bin/stayrtr
-	CAP_NET_RAW				usr/bin/stayrtr
+	-m 755 'cap_net_bind_service=+ep' usr/bin/"${PN}"
 )
 
 src_compile() {
