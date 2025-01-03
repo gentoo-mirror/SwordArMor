@@ -26,7 +26,7 @@ IUSE="debug"
 
 BDEPEND="
 	dev-libs/protobuf
-	sys-devel/clang
+	llvm-core/clang
 "
 
 src_unpack() {
