@@ -20,7 +20,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/social-auth-core[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/django-3.2[${PYTHON_USEDEP}]
+	>=dev-python/social-auth-core-4.4.1[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 

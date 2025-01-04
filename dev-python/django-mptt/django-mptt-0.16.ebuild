@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1
 
 DESCRIPTION="utilities for modified preorder tree traversal and trees of model instances"
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/django-1.11[${PYTHON_USEDEP}]
+	>=dev-python/django-2.2[${PYTHON_USEDEP}]
 	dev-python/django-js-asset[${PYTHON_USEDEP}]
 "
 

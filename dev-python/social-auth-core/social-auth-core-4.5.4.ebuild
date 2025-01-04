@@ -21,13 +21,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
->=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
->=dev-python/oauthlib-1.0.3[${PYTHON_USEDEP}]
->=dev-python/requests-oauthlib-0.6.1[${PYTHON_USEDEP}]
->=dev-python/pyjwt-2.0.0[${PYTHON_USEDEP}]
->=dev-python/cryptography-1.4[${PYTHON_USEDEP}]
->=dev-python/defusedxml-0.5.0_rc1[${PYTHON_USEDEP}]
->=dev-python/python3-openid-3.0.10[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
+	>=dev-python/oauthlib-1.0.3[${PYTHON_USEDEP}]
+	>=dev-python/requests-oauthlib-0.6.1[${PYTHON_USEDEP}]
+	>=dev-python/pyjwt-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-1.4[${PYTHON_USEDEP}]
+	>=dev-python/defusedxml-0.5.0_rc1[${PYTHON_USEDEP}]
+	>=dev-python/python3-openid-3.0.10[${PYTHON_USEDEP}]
 "
 BDEPEND="test? ( dev-python/httpretty[${PYTHON_USEDEP}]
 		dev-python/python-jose[${PYTHON_USEDEP}]

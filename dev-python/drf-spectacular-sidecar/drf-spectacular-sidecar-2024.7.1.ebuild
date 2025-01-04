@@ -12,8 +12,7 @@ DESCRIPTION="Serve self-contained distribution builds of Swagger UI and Redoc"
 HOMEPAGE="
 	https://pypi.org/project/drf-spectacular-sidecar/
 "
-SRC_URI="$(pypi_sdist_url --no-normalize)"
-S="${WORKDIR}/${P/_/-}"
+SRC_URI="$(pypi_sdist_url)"
 
 LICENSE="BSD"
 SLOT="0"
