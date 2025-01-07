@@ -5,13 +5,11 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{11..13} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="utilities for modified preorder tree traversal and trees of model instances"
 HOMEPAGE="https://github.com/django-mptt/django-mptt"
-SRC_URI="
-	https://github.com/django-mptt/django-mptt/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+SRC_URI="$(pypi_sdist_url)"
 
 LICENSE="MIT"
 SLOT="0"
