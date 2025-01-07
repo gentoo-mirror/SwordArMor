@@ -17,9 +17,8 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	test? (
-		dev-python/markuppy[${PYTHON_USEDEP}]
 		dev-python/odfpy[${PYTHON_USEDEP}]
-		dev-python/openpyxl[${PYTHON_USEDEP}]
+		>=dev-python/openpyxl-2.6.0[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/tabulate[${PYTHON_USEDEP}]
