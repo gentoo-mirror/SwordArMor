@@ -1,0 +1,94 @@
+--- netbox-4.1.11/upgrade.sh	2025-01-07 22:30:02.258576535 +0100
++++ netbox-4.1.11/upgrade.sh	2025-01-07 22:32:03.712890624 +0100
+@@ -6,82 +6,6 @@
+ # variable (if set), or fall back to "python3". Note that NetBox v4.0+ requires
+ # Python 3.10 or later.
+ 
+-cd "$(dirname "$0")"
+-
+-NETBOX_VERSION="$(grep ^version netbox/release.yaml | cut -d \" -f2)"
+-echo "You are installing (or upgrading to) NetBox version ${NETBOX_VERSION}"
+-
+-VIRTUALENV="$(pwd -P)/venv"
+-PYTHON="${PYTHON:-python3}"
+-
+-# Validate the minimum required Python version
+-COMMAND="${PYTHON} -c 'import sys; exit(1 if sys.version_info < (3, 10) else 0)'"
+-PYTHON_VERSION=$(eval "${PYTHON} -V")
+-eval $COMMAND || {
+-  echo "--------------------------------------------------------------------"
+-  echo "ERROR: Unsupported Python version: ${PYTHON_VERSION}. NetBox requires"
+-  echo "Python 3.10 or later. To specify an alternate Python executable, set"
+-  echo "the PYTHON environment variable. For example:"
+-  echo ""
+-  echo "  sudo PYTHON=/usr/bin/python3.10 ./upgrade.sh"
+-  echo ""
+-  echo "To show your current Python version: ${PYTHON} -V"
+-  echo "--------------------------------------------------------------------"
+-  exit 1
+-}
+-echo "Using ${PYTHON_VERSION}"
+-
+-# Remove the existing virtual environment (if any)
+-if [ -d "$VIRTUALENV" ]; then
+-  COMMAND="rm -rf \"${VIRTUALENV}\""
+-  echo "Removing old virtual environment..."
+-  eval $COMMAND
+-else
+-  WARN_MISSING_VENV=1
+-fi
+-
+-# Create a new virtual environment
+-COMMAND="${PYTHON} -m venv \"${VIRTUALENV}\""
+-echo "Creating a new virtual environment at ${VIRTUALENV}..."
+-eval $COMMAND || {
+-  echo "--------------------------------------------------------------------"
+-  echo "ERROR: Failed to create the virtual environment. Check that you have"
+-  echo "the required system packages installed and the following path is"
+-  echo "writable: ${VIRTUALENV}"
+-  echo "--------------------------------------------------------------------"
+-  exit 1
+-}
+-
+-# Activate the virtual environment
+-source "${VIRTUALENV}/bin/activate"
+-
+-# Upgrade pip
+-COMMAND="pip install --upgrade pip"
+-echo "Updating pip ($COMMAND)..."
+-eval $COMMAND || exit 1
+-pip -V
+-
+-# Install necessary system packages
+-COMMAND="pip install wheel"
+-echo "Installing Python system packages ($COMMAND)..."
+-eval $COMMAND || exit 1
+-
+-# Install required Python packages
+-COMMAND="pip install -r requirements.txt"
+-echo "Installing core dependencies ($COMMAND)..."
+-eval $COMMAND || exit 1
+-
+-# Install optional packages (if any)
+-if [ -s "local_requirements.txt" ]; then
+-  COMMAND="pip install -r local_requirements.txt"
+-  echo "Installing local dependencies ($COMMAND)..."
+-  eval $COMMAND || exit 1
+-elif [ -f "local_requirements.txt" ]; then
+-  echo "Skipping local dependencies (local_requirements.txt is empty)"
+-else
+-  echo "Skipping local dependencies (local_requirements.txt not found)"
+-fi
+-
+ # Apply any database migrations
+ COMMAND="python3 netbox/manage.py migrate"
+ echo "Applying database migrations ($COMMAND)..."
+@@ -95,7 +19,7 @@
+ # Build the local documentation
+ COMMAND="mkdocs build"
+ echo "Building documentation ($COMMAND)..."
+-eval $COMMAND || exit 1
++eval $COMMAND || echo "Making doc failed but who cares"
+ 
+ # Collect static files
+ COMMAND="python3 netbox/manage.py collectstatic --no-input"
