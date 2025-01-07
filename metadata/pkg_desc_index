@@ -80,21 +80,21 @@ dev-python/django-extensions 3.2.1 3.2.3: A collection of custom extensions for 
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
 dev-python/django-gravatar2 1.4.4: Essential Gravatar support for Django
 dev-python/django-haystack 3.2.1: Pluggable search for Django
-dev-python/django-htmx 1.19.0: Extensions for using Django with htmx
+dev-python/django-htmx 1.19.0 1.21.0: Extensions for using Django with htmx
 dev-python/django-js-asset 2.0: script tag with additional attributes for django.forms.Media
-dev-python/django-mptt 0.14 0.16: utilities for modified preorder tree traversal and trees of model instances
+dev-python/django-mptt 0.14 0.16.0: utilities for modified preorder tree traversal and trees of model instances
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-picklefield 3.1: Pickled object field for Django
 dev-python/django-prometheus 2.2.0: Library to export Django metrics for Prometheus
 dev-python/django-q 1.3.9: A multiprocessing distributed task queue for Django
-dev-python/django-rich 1.8.0 1.11.0: Extensions for using Rich with Django
-dev-python/django-rq 2.10.1 2.10.2: A simple app that provides django integration for RQ (Redis Queue)
+dev-python/django-rich 1.8.0 1.11.0 1.13.0: Extensions for using Rich with Django
+dev-python/django-rq 2.10.1 2.10.2 3.0: A simple app that provides django integration for RQ (Redis Queue)
 dev-python/django-taggit 4.0.0: Simple tagging for Django
 dev-python/djangorestframework 3.12.4 3.13.1 3.14.0: Web APIs with django made easy
 dev-python/dmidecode 0.9.0: dmidecode py
 dev-python/docstring-parser 0.15: Parse Python docstrings in reST, Google and Numpydoc format
-dev-python/drf-spectacular 0.27.0 0.27.2: Sane and flexible OpenAPI 3 schema generation for Django
-dev-python/drf-spectacular-sidecar 2023.12.1 2024.7.1: Serve self-contained distribution builds of Swagger UI and Redoc
+dev-python/drf-spectacular 0.27.0 0.27.2 0.28.0: Sane and flexible OpenAPI 3 schema generation for Django
+dev-python/drf-spectacular-sidecar 2023.12.1 2024.7.1 2024.12.1: Serve self-contained distribution builds of Swagger UI and Redoc
 dev-python/drf-yasg 1.20.0 1.21.3 1.21.4 1.21.5: Automated generation of real Swagger schemas from Django code
 dev-python/dublintraceroute 0.4.2: Python bindings for Dublin Traceroute
 dev-python/elasticsearch-py 7.17.6: Official Python low-level client for Elasticsearch
@@ -160,9 +160,9 @@ dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block
 dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
-dev-python/strawberry-graphql 0.239.2: A library for creating GraphQL APIs
-dev-python/strawberry-graphql-django 0.47.1: A library for creating GraphQL APIs
-dev-python/tablib 3.2.0 3.2.1 3.4.0 3.5.0: Format-agnostic tabular dataset library
+dev-python/strawberry-graphql 0.239.2 0.256.1: A library for creating GraphQL APIs
+dev-python/strawberry-graphql-django 0.47.1 0.53.1: A library for creating GraphQL APIs
+dev-python/tablib 3.4.0 3.5.0 3.7.0: Format-agnostic tabular dataset library
 dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
 dev-python/tomlkit 0.7.2: Style preserving TOML library
 dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
@@ -256,7 +256,7 @@ www-apps/converse-js 6.0.1: Free and open-source browser XMPP chat client
 www-apps/element 1.11.73: A glossy Matrix collaboration client for the web
 www-apps/grafana-bin 8.4.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/libsignal-protocol-javascript 1.2.0: Signal Protocol library for JavaScript
-www-apps/netbox 3.6.8 4.0.11: IP address and data center infrastructure management tool
+www-apps/netbox 3.6.8 4.0.11 4.1.11: IP address and data center infrastructure management tool
 www-apps/netbox-ddns 1.2.9 1.3.0 1.4.0: Dynamic DNS Connector for NetBox
 www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
