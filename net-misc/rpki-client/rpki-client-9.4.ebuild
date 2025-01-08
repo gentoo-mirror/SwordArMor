@@ -1,7 +1,7 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
@@ -11,10 +11,11 @@ HOMEPAGE="https://rpki-client.org/"
 SRC_URI="mirror://openbsd/${PN}/${PN}-${MY_PV}.tar.gz
 https://lg.breizh-ix.net/ssl/cert.pem -> ${PN}-${MY_PV}-cert.pem"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	acct-group/_rpki-client
@@ -29,7 +30,6 @@ BDEPEND="
 	dev-build/libtool
 "
 
-S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local myeconfargs=(
 		--with-rsync=rsync
@@ -44,6 +44,7 @@ src_install() {
 
 	insinto /etc/rpki
 	doins *.tal
+	doins *.constraints
 	keepdir "/var/db/${PN}/"
 	fowners -R _rpki-client "/var/db/${PN}/"
 
