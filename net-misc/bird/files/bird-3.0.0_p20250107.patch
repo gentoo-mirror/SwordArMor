@@ -1,0 +1,1758 @@
+diff --git a/lib/resource.h b/lib/resource.h
+index 48bf1f9b..12b78851 100644
+--- a/lib/resource.h
++++ b/lib/resource.h
+@@ -139,6 +139,20 @@ void *sl_allocz(slab *);
+ void sl_free(void *);
+ void sl_delete(slab *);
+ 
++/* A whole stonehenge of slabs */
++
++typedef struct stonehenge stonehenge;
++typedef struct sth_block {
++  void *block;
++  bool large;
++} sth_block;
++
++stonehenge *sth_new(pool *);
++sth_block sth_alloc(stonehenge *, uint size);
++sth_block sth_allocz(stonehenge *, uint size);
++void sth_free(sth_block);
++void sth_delete(stonehenge *);
++
+ /*
+  * Low-level memory allocation functions, please don't use
+  * outside resource manager and possibly sysdep code.
+diff --git a/lib/slab.c b/lib/slab.c
+index ca971f9f..d68bfef1 100644
+--- a/lib/slab.c
++++ b/lib/slab.c
+@@ -469,4 +469,66 @@ slab_lookup(resource *r, unsigned long a)
+   return NULL;
+ }
+ 
++static const uint stonehenge_sizes[] = { 56, 112, 168, 288, 448, 800, 1344 };
++
++struct stonehenge {
++  pool *p;
++  slab *s[ARRAY_SIZE(stonehenge_sizes)];
++};
++
++sth_block
++sth_alloc(stonehenge *sth, uint size)
++{
++  for (uint i=0; i<ARRAY_SIZE(stonehenge_sizes); i++)
++    if (size <= stonehenge_sizes[i])
++    {
++      if (!sth->s[i])
++	sth->s[i] = sl_new(sth->p, stonehenge_sizes[i]);
++
++      return (sth_block) { .block = sl_alloc(sth->s[i]), };
++    }
++
++  return (sth_block) {
++    .block = mb_alloc(sth->p, size),
++    .large = 1,
++  };
++}
++
++sth_block
++sth_allocz(stonehenge *sth, uint size)
++{
++  sth_block b = sth_alloc(sth, size);
++  bzero(b.block, size);
++  return b;
++}
++
++void
++sth_free(sth_block b)
++{
++  if (b.large)
++    mb_free(b.block);
++  else
++    sl_free(b.block);
++}
++
++stonehenge *
++sth_new(pool *pp)
++{
++  stonehenge tmps = {
++    .p = rp_new(pp, pp->domain, "Stonehenge"),
++  };
++
++  stonehenge *s = sth_alloc(&tmps, sizeof(stonehenge)).block;
++  *s = tmps;
++  return s;
++}
++
++void sth_delete(stonehenge *s)
++{
++  pool *p = s->p;
++  sth_free((sth_block) { s });
++  rp_free(p);
++}
++
++
+ #endif
+diff --git a/nest/bfd.h b/nest/bfd.h
+index 5dacff5d..c046152f 100644
+--- a/nest/bfd.h
++++ b/nest/bfd.h
+@@ -18,8 +18,11 @@ struct bfd_options {
+   u32 min_tx_int;
+   u32 idle_tx_int;
+   u8 multiplier;
+-  u8 passive;
+-  u8 passive_set;
++  PACKED enum bfd_opt_passive {
++    BFD_OPT_PASSIVE_UNKNOWN = 0,
++    BFD_OPT_PASSIVE,
++    BFD_OPT_NOT_PASSIVE,
++  } passive;
+   u8 mode;
+   u8 auth_type;				/* Authentication type (BFD_AUTH_*) */
+   list *passwords;			/* Passwords for authentication */
+diff --git a/nest/cli.c b/nest/cli.c
+index 3b8e6f46..b33ffd43 100644
+--- a/nest/cli.c
++++ b/nest/cli.c
+@@ -81,13 +81,14 @@ cli_alloc_out(cli *c, int size)
+ 	o = c->tx_buf;
+       else
+ 	{
+-	  o = mb_alloc(c->pool, sizeof(struct cli_out) + CLI_TX_BUF_SIZE);
++	  o = alloc_page();
++	  c->tx_pending_count++;
+ 	  if (c->tx_write)
+ 	    c->tx_write->next = o;
+ 	  else
+ 	    c->tx_buf = o;
+ 	  o->wpos = o->outpos = o->buf;
+-	  o->end = o->buf + CLI_TX_BUF_SIZE;
++	  o->end = (void *) o + page_size;
+ 	}
+       c->tx_write = o;
+       if (!c->tx_pos)
+@@ -167,19 +168,18 @@ cli_hello(cli *c)
+ static void
+ cli_free_out(cli *c)
+ {
+-  struct cli_out *o, *p;
++  for (struct cli_out *o = c->tx_buf, *n; o; o = n)
++  {
++    n = o->next;
++    free_page(o);
++    c->tx_pending_count--;
++  }
+ 
+-  if (o = c->tx_buf)
+-    {
+-      o->wpos = o->outpos = o->buf;
+-      while (p = o->next)
+-	{
+-	  o->next = p->next;
+-	  mb_free(p);
+-	}
+-    }
++  c->tx_buf = NULL;
+   c->tx_write = c->tx_pos = NULL;
+   c->async_msg_size = 0;
++
++  ASSERT_DIE(c->tx_pending_count == 0);
+ }
+ 
+ void
+@@ -189,6 +189,38 @@ cli_written(cli *c)
+   ev_schedule(c->event);
+ }
+ 
++/* A dummy resource to show and free memory pages allocated for pending TX */
++struct cli_tx_resource {
++  resource r;
++  struct cli *c;
++};
++
++static void
++cli_tx_resource_free(resource *r)
++{
++  cli_free_out(SKIP_BACK(struct cli_tx_resource, r, r)->c);
++}
++
++static void
++cli_tx_resource_dump(struct dump_request *dreq UNUSED, resource *r UNUSED) {}
++
++static struct resmem
++cli_tx_resource_memsize(resource *r)
++{
++  return (struct resmem) {
++    .effective = SKIP_BACK(struct cli_tx_resource, r, r)->c->tx_pending_count * page_size,
++    .overhead = sizeof(struct cli_tx_resource),
++  };
++}
++
++static struct resclass cli_tx_resource_class = {
++  .name = "CLI TX buffers",
++  .size = sizeof (struct cli_tx_resource),
++  .free = cli_tx_resource_free,
++  .dump = cli_tx_resource_dump,
++  .memsize = cli_tx_resource_memsize,
++};
++
+ 
+ static byte *cli_rh_pos;
+ static uint cli_rh_len;
+@@ -272,7 +304,8 @@ cli *
+ cli_new(struct birdsock *sock, struct cli_config *cf)
+ {
+   pool *p = rp_new(cli_pool, the_bird_domain.the_bird, "CLI");
+-  cli *c = mb_alloc(p, sizeof(cli));
++  struct cli_tx_resource *ctr = ralloc(p, &cli_tx_resource_class);
++  cli *c = ctr->c = mb_alloc(p, sizeof(cli));
+ 
+   bzero(c, sizeof(cli));
+   c->pool = p;
+diff --git a/nest/cli.h b/nest/cli.h
+index d86ec380..671be04d 100644
+--- a/nest/cli.h
++++ b/nest/cli.h
+@@ -17,7 +17,6 @@
+ #include "conf/conf.h"
+ 
+ #define CLI_RX_BUF_SIZE 4096
+-#define CLI_TX_BUF_SIZE 4096
+ #define CLI_MAX_ASYNC_QUEUE 4096
+ 
+ #define CLI_MSG_SIZE 500
+@@ -49,6 +48,7 @@ typedef struct cli {
+   uint log_mask;			/* Mask of allowed message levels */
+   uint log_threshold;			/* When free < log_threshold, store only important messages */
+   uint async_msg_size;			/* Total size of async messages queued in tx_buf */
++  uint tx_pending_count;		/* How many blocks are pending */
+ } cli;
+ 
+ struct cli_config {
+diff --git a/nest/proto.c b/nest/proto.c
+index dded84f5..caf99829 100644
+--- a/nest/proto.c
++++ b/nest/proto.c
+@@ -31,15 +31,8 @@ static list STATIC_LIST_INIT(protocol_list);
+ #define CD(c, msg, args...) ({ if (c->debug & D_STATES) log(L_TRACE "%s.%s: " msg, c->proto->name, c->name ?: "?", ## args); })
+ #define PD(p, msg, args...) ({ if (p->debug & D_STATES) log(L_TRACE "%s: " msg, p->name, ## args); })
+ 
+-static timer *gr_wait_timer;
+-
+-#define GRS_NONE	0
+-#define GRS_INIT	1
+-#define GRS_ACTIVE	2
+-#define GRS_DONE	3
+-
+-static int graceful_restart_state;
+-static u32 graceful_restart_locks;
++static struct graceful_recovery_context _graceful_recovery_context;
++OBSREF(struct graceful_recovery_context) graceful_recovery_context;
+ 
+ static char *p_states[] = { "DOWN", "START", "UP", "STOP" };
+ static char *c_states[] = { "DOWN", "START", "UP", "STOP", "RESTART" };
+@@ -676,9 +669,11 @@ void channel_notify_basic(void *);
+ void channel_notify_accepted(void *);
+ void channel_notify_merged(void *);
+ 
+-static void
++void
+ channel_start_export(struct channel *c)
+ {
++  ASSERT_DIE(birdloop_inside(c->proto->loop));
++
+   if (rt_export_get_state(&c->out_req) != TES_DOWN)
+     bug("%s.%s: Attempted to start channel's already started export", c->proto->name, c->name);
+ 
+@@ -910,7 +905,7 @@ channel_do_stop(struct channel *c)
+   ev_postpone(&c->reimport_event);
+ 
+   c->gr_wait = 0;
+-  if (c->gr_lock)
++  if (OBSREF_GET(c->gr_lock))
+     channel_graceful_restart_unlock(c);
+ 
+   CALL(c->class->shutdown, c);
+@@ -1405,7 +1400,7 @@ proto_start(struct proto *p)
+   DBG("Kicking %s up\n", p->name);
+   PD(p, "Starting");
+ 
+-  if (graceful_restart_state == GRS_INIT)
++  if (OBSREF_GET(graceful_recovery_context))
+     p->gr_recovery = 1;
+ 
+   if (p->cf->loop_order != DOMAIN_ORDER(the_bird))
+@@ -1867,6 +1862,25 @@ proto_spawn(struct proto_config *cf, uint disabled)
+   return p;
+ }
+ 
++bool
++proto_disable(struct proto *p)
++{
++  ASSERT_DIE(birdloop_inside(&main_birdloop));
++  bool changed = !p->disabled;
++  p->disabled = 1;
++  proto_rethink_goal(p);
++  return changed;
++}
++
++bool
++proto_enable(struct proto *p)
++{
++  ASSERT_DIE(birdloop_inside(&main_birdloop));
++  bool changed = p->disabled;
++  p->disabled = 0;
++  proto_rethink_goal(p);
++  return changed;
++}
+ 
+ /**
+  * DOC: Graceful restart recovery
+@@ -1900,7 +1914,45 @@ proto_spawn(struct proto_config *cf, uint disabled)
+  *
+  */
+ 
+-static void graceful_restart_done(timer *t);
++/**
++ * graceful_restart_done - finalize graceful restart
++ * @t: unused
++ *
++ * When there are no locks on graceful restart, the functions finalizes the
++ * graceful restart recovery. Protocols postponing route export until the end of
++ * the recovery are awakened and the export to them is enabled.
++ */
++static void
++graceful_recovery_done(struct callback *_ UNUSED)
++{
++  ASSERT_DIE(birdloop_inside(&main_birdloop));
++  ASSERT_DIE(_graceful_recovery_context.grc_state == GRS_ACTIVE);
++
++  tm_stop(&_graceful_recovery_context.wait_timer);
++  log(L_INFO "Graceful recovery done");
++
++  WALK_TLIST(proto, p, &global_proto_list)
++    PROTO_LOCKED_FROM_MAIN(p)
++    {
++      p->gr_recovery = 0;
++
++      struct channel *c;
++      WALK_LIST(c, p->channels)
++      {
++	ASSERT_DIE(!OBSREF_GET(c->gr_lock));
++
++	/* Resume postponed export of routes */
++	if ((c->channel_state == CS_UP) && c->gr_wait && p->rt_notify)
++	  channel_start_export(c);
++
++	/* Cleanup */
++	c->gr_wait = 0;
++      }
++    }
++
++  _graceful_recovery_context.grc_state = GRS_DONE;
++}
++
+ 
+ /**
+  * graceful_restart_recovery - request initial graceful restart recovery
+@@ -1912,7 +1964,30 @@ static void graceful_restart_done(timer *t);
+ void
+ graceful_restart_recovery(void)
+ {
+-  graceful_restart_state = GRS_INIT;
++  obstacle_target_init(
++      &_graceful_recovery_context.obstacles,
++      &_graceful_recovery_context.obstacles_cleared,
++      &root_pool, "Graceful recovery");
++
++  OBSREF_SET(graceful_recovery_context, &_graceful_recovery_context);
++  _graceful_recovery_context.grc_state = GRS_INIT;
++}
++
++static void
++graceful_recovery_timeout(timer *t UNUSED)
++{
++  log(L_INFO "Graceful recovery timeout");
++  WALK_TLIST(proto, p, &global_proto_list)
++    PROTO_LOCKED_FROM_MAIN(p)
++    {
++      struct channel *c;
++      WALK_LIST(c, p->channels)
++	if (OBSREF_GET(c->gr_lock))
++	{
++	  log(L_INFO "Graceful recovery: Not waiting for %s.%s", p->name, c->name);
++	  OBSREF_CLEAR(c->gr_lock);
++	}
++    }
+ }
+ 
+ /**
+@@ -1925,73 +2000,35 @@ graceful_restart_recovery(void)
+ void
+ graceful_restart_init(void)
+ {
+-  if (!graceful_restart_state)
++  if (!OBSREF_GET(graceful_recovery_context))
+     return;
+ 
+-  log(L_INFO "Graceful restart started");
++  log(L_INFO "Graceful recovery started");
+ 
+-  if (!graceful_restart_locks)
+-  {
+-    graceful_restart_done(NULL);
+-    return;
+-  }
++  _graceful_recovery_context.grc_state = GRS_ACTIVE;
+ 
+-  graceful_restart_state = GRS_ACTIVE;
+-  gr_wait_timer = tm_new_init(proto_pool, graceful_restart_done, NULL, 0, 0);
++  _graceful_recovery_context.wait_timer = (timer) { .hook = graceful_recovery_timeout };
+   u32 gr_wait = atomic_load_explicit(&global_runtime, memory_order_relaxed)->gr_wait;
+-  tm_start(gr_wait_timer, gr_wait S);
+-}
++  tm_start(&_graceful_recovery_context.wait_timer, gr_wait S);
+ 
+-/**
+- * graceful_restart_done - finalize graceful restart
+- * @t: unused
+- *
+- * When there are no locks on graceful restart, the functions finalizes the
+- * graceful restart recovery. Protocols postponing route export until the end of
+- * the recovery are awakened and the export to them is enabled. All other
+- * related state is cleared. The function is also called when the graceful
+- * restart wait timer fires (but there are still some locks).
+- */
+-static void
+-graceful_restart_done(timer *t)
+-{
+-  log(L_INFO "Graceful restart done");
+-  graceful_restart_state = GRS_DONE;
++  callback_init(&_graceful_recovery_context.obstacles_cleared, graceful_recovery_done, &main_birdloop);
+ 
+-  WALK_TLIST(proto, p, &global_proto_list)
+-  {
+-    if (!p->gr_recovery)
+-      continue;
+-
+-    struct channel *c;
+-    WALK_LIST(c, p->channels)
+-    {
+-      /* Resume postponed export of routes */
+-      if ((c->channel_state == CS_UP) && c->gr_wait && p->rt_notify)
+-	channel_start_export(c);
+-
+-      /* Cleanup */
+-      c->gr_wait = 0;
+-      c->gr_lock = 0;
+-    }
+-
+-    p->gr_recovery = 0;
+-  }
+-
+-  graceful_restart_locks = 0;
+-
+-  rfree(t);
++  /* The last clearing of obstacle reference will cause
++   * the graceful recovery finish immediately. */
++  OBSREF_CLEAR(graceful_recovery_context);
+ }
+ 
+ void
+ graceful_restart_show_status(void)
+ {
+-  if (graceful_restart_state != GRS_ACTIVE)
++  if (_graceful_recovery_context.grc_state != GRS_ACTIVE)
+     return;
+ 
+   cli_msg(-24, "Graceful restart recovery in progress");
+-  cli_msg(-24, "  Waiting for %d channels to recover", graceful_restart_locks);
+-  cli_msg(-24, "  Wait timer is %t/%u", tm_remains(gr_wait_timer),
++  cli_msg(-24, "  Waiting for %u channels to recover",
++      obstacle_target_count(&_graceful_recovery_context.obstacles));
++  cli_msg(-24, "  Wait timer is %t/%u",
++      tm_remains(&_graceful_recovery_context.wait_timer),
+       atomic_load_explicit(&global_runtime, memory_order_relaxed)->gr_wait);
+ }
+ 
+@@ -2011,14 +2048,22 @@ graceful_restart_show_status(void)
+ void
+ channel_graceful_restart_lock(struct channel *c)
+ {
+-  ASSERT(graceful_restart_state == GRS_INIT);
+-  ASSERT(c->proto->gr_recovery);
++  ASSERT_DIE(birdloop_inside(&main_birdloop));
+ 
+-  if (c->gr_lock)
++  if (OBSREF_GET(c->gr_lock))
+     return;
+ 
+-  c->gr_lock = 1;
+-  graceful_restart_locks++;
++  switch (_graceful_recovery_context.grc_state)
++  {
++    case GRS_INIT:
++    case GRS_ACTIVE:
++      OBSREF_SET(c->gr_lock, &_graceful_recovery_context);
++      break;
++
++    case GRS_NONE:
++    case GRS_DONE:
++      break;
++  }
+ }
+ 
+ /**
+@@ -2031,18 +2076,10 @@ channel_graceful_restart_lock(struct channel *c)
+ void
+ channel_graceful_restart_unlock(struct channel *c)
+ {
+-  if (!c->gr_lock)
+-    return;
+-
+-  c->gr_lock = 0;
+-  graceful_restart_locks--;
+-
+-  if ((graceful_restart_state == GRS_ACTIVE) && !graceful_restart_locks)
+-    tm_start(gr_wait_timer, 0);
++  OBSREF_CLEAR(c->gr_lock);
+ }
+ 
+ 
+-
+ /**
+  * protos_dump_all - dump status of all protocols
+  *
+@@ -2594,9 +2631,9 @@ channel_show_info(struct channel *c)
+   cli_msg(-1006, "    Input filter:   %s", filter_name(c->in_filter));
+   cli_msg(-1006, "    Output filter:  %s", filter_name(c->out_filter));
+ 
+-  if (graceful_restart_state == GRS_ACTIVE)
++  if (_graceful_recovery_context.grc_state == GRS_ACTIVE)
+     cli_msg(-1006, "    GR recovery:   %s%s",
+-	    c->gr_lock ? " pending" : "",
++	    OBSREF_GET(c->gr_lock) ? " pending" : "",
+ 	    c->gr_wait ? " waiting" : "");
+ 
+   channel_show_limit(&c->rx_limit, "Receive limit:", c->limit_active & (1 << PLD_RX), c->limit_actions[PLD_RX]);
+diff --git a/nest/protocol.h b/nest/protocol.h
+index 25ed6f55..ec561b26 100644
+--- a/nest/protocol.h
++++ b/nest/protocol.h
+@@ -78,6 +78,8 @@ void proto_build(struct protocol *);	/* Called from protocol to register itself
+ void protos_preconfig(struct config *);
+ void protos_commit(struct config *new, struct config *old, int type);
+ struct proto * proto_spawn(struct proto_config *cf, uint disabled);
++bool proto_disable(struct proto *p);
++bool proto_enable(struct proto *p);
+ void protos_dump_all(struct dump_request *);
+ 
+ #define GA_UNKNOWN	0		/* Attribute not recognized */
+@@ -657,7 +659,7 @@ struct channel {
+ 
+   u8 channel_state;
+   u8 reloadable;			/* Hook reload_routes() is allowed on the channel */
+-  u8 gr_lock;				/* Graceful restart mechanism should wait for this channel */
++  OBSREF(struct graceful_recovery_context) gr_lock;	/* Graceful restart mechanism should wait for this channel */
+   u8 gr_wait;				/* Route export to channel is postponed until graceful restart */
+ 
+   u32 obstacles;			/* External obstacles remaining before cleanup */
+@@ -745,6 +747,8 @@ int proto_configure_channel(struct proto *p, struct channel **c, struct channel_
+ 
+ void channel_set_state(struct channel *c, uint state);
+ 
++void channel_start_export(struct channel *c);
++
+ void channel_add_obstacle(struct channel *c);
+ void channel_del_obstacle(struct channel *c);
+ 
+@@ -759,4 +763,16 @@ void *channel_config_new(const struct channel_class *cc, const char *name, uint
+ void *channel_config_get(const struct channel_class *cc, const char *name, uint net_type, struct proto_config *proto);
+ int channel_reconfigure(struct channel *c, struct channel_config *cf);
+ 
++struct graceful_recovery_context {
++  struct obstacle_target obstacles;
++  struct callback obstacles_cleared;
++  enum {
++    GRS_NONE,
++    GRS_INIT,
++    GRS_ACTIVE,
++    GRS_DONE,
++  } grc_state;
++  timer wait_timer;
++};
++
+ #endif
+diff --git a/nest/rt-attr.c b/nest/rt-attr.c
+index a0f7d571..9d5e1098 100644
+--- a/nest/rt-attr.c
++++ b/nest/rt-attr.c
+@@ -204,9 +204,7 @@ DOMAIN(attrs) attrs_domain;
+ 
+ pool *rta_pool;
+ 
+-/* Assuming page size of 4096, these are magic values for slab allocation */
+-static const uint ea_slab_sizes[] = { 56, 112, 168, 288, 448, 800, 1344 };
+-static slab *ea_slab[ARRAY_SIZE(ea_slab_sizes)];
++static stonehenge *ea_sth;
+ 
+ static slab *rte_src_slab;
+ 
+@@ -969,8 +967,8 @@ ea_list_size(ea_list *o)
+  * and creates the final structure useful for storage or fast searching.
+  * The method is a bucket sort.
+  *
+- * Returns the final ea_list with some excess memory at the end,
+- * allocated from the tmp_linpool. The adata is linked from the original places.
++ * Returns the final ea_list allocated from the tmp_linpool.
++ * The adata is linked from the original places.
+  */
+ ea_list *
+ ea_normalize(ea_list *e, u32 upto)
+@@ -978,21 +976,17 @@ ea_normalize(ea_list *e, u32 upto)
+   /* We expect some work to be actually needed. */
+   ASSERT_DIE(!BIT32_TEST(&upto, e->stored));
+ 
+-  /* Allocate the output */
+-  ea_list *out = tmp_allocz(ea_class_max * sizeof(eattr) + sizeof(ea_list));
+-  *out = (ea_list) {
+-    .flags = EALF_SORTED,
+-  };
+-
++  /* Allocate the buckets locally */
++  eattr *buckets = allocz(ea_class_max * sizeof(eattr));
+   uint min_id = ~0, max_id = 0;
+ 
+-  eattr *buckets = out->attrs;
++  ea_list *next = NULL;
+ 
+   /* Walk the attribute lists, one after another. */
+   for (; e; e = e->next)
+   {
+-    if (!out->next && BIT32_TEST(&upto, e->stored))
+-      out->next = e;
++    if (!next && BIT32_TEST(&upto, e->stored))
++      next = e;
+ 
+     for (int i = 0; i < e->count; i++)
+     {
+@@ -1002,7 +996,7 @@ ea_normalize(ea_list *e, u32 upto)
+       if (id < min_id)
+ 	min_id = id;
+ 
+-      if (out->next)
++      if (next)
+       {
+ 	/* Underlay: check whether the value is duplicate */
+ 	if (buckets[id].id && buckets[id].fresh)
+@@ -1028,6 +1022,18 @@ ea_normalize(ea_list *e, u32 upto)
+     }
+   }
+ 
++  /* Find out how big the output actually is. */
++  uint len = 0;
++  for (uint id = min_id; id <= max_id; id++)
++    if (buckets[id].id && !(buckets[id].undef && buckets[id].fresh))
++      len++;
++
++  ea_list *out = tmp_alloc(sizeof(ea_list) + len * sizeof(eattr));
++  *out = (ea_list) {
++    .flags = EALF_SORTED,
++    .next = next,
++  };
++
+   /* And now we just walk the list from beginning to end and collect
+    * everything to the beginning of the list.
+    * Walking just that part which is inhabited for sure. */
+@@ -1046,9 +1052,12 @@ ea_normalize(ea_list *e, u32 upto)
+ 
+     /* Move the attribute to the beginning */
+     ASSERT_DIE(out->count < id);
+-    buckets[out->count++] = buckets[id];
++    ASSERT_DIE(out->count < len);
++    out->attrs[out->count++] = buckets[id];
+   }
+ 
++  ASSERT_DIE(out->count == len);
++
+   /* We want to bisect only if the list is long enough */
+   if (out->count > 5)
+     out->flags |= EALF_BISECT;
+@@ -1583,24 +1592,18 @@ ea_lookup_slow(ea_list *o, u32 squash_upto, enum ea_stored oid)
+     return rr;
+   }
+ 
+-  struct ea_storage *r = NULL;
+   uint elen = ea_list_size(o);
+   uint sz = elen + sizeof(struct ea_storage);
+-  for (uint i=0; i<ARRAY_SIZE(ea_slab_sizes); i++)
+-    if (sz <= ea_slab_sizes[i])
+-    {
+-      r = sl_alloc(ea_slab[i]);
+-      break;
+-    }
++  sth_block b = sth_alloc(ea_sth, sz);
+ 
+-  int huge = r ? 0 : EALF_HUGE;;
+-  if (huge)
+-    r = mb_alloc(rta_pool, sz);
++  struct ea_storage *r = b.block;
+ 
+   ea_list_copy(r->l, o, elen);
+   ea_list_ref(r->l);
+ 
+-  r->l->flags |= huge;
++  if (b.large)
++    r->l->flags |= EALF_HUGE;
++
+   r->l->stored = oid;
+   r->hash_key = h;
+   atomic_store_explicit(&r->uc, 1, memory_order_release);
+@@ -1668,10 +1671,7 @@ ea_free_deferred(struct deferred_call *dc)
+ 
+   /* And now we can free the object, finally */
+   ea_list_unref(r->l);
+-  if (r->l->flags & EALF_HUGE)
+-    mb_free(r);
+-  else
+-    sl_free(r);
++  sth_free((sth_block) { r, !!(r->l->flags & EALF_HUGE) });
+ 
+   RTA_UNLOCK;
+ }
+@@ -1722,9 +1722,7 @@ rta_init(void)
+   RTA_LOCK;
+   rta_pool = rp_new(&root_pool, attrs_domain.attrs, "Attributes");
+ 
+-  for (uint i=0; i<ARRAY_SIZE(ea_slab_sizes); i++)
+-    ea_slab[i] = sl_new(rta_pool, ea_slab_sizes[i]);
+-
++  ea_sth = sth_new(rta_pool);
+   SPINHASH_INIT(rta_hash_table, RTAH, rta_pool, &global_work_list);
+ 
+   rte_src_init();
+diff --git a/nest/rt-export.c b/nest/rt-export.c
+index 7368447d..7d51e54c 100644
+--- a/nest/rt-export.c
++++ b/nest/rt-export.c
+@@ -357,8 +357,16 @@ rt_export_refeed_feeder(struct rt_export_feeder *f, struct rt_feeding_request *r
+   if (!rfr)
+     return;
+ 
+-  rfr->next = f->feed_pending;
+-  f->feed_pending = rfr;
++  if (f->feeding)
++  {
++    rfr->next = f->feed_pending;
++    f->feed_pending = rfr;
++  }
++  else
++  {
++    rfr->next = NULL;
++    f->feeding = rfr;
++  }
+ }
+ 
+ void rt_export_refeed_request(struct rt_export_request *rer, struct rt_feeding_request *rfr)
+diff --git a/nest/rt-show.c b/nest/rt-show.c
+index 3986da83..aa9209ca 100644
+--- a/nest/rt-show.c
++++ b/nest/rt-show.c
+@@ -282,8 +282,9 @@ rt_show_cont(struct cli *c)
+     rt_show_table(d);
+ 
+   RT_FEED_WALK(&d->tab->req, f)
+-    if (f->count_routes)
+-      rt_show_net(d, f);
++    TMP_SAVED
++      if (f->count_routes)
++	rt_show_net(d, f);
+ 
+   if (rt_export_feed_active(&d->tab->req))
+     rt_feeder_unsubscribe(&d->tab->req);
+diff --git a/nest/rt-table.c b/nest/rt-table.c
+index fd8bb50d..18a445a6 100644
+--- a/nest/rt-table.c
++++ b/nest/rt-table.c
+@@ -1485,11 +1485,18 @@ channel_notify_basic(void *_channel)
+ 	    rte *new = &u->feed->block[i];
+ 	    rte *old = NULL;
+ 	    for (uint o = oldpos; o < u->feed->count_routes; o++)
+-	      if (new->src == u->feed->block[o].src)
++	      if ((c->ra_mode == RA_ANY) && (new->src == u->feed->block[o].src))
+ 	      {
+ 		old = &u->feed->block[o];
+ 		break;
+ 	      }
++	      else if ((c->ra_mode == RA_OPTIMAL) && (
++		    bmap_test(&c->export_accepted_map, u->feed->block[o].id) || 
++		    bmap_test(&c->export_rejected_map, u->feed->block[o].id)))
++	      {
++		ASSERT_DIE(!old);
++		old = &u->feed->block[o];
++	      }
+ 
+ 	    rt_notify_basic(c, new, old);
+ 
+@@ -2024,13 +2031,23 @@ rte_recalculate(struct rtable_private *table, struct rt_import_hook *c, struct n
+ 	do_recalculate:
+ 	  /* Add the new route to the list right behind the old one */
+ 	  if (new_stored)
++	  {
++	    /* There is the same piece of code several lines farther. Needs refactoring.
++	     * The old_stored check is needed because of the possible jump from deterministic med */
++	    if (old_stored)
+ 	    {
+ 	      atomic_store_explicit(&new_stored->next, atomic_load_explicit(&old_stored->next, memory_order_relaxed), memory_order_release);
+ 	      atomic_store_explicit(&old_stored->next, new_stored, memory_order_release);
+-
+-	      table->rt_count++;
++	    }
++	    else
++	    {
++	      atomic_store_explicit(&new_stored->next, NULL, memory_order_release);
++	      atomic_store_explicit(last_ptr, new_stored, memory_order_release);
+ 	    }
+ 
++	    table->rt_count++;
++	  }
++
+ 	  /* Find a new optimal route (if there is any) */
+ 	  struct rte_storage * _Atomic *bp = &local_sentinel.next;
+ 	  struct rte_storage *best = atomic_load_explicit(bp, memory_order_relaxed);
+@@ -2532,10 +2549,14 @@ rt_feed_net_best(struct rt_exporter *e, struct rcu_unwinder *u, u32 index, bool
+   last_in_net = atomic_load_explicit(&n->best.last, memory_order_acquire);
+   first = rt_net_feed_validate_first(tr, first_in_net, last_in_net, first);
+ 
+-  uint ecnt = 0;
++  uint ecnt = 0, ocnt = 0;
+   for (const struct rt_pending_export *rpe = first; rpe;
+       rpe = atomic_load_explicit(&rpe->next, memory_order_acquire))
++  {
+     ecnt++;
++    if (rpe->it.old)
++      ocnt++;
++  }
+ 
+   if (ecnt) {
+     const net_addr *a = (first->it.new ?: first->it.old)->net;
+@@ -2548,10 +2569,11 @@ rt_feed_net_best(struct rt_exporter *e, struct rcu_unwinder *u, u32 index, bool
+   if (!ecnt && (!best || prefilter && !prefilter(f, best->rte.net)))
+     return NULL;
+ 
+-  struct rt_export_feed *feed = rt_alloc_feed(!!best, ecnt);
++  struct rt_export_feed *feed = rt_alloc_feed(!!best + ocnt, ecnt);
++  uint bpos = 0;
+   if (best)
+   {
+-    feed->block[0] = best->rte;
++    feed->block[bpos++] = best->rte;
+     feed->ni = NET_TO_INDEX(best->rte.net);
+   }
+   else
+@@ -2565,8 +2587,18 @@ rt_feed_net_best(struct rt_exporter *e, struct rcu_unwinder *u, u32 index, bool
+       if (e >= ecnt)
+ 	RT_READ_RETRY(tr);
+       else
++      {
+ 	feed->exports[e++] = rpe->it.seq;
++	if (rpe->it.old)
++	{
++	  ASSERT_DIE(bpos < !!best + ocnt);
++	  feed->block[bpos] = *rpe->it.old;
++	  feed->block[bpos].flags |= REF_OBSOLETE;
++	  bpos++;
++	}
++      }
+ 
++    ASSERT_DIE(bpos == !!best + ocnt);
+     ASSERT_DIE(e == ecnt);
+   }
+ 
+@@ -5265,14 +5297,14 @@ krt_export_net(struct channel *c, const net_addr *a, linpool *lp)
+   if (c->ra_mode == RA_MERGED)
+   {
+     struct rt_export_feed *feed = rt_net_feed(c->table, a, NULL);
+-    if (!feed->count_routes)
++    if (!feed || !feed->count_routes)
+       return NULL;
+ 
+     if (!bmap_test(&c->export_accepted_map, feed->block[0].id))
+       return NULL;
+ 
+     return rt_export_merged(c, feed, lp, 1);
+-    }
++  }
+ 
+   static _Thread_local rte best;
+   best = rt_net_best(c->table, a);
+diff --git a/proto/bfd/bfd.c b/proto/bfd/bfd.c
+index 34f992b9..4997f803 100644
+--- a/proto/bfd/bfd.c
++++ b/proto/bfd/bfd.c
+@@ -172,17 +172,17 @@ static void bfd_free_iface(struct bfd_iface *ifa);
+  *	BFD sessions
+  */
+ 
+-static inline struct bfd_session_config
+-bfd_merge_options(const struct bfd_iface_config *cf, const struct bfd_options *opts)
++static inline struct bfd_options
++bfd_merge_options(const struct bfd_options *bottom, const struct bfd_options *top)
+ {
+-  return (struct bfd_session_config) {
+-    .min_rx_int = opts->min_rx_int ?: cf->min_rx_int,
+-    .min_tx_int = opts->min_tx_int ?: cf->min_tx_int,
+-    .idle_tx_int = opts->idle_tx_int ?: cf->idle_tx_int,
+-    .multiplier = opts->multiplier ?: cf->multiplier,
+-    .passive = opts->passive_set ? opts->passive : cf->passive,
+-    .auth_type = opts->auth_type ?: cf->auth_type,
+-    .passwords = opts->passwords ?: cf->passwords,
++  return (struct bfd_options) {
++    .min_rx_int = top->min_rx_int ?: bottom->min_rx_int,
++    .min_tx_int = top->min_tx_int ?: bottom->min_tx_int,
++    .idle_tx_int = top->idle_tx_int ?: bottom->idle_tx_int,
++    .multiplier = top->multiplier ?: bottom->multiplier,
++    .passive = top->passive ?: bottom->passive,
++    .auth_type = top->auth_type ?: bottom->auth_type,
++    .passwords = top->passwords ?: bottom->passwords,
+   };
+ }
+ 
+@@ -478,7 +478,7 @@ bfd_add_session(struct bfd_proto *p, ip_addr addr, ip_addr local, struct iface *
+   HASH_INSERT(p->session_hash_id, HASH_ID, s);
+   HASH_INSERT(p->session_hash_ip, HASH_IP, s);
+ 
+-  s->cf = bfd_merge_options(ifa->cf, opts);
++  s->cf = bfd_merge_options(&ifa->cf->opts, opts);
+ 
+   /* Initialization of state variables - see RFC 5880 6.8.1 */
+   s->loc_state = BFD_STATE_DOWN;
+@@ -561,26 +561,58 @@ bfd_remove_session(struct bfd_proto *p, struct bfd_session *s)
+   birdloop_leave(p->p.loop);
+ }
+ 
++struct bfd_reconfigure_sessions_deferred_call {
++  struct deferred_call dc;
++  struct bfd_proto *p;
++  config_ref old_config;
++};
++
+ static void
+-bfd_reconfigure_session(struct bfd_proto *p, struct bfd_session *s)
++bfd_reconfigure_sessions(struct deferred_call *dc)
+ {
+-  if (EMPTY_LIST(s->request_list))
+-    return;
++  SKIP_BACK_DECLARE(struct bfd_reconfigure_sessions_deferred_call,
++      brsdc, dc, dc);
+ 
+-  ASSERT_DIE(birdloop_inside(p->p.loop));
++  struct bfd_proto *p = brsdc->p;
++  birdloop_enter(p->p.loop);
+ 
+-  SKIP_BACK_DECLARE(struct bfd_request, req, n, HEAD(s->request_list));
+-  s->cf = bfd_merge_options(s->ifa->cf, &req->opts);
++  HASH_WALK(p->session_hash_id, next_id, s)
++  {
++    if (!EMPTY_LIST(s->request_list))
++    {
++      SKIP_BACK_DECLARE(struct bfd_request, req, n, HEAD(s->request_list));
++      struct bfd_options opts = bfd_merge_options(&s->ifa->cf->opts, &req->opts);
+ 
+-  u32 tx = (s->loc_state == BFD_STATE_UP) ? s->cf.min_tx_int : s->cf.idle_tx_int;
+-  bfd_session_set_min_tx(s, tx);
+-  bfd_session_set_min_rx(s, s->cf.min_rx_int);
+-  s->detect_mult = s->cf.multiplier;
+-  s->passive = s->cf.passive;
++#define CHK(x)	(opts.x != s->cf.x) ||
++      bool reload = MACRO_FOREACH(CHK,
++	  min_rx_int,
++	  min_tx_int,
++	  idle_tx_int,
++	  multiplier,
++	  passive) false; /* terminating the || chain */
++#undef CHK
+ 
+-  bfd_session_control_tx_timer(s, 0);
++      s->cf = opts;
++
++      if (reload)
++      {
++	u32 tx = (s->loc_state == BFD_STATE_UP) ? s->cf.min_tx_int : s->cf.idle_tx_int;
++	bfd_session_set_min_tx(s, tx);
++	bfd_session_set_min_rx(s, s->cf.min_rx_int);
++	s->detect_mult = s->cf.multiplier;
++	s->passive = s->cf.passive;
++
++	bfd_session_control_tx_timer(s, 0);
++
++	TRACE(D_EVENTS, "Session to %I reconfigured", s->addr);
++      }
++    }
++  }
++  HASH_WALK_END;
++  birdloop_leave(p->p.loop);
+ 
+-  TRACE(D_EVENTS, "Session to %I reconfigured", s->addr);
++  /* Now the config is clean */
++  OBSREF_CLEAR(brsdc->old_config);
+ }
+ 
+ 
+@@ -589,10 +621,12 @@ bfd_reconfigure_session(struct bfd_proto *p, struct bfd_session *s)
+  */
+ 
+ static struct bfd_iface_config bfd_default_iface = {
+-  .min_rx_int = BFD_DEFAULT_MIN_RX_INT,
+-  .min_tx_int = BFD_DEFAULT_MIN_TX_INT,
+-  .idle_tx_int = BFD_DEFAULT_IDLE_TX_INT,
+-  .multiplier = BFD_DEFAULT_MULTIPLIER,
++  .opts = {
++    .min_rx_int = BFD_DEFAULT_MIN_RX_INT,
++    .min_tx_int = BFD_DEFAULT_MIN_TX_INT,
++    .idle_tx_int = BFD_DEFAULT_IDLE_TX_INT,
++    .multiplier = BFD_DEFAULT_MULTIPLIER,
++  },
+ };
+ 
+ static inline struct bfd_iface_config *
+@@ -650,24 +684,6 @@ bfd_free_iface(struct bfd_iface *ifa)
+   mb_free(ifa);
+ }
+ 
+-static void
+-bfd_reconfigure_iface(struct bfd_proto *p UNUSED, struct bfd_iface *ifa, struct bfd_config *nc)
+-{
+-  struct bfd_iface_config *new = bfd_find_iface_config(nc, ifa->iface);
+-  struct bfd_iface_config *old = ifa->cf;
+-
+-  /* Check options that are handled in bfd_reconfigure_session() */
+-  ifa->changed =
+-    (new->min_rx_int != old->min_rx_int) ||
+-    (new->min_tx_int != old->min_tx_int) ||
+-    (new->idle_tx_int != old->idle_tx_int) ||
+-    (new->multiplier != old->multiplier) ||
+-    (new->passive != old->passive);
+-
+-  /* This should be probably changed to not access ifa->cf from the BFD thread */
+-  ifa->cf = new;
+-}
+-
+ 
+ /*
+  *	BFD requests
+@@ -900,20 +916,7 @@ bfd_request_session(pool *p, ip_addr addr, ip_addr local,
+ void
+ bfd_update_request(struct bfd_request *req, const struct bfd_options *opts)
+ {
+-  struct bfd_session *s = req->session;
+-
+-  if (!memcmp(opts, &req->opts, sizeof(const struct bfd_options)))
+-    return;
+-
+   req->opts = *opts;
+-
+-  if (s)
+-  {
+-    struct bfd_proto *p = s->ifa->bfd;
+-    birdloop_enter(p->p.loop);
+-    bfd_reconfigure_session(p, s);
+-    birdloop_leave(p->p.loop);
+-  }
+ }
+ 
+ static void
+@@ -1193,21 +1196,22 @@ bfd_reconfigure(struct proto *P, struct proto_config *c)
+       (new->zero_udp6_checksum_rx != old->zero_udp6_checksum_rx))
+     return 0;
+ 
+-  birdloop_mask_wakeups(p->p.loop);
+-
+   WALK_LIST(ifa, p->iface_list)
+-    bfd_reconfigure_iface(p, ifa, new);
+-
+-  HASH_WALK(p->session_hash_id, next_id, s)
+-  {
+-    if (s->ifa->changed)
+-      bfd_reconfigure_session(p, s);
+-  }
+-  HASH_WALK_END;
++    ifa->cf = bfd_find_iface_config(new, ifa->iface);
+ 
+   bfd_reconfigure_neighbors(p, new);
+ 
+-  birdloop_unmask_wakeups(p->p.loop);
++  /* Sessions get reconfigured after all the config is applied */
++  struct bfd_reconfigure_sessions_deferred_call brsdc = {
++    .dc.hook = bfd_reconfigure_sessions,
++    .p = p,
++  };
++  SKIP_BACK_DECLARE(struct bfd_reconfigure_sessions_deferred_call,
++      brsdcp, dc, defer_call(&brsdc.dc, sizeof brsdc));
++
++  /* We need to keep the old config alive until all the sessions get
++   * reconfigured */
++  OBSREF_SET(brsdcp->old_config, P->cf->global);
+ 
+   return 1;
+ }
+diff --git a/proto/bfd/bfd.h b/proto/bfd/bfd.h
+index 578ce875..107829b7 100644
+--- a/proto/bfd/bfd.h
++++ b/proto/bfd/bfd.h
+@@ -54,24 +54,7 @@ struct bfd_config
+ struct bfd_iface_config
+ {
+   struct iface_patt i;
+-  u32 min_rx_int;
+-  u32 min_tx_int;
+-  u32 idle_tx_int;
+-  u8 multiplier;
+-  u8 passive;
+-  u8 auth_type;				/* Authentication type (BFD_AUTH_*) */
+-  list *passwords;			/* Passwords for authentication */
+-};
+-
+-struct bfd_session_config
+-{
+-  u32 min_rx_int;
+-  u32 min_tx_int;
+-  u32 idle_tx_int;
+-  u8 multiplier;
+-  u8 passive;
+-  u8 auth_type;				/* Authentication type (BFD_AUTH_*) */
+-  list *passwords;			/* Passwords for authentication */
++  struct bfd_options opts;
+ };
+ 
+ struct bfd_neighbor
+@@ -146,7 +129,7 @@ struct bfd_session
+   u32 loc_id;				/* Local session ID (local discriminator) */
+   u32 rem_id;				/* Remote session ID (remote discriminator) */
+ 
+-  struct bfd_session_config cf;		/* Static configuration parameters */
++  struct bfd_options cf;		/* Static configuration parameters */
+ 
+   u32 des_min_tx_int;			/* Desired min rx interval, local option */
+   u32 des_min_tx_new;			/* Used for des_min_tx_int change */
+diff --git a/proto/bfd/config.Y b/proto/bfd/config.Y
+index 9e9919c4..56d1ffac 100644
+--- a/proto/bfd/config.Y
++++ b/proto/bfd/config.Y
+@@ -86,44 +86,37 @@ bfd_iface_start:
+   add_tail(&BFD_CFG->patt_list, NODE this_ipatt);
+   init_list(&this_ipatt->ipn_list);
+ 
+-  BFD_IFACE->min_rx_int = BFD_DEFAULT_MIN_RX_INT;
+-  BFD_IFACE->min_tx_int = BFD_DEFAULT_MIN_TX_INT;
+-  BFD_IFACE->idle_tx_int = BFD_DEFAULT_IDLE_TX_INT;
+-  BFD_IFACE->multiplier = BFD_DEFAULT_MULTIPLIER;
++  this_bfd_opts = &BFD_IFACE->opts;
++
++  this_bfd_opts->min_rx_int = BFD_DEFAULT_MIN_RX_INT;
++  this_bfd_opts->min_tx_int = BFD_DEFAULT_MIN_TX_INT;
++  this_bfd_opts->idle_tx_int = BFD_DEFAULT_IDLE_TX_INT;
++  this_bfd_opts->multiplier = BFD_DEFAULT_MULTIPLIER;
+ 
+   reset_passwords();
+ };
+ 
+ bfd_iface_finish:
+ {
+-  BFD_IFACE->passwords = get_passwords();
++  this_bfd_opts->passwords = get_passwords();
+ 
+-  if (!BFD_IFACE->auth_type != !BFD_IFACE->passwords)
++  if (!this_bfd_opts->auth_type != !this_bfd_opts->passwords)
+     cf_warn("Authentication and password options should be used together");
+ 
+-  if (BFD_IFACE->passwords)
++  if (this_bfd_opts->passwords)
+   {
+     struct password_item *pass;
+-    WALK_LIST(pass, *BFD_IFACE->passwords)
++    WALK_LIST(pass, *this_bfd_opts->passwords)
+     {
+       if (pass->alg)
+         cf_error("Password algorithm option not available in BFD protocol");
+ 
+-      pass->alg = bfd_auth_type_to_hash_alg[BFD_IFACE->auth_type];
++      pass->alg = bfd_auth_type_to_hash_alg[this_bfd_opts->auth_type];
+     }
+   }
+-};
+ 
+-bfd_iface_item:
+-   INTERVAL expr_us { BFD_IFACE->min_rx_int = BFD_IFACE->min_tx_int = $2; }
+- | MIN RX INTERVAL expr_us { BFD_IFACE->min_rx_int = $4; }
+- | MIN TX INTERVAL expr_us { BFD_IFACE->min_tx_int = $4; }
+- | IDLE TX INTERVAL expr_us { BFD_IFACE->idle_tx_int = $4; }
+- | MULTIPLIER expr { BFD_IFACE->multiplier = $2; }
+- | PASSIVE bool { BFD_IFACE->passive = $2; }
+- | AUTHENTICATION bfd_auth_type { BFD_IFACE->auth_type = $2; }
+- | password_list {}
+- ;
++  this_bfd_opts = NULL;
++};
+ 
+ bfd_auth_type:
+    NONE			 { $$ = BFD_AUTH_NONE; }
+@@ -134,14 +127,9 @@ bfd_auth_type:
+  | METICULOUS KEYED SHA1 { $$ = BFD_AUTH_METICULOUS_KEYED_SHA1; }
+  ;
+ 
+-bfd_iface_opts:
+-   /* empty */
+- | bfd_iface_opts bfd_iface_item ';'
+- ;
+-
+ bfd_iface_opt_list:
+    /* empty */
+- | '{' bfd_iface_opts '}'
++ | '{' bfd_items '}'
+  ;
+ 
+ bfd_iface:
+@@ -194,7 +182,7 @@ bfd_item:
+  | MIN TX INTERVAL expr_us { this_bfd_opts->min_tx_int = $4; }
+  | IDLE TX INTERVAL expr_us { this_bfd_opts->idle_tx_int = $4; }
+  | MULTIPLIER expr { this_bfd_opts->multiplier = $2; }
+- | PASSIVE bool { this_bfd_opts->passive = $2; this_bfd_opts->passive_set = 1; }
++ | PASSIVE bool { this_bfd_opts->passive = $2 ? BFD_OPT_PASSIVE : BFD_OPT_NOT_PASSIVE; }
+  | GRACEFUL { this_bfd_opts->mode = BGP_BFD_GRACEFUL; }
+  | AUTHENTICATION bfd_auth_type { this_bfd_opts->auth_type = $2; }
+  | password_list {}
+diff --git a/proto/bfd/packets.c b/proto/bfd/packets.c
+index 1ceb470c..f8bd63d7 100644
+--- a/proto/bfd/packets.c
++++ b/proto/bfd/packets.c
+@@ -109,7 +109,7 @@ const u8 bfd_auth_type_to_hash_alg[] = {
+ static void
+ bfd_fill_authentication(struct bfd_proto *p, struct bfd_session *s, struct bfd_ctl_packet *pkt)
+ {
+-  struct bfd_session_config *cf = &s->cf;
++  struct bfd_options *cf = &s->cf;
+   struct password_item *pass = password_find(cf->passwords, 0);
+   uint meticulous = 0;
+ 
+@@ -179,7 +179,7 @@ bfd_fill_authentication(struct bfd_proto *p, struct bfd_session *s, struct bfd_c
+ static int
+ bfd_check_authentication(struct bfd_proto *p, struct bfd_session *s, struct bfd_ctl_packet *pkt)
+ {
+-  struct bfd_session_config *cf = &s->cf;
++  struct bfd_options *cf = &s->cf;
+   const char *err_dsc = NULL;
+   uint err_val = 0;
+   uint auth_type = 0;
+diff --git a/proto/bgp/attrs.c b/proto/bgp/attrs.c
+index a2feaef5..db654234 100644
+--- a/proto/bgp/attrs.c
++++ b/proto/bgp/attrs.c
+@@ -1192,7 +1192,7 @@ static union bgp_attr_desc bgp_attr_table[BGP_ATTR_MAX] = {
+     .decode = bgp_decode_large_community,
+   },
+   [BA_ONLY_TO_CUSTOMER] = {
+-    .name = "otc",
++    .name = "bgp_otc",
+     .type = T_INT,
+     .flags = BAF_OPTIONAL | BAF_TRANSITIVE,
+     .encode = bgp_encode_u32,
+@@ -1734,13 +1734,16 @@ bgp_get_bucket(struct bgp_ptx_private *c, ea_list *new)
+   uint size = sizeof(struct bgp_bucket) + ea_size;
+ 
+   /* Allocate the bucket */
+-  b = mb_alloc(c->pool, size);
++  sth_block blk = sth_alloc(c->sth, size);
++  b = blk.block;
+   *b = (struct bgp_bucket) { };
+   init_list(&b->prefixes);
+   b->hash = hash;
+ 
+   /* Copy the ea_list */
+   ea_list_copy(b->eattrs, new, ea_size);
++  if (blk.large)
++    b->eattrs->flags |= EALF_HUGE;
+ 
+   /* Insert the bucket to bucket hash */
+   HASH_INSERT2(c->bucket_hash, RBH, c->pool, b);
+@@ -1764,7 +1767,7 @@ static void
+ bgp_free_bucket(struct bgp_ptx_private *c, struct bgp_bucket *b)
+ {
+   HASH_REMOVE2(c->bucket_hash, RBH, c->pool, b);
+-  mb_free(b);
++  sth_free((sth_block) { b, !!(b->eattrs->flags & EALF_HUGE) });
+ }
+ 
+ int
+@@ -2086,6 +2089,7 @@ bgp_init_pending_tx(struct bgp_channel *c)
+ 
+   bpp->lock = dom;
+   bpp->pool = p;
++  bpp->sth = sth_new(p);
+   bpp->c = c;
+ 
+   bgp_init_bucket_table(bpp);
+@@ -2160,8 +2164,7 @@ bgp_free_pending_tx(struct bgp_channel *bc)
+   HASH_WALK_END;
+ 
+   HASH_FREE(c->bucket_hash);
+-  sl_delete(c->bucket_slab);
+-  c->bucket_slab = NULL;
++  sth_delete(c->sth);
+ 
+   rp_free(c->pool);
+ 
+@@ -2686,10 +2689,10 @@ bgp_rte_recalculate(struct rtable_private *table, net *net,
+     struct rte_storage *new_stored, struct rte_storage *old_stored, struct rte_storage *old_best_stored)
+ {
+   struct rte_storage *key_stored = new_stored ? new_stored : old_stored;
+-  const struct rte *new = &new_stored->rte,
+-		   *old = &old_stored->rte,
+-		   *old_best = &old_best_stored->rte,
+-		   *key = &key_stored->rte;
++  const struct rte *new = RTE_OR_NULL(new_stored),
++		   *old = RTE_OR_NULL(old_stored),
++		   *old_best = RTE_OR_NULL(old_best_stored),
++		   *key = RTE_OR_NULL(key_stored);
+ 
+   u32 lpref = rt_get_preference(key);
+   u32 lasn = bgp_get_neighbor(key);
+diff --git a/proto/bgp/bgp.c b/proto/bgp/bgp.c
+index 5fc2b5ff..3170e3a4 100644
+--- a/proto/bgp/bgp.c
++++ b/proto/bgp/bgp.c
+@@ -378,8 +378,6 @@ bgp_startup(struct bgp_proto *p)
+   if (p->postponed_sk)
+   {
+     /* Apply postponed incoming connection */
+-    sk_reloop(p->postponed_sk, p->p.loop);
+-
+     bgp_setup_conn(p, &p->incoming_conn);
+     bgp_setup_sk(&p->incoming_conn, p->postponed_sk);
+     bgp_send_open(&p->incoming_conn);
+@@ -583,6 +581,9 @@ bgp_graceful_close_conn(struct bgp_conn *conn, int subcode, byte *data, uint len
+ static void
+ bgp_down(struct bgp_proto *p)
+ {
++  /* Check that the dynamic BGP socket has been picked up */
++  ASSERT_DIE(p->postponed_sk == NULL);
++
+   if (bgp_start_state(p) > BSS_PREPARE)
+   {
+     bgp_setup_auth(p, 0);
+@@ -617,8 +618,8 @@ bgp_decision(void *vp)
+     bgp_down(p);
+ }
+ 
+-static struct bgp_proto *
+-bgp_spawn(struct bgp_proto *pp, ip_addr remote_ip)
++static void
++bgp_spawn(struct bgp_proto *pp, struct birdsock *sk)
+ {
+   struct symbol *sym;
+   char fmt[SYM_MAX_LEN];
+@@ -635,9 +636,16 @@ bgp_spawn(struct bgp_proto *pp, ip_addr remote_ip)
+   cfg_mem = NULL;
+ 
+   /* Just pass remote_ip to bgp_init() */
+-  ((struct bgp_config *) sym->proto)->remote_ip = remote_ip;
++  ((struct bgp_config *) sym->proto)->remote_ip = sk->daddr;
++
++  /* Create the protocol disabled initially */
++  SKIP_BACK_DECLARE(struct bgp_proto, p, p, proto_spawn(sym->proto, 1));
+ 
+-  return (void *) proto_spawn(sym->proto, 0);
++  /* Pass the socket */
++  p->postponed_sk = sk;
++
++  /* And enable the protocol */
++  proto_enable(&p->p);
+ }
+ 
+ void
+@@ -1489,10 +1497,15 @@ bgp_incoming_connection(sock *sk, uint dummy UNUSED)
+   /* For dynamic BGP, spawn new instance and postpone the socket */
+   if (bgp_is_dynamic(p))
+   {
+-    p = bgp_spawn(p, sk->daddr);
+-    p->postponed_sk = sk;
+-    rmove(sk, p->p.pool);
+-    goto leave;
++    UNLOCK_DOMAIN(rtable, bgp_listen_domain);
++
++    /* The dynamic protocol must be in the START state */
++    ASSERT_DIE(p->p.proto_state == PS_START);
++    birdloop_leave(p->p.loop);
++
++    /* Now we have a clean mainloop */
++    bgp_spawn(p, sk);
++    return 0;
+   }
+ 
+   rmove(sk, p->p.pool);
+@@ -1806,7 +1819,6 @@ bgp_start(struct proto *P)
+   p->incoming_conn.state = BS_IDLE;
+   p->neigh = NULL;
+   p->bfd_req = NULL;
+-  p->postponed_sk = NULL;
+   p->gr_ready = 0;
+   p->gr_active_num = 0;
+ 
+@@ -1848,6 +1860,16 @@ bgp_start(struct proto *P)
+       channel_graceful_restart_lock(&c->c);
+   }
+ 
++  /* Now it's the last chance to move the postponed socket to this BGP,
++   * as bgp_start is the only hook running from main loop. */
++  if (p->postponed_sk)
++  {
++    LOCK_DOMAIN(rtable, bgp_listen_domain);
++    rmove(p->postponed_sk, p->p.pool);
++    sk_reloop(p->postponed_sk, p->p.loop);
++    UNLOCK_DOMAIN(rtable, bgp_listen_domain);
++  }
++
+   /*
+    * Before attempting to create the connection, we need to lock the port,
+    * so that we are the only instance attempting to talk with that neighbor.
+@@ -1999,6 +2021,8 @@ bgp_init(struct proto_config *CF)
+   p->remote_ip = cf->remote_ip;
+   p->remote_as = cf->remote_as;
+ 
++  p->postponed_sk = NULL;
++
+   /* Hack: We use cf->remote_ip just to pass remote_ip from bgp_spawn() */
+   if (cf->c.parent)
+     cf->remote_ip = IPA_NONE;
+diff --git a/proto/bgp/bgp.h b/proto/bgp/bgp.h
+index 202e78ba..dac6e84e 100644
+--- a/proto/bgp/bgp.h
++++ b/proto/bgp/bgp.h
+@@ -452,7 +452,8 @@ struct bgp_ptx_private {
+   struct { BGP_PTX_PUBLIC; };
+   struct bgp_ptx_private **locked_at;
+ 
+-  pool *pool;				/* Resource pool for TX related allocations */
++  pool *pool;				/* Pool for infrequent long-term blocks */
++  stonehenge *sth;			/* Bucket allocator */
+ 
+   HASH(struct bgp_bucket) bucket_hash;	/* Hash table of route buckets */
+   struct bgp_bucket *withdraw_bucket;	/* Withdrawn routes */
+@@ -461,7 +462,6 @@ struct bgp_ptx_private {
+   HASH(struct bgp_prefix) prefix_hash;	/* Hash table of pending prefices */
+ 
+   slab *prefix_slab;			/* Slab holding prefix nodes */
+-  slab *bucket_slab;			/* Slab holding buckets to send */
+ 
+   char bmp;                            /* This is a fake ptx for BMP encoding */
+ };
+diff --git a/sysdep/unix/io-loop.c b/sysdep/unix/io-loop.c
+index f69189e0..a72c69a0 100644
+--- a/sysdep/unix/io-loop.c
++++ b/sysdep/unix/io-loop.c
+@@ -1403,7 +1403,7 @@ bool task_still_in_limit(void)
+ {
+   static u64 main_counter = 0;
+   if (this_birdloop == &main_birdloop)
+-    return (++main_counter % 2048);	/* This is a hack because of no accounting in mainloop */
++    return (++main_counter % 512);	/* This is a hack because of no accounting in mainloop */
+   else
+     return ns_now() < account_last + this_thread->max_loop_time_ns;
+ }
+diff --git a/sysdep/unix/io.c b/sysdep/unix/io.c
+index f9785c07..51395e1e 100644
+--- a/sysdep/unix/io.c
++++ b/sysdep/unix/io.c
+@@ -53,14 +53,15 @@
+ 
+ /* Maximum number of calls of tx handler for one socket in one
+  * poll iteration. Should be small enough to not monopolize CPU by
+- * one protocol instance.
++ * one protocol instance. But as most of the problems are now offloaded
++ * to worker threads, too low values may actually bring problems with
++ * latency.
+  */
+-#define MAX_STEPS 4
++#define MAX_STEPS 2048
+ 
+ /* Maximum number of calls of rx handler for all sockets in one poll
+-   iteration. RX callbacks are often much more costly so we limit
+-   this to gen small latencies */
+-#define MAX_RX_STEPS 4
++   iteration. RX callbacks are often a little bit more costly. */
++#define MAX_RX_STEPS 512
+ 
+ 
+ /*
+@@ -2581,8 +2582,6 @@ io_init(void)
+   srandom((uint) (now ^ (now >> 32)));
+ }
+ 
+-static int short_loops = 0;
+-#define SHORT_LOOP_MAX 10
+ #define WORK_EVENTS_MAX 10
+ 
+ sock *stored_sock;
+@@ -2670,10 +2669,9 @@ io_loop(void)
+ 	{
+ 	  if (pfd.pfd.data[0].revents & POLLIN)
+ 	  {
+-	    /* IO loop reload requested */
++	    /* Somebody sent an event to mainloop */
+ 	    pipe_drain(&main_birdloop.thread->wakeup);
+ 	    atomic_fetch_and_explicit(&main_birdloop.thread_transition, ~LTT_PING, memory_order_acq_rel);
+-	    continue;
+ 	  }
+ 
+ 	  times_update();
+@@ -2719,11 +2717,6 @@ io_loop(void)
+ 	    main_birdloop.sock_active = sk_next(s);
+ 	  }
+ 
+-	  short_loops++;
+-	  if (events && (short_loops < SHORT_LOOP_MAX))
+-	    continue;
+-	  short_loops = 0;
+-
+ 	  int count = 0;
+ 	  main_birdloop.sock_active = stored_sock;
+ 	  if (main_birdloop.sock_active == NULL)
+diff --git a/sysdep/unix/krt.c b/sysdep/unix/krt.c
+index 2770b8be..1658dd6f 100644
+--- a/sysdep/unix/krt.c
++++ b/sysdep/unix/krt.c
+@@ -342,6 +342,8 @@ krt_learn_async(struct krt_proto *p, rte *e, int new)
+ /* Hook defined in nest/rt-table.c ... to be refactored away later */
+ rte *krt_export_net(struct channel *c, const net_addr *a, linpool *lp);
+ 
++static void krt_rt_notify(struct proto *P, struct channel *ch, const net_addr *net, rte *new, const rte *old);
++
+ static int
+ krt_same_dest(rte *k, rte *e)
+ {
+@@ -361,6 +363,11 @@ krt_same_dest(rte *k, rte *e)
+ void
+ krt_got_route(struct krt_proto *p, rte *e, s8 src)
+ {
++  /* If we happen to get an asynchronous route notification
++   * before initialization, we wait for the scan. */
++  if (p->sync_state == KPS_INIT)
++    return;
++
+   rte *new = NULL;
+   e->pflags = 0;
+ 
+@@ -391,10 +398,6 @@ krt_got_route(struct krt_proto *p, rte *e, s8 src)
+ 
+   /* The rest is for KRT_SRC_BIRD (or KRT_SRC_UNKNOWN) */
+ 
+-  /* We wait for the initial feed to have correct installed state */
+-  if (!p->ready)
+-    goto ignore;
+-
+   /* Get the exported version */
+   new = krt_export_net(p->p.main_channel, e->net, krt_filter_lp);
+ 
+@@ -423,10 +426,6 @@ aseen:
+   krt_trace_in(p, e, "already seen");
+   goto done;
+ 
+-ignore:
+-  krt_trace_in(p, e, "ignored");
+-  goto done;
+-
+ update:
+   krt_trace_in(p, new, "updating");
+   krt_replace_rte(p, e->net, new, e);
+@@ -447,12 +446,21 @@ krt_init_scan(struct krt_proto *p)
+ {
+   switch (p->sync_state)
+   {
++    case KPS_INIT:
++      /* Allow exports now */
++      p->p.rt_notify = krt_rt_notify;
++      channel_start_export(p->p.main_channel);
++      rt_refresh_begin(&p->p.main_channel->in_req);
++      p->sync_state = KPS_FIRST_SCAN;
++      return 1;
++
+     case KPS_IDLE:
+       rt_refresh_begin(&p->p.main_channel->in_req);
+       bmap_reset(&p->seen_map, 1024);
+       p->sync_state = KPS_SCANNING;
+       return 1;
+ 
++    case KPS_FIRST_SCAN:
+     case KPS_SCANNING:
+       bug("Kernel scan double-init");
+ 
+@@ -470,14 +478,17 @@ krt_prune(struct krt_proto *p)
+ {
+   switch (p->sync_state)
+   {
++    case KPS_INIT:
+     case KPS_IDLE:
+       bug("Kernel scan prune without scan");
+ 
+     case KPS_SCANNING:
++      channel_request_full_refeed(p->p.main_channel);
++      /* fall through */
++    case KPS_FIRST_SCAN:
+       p->sync_state = KPS_PRUNING;
+       KRT_TRACE(p, D_EVENTS, "Pruning table %s", p->p.main_channel->table->name);
+       rt_refresh_end(&p->p.main_channel->in_req);
+-      channel_request_full_refeed(p->p.main_channel);
+       break;
+ 
+     case KPS_PRUNING:
+@@ -549,7 +560,7 @@ krt_scan_all(timer *t UNUSED)
+   krt_do_scan(NULL);
+ 
+   WALK_LIST2(p, n, krt_proto_list, krt_node)
+-    if (p->sync_state == KPS_SCANNING)
++    if ((p->sync_state == KPS_SCANNING) || (p->sync_state == KPS_FIRST_SCAN))
+       krt_prune(p);
+ }
+ 
+@@ -644,6 +655,9 @@ krt_scan_timer_kick(struct krt_proto *p)
+ static int
+ krt_preexport(struct channel *C, rte *e)
+ {
++  /* The export should not start before proper sync */
++  ASSERT_DIE(SKIP_BACK(struct krt_proto, p, C->proto)->sync_state != KPS_INIT);
++
+   if (e->src->owner == &C->proto->sources)
+ #ifdef CONFIG_SINGLE_ROUTE
+     return 1;
+@@ -659,20 +673,11 @@ krt_preexport(struct channel *C, rte *e)
+     return -1;
+   }
+ 
+-  /* Before first scan we don't touch the routes */
+-  if (!SKIP_BACK(struct krt_proto, p, C->proto)->ready)
+-  {
+-    if (C->debug & D_ROUTES)
+-      log(L_TRACE "%s.%s not ready yet to accept route for %N",
+-	  C->proto->name, C->name, e->net);
+-    return -1;
+-  }
+-
+   return 0;
+ }
+ 
+ static void
+-krt_rt_notify(struct proto *P, struct channel *ch UNUSED, const net_addr *net,
++krt_rt_notify(struct proto *P, struct channel *ch, const net_addr *net,
+ 	      rte *new, const rte *old)
+ {
+   struct krt_proto *p = (struct krt_proto *) P;
+@@ -685,16 +690,30 @@ krt_rt_notify(struct proto *P, struct channel *ch UNUSED, const net_addr *net,
+ 
+   switch (p->sync_state)
+   {
++    case KPS_INIT:
++      bug("Routes in init state should have been rejected by preexport.");
++
+     case KPS_IDLE:
+     case KPS_PRUNING:
+       if (new && bmap_test(&p->seen_map, new->id))
+-	/* Already installed and seen in the kernel dump */
++      {
++	if (ch->debug & D_ROUTES)
++	{
++	  /* Already installed and seen in the kernel dump */
++	  log(L_TRACE "%s.%s: %N already in kernel",
++	      P->name, ch->name, net);
++	}
+ 	return;
++      }
+ 
+       /* fall through */
++    case KPS_FIRST_SCAN:
+     case KPS_SCANNING:
+       /* Actually replace the route */
+       krt_replace_rte(p, net, new, old);
++      if (ch->debug & D_ROUTES)
++	log(L_TRACE "%s.%s: %N %s kernel",
++	    P->name, ch->name, net, old ? "replaced in" : "added to");
+       break;
+ 
+   }
+@@ -724,7 +743,6 @@ krt_reload_routes(struct channel *C, struct rt_feeding_request *rfr)
+ 
+   if (KRT_CF->learn)
+   {
+-    p->reload = 1;
+     krt_scan_timer_kick(p);
+   }
+ 
+@@ -741,15 +759,18 @@ krt_export_fed(struct channel *C)
+ {
+   struct krt_proto *p = (void *) C->proto;
+ 
+-  p->ready = 1;
+-  p->initialized = 1;
+-
+   switch (p->sync_state)
+   {
++    case KPS_INIT:
++      bug("KRT export started before scan");
++
+     case KPS_IDLE:
+       krt_scan_timer_kick(p);
+       break;
+ 
++    case KPS_FIRST_SCAN:
++      bug("KRT export done before first scan");
++
+     case KPS_SCANNING:
+       break;
+ 
+@@ -823,7 +844,8 @@ krt_init(struct proto_config *CF)
+   p->p.main_channel = proto_add_channel(&p->p, proto_cf_main_channel(CF));
+ 
+   p->p.preexport = krt_preexport;
+-  p->p.rt_notify = krt_rt_notify;
++  /* Not setting rt_notify here to not start exports, must wait for the first scan
++   * and then we can start exports manually */
+   p->p.iface_sub.if_notify = krt_if_notify;
+   p->p.reload_routes = krt_reload_routes;
+   p->p.export_fed = krt_export_fed;
+@@ -879,7 +901,7 @@ krt_shutdown(struct proto *P)
+     return PS_FLUSH;
+ 
+   /* FIXME we should flush routes even when persist during reconfiguration */
+-  if (p->initialized && !KRT_CF->persist && (P->down_code != PDC_CMD_GR_DOWN))
++  if ((p->sync_state != KPS_INIT) && !KRT_CF->persist && (P->down_code != PDC_CMD_GR_DOWN))
+   {
+     struct rt_export_feeder req = (struct rt_export_feeder)
+     {
+@@ -914,8 +936,7 @@ krt_shutdown(struct proto *P)
+ static void
+ krt_cleanup(struct krt_proto *p)
+ {
+-  p->ready = 0;
+-  p->initialized = 0;
++  p->sync_state = KPS_INIT;
+ 
+   krt_sys_shutdown(p);
+   rem_node(&p->krt_node);
+diff --git a/sysdep/unix/krt.h b/sysdep/unix/krt.h
+index 394e7401..14be715f 100644
+--- a/sysdep/unix/krt.h
++++ b/sysdep/unix/krt.h
+@@ -59,10 +59,9 @@ struct krt_proto {
+   struct bmap seen_map;		/* Routes seen during last periodic scan */
+   node krt_node;		/* Node in krt_proto_list */
+   byte af;			/* Kernel address family (AF_*) */
+-  byte ready;			/* Initial feed has been finished */
+-  byte initialized;		/* First scan has been finished */
+-  byte reload;			/* Next scan is doing reload */
+   PACKED enum krt_prune_state {
++    KPS_INIT,
++    KPS_FIRST_SCAN,
+     KPS_IDLE,
+     KPS_SCANNING,
+     KPS_PRUNING,
