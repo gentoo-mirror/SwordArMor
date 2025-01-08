@@ -63,7 +63,8 @@ src_configure() {
 	# optimisations to be fast, as it may very likely be exposed to several
 	# thounsand BGP updates per seconds
 	# Although, we make it possible to deactivate it if wanted
-	use custom-cflags && myargs+=( bird_cv_c_lto=no )
+	use custom-cflags && myargs+=( bird_cflags_default=no ) || \
+		myargs+=( bird_cflags_default=yes )
 
 	econf "${myargs[@]}"
 }
