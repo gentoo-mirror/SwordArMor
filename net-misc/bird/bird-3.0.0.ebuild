@@ -37,9 +37,10 @@ FILECAPS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-nest-rt-table.c.patch
 	"${FILESDIR}"/${P}-proto-lock.patch
+	"${FILESDIR}"/${P}-nest-rt-table.c.patch
 	"${FILESDIR}"/${P}-rt-table.c.patch
+	"${FILESDIR}"/${P}-bgp-med.patch
 )
 
 src_prepare() {
