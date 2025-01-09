@@ -106,6 +106,9 @@ net-analyzer/mtr:ipinfo - Disable support for IP address lookups
 net-analyzer/mtr:jansson - Enable JSON output support through dev-libs/jansson
 net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
 net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
+net-dialup/accel-ppp:ipoe - Build IPoE kernel module
+net-dialup/accel-ppp:libtomcrypt - Support crypto algorithms through dev-libs/libtomcrypt instead of dev-libs/openssl
+net-dialup/accel-ppp:shaper - Support for traffic shaping
 net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
 net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.

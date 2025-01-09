@@ -194,6 +194,7 @@ net-analyzer/munin-plugins-contrib-ping 9999: Ping plugin for munin
 net-analyzer/nagios-check_domain_expiration_rdap 9999: Check for a domain expiration using RDAP
 net-analyzer/netsniff-ng 0.6.6 0.6.8: high performance network sniffer for packet inspection
 net-analyzer/smokeping 2.7.3-r1: A powerful latency measurement tool
+net-dialup/accel-ppp 1.13.0_p20250103: High performance PPTP, PPPoE and L2TP server
 net-dialup/freeradius 3.2.1: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
 net-dialup/ppp 2.4.9-r9: Point-to-Point Protocol (PPP)
