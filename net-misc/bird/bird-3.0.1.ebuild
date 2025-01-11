@@ -36,10 +36,6 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-PATCHES=(
-	"${FILESDIR}"/${P}_p20250107.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf
