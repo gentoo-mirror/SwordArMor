@@ -1,7 +1,7 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools fcaps systemd
 
@@ -10,6 +10,8 @@ MY_PN="fort"
 DESCRIPTION="FORT validator is an open source RPKI validator"
 HOMEPAGE="https://fortproject.net/validator?2"
 SRC_URI="https://github.com/NICMx/${PN}/releases/download/${PV}/fort-${PV}.tar.gz"
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,19 +24,13 @@ DEPEND="
 	caps? ( sys-libs/libcap )
 	dev-libs/jansson
 	dev-libs/libxml2
-	dev-libs/openssl
+	dev-libs/openssl[rfc3779]
 	net-misc/curl
 "
 RDEPEND="
 	${DEPEND}
 	net-misc/rsync
 "
-BDEPEND="
-	sys-devel/autoconf
-	sys-devel/automake
-"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	default
