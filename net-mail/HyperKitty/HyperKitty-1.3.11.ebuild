@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/django-gravatar2[${PYTHON_USEDEP}]
 	dev-python/django-haystack[${PYTHON_USEDEP}]
 	dev-python/django-q[${PYTHON_USEDEP}]
+	<dev-python/django-5.1
 	dev-python/django[${PYTHON_USEDEP}]
 	dev-python/djangorestframework[${PYTHON_USEDEP}]
 	dev-python/flufl-lock[${PYTHON_USEDEP}]
