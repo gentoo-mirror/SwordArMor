@@ -18,7 +18,14 @@ IUSE="mysql"
 RDEPEND="
 	>=dev-python/django-4.0[${PYTHON_USEDEP}]
 	<dev-python/django-4.3
+	dev-python/psycopg:2[${PYTHON_USEDEP}]
 	dev-python/whoosh[${PYTHON_USEDEP}]
 	net-mail/HyperKitty[${PYTHON_USEDEP}]
 	net-mail/postorius[${PYTHON_USEDEP}]
+	www-servers/gunicorn[${PYTHON_USEDEP}]
 "
+
+src_install() {
+	distutils-r1_src_install
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+}
