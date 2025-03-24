@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="mailman daemon"
+command=/usr/lib/python-exec/python3.11/gunicorn
+command_args="-c /etc/mailman3/gunicorn_config.py mailman_web.wsgi"
+command_user=mailman:mailman
+directory=/opt/mailman
+error_log=/var/log/mailman/"${RC_SVCNAME}".log
+output_log=/var/log/mailman/"${RC_SVCNAME}".log
+supervisor=supervise-daemon
