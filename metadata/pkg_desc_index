@@ -261,5 +261,5 @@ www-apps/netbox 3.6.8 4.0.11 4.1.11: IP address and data center infrastructure m
 www-apps/netbox-ddns 1.2.9 1.3.0 1.4.0: Dynamic DNS Connector for NetBox
 www-apps/tt-rss 20230505: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-misc/as-stats-gui 0.2: Web GUI for AS-Stats
-x11-libs/vte 0.70.3 0.74.2: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.76.3: Library providing a virtual terminal emulator widget
 x11-terms/rxvt-unicode 9.22-r9: rxvt clone with xft and unicode support
