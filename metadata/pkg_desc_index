@@ -168,7 +168,6 @@ dev-python/tomlkit 0.7.2: Style preserving TOML library
 dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
 dev-python/yamllint 1.26.3: A linter for YAML files
 dev-python/yamlordereddictloader 0.4.0: YAML loader and dump for PyYAML allowing to keep keys order
-dev-ruby/awesome_print 1.9.2: Pretty print your Ruby objects with style
 dev-util/bcunit 3.0.2: BC Unit Test Framework
 dev-util/cli 1.2.0_pre20210722: Command Line Interface compiler for C++
 dev-util/clippy 9.1 10.0: Standalone clippy tool built from FRR sources
