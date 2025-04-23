@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=pdm-backend
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	<dev-python/django-4.3
-	>=dev-python/django-3.2[${PYTHON_USEDEP}]
+	<dev-python/django-5.1
+	>=dev-python/django-4.2[${PYTHON_USEDEP}]
 	dev-python/readme-renderer[${PYTHON_USEDEP}]
-	net-mail/django-mailman3[${PYTHON_USEDEP}]
-	net-mail/mailmanclient[${PYTHON_USEDEP}]
+	>=net-mail/django-mailman3-1.3.13[${PYTHON_USEDEP}]
+	>=net-mail/mailmanclient-3.3.3[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
