@@ -63,8 +63,6 @@ dev-python/authheaders 0.15.2 0.16.3: A library wrapping email authentication he
 dev-python/blockdiag 3.0.0: Generate block-diagram image from text
 dev-python/cfu 1.5.0: Configuration file validation and generation
 dev-python/cmarkgfm 2022.10.27: Python bindings for GitHub's cmark
-dev-python/command-runner 1.3.0: Platform agnostic command and shell execution tool
-dev-python/confu 1.8.0: Configuration file validation and generation
 dev-python/coreapi 2.3.3-r2: Python client library for Core API
 dev-python/coreschema 0.0.4-r1: Core Schema
 dev-python/cymruwhois 1.6-r1: Client for the whois.cymru.com service
@@ -74,7 +72,6 @@ dev-python/django-allauth 0.50.0 0.53.1 64.1.0: Django 3rd party (social) accoun
 dev-python/django-appconf 1.0.5-r1 1.0.6: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-compressor 4.3.1 4.5.1: Compresses linked and inline JavaScript or CSS into single cached files
 dev-python/django-cors-headers 3.13.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
-dev-python/django-cryptography 1.0: Easily encrypt data in Django
 dev-python/django-debug-toolbar 4.3.0: A configurable set of panels that display various debug information
 dev-python/django-extensions 3.2.1 3.2.3: A collection of custom extensions for the Django Framework
 dev-python/django-graphiql-debug-toolbar 0.2.0: Django Debug Toolbar for GraphiQL IDE
@@ -112,18 +109,13 @@ dev-python/jinja2_error 0.1.0: Jinja2 Extension for Raise Error
 dev-python/junos-eznc 2.6.6 2.6.7: Junos 'EZ' automation for non-programmers
 dev-python/lazr-config 2.2.3-r2 3.0: Create configuration schemas, and process and validate configurations
 dev-python/lazr-delegates 2.1.0: Easily write objects that delegate behavior
-dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/markdown-include 0.6.0: Syntax which allows for inclusion of contents of other Markdown docs
 dev-python/markuppy 1.14: MarkupPy - An HTML/XML generator
 dev-python/matrix-nio 0.20.1: A Python Matrix client library, designed according to sans I/OH
-dev-python/mautrix 0.19.7 0.19.11: A Python 3 asyncio Matrix framework
 dev-python/mistune 2.0.5: The fastest markdown parser in pure Python
-dev-python/mkdocs-material 7.3.2: A Material Design theme for MkDocs
 dev-python/mkdocstrings-python-legacy 0.2.3: A legacy Python handler for mkdocstrings
-dev-python/mrtparse 2.1.0: MRT format data parser
 dev-python/mysql-replication 0.31: Pure Python Implementation of MySQL replication protocol
 dev-python/napalm 3.3.1: Network Automation and Programmability Abstraction Layer
-dev-python/napalm-dellos6 9999: NAPALM Driver for Dell EMC OS6 Enterprise
 dev-python/ncclient 0.6.9 0.6.12 0.6.13: Python library for NETCONF clients
 dev-python/netmiko 3.4.0: Multivendor library to simplify Paramiko SSH connections to netdev
 dev-python/nornir 3.1.1 3.2.0: Pluggable multi-threaded framework with inventory management
@@ -147,7 +139,6 @@ dev-python/pyunycode 0.1.1: Punycode converter library for python
 dev-python/rcssmin 1.1.1 1.1.2: CSS minifier written in python
 dev-python/rjsmin 1.2.1 1.2.2: Javascript minifier written in python
 dev-python/robot-detection 0.4.0-r1: Module to detect if a given HTTP User Agent is a web crawler
-dev-python/ruamel-yaml 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/scp 0.14.1: scp module for paramiko
 dev-python/seqdiag 3.0.0: seqdiag generate sequence-diagram image file from spec-text file.
 dev-python/shared-secret-authenticator 2.0.1: Shared Secret Authenticator passwordd provider for Matrix Synapse
@@ -157,16 +148,13 @@ dev-python/sphinx-py3doc-enhanced-theme 2.4.0: Enhanced Sphinx theme (based on P
 dev-python/sphinx-theme-builder 0.2.0_p1: A tool for authoring Sphinx themes with a simple (opinionated) workflow.
 dev-python/sphinxcontrib-actdiag 3.0.0: A sphinx extension for embedding activity diagram using actdiag.
 dev-python/sphinxcontrib-blockdiag 3.0.0: A sphinx extension for embedding block diagrams using blockdiag
-dev-python/sphinxcontrib-napoleon 0.7: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-nwdiag 2.0.0: A sphinx extension for embedding network related diagrams using nwdiag.
 dev-python/sphinxcontrib-seqdiag 3.0.0: A sphinx extension for embedding sequence diagram using seqdiag.
 dev-python/strawberry-graphql 0.239.2 0.256.1: A library for creating GraphQL APIs
 dev-python/strawberry-graphql-django 0.47.1 0.53.1: A library for creating GraphQL APIs
 dev-python/tablib 3.4.0 3.5.0 3.7.0: Format-agnostic tabular dataset library
 dev-python/textfsm 1.1.2: Python module for parsing semi-structured text into python tables
-dev-python/tomlkit 0.7.2: Style preserving TOML library
 dev-python/twentyc-rpc 1.0.0: client for 20c's RESTful API
-dev-python/yamllint 1.26.3: A linter for YAML files
 dev-python/yamlordereddictloader 0.4.0: YAML loader and dump for PyYAML allowing to keep keys order
 dev-util/bcunit 3.0.2: BC Unit Test Framework
 dev-util/cli 1.2.0_pre20210722: Command Line Interface compiler for C++
