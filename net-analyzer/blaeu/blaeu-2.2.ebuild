@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1
 
 DESCRIPTION="Blaeu, creating measurements on RIPE Atlas probes"
@@ -13,7 +14,6 @@ SRC_URI="https://framagit.org/bortzmeyer/${PN}/-/archive/release-${PV}/${PN}-rel
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
