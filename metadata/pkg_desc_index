@@ -28,7 +28,7 @@ app-misc/live-build 20210407: Debian live system build components
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
 app-shells/bash 5.2_p26-r6: The standard GNU Bourne again shell
 app-text/html2gmi 9999: Command line application to convert HTML to GMI
-app-text/unicode 2.9 3.1: display unicode character properties
+app-text/unicode 3.1 3.2: display unicode character properties
 dev-cpp/belr 5.1.3: Language recognition library by Belledonne Communications
 dev-cpp/libcutl 1.11.0_p20210806: A collection of C++ libraries (successor of libcult)
 dev-cpp/libxsd-frontend 2.0.0_p20211005: A compiler frontend for the W3C XML Schema definition language
@@ -171,7 +171,7 @@ media-libs/mediastreamer2 5.1.3: Mediastreaming library for telephony applicatio
 media-libs/noise-suppression-for-voice 1.03: A real-time noise suppression plugin for voice
 media-video/jellyfin-ffmpeg 5.1.3_p1: FFmpeg for Jellyfin
 net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from NetFlow/sFlow records
-net-analyzer/blaeu 1.1.8 1.1.9 1.1.10: Blaeu, creating measurements on RIPE Atlas probes
+net-analyzer/blaeu 1.1.10 2.2: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/check_ssl_cert 2.68.0: A shell script to check an SSL/TLS connection
 net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
 net-analyzer/mtr 0.95 0.95-r1: My TraceRoute, an Excellent network diagnostic tool
