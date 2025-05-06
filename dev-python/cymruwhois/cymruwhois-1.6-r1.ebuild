@@ -3,17 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-inherit distutils-r1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
+inherit distutils-r1 pypi
 
 DESCRIPTION="Client for the whois.cymru.com service"
 HOMEPAGE="https://pythonhosted.org/cymruwhois/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url)"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-python/setuptools"
 RDEPEND="${DEPEND}"
