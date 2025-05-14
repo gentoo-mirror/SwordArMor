@@ -7,7 +7,7 @@ inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
-SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
+SRC_URI="https://bird.network.cz/download/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
