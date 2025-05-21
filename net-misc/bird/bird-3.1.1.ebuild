@@ -36,11 +36,6 @@ FILECAPS=(
 	CAP_NET_RAW				usr/sbin/bird
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	# This export makes compilation and test phases verbose
 	export VERBOSE=1
