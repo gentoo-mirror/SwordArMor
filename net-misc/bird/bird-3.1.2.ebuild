@@ -7,7 +7,7 @@ inherit autotools fcaps
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="https://bird.network.cz"
-SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
+SRC_URI="https://bird.nic.cz/download/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -35,11 +35,6 @@ FILECAPS=(
 	CAP_NET_BIND_SERVICE	usr/sbin/bird
 	CAP_NET_RAW				usr/sbin/bird
 )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	# This export makes compilation and test phases verbose
