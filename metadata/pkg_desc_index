@@ -22,6 +22,7 @@ acct-user/rancid 0: User for net-misc/rancid
 acct-user/routinator 0: User for routinator RPKI validator
 acct-user/stayrtr 0: User for net-misc/stayrtr
 acct-user/vintagestory 0: User for games-server/vintagestory-server
+app-admin/synadm 0.48: Command line admin tool for Synapse
 app-metrics/frr_exporter 1.3.1: Prometheus exporter for Free Range Routing
 app-misc/live-build 20210407: Debian live system build components
 app-misc/tmate-ssh-server 2.3.0: tmate SSH server
