@@ -1,0 +1,5 @@
+# /etc/conf.d/ethtool-snmpd: config file for /etc/init.d/ethtool-snmpd
+
+# -d: enable debug mode
+# -x ADDRESS: connect to master agent at ADDRESS
+#ETHTOOL_SNMPD_OPTS="-x 127.0.0.2"
