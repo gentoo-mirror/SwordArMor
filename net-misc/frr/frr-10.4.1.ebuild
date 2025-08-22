@@ -1,10 +1,10 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
-inherit autotools pam python-single-r1 systemd
+PYTHON_COMPAT=( python3_{10..13} )
+inherit out-of-source autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/FRRouting/frr/archive/${P}.tar.gz"
 # FRR tarballs have weird format.
 S="${WORKDIR}/frr-${P}"
 
-LICENSE="GPL-2"
-SLOT="0"
+LICENSE="GPL-2+"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fpm grpc ipv6 nhrp ospfapi pam rpki snmp test"
+IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -35,24 +35,33 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp:= )
 "
 BDEPEND="
-	~dev-util/clippy-${PV}
-	app-alternatives/lex
+	sys-devel/flex
 	app-alternatives/yacc
+	dev-libs/elfutils
 	doc? ( dev-python/sphinx )
+	grpc? ( sys-apps/which )
 "
 DEPEND="
 	${COMMON_DEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )
-	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
+	test? (
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
+		dev-util/cunit
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
 	"${FILESDIR}"/${PN}-8.4.1-logrotate.patch
+	"${FILESDIR}"/${PN}-9.1-mimic-gnu-basename-api-for-non-glibc.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	mallinfo # No functional impact.
+	mallinfo2
 )
 
 src_prepare() {
@@ -62,20 +71,18 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myconf=(
-		--disable-static
+		LEX=flex
 		--with-pkg-extra-version="-gentoo"
 		--enable-configfile-mask=0640
 		--enable-logfile-mask=0640
-		--prefix="${EPREFIX}"/usr
 		--libdir="${EPREFIX}"/usr/lib/frr
 		--sbindir="${EPREFIX}"/usr/lib/frr
 		--libexecdir="${EPREFIX}"/usr/lib/frr
 		--sysconfdir="${EPREFIX}"/etc/frr
 		--localstatedir="${EPREFIX}"/run/frr
 		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules
-		--with-clippy="${BROOT}"/usr/bin/clippy
 		--enable-user=frr
 		--enable-group=frr
 		--enable-vty-group=frr
@@ -83,9 +90,6 @@ src_configure() {
 		$(use_enable doc)
 		$(use_enable fpm)
 		$(use_enable grpc)
-		$(use_enable ipv6 ospf6d)
-		$(use_enable ipv6 ripngd)
-		$(use_enable ipv6 rtadv)
 		$(use_enable kernel_linux realms)
 		$(use_enable nhrp nhrpd)
 		$(usex ospfapi '--enable-ospfclient' '' '' '')
@@ -96,13 +100,18 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-src_compile() {
+my_src_compile() {
 	default
 
 	use doc && emake -C doc html
 }
 
-src_install() {
+my_src_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	default
+}
+
+my_src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 
@@ -110,32 +119,21 @@ src_install() {
 	use doc && dodoc -r doc/user/_build/html
 
 	# Create configuration directory with correct permissions
-	keepdir /etc/frr
-	fowners frr:frr /etc/frr
-	fperms 775 /etc/frr
-
 	# Create logs directory with the correct permissions
-	keepdir /var/log/frr
-	fowners frr:frr /var/log/frr
-	fperms 775 /var/log/frr
+	diropts -ofrr -gfrr -m0775
+	keepdir /var/log/frr /etc/frr
 
 	# Install the default configuration files
 	insinto /etc/frr
-	doins tools/etc/frr/vtysh.conf
-	doins tools/etc/frr/frr.conf
-	doins tools/etc/frr/daemons
+	doins "${S}"/tools/etc/frr/{vtysh.conf,frr.conf,daemons}
 
 	# Fix permissions/owners.
-	fowners frr:frr /etc/frr/vtysh.conf
-	fowners frr:frr /etc/frr/frr.conf
-	fowners frr:frr /etc/frr/daemons
-	fperms 640 /etc/frr/vtysh.conf
-	fperms 640 /etc/frr/frr.conf
-	fperms 640 /etc/frr/daemons
+	fowners frr:frr /etc/frr/{vtysh.conf,frr.conf,daemons}
+	fperms 640 /etc/frr/{vtysh.conf,frr.conf,daemons}
 
 	# Install logrotate configuration
 	insinto /etc/logrotate.d
-	newins redhat/frr.logrotate frr
+	newins "${S}"/redhat/frr.logrotate frr
 
 	# Install PAM configuration file
 	use pam && newpamd "${FILESDIR}"/frr.pam frr
@@ -145,5 +143,9 @@ src_install() {
 	newinitd "${FILESDIR}"/frr-openrc-v2 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
+	# Files from frr seems to be newer.
 	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-with-defaults.yang || die
+	rm "${ED}"/usr/share/yang/ietf-netconf-acm.yang || die
 }
