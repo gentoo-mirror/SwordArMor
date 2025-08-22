@@ -128,6 +128,7 @@ net-analyzer/AS-Stats 9999: A simple tool to generate per-AS traffic graphs from
 net-analyzer/blaeu 1.1.10 2.2: Blaeu, creating measurements on RIPE Atlas probes
 net-analyzer/check_ssl_cert 2.68.0: A shell script to check an SSL/TLS connection
 net-analyzer/dublin-traceroute 0.4.2: NAT-aware multipath tracerouting tool
+net-analyzer/ethtool-snmpd 0.2 9999: Export ethtool stuff through SNMP
 net-analyzer/mtr 0.95 0.95-r1: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/munin-pdns_recursor 1.03: A munin plugin to graph some usage and performance stats
 net-analyzer/munin-plugins-contrib-openntpd 9999: openntpd plugin for munin
