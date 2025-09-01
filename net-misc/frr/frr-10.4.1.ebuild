@@ -28,7 +28,10 @@ COMMON_DEPEND="
 	sys-libs/libcap
 	sys-libs/readline:0=
 	virtual/libcrypt:=
-	grpc? ( net-libs/grpc:= )
+	grpc? (
+		<=dev-cpp/abseil-cpp-20220623.1
+		net-libs/grpc:=
+	)
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.8.0[ssh] )
